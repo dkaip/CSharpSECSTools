@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SECSItems</name>
+    </assembly>
+    <members>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.getValue">
+             <summary>
+             Returns the value of the this SECSItem
+             </summary>
+             <returns>The value.</returns>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.RawSECSItemFormatCode.mapNumberToFormatCode(System.Byte)">
+            
+            
+            	     * 
+            	     * Note: Yes, you can blow it up by specifying a number that is out of 
+            	     * bounds.  I'm reluctant to throw an exception for such misuse.
+            	     * 
+            	     * @param number
+            	     * @return
+            	     </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.RawSECSItemFormatCode.mapFormatCodeToNumber(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCode)">
+            
+            
+            	     * 
+            	     * @param itemFormatCode
+            	     * @return
+            	     </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.#ctor(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCode,System.Int32)">
+            
+            
+            	     * 
+            	     * @param formatCode
+            	     * @param length - length in bytes
+            	     </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.#ctor(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCode,System.Int32,System.Int32)">
+            
+            
+            	     * 
+            	     * @param formatCode
+            	     * @param length - length in bytes
+            	     * @param desiredNUmberOfLengthBytes
+            	     </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.outputHeaderLength">
+            
+            
+            	     * Returns the length of what the out bound item header will be. 
+            	     * @return length in bytes
+            	     </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.populateHeaderData(System.Byte[],System.Int32)">
+            
+            
+            	     * This method fills in the raw "header" for a SECS item.
+            	     * 
+            	     * Make sure the buffer is large enough!!!
+            	     * 
+            	     * @param buffer  The buffer that will be used to contain an outgoing message item
+            	     * @Param numberOfBytes number of bytes in the payload...get this right
+            	     * @return The offset to where the payload data may loaded into the buffer
+            	     </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.getSECSItemFormatCode">
+             <summary>
+             Gets the SECS item format code.
+             
+             This is probably not a method you need to be using.  It was
+             originally created for unit testing because and its scope
+             needed to be set to public for unit testing access.
+             
+             </summary>
+             <returns>The SECS item format code.</returns>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCode)">
+            
+            
+            	     * 
+            	     * @return The numerical equivalent of the SECS Item Format Code
+            	     </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber(System.Byte)">
+            
+            
+            	     * 
+            	     * @param number - 
+            	     * @return
+            	     </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.#ctor(System.Single)">
+             <summary>
+             Creates a new instance of the <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem" /> class.
+             Using this form of the constructor will result in the smallest 
+             number of length bytes being used when this item is encoded for
+             output / transport.
+             
+             </summary>
+             <param name="value">Value.</param>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.#ctor(System.Single,System.Int32)">
+             <summary>
+             Creates a new instance of the <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem" /> class.
+             Using this form of the constructor allows the caller to directly
+             specify the number of length bytes to be used when this item is
+             encoded for output / transport.
+             </summary>
+             <param name="value">Value.</param>
+             <param name="desiredNUmberOfLengthBytes">Desired N umber of length bytes.</param>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.#ctor(System.Byte[],System.Int32)">
+             <summary>
+             Creates a new instance of the <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem" /> class.  
+             This method is used to create an instance of this class from
+             the binary SECS data that is received via an HSMS or a SECS I
+             connection.
+             </summary>
+             <param name="data">Binary form of a SECS II message</param>
+             <param name="itemOffset">The offset in the input data where this constructor will grab the data for the creation of this object.</param>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.getValue">
+             <summary>
+             Returns the value of this SECSItem
+             </summary>
+             <returns>The value.</returns>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.toRawSECSItem">
+             <summary>
+             This method converts this SECSItem into its binary 
+             form that will be used for output / transport.
+             </summary>
+             <returns>The raw SECS item.</returns>
+            </member>
+        <member name="T:com.CIMthetics.CSharpSECSTools.SECSItems.RawSECSData">
+             <summary>
+             This "raw" SECS Item layer has been created because the transport layers
+             used (SECS I or HSMS) to transport SECS II messages do not really care 
+            	 about the payload of the messages they are transporting.
+             </summary>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.RawSECSData.#ctor(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">
+             <summary>
+             Initializes a new instance of the <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.RawSECSData" /> class.
+             This constructor will most likely be used just before a SECS II 
+             message is to be sent out on a SECS I serial line or a HSMS connection.
+             </summary>
+             <param name="secsItem">Secs item.</param>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.RawSECSData.#ctor(System.Byte[])">
+             <summary>
+             Initializes a new instance of the <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.RawSECSData" /> class.
+              This constructor will most likely be used to contain raw SECS II
+             messages that are received from a SECS I serial line or from a
+             HSMS network connection.
+             </summary>
+             <param name="incomingData">Incoming data.</param>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.RawSECSData.getData">
+             <summary>
+             Gets the data.
+             </summary>
+             <returns>The data.</returns>
+            </member>
+        <member name="M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.getElementAt(System.String)">
+             <summary>
+                   This method returns a SECSItem contained in this list based on its 
+             "address" or null if the item does not exist.  
+            
+            	In the example below a specified address of "3.2" would return the
+            		element with the value 'Answer'.
+            
+            		<ol>
+            		<li>A 'ABC' </li>
+            		<li>A 'DEF' </li>
+            		<li>L 3 </li>
+            		<ol>
+            		<li>I2 -32768</li>
+            		<li>A 'Answer'</li>
+            		<li>U1 255</li>
+            		</ol>
+            		<li>F4 3.141592</li>
+            		</ol>
+             </summary>
+             <returns>The <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem" />.</returns>
+             <param name="address">The SECSItem at the provided address or null if not found.</param>
+            </member>
+    </members>
+</doc>

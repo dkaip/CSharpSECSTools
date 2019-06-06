@@ -1,0 +1,6 @@
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSItems/bin/Debug/SECSItems.xml
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSItems/bin/Debug/SECSItems.dll
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSItems/bin/Debug/SECSItems.pdb
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSItems/obj/Debug/SECSItems.csproj.CoreCompileInputs.cache
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSItems/obj/Debug/SECSItems.dll
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSItems/obj/Debug/SECSItems.pdb

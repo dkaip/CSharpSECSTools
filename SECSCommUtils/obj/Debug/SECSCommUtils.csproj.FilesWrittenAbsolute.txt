@@ -1,0 +1,4 @@
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSCommUtils/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSCommUtils/bin/Debug/SECSItems.dll
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSCommUtils/bin/Debug/SECSItems.dll.mdb
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSCommUtils/bin/Debug/SECSItems.xml

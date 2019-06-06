@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC171C6E-3844-4601-9405-63C9A0A8C7CD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SECSItemTests</RootNamespace>
+    <AssemblyName>SECSItemTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="I2SECSItemTests.cs" />
+    <Compile Include="U4SECSItemTests.cs" />
+    <Compile Include="BinarySECSItemTests.cs" />
+    <Compile Include="I1SECSItemTests.cs" />
+    <Compile Include="I4SECSItemTests.cs" />
+    <Compile Include="I8SECSItemTests.cs" />
+    <Compile Include="BooleanSECSItemTests.cs" />
+    <Compile Include="U1SECSItemTests.cs" />
+    <Compile Include="U2SECSItemTests.cs" />
+    <Compile Include="U8SECSItemTests.cs" />
+    <Compile Include="F4SECSItemTests.cs" />
+    <Compile Include="F8SECSItemTests.cs" />
+    <Compile Include="U8ArraySECSItemTests.cs" />
+    <Compile Include="I8ArraySECSItemTests.cs" />
+    <Compile Include="U4ArraySECSItemTests.cs" />
+    <Compile Include="I4ArraySECSItemTests.cs" />
+    <Compile Include="U2ArraySECSItemTests.cs" />
+    <Compile Include="I2ArraySECSItemTests.cs" />
+    <Compile Include="U1ArraySECSItemTests.cs" />
+    <Compile Include="I1ArraySECSItemTests.cs" />
+    <Compile Include="F8ArraySECSItemTests.cs" />
+    <Compile Include="F4ArraySECSItemTests.cs" />
+    <Compile Include="BooleanArraySECSItemTests.cs" />
+    <Compile Include="ASCIISECSItemTests.cs" />
+    <Compile Include="ListSECSItemTests.cs" />
+    <Compile Include="SECSItemFormatCodeTests.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\SECSItems\SECSItems.csproj">
+      <Project>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</Project>
+      <Name>SECSItems</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

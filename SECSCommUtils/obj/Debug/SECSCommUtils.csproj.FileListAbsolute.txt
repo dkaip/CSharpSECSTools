@@ -1,0 +1,2 @@
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSCommUtils/obj/Debug/SECSCommUtils.csprojResolveAssemblyReference.cache
+/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/SECSCommUtils/obj/Debug/SECSCommUtils.csproj.CoreCompileInputs.cache

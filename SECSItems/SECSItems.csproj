@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SECSItems</RootNamespace>
+    <AssemblyName>SECSItems</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <newfilesearch>OnLoad</newfilesearch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DocumentationFile>bin\Debug\SECSItems.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="I2SECSItem.cs" />
+    <Compile Include="RawSECSItemFormatCode.cs" />
+    <Compile Include="SECSItem.cs" />
+    <Compile Include="SECSItemFormatCode.cs" />
+    <Compile Include="U2SECSItem.cs" />
+    <Compile Include="I4SECSItem.cs" />
+    <Compile Include="I8SECSItem.cs" />
+    <Compile Include="U8SECSItem.cs" />
+    <Compile Include="U4SECSItem.cs" />
+    <Compile Include="F4SECSItem.cs" />
+    <Compile Include="F8SECSItem.cs" />
+    <Compile Include="BooleanSECSItem.cs" />
+    <Compile Include="I1SECSItem.cs" />
+    <Compile Include="U1SECSItem.cs" />
+    <Compile Include="BinarySECSItem.cs" />
+    <Compile Include="U8ArraySECSItem.cs" />
+    <Compile Include="I8ArraySECSItem.cs" />
+    <Compile Include="U4ArraySECSItem.cs" />
+    <Compile Include="I4ArraySECSItem.cs" />
+    <Compile Include="I2ArraySECSItem.cs" />
+    <Compile Include="U2ArraySECSItem.cs" />
+    <Compile Include="U1ArraySECSItem.cs" />
+    <Compile Include="I1ArraySECSItem.cs" />
+    <Compile Include="F8ArraySECSItem.cs" />
+    <Compile Include="F4ArraySECSItem.cs" />
+    <Compile Include="BooleanArraySECSItem.cs" />
+    <Compile Include="ASCIISECSItem.cs" />
+    <Compile Include="RawSECSData.cs" />
+    <Compile Include="ListSECSItem.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="SECSItems.userprefs" />
+  </ItemGroup>
+</Project>

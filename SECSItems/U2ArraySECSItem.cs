@@ -1,0 +1,104 @@
+﻿using System;
+using System.Linq;
+
+namespace com.CIMthetics.CSharpSECSTools.SECSItems 
+{
+	public class U2ArraySECSItem : SECSItem
+	{
+		private UInt16[] value;
+
+		public U2ArraySECSItem(UInt16[] value) : base(SECSItemFormatCode.U2, value.Length * 2)
+		{
+			this.value = value;
+		}
+
+		public U2ArraySECSItem(UInt16[] value, int desiredNUmberOfLengthBytes) : base(SECSItemFormatCode.U2, value.Length * 2, desiredNUmberOfLengthBytes)
+		{
+			this.value = value;
+		}
+
+		public U2ArraySECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
+		{
+			int offset = 1 + inboundNumberOfLengthBytes + itemOffset;
+			bytesConsumed = 1 + inboundNumberOfLengthBytes + lengthInBytes;
+			if ((lengthInBytes == 0) || ((lengthInBytes % 2) != 0))
+				throw new ArgumentOutOfRangeException("Illegal data length: " + data.Length + " must be a non-zero multiple of 2.");
+
+			value = new UInt16[lengthInBytes / 2];
+			byte[] temp = new byte[2];
+			for (int i = offset, j = 0; j < value.Length; i += 2, j++)
+			{
+				temp[0] = data[i];
+				temp[1] = data[i+1];
+
+				if (BitConverter.IsLittleEndian)
+					Array.Reverse(temp);
+
+				value[j] = BitConverter.ToUInt16(temp, 0);
+			}
+		}
+
+		public UInt16[] getValue()
+		{
+			return value;
+		}
+
+
+		public override byte[] toRawSECSItem()
+		{
+			byte[] output = new byte[outputHeaderLength()+(value.Length * 2)];
+			int offset = populateHeaderData(output, (value.Length * 2));
+
+			for( int i = offset, j = 0; j < value.Length; i+=2, j++ )
+			{
+				byte[] temp = BitConverter.GetBytes(value[j]);
+
+				if (BitConverter.IsLittleEndian)
+					Array.Reverse(temp);
+
+				output[i]   = temp[0];
+				output[i+1] = temp[1];
+			}
+
+			return output;
+		}
+
+		public override String ToString()
+		{
+			return "Format:" + formatCode.ToString() + " Value: Array";
+		}
+
+		public override int GetHashCode()
+		{
+			return value.GetHashCode();
+		}
+
+		public override bool Equals(Object obj)
+		{
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (GetType() != obj.GetType())
+				return false;
+			U2ArraySECSItem other = (U2ArraySECSItem) obj;
+			if (value == null && other.value == null)
+				return true;
+			if (value == null)
+			{
+				if (other.value != null)
+					return false;
+			}
+			if (other.value == null)
+			{
+				if (value != null)
+					return false;
+			}
+			if (value.Length != other.value.Length)
+				return false;
+
+			return value.SequenceEqual(other.value);
+		}
+	}
+}
+

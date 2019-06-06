@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F722F74-D152-4671-B8DB-DD3E22CFFA78}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SECSCommUtils</RootNamespace>
+    <AssemblyName>SECSCommUtils</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SECSHeader.cs" />
+    <Compile Include="HSMS\HSMSHeader.cs" />
+    <Compile Include="SECS1\SECS1Header.cs" />
+    <Compile Include="HSMS\PTypeValues.cs" />
+    <Compile Include="HSMS\STypeValues.cs" />
+    <Compile Include="SECSConnectionType.cs" />
+    <Compile Include="HSMS\HSMSConnectionMode.cs" />
+    <Compile Include="HSMS\HSMSConnectionState.cs" />
+    <Compile Include="ConnectionDefaults.cs" />
+    <Compile Include="HSMS\TCPState.cs" />
+    <Compile Include="SECS1\SECS1Connection.cs" />
+    <Compile Include="HSMS\HSMSConnection.cs" />
+    <Compile Include="SECSConnection.cs" />
+    <Compile Include="SECSMessage.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="HSMS\" />
+    <Folder Include="SECS1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SECSItems\SECSItems.csproj">
+      <Project>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</Project>
+      <Name>SECSItems</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
