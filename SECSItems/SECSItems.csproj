@@ -65,7 +65,4 @@
     <Compile Include="ListSECSItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="SECSItems.userprefs" />
-  </ItemGroup>
 </Project>
