@@ -1,2 +1,0 @@
-/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/EquipmentSimulatorSupportStuff/obj/Debug/EquipmentSimulatorSupportStuff.csproj.CoreCompileInputs.cache
-/home/dkaip/CSharpWorkspaces/CIMthetics/CSharpSECSStuff/EquipmentSimulatorSupportStuff/obj/Debug/EquipmentSimulatorSupportStuff.csprojResolveAssemblyReference.cache

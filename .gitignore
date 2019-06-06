@@ -1,4 +1,6 @@
 SECSItems/bin
-SECSITEMS/obj
+SECSItems/obj
 SECSItemTests/bin
 SECSItemTests/obj
+SECSCommUtils/obj
+EquipmentSimulatorSupportStuff/obj
