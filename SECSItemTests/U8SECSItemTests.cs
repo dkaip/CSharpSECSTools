@@ -118,7 +118,7 @@ namespace SECSItemTests
 			byte[] expectedResult = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.U8 ) << 2) | 0x01), 0x08, 127, 255, 255, 255, 255, 255, 255, 255 };
 
 			U8SECSItem secsItem = new U8SECSItem(9223372036854775807UL);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 		[Test()]
@@ -127,7 +127,7 @@ namespace SECSItemTests
 			byte[] expectedResult = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.U8 ) << 2) | 0x02), 0, 0x08, 255, 255, 255, 255, 255, 255, 255, 255 };
 
 			U8SECSItem secsItem = new U8SECSItem(UInt64.MaxValue, 2);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 		[Test()]
@@ -136,7 +136,7 @@ namespace SECSItemTests
 			byte[] expectedResult = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.U8 ) << 2) | 0x03), 0, 0, 0x08, 127, 1, 0, 0, 0, 0, 255, 255 };
 
 			U8SECSItem secsItem = new U8SECSItem(0x7F0100000000FFFFUL, 3);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 		[Test()]
@@ -145,7 +145,7 @@ namespace SECSItemTests
 			byte[] expectedResult = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.U8 ) << 2) | 0x03), 0, 0, 0x08, 0, 0, 0, 0, 0, 0, 0, 1 };
 
 			U8SECSItem secsItem = new U8SECSItem(1UL, 3);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 	}

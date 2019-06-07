@@ -211,9 +211,9 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 	        return outboundNumberOfLengthBytes;
 	    }
 	    
-	    public abstract override bool Equals(Object abc);
+	    public abstract override bool Equals(Object anObject);
 	    public abstract override int GetHashCode();
-	    public abstract byte[] toRawSECSItem();
+	    public abstract byte[] ToRawSECSItem();
 	
     }
 }

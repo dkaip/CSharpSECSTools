@@ -106,7 +106,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 			return result;
 		}
 
-		public override byte[] toRawSECSItem()
+		public override byte[] ToRawSECSItem()
 		{
 
 			LinkedList<byte[]> outputStorage = new LinkedList<byte[]>();
@@ -114,7 +114,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 			int outputBufferSize = 0;
 			foreach(SECSItem item in value)
 			{
-				byte[] itemBytes = item.toRawSECSItem();
+				byte[] itemBytes = item.ToRawSECSItem();
 				outputBufferSize += itemBytes.Length;
 				outputStorage.AddLast(itemBytes);
 			}

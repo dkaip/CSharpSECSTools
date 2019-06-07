@@ -47,7 +47,7 @@ namespace SECSItemTests
 			byte[] expectedResult = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.BO ) << 2) | 0x01), 8, 1, 0, 1, 0, 1, 0, 1, 1};
 
 			BooleanArraySECSItem secsItem = new BooleanArraySECSItem(input);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 		[Test()]
@@ -57,7 +57,7 @@ namespace SECSItemTests
 			byte[] expectedResult = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.BO ) << 2) | 0x02), 0, 8, 1, 0, 1, 0, 1, 0, 1, 1};
 
 			BooleanArraySECSItem secsItem = new BooleanArraySECSItem(input, 2);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 		[Test()]
@@ -67,7 +67,7 @@ namespace SECSItemTests
 			byte[] expectedResult = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.BO ) << 2) | 0x03), 0, 0, 8, 1, 0, 1, 0, 1, 0, 1, 1};
 
 			BooleanArraySECSItem secsItem = new BooleanArraySECSItem(input, 3);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 	}

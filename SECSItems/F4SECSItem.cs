@@ -87,7 +87,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 		/// form that will be used for output / transport.
 		/// </summary>
 		/// <returns>The raw SECS item.</returns>
-		public override byte[] toRawSECSItem()
+		public override byte[] ToRawSECSItem()
 	    {
 	        byte[] output = new byte[outputHeaderLength()+4];
 	        int offset = populateHeaderData(output, 4);

@@ -27,7 +27,7 @@ namespace SECSItemTests
 		public void test01()
 		{
 			ASCIISECSItem secsItem = new ASCIISECSItem("DEF");
-			Assert.IsTrue(secsItem.getValue().Equals("DEF"));
+			Assert.IsTrue(secsItem.GetValue().Equals("DEF"));
 		}
 
 		[Test()]
@@ -35,7 +35,7 @@ namespace SECSItemTests
 		{
 			byte[] input = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
 			ASCIISECSItem secsItem = new ASCIISECSItem(input, 0);
-			Assert.IsTrue(secsItem.getValue().Equals("ABC"));
+			Assert.IsTrue(secsItem.GetValue().Equals("ABC"));
 		}
 
 		[Test()]
@@ -59,7 +59,7 @@ namespace SECSItemTests
 			byte[] expectedResult = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
 
 			ASCIISECSItem secsItem = new ASCIISECSItem("ABC");
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 		[Test()]
@@ -68,7 +68,7 @@ namespace SECSItemTests
 			byte[] expectedResult = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x02), 0, 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
 
 			ASCIISECSItem secsItem = new ASCIISECSItem("ABC", 2);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 		[Test()]
@@ -77,7 +77,7 @@ namespace SECSItemTests
 			byte[] expectedResult = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x03), 0, 0, 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
 
 			ASCIISECSItem secsItem = new ASCIISECSItem("ABC", 3);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 	}
 }

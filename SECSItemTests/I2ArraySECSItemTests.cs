@@ -116,7 +116,7 @@ namespace SECSItemTests
 				127, 255 };
 
 			I2ArraySECSItem secsItem = new I2ArraySECSItem(input);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 		[Test()]
@@ -136,7 +136,7 @@ namespace SECSItemTests
 				127, 255 };
 
 			I2ArraySECSItem secsItem = new I2ArraySECSItem(input, 2);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 		[Test()]
@@ -156,7 +156,7 @@ namespace SECSItemTests
 				127, 255 };
 
 			I2ArraySECSItem secsItem = new I2ArraySECSItem(input, 3);
-			Assert.IsTrue(secsItem.toRawSECSItem().SequenceEqual(expectedResult));
+			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
 		}
 
 	}

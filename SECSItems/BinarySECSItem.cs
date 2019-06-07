@@ -55,7 +55,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 			return value;
 		}
 		
-		public override byte[] toRawSECSItem()
+		public override byte[] ToRawSECSItem()
 		{
 			byte[] output = new byte[outputHeaderLength()+value.Length];
 			int offset = populateHeaderData(output, value.Length);

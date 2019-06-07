@@ -34,7 +34,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 		/// <param name="secsItem">Secs item.</param>
 		public RawSECSData(SECSItem secsItem)
 		{
-			data = secsItem.toRawSECSItem();
+			data = secsItem.ToRawSECSItem();
 		}
 
 		/// <summary>
