@@ -23,62 +23,185 @@ namespace SECSItemTests
 	[TestFixture()]
 	public class ASCIISECSItemTests
 	{
-		[Test()]
-		public void test01()
-		{
-			ASCIISECSItem secsItem = new ASCIISECSItem("DEF");
-			Assert.IsTrue(secsItem.GetValue().Equals("DEF"));
-		}
+        [Test ()]
+        public void Test01 ()
+        {
+            ASCIISECSItem secsItem = new ASCIISECSItem (null);
+            Assert.IsTrue(secsItem.GetValue ().Equals (""));
+        }
+
+        [Test ()]
+        public void Test02 ()
+        {
+            ASCIISECSItem secsItem = new ASCIISECSItem (null, SECSItemNumLengthBytes.ONE);
+
+            Assert.IsTrue(secsItem.GetValue ().Equals (""));
+            Assert.IsTrue(secsItem.GetSECSItemFormatCode () == SECSItemFormatCode.A);
+        }
+
+        [Test ()]
+        public void Test03 ()
+        {
+            ASCIISECSItem secsItem = new ASCIISECSItem ("DEF");
+            Assert.IsTrue(secsItem.GetValue ().Equals ("DEF"));
+        }
 
 		[Test()]
-		public void test02()
+		public void Test04()
 		{
-			byte[] input = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
+			byte[] input = {(byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
 			ASCIISECSItem secsItem = new ASCIISECSItem(input, 0);
 			Assert.IsTrue(secsItem.GetValue().Equals("ABC"));
 		}
 
-		[Test()]
-		public void test03()
-		{
-			ASCIISECSItem secsItem = new ASCIISECSItem("DEF");
-			Assert.IsTrue(secsItem.getSECSItemFormatCode() == SECSItemFormatCode.A);
-		}
+        [Test ()]
+        public void Test05 ()
+        {
+            byte [] input = {(byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L ) << 2) | 0x01), 0x00,
+                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
+            ASCIISECSItem secsItem = new ASCIISECSItem (input, 2);
+            Assert.IsTrue(secsItem.GetValue ().Equals ("ABC"));
+        }
 
-		[Test()]
-		public void test04()
-		{
-			byte[] input = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
-			ASCIISECSItem secsItem = new ASCIISECSItem(input, 0);
-			Assert.IsTrue(secsItem.getSECSItemFormatCode() == SECSItemFormatCode.A);
-		}
+        [Test ()]
+        public void Test06 ()
+        {
+            ASCIISECSItem secsItem = new ASCIISECSItem ("DEF");
+            Assert.IsTrue (secsItem.GetSECSItemFormatCode () == SECSItemFormatCode.A);
+        }
 
-		[Test()]
-		public void test05()
-		{
-			byte[] expectedResult = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
+        [Test ()]
+        public void Test07 ()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.A) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43 };                  // 'A', 'B', 'C'
+            ASCIISECSItem secsItem = new ASCIISECSItem (input, 0);
+            Assert.IsTrue (secsItem.GetSECSItemFormatCode () == SECSItemFormatCode.A);
+        }
 
-			ASCIISECSItem secsItem = new ASCIISECSItem("ABC");
-			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
-		}
+        [Test ()]
+        public void Test08 ()
+        {
+            byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.A) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43 };                  // 'A', 'B', 'C'
 
-		[Test()]
-		public void test06()
-		{
-			byte[] expectedResult = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x02), 0, 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
+            ASCIISECSItem secsItem = new ASCIISECSItem ("ABC");
+            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+        }
 
-			ASCIISECSItem secsItem = new ASCIISECSItem("ABC", 2);
-			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
-		}
+        [Test ()]
+        public void Test09 ()
+        {
+            byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.A) << 2) | 0x02), 0, 0x03, 0x41, 0x42, 0x43 };                  // 'A', 'B', 'C'
 
-		[Test()]
-		public void test07()
-		{
-			byte[] expectedResult = {(byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A ) << 2) | 0x03), 0, 0, 0x03, 0x41, 0x42, 0x43};                  // 'A', 'B', 'C'
+            ASCIISECSItem secsItem = new ASCIISECSItem ("ABC", SECSItemNumLengthBytes.TWO);
+            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+        }
 
-			ASCIISECSItem secsItem = new ASCIISECSItem("ABC", 3);
-			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
-		}
+        [Test ()]
+        public void Test10 ()
+        {
+            byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.A) << 2) | 0x03), 0, 0, 0x03, 0x41, 0x42, 0x43 };                  // 'A', 'B', 'C'
+
+            ASCIISECSItem secsItem = new ASCIISECSItem ("ABC", SECSItemNumLengthBytes.THREE);
+            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+        }
+
+        [Test ()]
+        public void Test11 ()
+        {
+            ASCIISECSItem secsItem = new ASCIISECSItem ("3.141592F");
+            Assert.IsTrue (secsItem.ToString ().Equals ("Format:A Value: 3.141592F"));
+        }
+
+        [Test ()]
+        public void Test12 ()
+        {
+            ASCIISECSItem secsItem1 = new ASCIISECSItem ("3.141592F");
+            ASCIISECSItem secsItem2 = new ASCIISECSItem ("3.141592F");
+            Assert.IsTrue (secsItem1.Equals (secsItem2));
+        }
+
+        [Test ()]
+        public void Test13 ()
+        {
+            ASCIISECSItem secsItem1 = new ASCIISECSItem ("3.141592F");
+            ASCIISECSItem secsItem2 = new ASCIISECSItem ("2.141592F");
+            Assert.IsFalse (secsItem1.Equals (secsItem2));
+        }
+
+        [Test ()]
+        public void Test14 ()
+        {
+            ASCIISECSItem secsItem1 = new ASCIISECSItem ("3.141592F");
+            ASCIISECSItem secsItem2 = null;
+            Assert.IsFalse (secsItem1.Equals (secsItem2));
+        }
+
+        [Test ()]
+        public void Test15 ()
+        {
+            ASCIISECSItem secsItem1 = new ASCIISECSItem ("3.141592F");
+            Assert.IsTrue (secsItem1.Equals (secsItem1));
+        }
+
+        [Test ()]
+        public void Test16 ()
+        {
+            ASCIISECSItem secsItem1 = new ASCIISECSItem ("3.141592F");
+            SECSItem secsItem2 = null;
+            Assert.IsFalse (secsItem1.Equals (secsItem2));
+        }
+
+        [Test ()]
+        public void Test17 ()
+        {
+            ASCIISECSItem secsItem1 = new ASCIISECSItem (null);
+            SECSItem secsItem2 = new ASCIISECSItem ("3.141592F");
+            Assert.IsFalse (secsItem1.Equals (secsItem2));
+        }
+
+        [Test ()]
+        public void Test18 ()
+        {
+            ASCIISECSItem secsItem1 = new ASCIISECSItem (null);
+            SECSItem secsItem2 = new ASCIISECSItem (null); ;
+            Assert.IsTrue (secsItem1.Equals (secsItem2));
+        }
+
+        [Test ()]
+        public void Test19 ()
+        {
+            ASCIISECSItem secsItem1 = new ASCIISECSItem ("3.141592F");
+            Object secsItem2 = new F8SECSItem (2.141592D);
+            Assert.IsFalse (secsItem1.Equals (secsItem2));
+        }
+
+        [Test ()]
+        public void Test20 ()
+        {
+            Assert.IsTrue (true);
+            /*
+            ASCIISECSItem secsItem1 = new ASCIISECSItem ("3.141592F");
+            Assert.IsTrue (secsItem1.GetHashCode () == -1347356470);
+            */
+        }
+
+        [Test ()]
+        public void Test21 ()
+        {
+            Assert.IsTrue (true);
+            /*
+            ASCIISECSItem secsItem1 = new ASCIISECSItem (null);
+            Assert.IsTrue (secsItem1.GetHashCode () == 31);
+            */
+        }
+
+        [Test ()]
+        public void Test22 ()
+        {
+            ASCIISECSItem secsItem1 = new ASCIISECSItem ("3.141592F");
+            ASCIISECSItem secsItem2 = new ASCIISECSItem ("3.141592F");
+            Assert.IsTrue (secsItem1.GetHashCode () == secsItem2.GetHashCode ());
+        }
 	}
 }
 

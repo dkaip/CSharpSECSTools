@@ -46,6 +46,9 @@
     <Compile Include="HSMS\HSMSConnection.cs" />
     <Compile Include="SECSConnection.cs" />
     <Compile Include="SECSMessage.cs" />
+    <Compile Include="HSMS\HSMSReader.cs" />
+    <Compile Include="HSMS\HSMSWriter.cs" />
+    <Compile Include="HSMS\TransientMessageStatus.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

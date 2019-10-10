@@ -17,49 +17,115 @@ using System;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
+    /// <summary>
+    /// This <c>enum</c> contains the valid values for the format code of a SECSItem.
+    /// </summary>
 	public enum SECSItemFormatCode
 	{
 	    /*
 	     * Don't change this list without performing the appropriate
 	     * corrections in the RawSECSItemFormatCodeSingleton Class.
 	     */
+        /// <summary>
+        /// List
+        /// </summary>
 	    L,
+        /// <summary>
+        /// Binary
+        /// </summary>
 	    B,
+        /// <summary>
+        /// Boolean
+        /// </summary>
 	    BO,
+        /// <summary>
+        /// ASCII
+        /// </summary>
 	    A,
+        /// <summary>
+        /// JIS-8 - Japanese Industrial Standard 8
+        /// </summary>
 	    J8,
+        /// <summary>
+        /// 2 Byte Character format
+        /// </summary>
 	    C2,
+        /// <summary>
+        /// 8 Byte Signed Integer
+        /// </summary>
 	    I8,
+        /// <summary>
+        /// 1 Byte Signed Integer
+        /// </summary>
 	    I1,
+        /// <summary>
+        /// 2 Byte Signed Integer
+        /// </summary>
 	    I2,
+        /// <summary>
+        /// 4 Byte Signed Integer
+        /// </summary>
 	    I4,
+        /// <summary>
+        /// 8 Byte Floating Point
+        /// </summary>
 	    F8,
+        /// <summary>
+        /// 4 Byte Floating Point
+        /// </summary>
 	    F4,
+        /// <summary>
+        /// 8 Byte Unsigned Integer
+        /// </summary>
 	    U8,
+        /// <summary>
+        /// 1 Byte Unsigned Integer
+        /// </summary>
 	    U1,
+        /// <summary>
+        /// 2 Byte Unsigned Integer
+        /// </summary>
 	    U2,
+        /// <summary>
+        /// 4 Byte Unsigned Integer
+        /// </summary>
 	    U4,
+        /// <summary>
+        /// UNDEFINED - not typically used by the developer.
+        /// </summary>
 	    UNDEFINED,
+        /// <summary>
+        /// HeaderOnly - not typically used by the developer
+        /// </summary>
 	    HeaderOnly
 	}
 	    
-	public static class SECSItemFormatCodeFunctions
+    /// <summary>
+    /// A class containing a couple of helper methods useful when converting a
+    /// <c>SECSItem</c>'s format code to and from &quot;wire / transmission&quot; format.
+    /// </summary>
+    public static class SECSItemFormatCodeFunctions
 	{
-	    /**
-	     * 
-	     * @return The numerical equivalent of the SECS Item Format Code
-	     */
-	    public static int getNumberFromSECSItemFormatCode(SECSItemFormatCode formatCode)
+        /// <summary>
+        /// This method is typically only used the retrieve the proper numeric value
+        /// of an Item Format Code during the conversion of a <c>SECSItem</c> into its
+        /// &quot;wire/transmission format&quot;.
+        /// </summary>
+        /// <returns>The number value of the specified <c>SECSItemFormatCode</c>.</returns>
+        /// <param name="formatCode">Item format code.</param>
+	    public static int GetNumberFromSECSItemFormatCode(SECSItemFormatCode formatCode)
 	    {
 	        return RawSECSItemFormatCode.mapFormatCodeToNumber(formatCode);
 	    }
 	    
-	    /**
-	     * 
-	     * @param number - 
-	     * @return
-	     */
-	    public static SECSItemFormatCode getSECSItemFormatCodeFromNumber(byte number)
+        /// <summary>
+        /// This method is typically only used when converting an Item Format Code
+        /// from its &quot;wire/transmission format&quot; into the format used 
+        /// (a type of SECSItem) in the C# environment.
+        /// </summary>
+        /// <returns>The SECSI tem format code from number.</returns>
+        /// <param name="number">Number.</param>
+	    public static SECSItemFormatCode GetSECSItemFormatCodeFromNumber(byte number)
 	    {
 	        return RawSECSItemFormatCode.mapNumberToFormatCode(number);
 	    }

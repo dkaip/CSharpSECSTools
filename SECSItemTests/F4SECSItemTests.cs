@@ -23,121 +23,197 @@ namespace SECSItemTests
 	[TestFixture()]
 	public class F4SECSItemTests
 	{
-		[Test()]
-		public void test01()
-		{
-			byte[] input = {0x00};
+        [Test()]
+        public void Test01 ()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 127, 127, 255, 255 };
+            float expectedOutput = Single.MaxValue;
+            F4SECSItem secsItem = new F4SECSItem (input, 0);
+            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+        }
 
-			var exception = Assert.Catch(() => new F4SECSItem(input, 0));
+        [Test()]
+        public void Test02 ()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 255, 127, 255, 255};
+            float expectedOutput = Single.MinValue;
+            F4SECSItem secsItem = new F4SECSItem (input, 0);
+            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+        }
 
-			Assert.IsInstanceOf<ArgumentOutOfRangeException>(exception);
-		}
+        [Test()]
+        public void Test03 ()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 255, 128, 0, 0 };
+            float expectedOutput = Single.NegativeInfinity;
+            F4SECSItem secsItem = new F4SECSItem (input, 0);
+            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+        }
 
-		[Test()]
-		public void test02()
-		{
-			byte[] input = {};
+        [Test()]
+        public void Test04 ()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 127, 128, 0, 0 };
+            float expectedOutput = Single.PositiveInfinity;
+            F4SECSItem secsItem = new F4SECSItem (input, 0);
+            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+        }
 
-			var exception = Assert.Catch(() => new F4SECSItem(input, 0));
+        [Test()]
+        public void Test05 ()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 0, 0, 0, 0 };
+            float expectedOutput = 0.0F;
+            F4SECSItem secsItem = new F4SECSItem (input, 0);
+            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+        }
 
-			Assert.IsInstanceOf<ArgumentOutOfRangeException>(exception);
-		}
+        [Test()]
+        public void Test06 ()
+        {
+            float expectedOutput = 3.141592F;
+            F4SECSItem secsItem = new F4SECSItem (expectedOutput);
+            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+        }
 
-		[Test()]
-		public void test03()
-		{
-			byte[] input = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4 ) << 2) | 0x01), 0x04, 127, 127, 255, 255 };
-			float expectedOutput = Single.MaxValue;
-			F4SECSItem secsItem = new F4SECSItem(input, 0);
-			Assert.IsTrue(secsItem.getValue() == expectedOutput);
-		}
+        [Test()]
+        public void Test07 ()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 127, 127, 255, 255 };
+            F4SECSItem secsItem = new F4SECSItem (input, 0);
+            Assert.IsTrue (secsItem.GetSECSItemFormatCode () == SECSItemFormatCode.F4);
+        }
 
-		[Test()]
-		public void test04()
-		{
-			byte[] input = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4 ) << 2) | 0x01), 0x04, 255, 127, 255, 255 };
-			float expectedOutput = Single.MinValue;
-			F4SECSItem secsItem = new F4SECSItem(input, 0);
-			Assert.IsTrue(secsItem.getValue() == expectedOutput);
-		}
+        [Test()]
+        public void Test08 ()
+        {
+            float expectedOutput = 3.141592F;
+            F4SECSItem secsItem = new F4SECSItem (expectedOutput);
+            Assert.IsTrue (secsItem.GetSECSItemFormatCode () == SECSItemFormatCode.F4);
+        }
 
-		[Test()]
-		public void test05()
-		{
-			byte[] input = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4 ) << 2) | 0x01), 0x04, 255, 128, 0, 0 };
-			float expectedOutput = Single.NegativeInfinity;
-			F4SECSItem secsItem = new F4SECSItem(input, 0);
-			Assert.IsTrue(secsItem.getValue() == expectedOutput);
-		}
+        [Test()]
+        public void Test09 ()
+        {
+            byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 127, 128, 0, 0 };
 
-		[Test()]
-		public void test06()
-		{
-			byte[] input = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4 ) << 2) | 0x01), 0x04, 127, 128, 0, 0 };
-			float expectedOutput = Single.PositiveInfinity;
-			F4SECSItem secsItem = new F4SECSItem(input, 0);
-			Assert.IsTrue(secsItem.getValue() == expectedOutput);
-		}
+            F4SECSItem secsItem = new F4SECSItem (Single.PositiveInfinity);
+            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+        }
 
-		[Test()]
-		public void test08()
-		{
-			byte[] input = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4 ) << 2) | 0x01), 0x04, 0, 0, 0, 0 };
-			float expectedOutput = 0.0F;
-			F4SECSItem secsItem = new F4SECSItem(input, 0);
-			Assert.IsTrue(secsItem.getValue() == expectedOutput);
-		}
+        [Test()]
+        public void Test10 ()
+        {
+            byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x02), 0, 0x04, 127, 128, 0, 0 };
 
-		[Test()]
-		public void test09()
-		{
-			float expectedOutput = 3.141592F;
-			F4SECSItem secsItem = new F4SECSItem(expectedOutput);
-			Assert.IsTrue(secsItem.getValue() == expectedOutput);
-		}
+            F4SECSItem secsItem = new F4SECSItem (Single.PositiveInfinity, SECSItemNumLengthBytes.TWO);
+            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+        }
 
-		[Test()]
-		public void test10()
-		{
-			byte[] input = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4 ) << 2) | 0x01), 0x04, 127, 127, 255, 255 };
-			F4SECSItem secsItem = new F4SECSItem(input, 0);
-			Assert.IsTrue(secsItem.getSECSItemFormatCode() == SECSItemFormatCode.F4);
-		}
+        [Test()]
+        public void Test11 ()
+        {
+            byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x03), 0, 0, 0x04, 127, 128, 0, 0 };
 
-		[Test()]
-		public void test11()
-		{
-			float expectedOutput = 3.141592F;
-			F4SECSItem secsItem = new F4SECSItem(expectedOutput);
-			Assert.IsTrue(secsItem.getSECSItemFormatCode() == SECSItemFormatCode.F4);
-		}
+            F4SECSItem secsItem = new F4SECSItem (Single.PositiveInfinity, SECSItemNumLengthBytes.THREE);
+            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+        }
 
-		[Test()]
-		public void test12()
-		{
-			byte[] expectedResult = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4 ) << 2) | 0x01), 0x04, 127, 128, 0, 0 };
+        [Test()]
+        public void Test12 ()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x00 };
 
-			F4SECSItem secsItem = new F4SECSItem(Single.PositiveInfinity);
-			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
-		}
+            var exception = Assert.Catch (() => new F4SECSItem (input, 0));
 
-		[Test()]
-		public void test13()
-		{
-			byte[] expectedResult = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4 ) << 2) | 0x02), 0, 0x04, 127, 128, 0, 0 };
+            Assert.IsInstanceOf<ArgumentException> (exception);
 
-			F4SECSItem secsItem = new F4SECSItem(Single.PositiveInfinity, 2);
-			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
-		}
+            Assert.IsTrue (exception.Message.Contains ("Illegal data length of: 0.  The length of the data independent of the item header must be 4."));
+        }
 
-		[Test()]
-		public void test14()
-		{
-			byte[] expectedResult = { (byte)((SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4 ) << 2) | 0x03), 0, 0, 0x04, 127, 128, 0, 0 };
+        [Test()]
+        public void Test13 ()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x05 };
 
-			F4SECSItem secsItem = new F4SECSItem(Single.PositiveInfinity, 3);
-			Assert.IsTrue(secsItem.ToRawSECSItem().SequenceEqual(expectedResult));
-		}
-	}
+            var exception = Assert.Catch (() => new F4SECSItem (input, 0));
+
+            Assert.IsInstanceOf<ArgumentException> (exception);
+
+            Assert.IsTrue (exception.Message.Contains ("Illegal data length of: 5.  The length of the data independent of the item header must be 4."));
+        }
+
+        [Test()]
+        public void Test14 ()
+        {
+            F4SECSItem secsItem = new F4SECSItem (3.141592F);
+            Assert.IsTrue (secsItem.ToString ().Equals ("Format:F4 Value: 3.141592"));
+        }
+
+        [Test()]
+        public void Test15 ()
+        {
+            F4SECSItem secsItem1 = new F4SECSItem (3.141592F);
+            F4SECSItem secsItem2 = new F4SECSItem (3.141592F);
+            Assert.IsTrue (secsItem1.Equals (secsItem2));
+        }
+
+        [Test()]
+        public void Test16 ()
+        {
+            F4SECSItem secsItem1 = new F4SECSItem (3.141592F);
+            F4SECSItem secsItem2 = new F4SECSItem (2.141592F);
+            Assert.IsFalse (secsItem1.Equals (secsItem2));
+        }
+
+        [Test()]
+        public void Test17 ()
+        {
+            F4SECSItem secsItem1 = new F4SECSItem (3.141592F);
+            F4SECSItem secsItem2 = null;
+            Assert.IsFalse (secsItem1.Equals (secsItem2));
+        }
+
+        [Test()]
+        public void Test18 ()
+        {
+            F4SECSItem secsItem1 = new F4SECSItem (3.141592F);
+            Assert.IsTrue (secsItem1.Equals (secsItem1));
+        }
+
+        [Test()]
+        public void Test19 ()
+        {
+            F4SECSItem secsItem1 = new F4SECSItem (3.141592F);
+            SECSItem secsItem2 = null;
+            Assert.IsFalse (secsItem1.Equals (secsItem2));
+        }
+
+        [Test()]
+        public void Test20 ()
+        {
+            F4SECSItem secsItem1 = new F4SECSItem (3.141592F);
+            Object secsItem2 = new F8SECSItem (2.141592D);
+            Assert.IsFalse (secsItem1.Equals (secsItem2));
+        }
+
+        [Test()]
+        public void Test21 ()
+        {
+            Assert.IsTrue (true);
+            /*
+            F4SECSItem secsItem1 = new F4SECSItem (3.141592F);
+            Assert.IsTrue (secsItem1.GetHashCode () == 1078530039);
+            */
+        }
+
+        [Test()]
+        public void Test22 ()
+        {
+            F4SECSItem secsItem1 = new F4SECSItem (3.141592F);
+            F4SECSItem secsItem2 = new F4SECSItem (3.141592F);
+            Assert.IsTrue (secsItem1.GetHashCode () == secsItem2.GetHashCode ());
+        }
+   	}
 }
 

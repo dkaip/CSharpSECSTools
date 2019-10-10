@@ -62,6 +62,9 @@
     <Compile Include="ASCIISECSItemTests.cs" />
     <Compile Include="ListSECSItemTests.cs" />
     <Compile Include="SECSItemFormatCodeTests.cs" />
+    <Compile Include="RawSECSDataTests.cs" />
+    <Compile Include="SECSItemNumLengthBytesTests.cs" />
+    <Compile Include="SECSItemsTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

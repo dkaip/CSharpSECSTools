@@ -63,6 +63,8 @@
     <Compile Include="ASCIISECSItem.cs" />
     <Compile Include="RawSECSData.cs" />
     <Compile Include="ListSECSItem.cs" />
+    <Compile Include="SECSItemNumLengthBytes.cs" />
+    <Compile Include="Enumeration.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

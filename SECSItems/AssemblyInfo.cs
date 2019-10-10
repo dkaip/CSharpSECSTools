@@ -24,7 +24,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("dkaip")]
+[assembly: AssemblyCopyright("Douglas Kaip")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -26,43 +26,59 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 	{
 		private byte[] data;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="RawSECSData"/> class.
-		/// This constructor will most likely be used just before a SECS II 
-		/// message is to be sent out on a SECS I serial line or a HSMS connection.
-		/// </summary>
-		/// <param name="secsItem">Secs item.</param>
+        /// <summary>
+        /// This constructor will most likely be used just before a SECS II 
+        /// message is to be sent out on a SECS I serial line or a HSMS connection.
+        /// </summary>
+        /// <param name="secsItem">A <c>SECSItem</c> that is intended to later be
+        /// converted into wire/transmission format.</param>
 		public RawSECSData(SECSItem secsItem)
 		{
 			data = secsItem.ToRawSECSItem();
 		}
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="RawSECSData"/> class.
-		///  This constructor will most likely be used to contain raw SECS II
-		/// messages that are received from a SECS I serial line or from a
-		/// HSMS network connection.
-		/// </summary>
-		/// <param name="incomingData">Incoming data.</param>
+        /// <summary>
+        /// This constructor will most likely be used to contain raw SECS II
+        /// messages that are received from a SECS I serial line or from a
+        /// HSMS network connection.
+        /// </summary>
+        /// <param name="secsItem">A <c>byte[]</c> that contains the SECS message's payload.</param>
 		public RawSECSData(byte[] incomingData)
 		{
 			data = incomingData;
 		}
 
 		/// <summary>
-		/// Gets the data.
+		/// Gets the data part of a SECS message.
 		/// </summary>
-		/// <returns>The data.</returns>
-		public byte[] getData()
+        /// <returns>The raw payload data.</returns>
+		public byte[] GetData()
 		{
 			return data;
 		}
 
-		public static SECSItem generateSECSItem(byte[] data, int offset)
+        /// <summary>
+        /// Generates the <c>SECSItem</c>.  This method is used by the Unit Tests.
+        /// </summary>
+        /// <returns>The resulting <c>SECSItem</c>.</returns>
+        public SECSItem GenerateSECSItem ()
+        {
+            return GenerateSECSItem (data, 0);
+        }
+
+
+        /// <summary>
+        /// Generates a <c>SECSItem</c> from data in &quot;wire/transmission&quot; format.
+        /// </summary>
+        /// <returns>The resulting <c>SECSItem</c>.</returns>
+        /// <param name="data">An array of bytes that is in wire/transmission format.</param>
+        /// <param name="offset">The byte offset into <c>data</c> where the data for
+        /// a <c>SECSITEM</c> starts.</param>
+		public static SECSItem GenerateSECSItem(byte[] data, int offset)
 		{
 			SECSItem result = null;
 
-			SECSItemFormatCode formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)((data[offset] >> 2) & 0x0000003F));
+			SECSItemFormatCode formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)((data[offset] >> 2) & 0x0000003F));
 			int numberOfLengthBytes = (data[offset] & 0x03);
 			int incomingDataLength = 0;
 
@@ -117,7 +133,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 					result = new ListSECSItem(data, offset);
 					break;
 				case SECSItemFormatCode.B:
-					result = new BinarySECSItem(data, offset, 0);  // Remember to use the proper constructor for this case
+					result = new BinarySECSItem(data, offset);
 					break;
 				case SECSItemFormatCode.BO:
 					if (incomingDataLength == 1)
@@ -202,7 +218,6 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 
 			return result;
 		}
-
 	}
 }
 

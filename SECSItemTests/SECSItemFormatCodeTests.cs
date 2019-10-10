@@ -28,58 +28,58 @@ namespace SECSItemTests
 		{
 			int result = 0;
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.L);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L);
 			Assert.IsTrue( result == 0x00 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.B);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.B);
 			Assert.IsTrue( result == 0x08 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.BO);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.BO);
 			Assert.IsTrue( result == 0x09 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.A);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.A);
 			Assert.IsTrue( result == 0x10 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.J8);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.J8);
 			Assert.IsTrue( result == 0x11 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.C2);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.C2);
 			Assert.IsTrue( result == 0x12 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.I8);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I8);
 			Assert.IsTrue( result == 0x18 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.I1);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I1);
 			Assert.IsTrue( result == 0x19 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.I2);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I2);
 			Assert.IsTrue( result == 0x1A );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.I4);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I4);
 			Assert.IsTrue( result == 0x1C );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F8);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F8);
 			Assert.IsTrue( result == 0x20 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.F4);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F4);
 			Assert.IsTrue( result == 0x24 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.U8);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U8);
 			Assert.IsTrue( result == 0x28 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.U1);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U1);
 			Assert.IsTrue( result == 0x29 );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.U2);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U2);
 			Assert.IsTrue( result == 0x2A );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.U4);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U4);
 			Assert.IsTrue( result == 0x2C );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.UNDEFINED);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.UNDEFINED);
 			Assert.IsTrue( result == 0x3E );
 
-			result = SECSItemFormatCodeFunctions.getNumberFromSECSItemFormatCode(SECSItemFormatCode.HeaderOnly);
+			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.HeaderOnly);
 			Assert.IsTrue( result == 0x3F );
 
 		}
@@ -92,58 +92,58 @@ namespace SECSItemTests
 			/*
          * Test the codes that are supposed to be there.
          */
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x00);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x00);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.L);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x08);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x08);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.B);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x09);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x09);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.BO);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x10);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x10);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.A);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x11);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x11);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.J8);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x12);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x12);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.C2);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x18);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x18);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.I8);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x19);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x19);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.I1);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x1A);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x1A);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.I2);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x1C);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x1C);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.I4);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x20);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x20);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.F8);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x24);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x24);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.F4);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x28);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x28);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.U8);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x29);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x29);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.U1);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x2A);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x2A);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.U2);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x2C);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x2C);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.U4);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x3E);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x3E);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.UNDEFINED);
 
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)0x3F);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x3F);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.HeaderOnly);
 
 			/*
@@ -153,99 +153,99 @@ namespace SECSItemTests
          * Yes, yes, it will blow up if a number is specified that is out of 
          * bounds, but, deal with it.
          */
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)1);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)1);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)2);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)2);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)3);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)3);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)4);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)4);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)5);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)5);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)6);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)6);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)7);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)7);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)10);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)10);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)11);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)11);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)12);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)12);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)13);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)13);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)14);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)14);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)15);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)15);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)19);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)19);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)20);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)20);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)21);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)21);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)22);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)22);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)23);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)23);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)27);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)27);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)29);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)29);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)30);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)30);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)31);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)31);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)33);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)33);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)34);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)34);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)35);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)35);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)37);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)37);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)38);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)38);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)39);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)39);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)43);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)43);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)45);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)45);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)46);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)46);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)47);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)47);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)48);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)48);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)49);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)49);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)50);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)50);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)51);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)51);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)52);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)52);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)53);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)53);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)54);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)54);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)55);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)55);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)56);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)56);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)57);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)57);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)58);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)58);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)59);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)59);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)60);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)60);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)61);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)61);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-			formatCode = SECSItemFormatCodeFunctions.getSECSItemFormatCodeFromNumber((byte)62);
+			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)62);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
 
 		}
