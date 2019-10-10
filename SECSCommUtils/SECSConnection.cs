@@ -19,21 +19,29 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using SECSCommUtils;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
 	abstract public class SECSConnection
 	{
+        public class TransientMessage
+        {
+            public TransientMessageStatus MessageStatus;
+            internal SECSMessage SECSData;
+            internal string ReceivedFrom;
+        }
 		public UInt32 T3 { get; set; }
 		public string ConnectionName { get; private set; }
 		protected Queue<SECSMessage> ReceivedSECSMessages;
 		protected EventWaitHandle ReceivedSECSMessagesWH;
-		protected Queue<TransientMessage> MessagesToSend { get; private set; }
+        protected Queue<TransientMessage> MessagesToSend { get; private set; }
 		protected EventWaitHandle MessageToSendWaitHandle { get; private set; }
-		protected Queue<TransientMessage> MessagesReceived { get; private set; } // Used to communicate with Connection user
+        protected Queue<TransientMessage> MessagesReceived { get; private set; } // Used to communicate with Connection user
 		protected EventWaitHandle MessageReceivedWaitHandle; // Used to communicate with Connection user
+        protected TransientMessageStatus MessageStatus;
 
-		public SECSConnection(string ConnectionName, ref Queue<TransientMessage> MessagesReceived, ref EventWaitHandle MessageReceivedWaitHandle)
+		protected SECSConnection(string ConnectionName, ref Queue<TransientMessage> MessagesReceived, ref EventWaitHandle MessageReceivedWaitHandle)
 		{
 			this.ConnectionName = ConnectionName;
 			this.MessagesReceived = MessagesReceived;
@@ -45,9 +53,9 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			ReceivedSECSMessagesWH = new AutoResetEvent(false);
 		}
 
-		abstract public void start();
+		abstract public void Start();
 
-		abstract public void sendMessage(TransientMessage Message);
+		abstract public void SendMessage(TransientMessage Message);
 
 	} // End public abstract class SECSConnection
 

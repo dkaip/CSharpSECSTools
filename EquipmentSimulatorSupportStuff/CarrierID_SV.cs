@@ -19,29 +19,34 @@ namespace EquipmentSimulatorSupportStuff.E87
 {
 	public class CarrierID_SV : SVID, ASECSItem
 	{
-		UInt32  svid;
-		string 	carrierID;
+		//UInt32  svid;
+		//string 	carrierID;
 
-		public CarrierID_SV (string carrierID, UInt32 svid, ConcurrentDictionary<UInt32, string> svidMap)
-		{
-			this.carrierID = carrierID;
-			this.svid 	= svid;
-		}
+        public uint getSVID()
+        {
+            throw new NotImplementedException();
+        }
 
-		public string getPortID()
-		{
-			return portID;
-		}
+        //public CarrierID_SV (string carrierID, UInt32 svid, ConcurrentDictionary<UInt32, string> svidMap)
+        //{
+        //	this.carrierID = carrierID;
+        //	this.svid 	= svid;
+        //}
 
-		public SECSItem getAsSECSItem()
-		{
-			return new ASCIISECSItem(PortID_SV);
-		}
+        //public string getPortID()
+        //{
+        //	return portID;
+        //}
 
-		public UInt32 getSVID()
-		{
-			return svid;
-		}
-	}
+        //public SECSItem getAsSECSItem()
+        //{
+        //	return new ASCIISECSItem(PortID_SV);
+        //}
+
+        //public UInt32 getSVID()
+        //{
+        //	return svid;
+        //}
+    }
 }
 

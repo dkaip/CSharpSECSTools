@@ -21,7 +21,7 @@ using System.Threading;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-
+using SECSCommUtils;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
@@ -31,9 +31,9 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 		private TcpClient tcpclnt = null;
 		private TcpListener tcpListener = null;
 		private NetworkStream IOStream = null;
-		private HSMSReader HSMSReader;
+		private HSMSReader _HSMSReader;
 		private Thread ReaderThread;
-		private HSMSWriter HSMSWriter;
+		private HSMSWriter _HSMSWriter;
 		private Thread WriterThread;
 		public TCPState TCPState { get; set; }
 
@@ -93,7 +93,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			ReceivedSECSMessagesWH = new EventWaitHandle(false, EventResetMode.AutoReset);
 		}
 
-		override public void sendMessage(TransientMessage Message)
+		override public void SendMessage(TransientMessage Message)
 		{
 			if (TCPState != TCPState.Active)
 			{
@@ -126,7 +126,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 
 		} // End public override void sendMessage(TransientMessage Message)
 
-		override public void start()
+		override public void Start()
 		{
 			CurrentThread = Thread.CurrentThread;
 			Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Starting");
@@ -186,14 +186,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 					}
 					IOStream = tcpclnt.GetStream();
 
-					HSMSReader = new HSMSReader(IOStream, ref ReceivedSECSMessages, ref ReceivedSECSMessagesWH);
-					ReaderThread = new Thread(new ThreadStart(HSMSReader.start));
+					_HSMSReader = new HSMSReader(IOStream, ref ReceivedSECSMessages, ref ReceivedSECSMessagesWH);
+					ReaderThread = new Thread(new ThreadStart(HSMSReader.Start));
 					ReaderThread.Name = CurrentThread.Name + "HSMSReader:";
 
 					ReaderThread.Start();
 
-					HSMSWriter = new HSMSWriter(IOStream, MessagesToSend, MessageToSendWaitHandle);
-					WriterThread = new Thread(new ThreadStart(HSMSWriter.start));
+					_HSMSWriter = new HSMSWriter(IOStream, MessagesToSend, MessageToSendWaitHandle);
+					WriterThread = new Thread(new ThreadStart(HSMSWriter.Start));
 					WriterThread.Name = CurrentThread.Name + "HSMSWriter:";
 
 					WriterThread.Start();
@@ -210,15 +210,15 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Accepted Client");
 					IOStream = tcpclnt.GetStream();
 
-					HSMSReader = new HSMSReader(IOStream, ref ReceivedSECSMessages, ref ReceivedSECSMessagesWH);
-					ReaderThread = new Thread(new ThreadStart(HSMSReader.start));
+					_HSMSReader = new HSMSReader(IOStream, ref ReceivedSECSMessages, ref ReceivedSECSMessagesWH);
+					ReaderThread = new Thread(new ThreadStart(HSMSReader.Start));
 					ReaderThread.Name = CurrentThread.Name + "HSMSReader:";
 
 					ReaderThread.Start();
 					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Finished Starting Reader");
 
-					HSMSWriter = new HSMSWriter(IOStream, MessagesToSend, MessageToSendWaitHandle);
-					WriterThread = new Thread(new ThreadStart(HSMSWriter.start));
+					_HSMSWriter = new HSMSWriter(IOStream, MessagesToSend, MessageToSendWaitHandle);
+					WriterThread = new Thread(new ThreadStart(HSMSWriter.Start));
 					WriterThread.Name = CurrentThread.Name + "HSMSWriter:";
 
 					WriterThread.Start();
@@ -337,10 +337,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 
 				tcpListener = null;
 				IOStream = null;
-				HSMSReader = null;
+				_HSMSReader = null;
 				ReaderThread = null;
 				WriterThread = null;
-				HSMSWriter = null;
+				_HSMSWriter = null;
 
 			} // End // End while (true)
 

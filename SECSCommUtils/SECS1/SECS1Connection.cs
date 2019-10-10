@@ -44,11 +44,11 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 
 		}
 
-		override public void sendMessage(TransientMessage Message)
+		override public void SendMessage(TransientMessage Message)
 		{
 		} // End override public void sendMessage(TransientMessage Message)
 
-		override public void start()
+		override public void Start()
 		{
 			Thread.CurrentThread.Name = ConnectionName + " Connection Thread(SECSI)";
 		}

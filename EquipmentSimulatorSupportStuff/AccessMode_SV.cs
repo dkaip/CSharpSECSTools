@@ -25,18 +25,18 @@ namespace EquipmentSimulatorSupportStuff.E87
 		UInt32 svid	= 0;
 		byte   accessMode = 0;
 
-		public AccessMode_SV (enum A accessMode, UInt32 svid, ConcurrentDictionary<UInt32, SVID> svidMap)
-		{
-			bool result = svidMap.TryAdd(svid, this);
-			if (result == false)
-			{
-				throw new DuplicateSVIDException("Duplicate SVID addition attemped to svidMap.  The offender is SVID "
-					+ svid + " for AccessMode_SV for " + portID + ".");
-			}
+		//public AccessMode_SV (A accessMode, UInt32 svid, ConcurrentDictionary<UInt32, SVID> svidMap)
+		//{
+		//	bool result = svidMap.TryAdd(svid, this);
+		//	if (result == false)
+		//	{
+		//		throw new DuplicateSVIDException("Duplicate SVID addition attemped to svidMap.  The offender is SVID "
+		//			+ svid + " for AccessMode_SV for " + portID + ".");
+		//	}
 
-			this.accessMode = acccessMode;
-			this.svid 	= svid;
-		}
+		//	this.accessMode = acccessMode;
+		//	this.svid 	= svid;
+		//}
 
 		public byte getAccessMode()
 		{

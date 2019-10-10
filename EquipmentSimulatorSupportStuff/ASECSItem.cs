@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 using System;
-using com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem;
+using com.CIMthetics.CSharpSECSTools.SECSItems;
 
 namespace EquipmentSimulatorSupportStuff
 {
 	public interface ASECSItem
 	{
-		SECSItem getAsSECSItem();
+		//SECSItem getAsSECSItem();
 	}
 }
 

@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 using System;
+using System.Collections.Concurrent;
 
 namespace EquipmentSimulatorSupportStuff
 {
-	public class SVIDMap : ConcurrentDictionary
-	{
-		public SVIDMap ()
-		{
-		}
-	}
+	//public class SVIDMap : ConcurrentDictionary
+	//{
+	//	public SVIDMap ()
+	//	{
+	//	}
+	//}
 }
 

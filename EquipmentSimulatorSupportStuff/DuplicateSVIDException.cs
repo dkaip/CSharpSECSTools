@@ -21,7 +21,7 @@ namespace EquipmentSimulatorSupportStuff.Exceptions
 	{
 		public DuplicateSVIDException () {}
 
-		public DuplicateSVIDException(string nessage) : base(Message) {}
+		//public DuplicateSVIDException(string nessage) : base(Message) {}
 
 		public DuplicateSVIDException(string message, Exception inner) : base(message, inner) {}
 	}
