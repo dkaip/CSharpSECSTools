@@ -205,7 +205,7 @@ namespace SECSItemTests
         {
             U8SECSItem secsItem1 = new U8SECSItem (0xFFFFFFFFFFFFFFFF);
             U8SECSItem secsItem2 = new U8SECSItem (0xFFFFFFFFFFFFFFFF);
-            Console.WriteLine ("Test22 {0} {1}", secsItem1.GetHashCode (), secsItem2.GetHashCode ());
+//            Console.WriteLine ("Test22 {0} {1}", secsItem1.GetHashCode (), secsItem2.GetHashCode ());
             Assert.IsTrue (secsItem1.GetHashCode () == secsItem2.GetHashCode ());
         }
 
