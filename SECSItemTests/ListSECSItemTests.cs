@@ -1397,9 +1397,9 @@ byte [] temp = secsItem.ToRawSECSItem ();
                     "Format:BO Value: Array\n" +
                     "Format:BO Value: True\n" +
                     "Format:F4 Value: Array\n" +
-                    "Format:F4 Value: 3.402823E+38\n" +
+                    "Format:F4 Value: 3.4028235E+38\n" +
                     "Format:F8 Value: Array\n" +
-                    "Format:F8 Value: 1.79769313486232E+308\n" +
+                    "Format:F8 Value: 1.7976931348623157E+308\n" +
                     "Format:I1 Value: Array\n" +
                     "Format:I1 Value: -1\n" +
                     "Format:I2 Value: Array\n" +
@@ -1422,9 +1422,9 @@ byte [] temp = secsItem.ToRawSECSItem ();
                     "Format:BO Value: Array\n" +
                     "Format:BO Value: True\n" +
                     "Format:F4 Value: Array\n" +
-                    "Format:F4 Value: 3.402823E+38\n" +
+                    "Format:F4 Value: 3.4028235E+38\n" +
                     "Format:F8 Value: Array\n" +
-                    "Format:F8 Value: 1.79769313486232E+308\n" +
+                    "Format:F8 Value: 1.7976931348623157E+308\n" +
                     "Format:I1 Value: Array\n" +
                     "Format:I1 Value: -1\n" +
                     "Format:I2 Value: Array\n" +
@@ -1447,9 +1447,9 @@ byte [] temp = secsItem.ToRawSECSItem ();
                     "Format:BO Value: Array\n" +
                     "Format:BO Value: True\n" +
                     "Format:F4 Value: Array\n" +
-                    "Format:F4 Value: 3.402823E+38\n" +
+                    "Format:F4 Value: 3.4028235E+38\n" +
                     "Format:F8 Value: Array\n" +
-                    "Format:F8 Value: 1.79769313486232E+308\n" +
+                    "Format:F8 Value: 1.7976931348623157E+308\n" +
                     "Format:I1 Value: Array\n" +
                     "Format:I1 Value: -1\n" +
                     "Format:I2 Value: Array\n" +
