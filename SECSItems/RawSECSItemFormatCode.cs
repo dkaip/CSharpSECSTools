@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
-	public sealed class RawSECSItemFormatCode
+	internal sealed class RawSECSItemFormatCode
 	{
 	    private static SECSItemFormatCode[] numberToCodeMap;
 	    private static int[] codeToNumberMap;
@@ -139,4 +138,3 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 	    }
 	}
 }
-
