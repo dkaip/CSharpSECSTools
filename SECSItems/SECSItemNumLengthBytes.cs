@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 using System;
-using SECSItems;
+
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
     /// <summary>
@@ -23,45 +23,69 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
     /// cast an <c>enum</c> to an <c>int</c> when used as a method argument.  This may cause the compiler
     /// to use the wrong method if the signatures will match because of this.
     /// </summary>
-    public class SECSItemNumLengthBytes : Enumeration
+    public class SECSItemNumLengthBytes : IComparable
     {
+        private int _value;
+        private string _name;
+
+        /// <summary>
+        /// One length byte used.
+        /// </summary>
         public static readonly SECSItemNumLengthBytes ONE =
             new SECSItemNumLengthBytes (1, "ONE");
 
+        /// <summary>
+        /// Two length bytes used.
+        /// </summary>
         public static readonly SECSItemNumLengthBytes TWO =
             new SECSItemNumLengthBytes (2, "TWO");
 
+        /// <summary>
+        /// Three length bytes used.
+        /// </summary>
         public static readonly SECSItemNumLengthBytes THREE =
             new SECSItemNumLengthBytes (3, "THREE");
 
+        /// <summary>
+        /// This class instance has not been initialized yet.
+        /// </summary>
         public static readonly SECSItemNumLengthBytes NOT_INITIALIZED =
             new SECSItemNumLengthBytes (-1, "NOT_INITIALIZED");
 
-        private SECSItemNumLengthBytes(int value, string name) : base(value, name)
-        { }
+        private SECSItemNumLengthBytes(int value, string name)
+        {
+            _value = value;
+            _name = name;
+        }
+
+        /// <summary>
+        /// Gets the value of this <c>SECSItemNumLengthBytes</c>.
+        /// </summary>
+        /// <returns>the value of the <c>SECSItemNumLengthBytes</c>.</returns>
+        public int ValueOf ()
+        {
+            return _value;
+        }
+
+        /// <summary>
+        /// Gets the value of this <c>SECSItemNumLengthBytes</c> as a <c>string</c>.
+        /// </summary>
+        /// <returns>the value of the <c>SECSItemNumLengthBytes</c> as a <c>string</c>.</returns>
+        public override string ToString ()
+        {
+            return _name;
+        }
+
+        /// <summary>
+        /// Compare two <c>SECSItemNumLengthBytes</c> objects to each other.
+        /// </summary>
+        /// <param name="obj">The <c>SECSItemNumLengthBytes</c> that is to be compared with this one.</param>
+        /// <returns><c>0</c> if the <c>SECSItemNumLengthBytes</c> items have the same value, <c>-1</c> if this <c>SECSItemNumLengthBytes</c>
+        /// is less than the one specified, and <c>+1</c> if this <c>SECSItemNumLengthBytes</c>
+        /// is greater than the one specified</returns>
+        public int CompareTo (object obj)
+        {
+            return _value.CompareTo (((SECSItemNumLengthBytes)obj)._value);
+        }
     }
-
-    /*
-    /// <summary>
-    /// This <c>enum</c> represents the valid values for the number of length bytes for a <c>SECSItem</c>.
-    /// </summary>
-    public enum SECSItemNumLengthBytes
-    {
-        /// <summary>
-        /// Indicates 1 length byte.
-        /// </summary>
-        ONE = 1,
-
-        /// <summary>
-        /// Indicates 2 length bytes.
-        /// </summary>
-        TWO = 2,
-
-        /// <summary>
-        /// Indicates 3 length bytes.
-        /// </summary>
-        THREE = 3,
-        NOT_INITIALIZED = -1
-    }
-    */
 }
