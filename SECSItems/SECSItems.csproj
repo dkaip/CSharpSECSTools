@@ -1,70 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="Current" Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>SECSItems</RootNamespace>
     <AssemblyName>SECSItems</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <newfilesearch>OnLoad</newfilesearch>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Debug' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Release' ">Release</Configuration>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Debug' ">true</DebugSymbols>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Release' ">false</DebugSymbols>
+    <DebugType Condition=" '$(Configuration)' == 'Debug' ">full</DebugType>
+    <DebugType Condition=" '$(Configuration)' == 'Release' ">none</DebugType>
+    <Optimize Condition=" '$(Configuration)' == 'Debug' ">false</Optimize>
+    <Optimize Condition=" '$(Configuration)' == 'Release' ">true</Optimize>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <DocumentationFile>bin\Debug\SECSItems.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+    <OutputPath Condition=" '$(Configuration)' == 'Debug' ">bin\Debug</OutputPath>
+    <OutputPath Condition=" '$(Configuration)' == 'Release' ">bin\Release</OutputPath>
+    <DocumentationFile Condition=" '$(Configuration)' == 'Debug' ">bin\Debug\SECSItems.xml</DocumentationFile>
+    <DocumentationFile Condition=" '$(Configuration)' == 'Release' ">bin\Release\SECSItems.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="I2SECSItem.cs" />
-    <Compile Include="RawSECSItemFormatCode.cs" />
-    <Compile Include="SECSItem.cs" />
-    <Compile Include="SECSItemFormatCode.cs" />
-    <Compile Include="U2SECSItem.cs" />
-    <Compile Include="I4SECSItem.cs" />
-    <Compile Include="I8SECSItem.cs" />
-    <Compile Include="U8SECSItem.cs" />
-    <Compile Include="U4SECSItem.cs" />
-    <Compile Include="F4SECSItem.cs" />
-    <Compile Include="F8SECSItem.cs" />
-    <Compile Include="BooleanSECSItem.cs" />
-    <Compile Include="I1SECSItem.cs" />
-    <Compile Include="U1SECSItem.cs" />
-    <Compile Include="BinarySECSItem.cs" />
-    <Compile Include="U8ArraySECSItem.cs" />
-    <Compile Include="I8ArraySECSItem.cs" />
-    <Compile Include="U4ArraySECSItem.cs" />
-    <Compile Include="I4ArraySECSItem.cs" />
-    <Compile Include="I2ArraySECSItem.cs" />
-    <Compile Include="U2ArraySECSItem.cs" />
-    <Compile Include="U1ArraySECSItem.cs" />
-    <Compile Include="I1ArraySECSItem.cs" />
-    <Compile Include="F8ArraySECSItem.cs" />
-    <Compile Include="F4ArraySECSItem.cs" />
-    <Compile Include="BooleanArraySECSItem.cs" />
-    <Compile Include="ASCIISECSItem.cs" />
-    <Compile Include="RawSECSData.cs" />
-    <Compile Include="ListSECSItem.cs" />
-    <Compile Include="SECSItemNumLengthBytes.cs" />
-    <Compile Include="Enumeration.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+      <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>SECSItemTests</_Parameter1>
+    </AssemblyAttribute>
+</ItemGroup>
 </Project>

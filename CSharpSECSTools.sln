@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SECSItems", "SECSItems\SECSItems.csproj", "{5FE19A00-496E-4142-A5FF-1814A6F273DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SECSItemTests", "SECSItemTests\SECSItemTests.csproj", "{BC171C6E-3844-4601-9405-63C9A0A8C7CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SECSCommUtils", "SECSCommUtils\SECSCommUtils.csproj", "{4F722F74-D152-4671-B8DB-DD3E22CFFA78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixedBufferSimulatorConsole", "FixedBufferSimulatorConsole\FixedBufferSimulatorConsole.csproj", "{022A2D27-EB8B-452B-90A4-4ECEB3527752}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentSimulatorSupportStuff", "EquipmentSimulatorSupportStuff\EquipmentSimulatorSupportStuff.csproj", "{DC790961-6CBF-4917-A321-A4D4685692CF}"
 EndProject
@@ -13,46 +17,30 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-		Default|Any CPU = Default|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Default|Any CPU.Build.0 = Debug|Any CPU
-		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5FE19A00-496E-4142-A5FF-1814A6F273DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5FE19A00-496E-4142-A5FF-1814A6F273DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FE19A00-496E-4142-A5FF-1814A6F273DD}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FE19A00-496E-4142-A5FF-1814A6F273DD}.Default|Any CPU.Build.0 = Debug|Any CPU
 		{5FE19A00-496E-4142-A5FF-1814A6F273DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FE19A00-496E-4142-A5FF-1814A6F273DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC171C6E-3844-4601-9405-63C9A0A8C7CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC171C6E-3844-4601-9405-63C9A0A8C7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC171C6E-3844-4601-9405-63C9A0A8C7CD}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC171C6E-3844-4601-9405-63C9A0A8C7CD}.Default|Any CPU.Build.0 = Debug|Any CPU
 		{BC171C6E-3844-4601-9405-63C9A0A8C7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC171C6E-3844-4601-9405-63C9A0A8C7CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F722F74-D152-4671-B8DB-DD3E22CFFA78}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{022A2D27-EB8B-452B-90A4-4ECEB3527752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{022A2D27-EB8B-452B-90A4-4ECEB3527752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{022A2D27-EB8B-452B-90A4-4ECEB3527752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{022A2D27-EB8B-452B-90A4-4ECEB3527752}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC790961-6CBF-4917-A321-A4D4685692CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DC790961-6CBF-4917-A321-A4D4685692CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC790961-6CBF-4917-A321-A4D4685692CF}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC790961-6CBF-4917-A321-A4D4685692CF}.Default|Any CPU.Build.0 = Debug|Any CPU
 		{DC790961-6CBF-4917-A321-A4D4685692CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC790961-6CBF-4917-A321-A4D4685692CF}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		Policies = $0
-		$0.DotNetNamingPolicy = $1
-		$0.TextStylePolicy = $2
-		$2.inheritsSet = null
-		$2.scope = text/x-csharp
-		$0.CSharpFormattingPolicy = $3
-		$3.IndentSwitchBody = True
-		$3.AnonymousMethodBraceStyle = DoNotChange
-		$3.StatementBraceStyle = NextLine
-		$3.scope = text/x-csharp
-		$0.StandardHeader = $4
-		$0.VersionControlPolicy = $5
 	EndGlobalSection
 EndGlobal

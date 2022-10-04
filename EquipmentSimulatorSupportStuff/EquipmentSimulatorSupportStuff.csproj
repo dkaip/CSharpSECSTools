@@ -1,50 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="Current" Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DC790961-6CBF-4917-A321-A4D4685692CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>EquipmentSimulatorSupportStuff</RootNamespace>
     <AssemblyName>EquipmentSimulatorSupportStuff</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Debug' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Release' ">Release</Configuration>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Debug' ">true</DebugSymbols>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Release' ">false</DebugSymbols>
+    <DebugType Condition=" '$(Configuration)' == 'Debug' ">full</DebugType>
+    <DebugType Condition=" '$(Configuration)' == 'Release' ">none</DebugType>
+    <Optimize Condition=" '$(Configuration)' == 'Debug' ">false</Optimize>
+    <Optimize Condition=" '$(Configuration)' == 'Release' ">true</Optimize>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath Condition=" '$(Configuration)' == 'Debug' ">bin\Debug</OutputPath>
+    <OutputPath Condition=" '$(Configuration)' == 'Release' ">bin\Release</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LoadPort.cs" />
-    <Compile Include="SVIDMap.cs" />
-    <Compile Include="SVID.cs" />
-    <Compile Include="PortID_SV.cs" />
-    <Compile Include="FixedBufferLoadPort.cs" />
-    <Compile Include="AccessMode_SV.cs" />
-    <Compile Include="ASECSItem.cs" />
-    <Compile Include="DuplicateSVIDException.cs" />
-    <Compile Include="AccessModeEnumeration.cs" />
-    <Compile Include="CarrierID_SV.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\SECSItems\SECSItems.csproj">
       <Project>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</Project>
