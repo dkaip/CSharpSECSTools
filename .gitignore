@@ -2,8 +2,10 @@ SECSItems/bin
 SECSItems/obj
 SECSItemTests/bin
 SECSItemTests/obj
+SECSCommUtils/bin
 SECSCommUtils/obj
 EquipmentSimulatorSupportStuff/bin
 EquipmentSimulatorSupportStuff/obj
-SECSCommUtils/bin
+FixedBufferSimulatorConsole/bin
+FixedBufferSimulatorConsole/obj
 *~
