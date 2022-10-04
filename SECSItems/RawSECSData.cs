@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
@@ -42,7 +41,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// messages that are received from a SECS I serial line or from a
         /// HSMS network connection.
         /// </summary>
-        /// <param name="secsItem">A <c>byte[]</c> that contains the SECS message's payload.</param>
+        /// <param name="incomingData">A <c>byte[]</c> that contains the SECS message's payload.</param>
 		public RawSECSData(byte[] incomingData)
 		{
 			data = incomingData;
