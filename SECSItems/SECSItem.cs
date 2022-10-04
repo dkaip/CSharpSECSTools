@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
@@ -326,7 +325,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
             return bytesConsumed;
         }
 
-        public SECSItemNumLengthBytes GetOutboundNumberOfLengthBytes()
+        // This method is used for unit testing.
+        internal SECSItemNumLengthBytes GetOutboundNumberOfLengthBytes()
         {
             return outboundNumberOfLengthBytes;
         }
