@@ -13,10 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
@@ -39,10 +35,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
         /// required to be the same as the system bytes of the corresponding
         /// primary message.
         /// <para/>
-        /// Multi-Block Messages - The system bytes of all blocks of a 
-        /// multi-block message must be the same.
+        /// Multi-Block Messages - When using SECS-I as a transport layer the
+        /// system bytes of all blocks of a multi-block message must be the same.
         /// </summary>
-		public UInt32 SystemBytes { get; set; }
+		public UInt32 SystemBytes { get; set; } = 0;
 
 		abstract public byte[] EncodeForTransport();
 

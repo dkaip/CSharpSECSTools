@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -10,11 +10,13 @@
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
+ * See the License for the specific language governingprivate permissions and
  * limitations under the License.
  */
+using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -25,327 +27,363 @@ using SECSCommUtils;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
+	/// <summary>
+	/// derived class
+	/// </summary>
 	public class HSMSConnection : SECSConnection
 	{
-		private Thread CurrentThread;
-		private TcpClient tcpclnt = null;
-		private TcpListener tcpListener = null;
-		private NetworkStream IOStream = null;
-		private HSMSReader _HSMSReader;
-		private Thread ReaderThread;
-		private HSMSWriter _HSMSWriter;
-		private Thread WriterThread;
+		volatile bool _exitNow;
+		volatile bool _establishConnection;
+		private CancellationTokenSource _cancellationTokenSource;
+		private CancellationToken _cancellationToken;
 		public TCPState TCPState { get; set; }
+        private NetworkStream _ioStream;
 
 
 		public UInt32 T5 { get; set; }
 		public UInt32 T6 { get; set; }
 		public UInt32 T7 { get; set; }
 		public UInt32 T8 { get; set; }
-		public HSMSConnectionMode ConnectionMode { get; set; }
+		public HSMSConnectionMode ConnectionMode { get; private set; }
 
 		public string IPAddress { get; set; }
-		public string HostName { get; set; }
 
 		public UInt16 PortNumber { get; set; }
 
 		public HSMSConnectionState ConnectionState { get; private set; }
 
-		public HSMSConnection(string ConnectionName, ref Queue<TransientMessage> MessagesReceived, ref EventWaitHandle MessageReceivedWaitHandle, string IPAddress, HSMSConnectionMode ConnectionMode) : base( ConnectionName, ref MessagesReceived, ref MessageReceivedWaitHandle )
+		private IPEndPoint _ipEndPoint = null;
+		private TcpClient 	_tcpClient = null;
+
+		private EventWaitHandle _autoResetEvent = new EventWaitHandle(false, EventResetMode.AutoReset);
+
+		private Thread _connectionReaderThread = null;
+		private Thread _connectionWriterThread = null;
+
+		public HSMSConnection(string connectionName, BlockingCollection<SECSMessage> messagesReceivedQueue, IPAddress ipAddress, UInt16 ipPortNumber, HSMSConnectionMode connectionMode) : base(connectionName, messagesReceivedQueue)
 		{
+			_exitNow = false;
+			_establishConnection = true;
+
 			T3 = ConnectionDefaults.T3;
 			T5 = ConnectionDefaults.T5;
 			T6 = ConnectionDefaults.T6;
 			T7 = ConnectionDefaults.T7;
 			T8 = ConnectionDefaults.T8;
 
-			PortNumber = ConnectionDefaults.Port;
-
-			ConnectionState = HSMSConnectionState.NotConnected;
-
 			this.IPAddress = IPAddress;
-			this.ConnectionMode = ConnectionMode;
-			TCPState = TCPState.Inactive;
+			this.ConnectionMode = connectionMode;
 
+			_ipEndPoint = new IPEndPoint(ipAddress, ipPortNumber);
 
-			ReceivedSECSMessages = new Queue<SECSMessage>();
-			ReceivedSECSMessagesWH = new EventWaitHandle(false, EventResetMode.AutoReset);
+			Log.Debug("Connection {0} IP IPEndPoint {1}", connectionName, _ipEndPoint.ToString());
 		}
 
-		public HSMSConnection(string ConnectionName, ref Queue<TransientMessage> MessagesReceived, ref EventWaitHandle MessageReceivedEF, string IPAddress, UInt16 Port, HSMSConnectionMode ConnectionMode)
-			: base(ConnectionName, ref MessagesReceived, ref MessageReceivedEF)
+		override public void SendMessage(SECSMessage message)
 		{
-			T3 = ConnectionDefaults.T3;
-			T5 = ConnectionDefaults.T5;
-			T6 = ConnectionDefaults.T6;
-			T7 = ConnectionDefaults.T7;
-			T8 = ConnectionDefaults.T8;
-
-			PortNumber = Port;
-
-			ConnectionState = HSMSConnectionState.NotConnected;
-
-			this.IPAddress = IPAddress;
-			this.ConnectionMode = ConnectionMode;
-			TCPState = TCPState.Inactive;
-
-			ReceivedSECSMessages = new Queue<SECSMessage>();
-			ReceivedSECSMessagesWH = new EventWaitHandle(false, EventResetMode.AutoReset);
+			MessagesToSendQueue.Add(message);
 		}
-
-		override public void SendMessage(TransientMessage Message)
-		{
-			if (TCPState != TCPState.Active)
-			{
-				// We do not have an active connection so take the outgoing message
-				// and put it on the Received messages queue with and error and
-				// let the connection instanciator deal with it.
-
-				Message.MessageStatus = TransientMessageStatus.NoConnection;
-
-				lock (MessagesReceived)
-				{
-					MessagesReceived.Enqueue(Message);
-				}
-
-				MessageReceivedWaitHandle.Set();
-			}
-
-
-
-			// Put the outbound message on the queue
-			lock (MessagesToSend)
-			{
-				MessagesToSend.Enqueue(Message);
-			}
-
-			// Wake up the connect to do some work
-			MessageToSendWaitHandle.Set();
-
-			Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Message set to writer");
-
-		} // End public override void sendMessage(TransientMessage Message)
 
 		override public void Start()
 		{
-			CurrentThread = Thread.CurrentThread;
-			Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Starting");
+			Log.Verbose("connection \"{0}\" starting supervisor", ConnectionName);
 
-			while (true)
-			{
-				/*
-                            try
-                            {
-                                IPHostEntry hostInfo;
-
-                                // Attempt to resolve DNS for given host or address
-                                hostInfo = Dns.GetHostEntry(IPAddress);
-
-                                // Display the primary host name
-                                Console.WriteLine(CurrentThread.Name + "\tCanonical Name: " + hostInfo.HostName);
-
-                                HostName = hostInfo.HostName;
-
-                                // Display list of IP addresses for this host
-                                Console.WriteLine(CurrentThread.Name + "\tIP Addresses:   ");
-                                foreach (IPAddress ipaddr in hostInfo.AddressList)
-                                {
-                                    Console.WriteLine(CurrentThread.Name + "\t\t" +ipaddr.ToString());
-                                }
-                                Console.WriteLine(CurrentThread.Name);
-
-                                // Display list of alias names for this host
-                                Console.WriteLine(CurrentThread.Name + "\tAliases:        ");
-                                foreach (String alias in hostInfo.Aliases)
-                                {
-                                    Console.WriteLine(CurrentThread.Name + "\t\t" + alias + " ");
-
-                                }
-                                Console.WriteLine(CurrentThread.Name + "\n");
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine( CurrentThread.Name + "\tUnable to resolve host: " + this.IPAddress.ToString() + " " + e.ToString() + "\n" + e.StackTrace  + "\n");
-                            }
-                */
-
-				if (ConnectionMode == HSMSConnectionMode.Active ||
-					ConnectionMode == HSMSConnectionMode.ActivePassthru)
-				{
-					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Attempting to connect");
-
-					tcpclnt = new TcpClient();
-
-					try
-					{
-						tcpclnt.Connect("192.168.1.65", 5000); // use the ipaddress as in the server program
-					}
-					catch (Exception e)
-					{
-						Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "\tUnable to connect to 192.168.1.65 port 5000: " + this.IPAddress.ToString() + " " + e.ToString() + "\n" + e.StackTrace + "\n");
-					}
-					IOStream = tcpclnt.GetStream();
-
-					_HSMSReader = new HSMSReader(IOStream, ref ReceivedSECSMessages, ref ReceivedSECSMessagesWH);
-					ReaderThread = new Thread(new ThreadStart(HSMSReader.Start));
-					ReaderThread.Name = CurrentThread.Name + "HSMSReader:";
-
-					ReaderThread.Start();
-
-					_HSMSWriter = new HSMSWriter(IOStream, MessagesToSend, MessageToSendWaitHandle);
-					WriterThread = new Thread(new ThreadStart(HSMSWriter.Start));
-					WriterThread.Name = CurrentThread.Name + "HSMSWriter:";
-
-					WriterThread.Start();
-
-					TCPState = TCPState.Active;
-				}
-				else
-				{
-					tcpListener = new TcpListener(System.Net.IPAddress.Parse("192.168.1.24"), 5000);
-					tcpListener.Start();
-
-					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Accepting Client");
-					tcpclnt = tcpListener.AcceptTcpClient();
-					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Accepted Client");
-					IOStream = tcpclnt.GetStream();
-
-					_HSMSReader = new HSMSReader(IOStream, ref ReceivedSECSMessages, ref ReceivedSECSMessagesWH);
-					ReaderThread = new Thread(new ThreadStart(HSMSReader.Start));
-					ReaderThread.Name = CurrentThread.Name + "HSMSReader:";
-
-					ReaderThread.Start();
-					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Finished Starting Reader");
-
-					_HSMSWriter = new HSMSWriter(IOStream, MessagesToSend, MessageToSendWaitHandle);
-					WriterThread = new Thread(new ThreadStart(HSMSWriter.Start));
-					WriterThread.Name = CurrentThread.Name + "HSMSWriter:";
-
-					WriterThread.Start();
-					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Finished Starting Writer");
-
-					TCPState = TCPState.Active;
-				}
-				/*
-                            try
-                            {
-                
-                                Console.WriteLine("Connecting.....");
-
-                //                tcpclnt.Connect("192.168.1.65", 5000); // use the ipaddress as in the server program
-
-                                Console.WriteLine("Connected");
-                                Console.Write("Enter the string to be transmitted : ");
-
-                                String str = Console.ReadLine();
-                
-
-                                HSMSHeader header = new HSMSHeader();
-
-                                header.SessionID = 1;
-                                header.SType = (Byte)STypeValues.SelectReq;
-
-                                byte[] message = new byte[14];
-                                message[0] = 0;
-                                message[1] = 0;
-                                message[2] = 0;
-                                message[3] = 10;
-                                byte[] ba = header.Encode();
-
-                                message[4] = ba[0];
-                                message[5] = ba[1];
-                                message[6] = ba[2];
-                                message[7] = ba[3];
-                                message[8] = ba[4];
-                                message[9] = ba[5];
-                                message[10] = ba[6];
-                                message[11] = ba[7];
-                                message[12] = ba[8];
-                                message[13] = ba[9];
-
-                                Console.WriteLine("Transmitting.....");
-
-                //                stm.Write(message, 0, message.Length);
-
-                //                byte[] bb = new byte[100];
-                //                int k = stm.Read(bb, 0, 100);
-                //stm.                string hex = BitConverter.ToString(bb);
-
-                //                Console.WriteLine( "Returned " + k +" Bytes :" + hex );
-                //                for (int i = 0; i < k; i++)
-                //                    Console.Write(Convert..ToChar(bb[i]));
-
-                                tcpclnt.Close();
-                            }
-
-                            catch (Exception e)
-                            {
-                                Console.WriteLine( CurrentThread.Name + " Error..... " + e.StackTrace);
-                            }
-
-                 */
-				//                Thread.Sleep(10000);
-				while (true)
-				{
-					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Blocking for message from Reader Thread");
-					ReceivedSECSMessagesWH.WaitOne();
-					SECSMessage ReceivedMessage = null;
-
-					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Received Inbound message from Reader Thread");
-					lock (ReceivedSECSMessages)
-					{
-						ReceivedMessage = ReceivedSECSMessages.Dequeue();
-					}
-
-					if (ReceivedMessage.IsValidMessage == false)
-					{
-						Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Inbound message Indicates I/O has link failed");
-
-						TransientMessage TM1 = new TransientMessage();
-
-						TM1.MessageStatus = TransientMessageStatus.NoConnection;
-
-						lock (MessagesReceived)
-						{
-							MessagesReceived.Enqueue(TM1);
-						}
-
-						MessageReceivedWaitHandle.Set();
-						Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Instructing Writer Thread to terminate.");
-						break;
-					}
-					TransientMessage TM = new TransientMessage();
-
-					TM.SECSData = ReceivedMessage;
-					TM.MessageStatus = TransientMessageStatus.IncommingMessage;
-					TM.ReceivedFrom = ConnectionName;
-
-					lock (MessagesReceived)
-					{
-						MessagesReceived.Enqueue(TM);
-					}
-
-					MessageReceivedWaitHandle.Set();
-					Console.WriteLine(DateTime.Now.ToString() + " " + CurrentThread.Name + "Inbound message passed to connection owner");
-
-				} // End while (true)
-
-				IOStream.Close();
-
-				if ( tcpListener != null )
-					tcpListener.Stop();
-
-				tcpListener = null;
-				IOStream = null;
-				_HSMSReader = null;
-				ReaderThread = null;
-				WriterThread = null;
-				_HSMSWriter = null;
-
-			} // End // End while (true)
+			SupervisorThread = new Thread(Supervisor);
+			SupervisorThread.Name = ConnectionName + ":Supervisor";
+			SupervisorThread.Start();
 
 		} // End public void start()
 
+		override public void Stop()
+		{
+			Log.Debug("{0} shutdown initiated", ConnectionName);
+			_exitNow = true;
+			_establishConnection = false;
+			Log.Debug("{0} _exitNow set to true, _establishConnection set to false, issuing cancel", ConnectionName);
+			_cancellationTokenSource.Cancel();
+			Log.Debug("{0} closing tcpClient", ConnectionName);
+			if (_tcpClient != null)
+			{
+				_tcpClient.Close();
+			}
+			Log.Debug("{0} tcpClient closed issuing set on _autoResetEvent", ConnectionName);
+			_autoResetEvent.Set();
+
+			// Do not return until the Supervisor has shutdown.
+			Log.Verbose("{0} waiting for supervisor to terminate", ConnectionName);
+			SupervisorThread.Join();
+			Log.Verbose("{0} supervisor has terminated", ConnectionName);
+		}
+
+		override internal void Supervisor()
+		{
+			TcpListener tcpListener = null;
+
+			Log.Debug("{0} Supervisor thread  has started", ConnectionName);
+			Log.Verbose("{0}'s connection mode is {1}", ConnectionName, ConnectionMode.ToString());
+
+			while(_exitNow == false)
+			{
+				_cancellationTokenSource = new CancellationTokenSource();
+				_cancellationToken = _cancellationTokenSource.Token;
+				while(_establishConnection == true)
+				{
+					if (ConnectionMode == HSMSConnectionMode.Passive)
+					{
+						/*
+						    We are basically in server mode so setup to
+							receive a connection from a client.
+						*/
+						tcpListener = new(_ipEndPoint);
+						tcpListener.Start();
+						_tcpClient = tcpListener.AcceptTcpClient();
+						_ioStream = _tcpClient.GetStream();
+						Log.Debug("{0} connection established with client {1}", ConnectionName + ":Supervisor", _ipEndPoint.ToString());
+					}
+					else
+					{
+						/*
+						    We are in a client mode so just connect to the
+							"server" and get ready for work.
+						*/
+						_tcpClient = new TcpClient();
+
+						int retryCount = 10;
+						int retryInterval = 10000;
+						bool successfullyConnected = false;
+						while(retryCount > 0 && successfullyConnected == false)
+						{
+							try
+							{
+								_tcpClient.Connect(_ipEndPoint);
+								Log.Verbose("{0} connected with \"server\" {1}", ConnectionName + ":Supervisor", _ipEndPoint.ToString());
+							}
+							catch(Exception e)
+							{
+								if ((e.Message.IndexOf("Connection refused", StringComparison.OrdinalIgnoreCase) >= 0) &&
+								    (e.GetType().ToString().IndexOf("System.Net.Internals.SocketExceptionFactory+ExtendedSocketException", StringComparison.OrdinalIgnoreCase) >= 0))
+								{
+									retryCount--;
+									Log.Debug("{0} retries remaining", retryCount);
+									Thread.Sleep(retryInterval);
+									continue;
+								}
+
+								Log.Error("BAAAAAck");
+								Log.Warning("{0}  {1}", e.Message, e.GetType().ToString());
+								throw;
+							}
+
+							successfullyConnected = true;
+						}
+
+						if (successfullyConnected == false)
+						{
+							Log.Fatal("{0} gave up trying to connected", ConnectionName + ":Supervisor");
+							Environment.Exit(-1);
+						}
+
+						_ioStream = _tcpClient.GetStream();
+
+					}
+
+					_connectionReaderThread = new Thread(ConnectionReader);
+					_connectionReaderThread.Name = ConnectionName + ":Reader";
+					_connectionReaderThread.Start();
+					Log.Debug("{0} supervisor started reader thread", ConnectionName);
+					
+					_connectionWriterThread = new Thread(ConnectionWriter);
+					_connectionWriterThread.Name = ConnectionName + ":Writer";
+					_connectionWriterThread.Start();
+					Log.Debug("{0} supervisor started writer thread", ConnectionName);
+
+					// wait for a notification of from the Stop method
+					Log.Debug("{0} supervisor awaiting _autoResetEvent", ConnectionName);
+					_autoResetEvent.WaitOne();
+					Log.Debug("{0} supervisor _autoResetEvent has been received _establishConnection is {1}, _exitNow is {2}", ConnectionName, _establishConnection, _exitNow);
+
+				}
+				
+				_ioStream.Dispose();
+				if (_tcpClient != null)
+				{
+					_tcpClient.Dispose();
+				}
+				if (tcpListener != null)
+				{
+					tcpListener.Stop();
+				}
+
+				_ioStream = null;
+				_tcpClient = null;
+				tcpListener = null;
+
+			}
+
+			/*
+				_connectionWriterThread and / or _connectionWriterThread
+				may be null in the case where a connection was not 
+				established before the Stop method was called.
+			*/
+			if (_connectionWriterThread != null)
+			{
+				_connectionWriterThread.Join();
+			}
+
+			if (_connectionReaderThread != null)
+			{
+				_connectionReaderThread.Join();
+			}
+			
+			Log.Debug("{0} Supervisor thread terminating", ConnectionName);
+		}
+		
+
+		override internal void ConnectionReader()
+		{
+			Log.Debug("{0} started", Thread.CurrentThread.Name);
+
+			/*
+				These two are always going to be required and their lengths
+				will not change so we will declare them here so the GC
+				does not have to worry about them until the end.
+			*/
+			byte[] messageLengthBytes = new byte[4];
+			byte[] messageHeaderBytes = new byte[10];
+
+			while(_exitNow == false)
+			{
+				try
+				{
+					/*
+						Read the length of the incomming message it is the
+						first 4 bytes of the message.  It is Big Endian though
+						so it needs to be converted into the "current" endianess.
+					*/
+					int currentPosition = 0;
+					while(currentPosition < messageLengthBytes.Length)
+					{
+						int numberOfBytesRead = _ioStream.Read(messageLengthBytes, currentPosition, messageLengthBytes.Length - currentPosition);
+						currentPosition += numberOfBytesRead;
+					}
+
+					if (BitConverter.IsLittleEndian == true)
+					{
+						/*
+							The data elements in a SECS message are in
+							Big Endian format...If this platform is
+							Little Endian we need to convert in order
+							to extract the correct value.
+						*/
+						Array.Reverse(messageLengthBytes);
+					}
+					
+					UInt32 messageLength = BitConverter.ToUInt32(messageLengthBytes, 0);
+					Log.Verbose("{0} incoming message length is {1} bytes, attempting to read them", Thread.CurrentThread.Name, messageLength);
+
+					currentPosition = 0;
+					while(currentPosition < messageHeaderBytes.Length)
+					{
+						int numberOfBytesRead = _ioStream.Read(messageHeaderBytes, currentPosition, messageHeaderBytes.Length - currentPosition);
+						currentPosition += numberOfBytesRead;
+					}
+
+					HSMSHeader hsmsHeader = new HSMSHeader(messageHeaderBytes);
+
+					byte[] messageBody = null;
+					if (messageLength > 10)
+					{
+						/*
+							The message length is greater than 10...this means
+							that the message is not "header only" so we need
+							to read the rest of the message.
+						*/
+						messageBody = new byte[messageLength - 10];
+						Log.Verbose("{0} message length and header retrieved, {1} byte(s) remaining to be read", Thread.CurrentThread.Name, messageBody.Length);
+						currentPosition = 0;
+						while(currentPosition < messageBody.Length)
+						{
+							int numberOfBytesRead = _ioStream.Read(messageBody, currentPosition, messageBody.Length - currentPosition);
+							currentPosition += numberOfBytesRead;
+						}
+
+						Log.Verbose("{0} {1} bytes successfully read (header + body)", Thread.CurrentThread.Name, messageLength);
+					}
+					else
+					{
+						Log.Verbose("{0} {1} bytes successfully read (header only)", Thread.CurrentThread.Name, messageLength);
+					}
+
+					// Construct the SECS message from the bytes received
+					SECSMessage secsMessage = new SECSMessage(hsmsHeader, messageBody);
+
+					/*
+						Put the inbound message on a queue for another
+						asynchronous thread.
+					*/
+					Log.Verbose("{0} adding received message to MessagesReceivedQueue", Thread.CurrentThread.Name);
+					MessagesReceivedQueue.Add(secsMessage);
+
+					// Reset and go for another inbound message
+					Array.Clear(messageLengthBytes);
+					Array.Clear(messageHeaderBytes);
+				}
+				catch(IOException)
+				{
+					Log.Debug("IO e exit now is {0}", _exitNow);
+				}
+				catch(ObjectDisposedException)
+				{
+					Log.Debug("disposed e exit now is {0}", _exitNow);
+				}
+				catch(Exception e)
+				{
+					Log.Error("{0} exception {1} {2}", Thread.CurrentThread.Name, e.Message, e.GetType().ToString());
+					throw;
+				}
+			}
+
+			Log.Debug("{0} has terminated", Thread.CurrentThread.Name);
+			_autoResetEvent.Set();
+		}
+
+		override internal void ConnectionWriter()
+		{
+			Log.Debug("{0} started", Thread.CurrentThread.Name);
+
+			while(_exitNow == false)
+			{
+				try
+				{
+					SECSMessage secsMessage = MessagesToSendQueue.Take(_cancellationToken);
+
+					byte[] binaryMessage = secsMessage.EncodeForTransport();
+
+					UInt32 messageLength = (UInt32)binaryMessage.Length;
+					byte[] messageLengthBytes = BitConverter.GetBytes(messageLength);
+
+					if (BitConverter.IsLittleEndian)
+					{
+						Array.Reverse(messageLengthBytes);
+					}
+				
+					if (messageLength == 10)
+						Log.Debug("{0} writing out header only message + 4 message length bytes", Thread.CurrentThread.Name, messageLength);
+					else
+						Log.Debug("{0} writing out header and body message + 4 message length bytes", Thread.CurrentThread.Name, messageLength);
+
+					_ioStream.Write(messageLengthBytes);
+					_ioStream.Write(binaryMessage);
+				}
+				catch(OperationCanceledException)
+				{
+					Log.Debug("{0} ConnectionWriter cancelled, _exitnow is {1}", Thread.CurrentThread.Name, _exitNow);
+					_exitNow = true; // just to be sure this sucker is going to die
+				}
+			}
+
+			Log.Debug("{0} ConnectionWriter terminating", Thread.CurrentThread.Name);
+		}
 	} // End class HSMSConnection
 
 } // End namespace CIMthetics.SECSUtilities

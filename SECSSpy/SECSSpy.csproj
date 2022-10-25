@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{f4aaf2f1-eb93-4f43-8c9d-94a4f6d56e15}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SECSSpy</RootNamespace>
+    <AssemblyName>SECSSpy</AssemblyName>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Debug' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Release' ">Release</Configuration>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Debug' ">true</DebugSymbols>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Release' ">false</DebugSymbols>
+    <DebugType Condition=" '$(Configuration)' == 'Debug' ">full</DebugType>
+    <DebugType Condition=" '$(Configuration)' == 'Release' ">none</DebugType>
+    <Optimize Condition=" '$(Configuration)' == 'Debug' ">false</Optimize>
+    <Optimize Condition=" '$(Configuration)' == 'Release' ">true</Optimize>
+    <WarningLevel>0</WarningLevel>
+    <OutputPath Condition=" '$(Configuration)' == 'Debug' ">bin\Debug</OutputPath>
+    <OutputPath Condition=" '$(Configuration)' == 'Release' ">bin\Release</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SECSItems\SECSItems.csproj">
+      <Project>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</Project>
+      <Name>SECSItems</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

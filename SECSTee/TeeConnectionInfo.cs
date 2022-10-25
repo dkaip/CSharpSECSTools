@@ -1,5 +1,5 @@
-﻿/*
- * Copyright 2019-2022 Douglas Kaip
+/*
+ * Copyright 2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,23 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
 
-namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
+namespace com.CIMthetics.CSharpSECSTools.SECSTee
 {
-	public enum HSMSConnectionMode
-	{
-		/// <summary>
-		/// If a connection is <c>Passive</c> it will perform the necessary
-		/// setup and await a connecion request from elsewhere.
-		/// </summary>
-		Passive,
+    internal class TeeConnectionInfo
+    {
+        internal ConnectionInfo ConnectionInfo { get; }
+        internal string[]       ConnectionsToForward { get; }
 
-		/// <summary>
-		/// If a connection is <c>Active</c> it will perform the necessary
-		/// setup and actively attempt to establish a connecion.
-		/// </summary>
-		Active
-	}
+        internal TeeConnectionInfo(ConnectionInfo connectionInfo, string[] connectionsToForward)
+        {
+            this.ConnectionInfo = connectionInfo;
+            this.ConnectionsToForward = connectionsToForward;
+        }
+    }
 }
-

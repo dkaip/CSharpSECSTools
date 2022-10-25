@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -23,39 +24,49 @@ using SECSCommUtils;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
-	abstract public class SECSConnection
+	/// <summary>
+	/// base class
+	/// </summary>
+	public abstract class SECSConnection
 	{
-        public class TransientMessage
-        {
-            public TransientMessageStatus MessageStatus;
-            internal SECSMessage SECSData;
-            internal string ReceivedFrom;
-        }
+
 		public UInt32 T3 { get; set; }
 		public string ConnectionName { get; private set; }
-		protected Queue<SECSMessage> ReceivedSECSMessages;
-		protected EventWaitHandle ReceivedSECSMessagesWH;
-        protected Queue<TransientMessage> MessagesToSend { get; private set; }
-		protected EventWaitHandle MessageToSendWaitHandle { get; private set; }
-        protected Queue<TransientMessage> MessagesReceived { get; private set; } // Used to communicate with Connection user
-		protected EventWaitHandle MessageReceivedWaitHandle; // Used to communicate with Connection user
-        protected TransientMessageStatus MessageStatus;
+        public BlockingCollection<SECSMessage> MessagesToSendQueue { get; private set; }
+        public BlockingCollection<SECSMessage> MessagesReceivedQueue { get; private set; }
 
-		protected SECSConnection(string ConnectionName, ref Queue<TransientMessage> MessagesReceived, ref EventWaitHandle MessageReceivedWaitHandle)
+		internal Thread SupervisorThread { get; set; }
+		internal Thread ReaderThread { get; set; }
+		internal Thread WriterThread { get; set; }
+
+
+		protected SECSConnection(string ConnectionName, BlockingCollection<SECSMessage> MessagesReceivedQueue)
 		{
 			this.ConnectionName = ConnectionName;
-			this.MessagesReceived = MessagesReceived;
-			MessagesToSend = new Queue<TransientMessage>();
-			MessageToSendWaitHandle = new AutoResetEvent(false);
-			this.MessageReceivedWaitHandle = MessageReceivedWaitHandle;
-
-			ReceivedSECSMessages = new Queue<SECSMessage>();
-			ReceivedSECSMessagesWH = new AutoResetEvent(false);
+			this.MessagesReceivedQueue = MessagesReceivedQueue;
+			MessagesToSendQueue = new BlockingCollection<SECSMessage>();
 		}
 
+		public Thread GetThread()
+		{
+			return SupervisorThread;
+		}
+		
 		abstract public void Start();
+		abstract public void Stop();
 
-		abstract public void SendMessage(TransientMessage Message);
+		abstract internal void Supervisor();
+		abstract internal void ConnectionReader();
+		abstract internal void ConnectionWriter();
+
+		/// <summary>
+		/// This method is used to place an outbound <c>SECSMessage</c> into
+		/// the queue of messages that are to be sent to the other end of
+		/// connection.
+		/// <para/>
+		/// Note: The message is sent as soon as possible.
+		/// </summary>
+		abstract public void SendMessage(SECSMessage Message);
 
 	} // End public abstract class SECSConnection
 

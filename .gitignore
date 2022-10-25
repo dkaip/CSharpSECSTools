@@ -4,8 +4,17 @@ SECSItemTests/bin
 SECSItemTests/obj
 SECSCommUtils/bin
 SECSCommUtils/obj
+SECSCommUtilsTests/bin
+SECSCommUtilsTests/obj
+SECSSpy/bin
+SECSSpy/obj
+SECSSpy/Logs
+SECSTee/bin
+SECSTee/obj
+SECSTee/Logs
 EquipmentSimulatorSupportStuff/bin
 EquipmentSimulatorSupportStuff/obj
 FixedBufferSimulatorConsole/bin
 FixedBufferSimulatorConsole/obj
+.vscode/
 *~

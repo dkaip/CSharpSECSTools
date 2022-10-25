@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,25 +23,87 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
 	public class SECSMessage
 	{
+		private	byte[]		_binaryBody = null;
+		private SECSItem	_secsItemBody = null;
+
 		public SECSHeader Header { get; set; }
-		public SECSItem Body { get; set; }
-		public bool IsValidMessage { get; private set; }
 
-		public SECSMessage(SECSHeader Header, SECSItem Body)
+		public SECSMessage(SECSHeader Header, SECSItem body)
 		{
-			this.IsValidMessage = true;
 			this.Header = Header;
-			this.Body = Body;
+			this._secsItemBody = body;
+			this._binaryBody = null;
 		}
 
-		public SECSMessage()
+		public SECSMessage(SECSHeader Header, byte[] body)
 		{
-			IsValidMessage = false;
-			Header = null;
-			Body = null;
+			this.Header = Header;
+			this._binaryBody = body;
+			this._secsItemBody = null;
 		}
 
+		public byte[] EncodeForTransport()
+		{
+			byte[] temp = null;
 
+			if (_binaryBody == null && _secsItemBody == null)
+			{
+				// This is a header only message.
+				temp = Header.EncodeForTransport();
+			}
+			else if (_binaryBody != null)
+			{
+				// The body of the message is already in its binary form
+				temp = new byte[10 + _binaryBody.Length];
+				Header.EncodeForTransport().CopyTo(temp, 0);
+				_binaryBody.CopyTo(temp, 10);
+			}
+			else
+			{
+				// The body of the message needs to be converted to its binary form
+				byte[] temp2 = _secsItemBody.EncodeForTransport();
+				_binaryBody = temp2;
+				_secsItemBody = null;
+				temp = new byte[10 + _binaryBody.Length];
+				Header.EncodeForTransport().CopyTo(temp, 0);
+				_binaryBody.CopyTo(temp, 10);
+			}
+
+			return temp;
+		}
+
+        /// <summary>
+        /// Returns the body / payload of this <c>SECSMessage</c> as a <c>SECSItem</c>.
+        /// </summary>
+        /// <returns>A <c>SECSItem</c> representation of this <c>SECSMessage</c>'s body / payload.</returns>
+		public SECSItem GetBodyAsSECSItem()
+		{
+			if (_secsItemBody == null)
+			{
+				_secsItemBody = SECSItemFactory.GenerateSECSItem(_binaryBody);
+				_binaryBody = null;
+			}
+
+			return _secsItemBody;
+		}
+
+        /// <summary>
+        /// Creates and returns a <c>byte[]</c> that contains this <c>SECSMessages</c>'s body / payload.
+        /// <para>
+        /// This <c>byte[]</c> is in the same format that would need to be used for transmission via <c>HSMS</c> or <c>SECS-I</c>.
+        /// </para>
+        /// </summary>
+        /// <returns>A<c>byte []</c> representation of this <c>SECSMessage</c>'s body / payload that is suitable for transmission.</returns>
+		public byte[] GetBodyAsByteArray()
+		{
+			if (_binaryBody == null)
+			{
+				_binaryBody = _secsItemBody.EncodeForTransport();
+				_secsItemBody = null;
+			}
+
+			return _binaryBody;
+		}
 	} // End class SECSMessage
 
 } // End namespace CIMthetics.SECSUtilities
