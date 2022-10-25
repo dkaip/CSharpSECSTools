@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,7 +81,7 @@ namespace SECSItemTests
                 127, 255, 255, 255, 255, 255, 255, 255 };
 
             U8ArraySECSItem secsItem = new U8ArraySECSItem (input);
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test()]
@@ -96,7 +96,7 @@ namespace SECSItemTests
                 127, 255, 255, 255, 255, 255, 255, 255 };
 
             U8ArraySECSItem secsItem = new U8ArraySECSItem (input, SECSItemNumLengthBytes.TWO);
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test()]
@@ -111,7 +111,7 @@ namespace SECSItemTests
                 127, 255, 255, 255, 255, 255, 255, 255 };
 
             U8ArraySECSItem secsItem = new U8ArraySECSItem (input, SECSItemNumLengthBytes.THREE);
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test()]

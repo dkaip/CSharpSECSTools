@@ -1,4 +1,19 @@
-﻿using NUnit.Framework;
+﻿/*
+ * Copyright 2019-2022 Douglas Kaip
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+using NUnit.Framework;
 using System;
 using com.CIMthetics.CSharpSECSTools.SECSItems;
 
@@ -33,7 +48,7 @@ namespace SECSItemTests
                 return 0;
             }
 
-            public override byte [] ToRawSECSItem ()
+            public override byte [] EncodeForTransport ()
             {
                 return null;
             }
@@ -218,7 +233,7 @@ namespace SECSItemTests
             // This is just a lazy way to get a known SECSItem in "wire format"
             BinarySECSItem secsItem = new BinarySECSItem (input, SECSItemNumLengthBytes.ONE);
 
-            SECSItemTest secsItemA = new SECSItemTest (secsItem.ToRawSECSItem (), 0);
+            SECSItemTest secsItemA = new SECSItemTest (secsItem.EncodeForTransport (), 0);
 
             Assert.IsTrue (secsItemA.GetInboundNumberOfLengthBytes () == SECSItemNumLengthBytes.ONE);
             Assert.IsTrue (secsItemA.GetSECSItemFormatCode () == SECSItemFormatCode.B);
@@ -233,7 +248,7 @@ namespace SECSItemTests
             // This is just a lazy way to get a known SECSItem in "wire format"
             BinarySECSItem secsItem = new BinarySECSItem (input, SECSItemNumLengthBytes.TWO);
 
-            SECSItemTest secsItemA = new SECSItemTest (secsItem.ToRawSECSItem (), 0);
+            SECSItemTest secsItemA = new SECSItemTest (secsItem.EncodeForTransport (), 0);
 
             Assert.IsTrue (secsItemA.GetInboundNumberOfLengthBytes () == SECSItemNumLengthBytes.TWO);
             Assert.IsTrue (secsItemA.GetSECSItemFormatCode () == SECSItemFormatCode.B);
@@ -248,7 +263,7 @@ namespace SECSItemTests
             // This is just a lazy way to get a known SECSItem in "wire format"
             BinarySECSItem secsItem = new BinarySECSItem (input, SECSItemNumLengthBytes.THREE);
 
-            SECSItemTest secsItemA = new SECSItemTest (secsItem.ToRawSECSItem (), 0);
+            SECSItemTest secsItemA = new SECSItemTest (secsItem.EncodeForTransport (), 0);
 
             Assert.IsTrue (secsItemA.GetInboundNumberOfLengthBytes () == SECSItemNumLengthBytes.THREE);
             Assert.IsTrue (secsItemA.GetSECSItemFormatCode () == SECSItemFormatCode.B);
@@ -405,7 +420,7 @@ namespace SECSItemTests
         {
             SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.ONE);
 
-            Assert.IsTrue (secsItem.ToRawSECSItem () == null);
+            Assert.IsTrue (secsItem.EncodeForTransport () == null);
         }
 
         /*
