@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <summary>
         /// This constructor creates a <c>SECSItem</c> that has a type of <c>L</c>
         /// with the specified value.
+		/// <para/>
         /// Note: It will be created with the minimum number of length bytes required to
         /// accommodate the size of the provided list of <c>SECSItem</c>s.
         /// </summary>
@@ -50,11 +51,12 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <summary>
         /// This constructor creates a <c>SECSItem</c> that has a type of <c>L</c>
         /// with the specified value and specified number of length bytes.
-        /// 
+        /// <para/>
         /// This form of the constructor is not needed much nowadays.  In the past
         /// there were situations where the equipment required that messages
         /// contained SECSItems that had a specified number of length bytes.
         /// This form of the constructor is here to handle these problem child cases.
+		/// <para/>
         /// Note: It will be created with the greater of the specified number of length bytes 
         /// or the number of length bytes required to
         /// accommodate the size of the provided list of <c>SECSItem</c>s.
@@ -84,7 +86,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 
             for( int i = 0; i < lengthInBytes; i++)
 			{
-				SECSItem temp = RawSECSData.GenerateSECSItem(data, offset);
+				SECSItem temp = SECSItemFactory.GenerateSECSItem(data, offset);
 				offset += temp.GetBytesConsumed();
 				this.bytesConsumed += temp.GetBytesConsumed();
 				value.AddLast(temp);
@@ -154,7 +156,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// Creates and returns a <c>byte[]</c> that represents this <c>SECSItem</c> in &quot;wire/transmission format&quot;.
         /// </summary>
         /// <returns>A <c>byte[]</c> representation of this <c>SECSItem</c>'s content that is suitable for transmission.</returns>
-		public override byte[] ToRawSECSItem()
+		public override byte[] EncodeForTransport()
 		{
 
 			LinkedList<byte[]> outputStorage = new LinkedList<byte[]>();
@@ -162,7 +164,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 			int outputBufferSize = 0;
 			foreach(SECSItem item in value)
 			{
-				byte[] itemBytes = item.ToRawSECSItem();
+				byte[] itemBytes = item.EncodeForTransport();
 				outputBufferSize += itemBytes.Length;
 				outputStorage.AddLast(itemBytes);
 			}
