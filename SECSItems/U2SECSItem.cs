@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,7 +91,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// Creates and returns a <c>byte[]</c> that represents this <c>SECSItem</c> in &quot;wire/transmission format&quot;.
         /// </summary>
         /// <returns>A <c>byte[]</c> representation of this <c>SECSItem</c>'s content that is suitable for transmission.</returns>
-	    public override byte[] ToRawSECSItem()
+	    public override byte[] EncodeForTransport()
 	    {
 	        byte[] output = new byte[OutputHeaderLength()+2];
 	        int offset = PopulateSECSItemHeaderData(output, 2);
