@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" />
+  <PropertyGroup>
+    <ProjectGuid>{70ea8ec6-d32a-4cf5-8255-760f76a1a55b}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>com.CIMthetics.CSharpSECSTools.SECSCommUtils</RootNamespace>
+    <AssemblyName>SECSCommUtilsTests</AssemblyName>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Debug' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Release' ">Release</Configuration>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Debug' ">true</DebugSymbols>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Release' ">false</DebugSymbols>
+    <DebugType Condition=" '$(Configuration)' == 'Debug' ">full</DebugType>
+    <DebugType Condition=" '$(Configuration)' == 'Release' ">none</DebugType>
+    <Optimize Condition=" '$(Configuration)' == 'Debug' ">false</Optimize>
+    <Optimize Condition=" '$(Configuration)' == 'Release' ">true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <OutputPath Condition=" '$(Configuration)' == 'Debug' ">bin\Debug</OutputPath>
+    <OutputPath Condition=" '$(Configuration)' == 'Release' ">bin\Release</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SECSItems\SECSItems.csproj">
+      <Project>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</Project>
+      <Name>SECSItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SECSCommUtils\SECSCommUtils.csproj">
+      <Project>{4F722F74-D152-4671-B8DB-DD3E22CFFA78}</Project>
+      <Name>SECSCommUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
