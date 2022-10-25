@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ namespace SECSItemTests
             byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.BO) << 2) | 0x01), 8, 1, 0, 1, 0, 1, 0, 1, 1 };
 
             BooleanArraySECSItem secsItem = new BooleanArraySECSItem (input);
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test ()]
@@ -57,7 +57,7 @@ namespace SECSItemTests
             byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.BO) << 2) | 0x02), 0, 8, 1, 0, 1, 0, 1, 0, 1, 1 };
 
             BooleanArraySECSItem secsItem = new BooleanArraySECSItem (input, SECSItemNumLengthBytes.TWO);
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test ()]
@@ -67,7 +67,7 @@ namespace SECSItemTests
             byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.BO) << 2) | 0x03), 0, 0, 8, 1, 0, 1, 0, 1, 0, 1, 1 };
 
             BooleanArraySECSItem secsItem = new BooleanArraySECSItem (input, SECSItemNumLengthBytes.THREE);
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test ()]

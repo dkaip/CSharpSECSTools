@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,7 +98,7 @@ namespace SECSItemTests
             byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 127, 128, 0, 0 };
 
             F4SECSItem secsItem = new F4SECSItem (Single.PositiveInfinity);
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test()]
@@ -107,7 +107,7 @@ namespace SECSItemTests
             byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x02), 0, 0x04, 127, 128, 0, 0 };
 
             F4SECSItem secsItem = new F4SECSItem (Single.PositiveInfinity, SECSItemNumLengthBytes.TWO);
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test()]
@@ -116,7 +116,7 @@ namespace SECSItemTests
             byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.F4) << 2) | 0x03), 0, 0, 0x04, 127, 128, 0, 0 };
 
             F4SECSItem secsItem = new F4SECSItem (Single.PositiveInfinity, SECSItemNumLengthBytes.THREE);
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test()]
