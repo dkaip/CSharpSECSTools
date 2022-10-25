@@ -39,15 +39,15 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
             hsmsHeader.SessionID = UInt16.MaxValue;
             hsmsHeader.HeaderByte2 = byte.MaxValue;
             hsmsHeader.HeaderByte3 = byte.MaxValue;
-            hsmsHeader.PType = byte.MaxValue;
-            hsmsHeader.SType = byte.MaxValue;
+            hsmsHeader.PType = PTypeValues.ReservedNotUsed255;
+            hsmsHeader.SType = STypeValues.ReservedNotUsed255;
             hsmsHeader.SystemBytes = UInt32.MaxValue;
 
             Assert.IsTrue(hsmsHeader.SessionID == UInt16.MaxValue);
             Assert.IsTrue(hsmsHeader.HeaderByte2 == byte.MaxValue);
             Assert.IsTrue(hsmsHeader.HeaderByte3 == byte.MaxValue);
-            Assert.IsTrue(hsmsHeader.PType == byte.MaxValue);
-            Assert.IsTrue(hsmsHeader.SType == byte.MaxValue);
+            Assert.IsTrue(hsmsHeader.PType == PTypeValues.ReservedNotUsed255);
+            Assert.IsTrue(hsmsHeader.SType == STypeValues.ReservedNotUsed255);
             Assert.IsTrue(hsmsHeader.SystemBytes == UInt32.MaxValue);
         }
 
@@ -111,8 +111,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
             Assert.IsTrue(hsmsHeader.SessionID == UInt16.MaxValue);
             Assert.IsTrue(hsmsHeader.HeaderByte2 == byte.MaxValue);
             Assert.IsTrue(hsmsHeader.HeaderByte3 == byte.MaxValue);
-            Assert.IsTrue(hsmsHeader.PType == byte.MaxValue);
-            Assert.IsTrue(hsmsHeader.SType == byte.MaxValue);
+            Assert.IsTrue(hsmsHeader.PType == PTypeValues.ReservedNotUsed255);
+            Assert.IsTrue(hsmsHeader.SType == STypeValues.ReservedNotUsed255);
             Assert.IsTrue(hsmsHeader.SystemBytes == UInt32.MaxValue);
         }
 

@@ -96,8 +96,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			get { return HeaderByte3; }
 			set { HeaderByte3 = value; }
 		}
-		public byte PType { get; set; }
-		public byte SType { get; set; }
+		public PTypeValues PType { get; set; }
+		public STypeValues SType { get; set; }
 
 		public HSMSHeader()
 		{
@@ -173,8 +173,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			SessionID = (UInt16)((header[0] << 8) + header[1]);
 			HeaderByte2 = header[2];
 			HeaderByte3 = header[3];
-			PType = header[4];
-			SType = header[5];
+			PType = (PTypeValues)header[4];
+			SType = (STypeValues)header[5];
 			// The system bytes in wire format are Big Endian
 			SystemBytes = (UInt32)((header[6] << 24) + (header[7] << 16) + (header[8] << 8) + (header[9]));
 		}
@@ -188,8 +188,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			temp[1] = (byte)(SessionID & 0xFF);
 			temp[2] = HeaderByte2;
 			temp[3] = HeaderByte3;
-			temp[4] = PType;
-			temp[5] = SType;
+			temp[4] = (byte)PType;
+			temp[5] = (byte)SType;
 			// The system bytes in wire format are Big Endian
 			temp[6] = (byte)((SystemBytes & 0xFF000000) >> 24);
 			temp[7] = (byte)((SystemBytes & 0x00FF0000) >> 16);
