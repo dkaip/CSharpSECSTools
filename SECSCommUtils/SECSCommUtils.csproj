@@ -26,6 +26,12 @@
     <DocumentationFile Condition=" '$(Configuration)' == 'Release' ">bin\Release\SECSCommUtils.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="HSMS\" />
     <Folder Include="SECS1\" />
   </ItemGroup>
