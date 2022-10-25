@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,7 +66,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// outbound number of length bytes will be set to the minimum number required to 
         /// handle an item with the length that is specified by the value of the 
         /// <c>length</c> parameter.
-        ///
+        /// <para/>
         /// This constructor sets the following base class attributes from the provided data: 
         /// <c>formatCode</c>, <c>lengthInBytes</c>, and <c>outboundNumberOfLengthBytes</c>.
         /// </summary>
@@ -97,6 +97,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <c>formatCode</c>,
         /// <c>lengthInBytes</c>, and 
         /// <c>outboundNumberOfLengthBytes</c>.
+        /// <para/>
         /// Note: An <c>ArgumentException</c> will be thrown if the value of the
         /// <c>lengthInBytes</c> parameter is outside the range of 0 - 16777215
         /// inclusive.
@@ -118,18 +119,18 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         ///  This is a base class constructor for a SECSItem.  This form of the constructor
         /// is used when parsing wire/transmission format data and converting it into
         /// its "C# form".
-        /// 
+        /// <para/>
         /// This constructor sets the following base class attributes from the provided data:
         /// <c>formatCode</c>,
         /// <c>inboundNumberOfLengthBytes</c>,
         /// <c>outboundNumberOfLengthBytes</c>
         /// <c>lengthInBytes</c> or if the <c>formatCode</c> is of type <c>L</c>(List) <c>lengthInBytes</c>
         /// will be the number of items in the list.
-        /// 
+        /// <para/>
         /// The exception <c>ArgumentException</c> will be thrown in the following circumstances:
         /// the <c>data</c> argument is <c>null</c>, the <c>data</c> argument has a length of zero, or
         /// the number of length bytes parsed out is zero.
-        /// 
+        /// <para/>
         /// In normal use the only time the <c>ArgumentException</c> 
         /// exception should be caught is if you are reading data from a piece of
         /// equipment that does not properly speak SECS and you want to be able to
@@ -358,9 +359,9 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 
         /// <summary>
         /// Gets the SECS item format code.
-        /// 
+        /// <para/>
         /// This is probably not a method you need to be using.  It was
-        /// originally created for unit testing because and its scope
+        /// originally created for unit testing because its scope
         /// needed to be set to public for unit testing access.
         /// 
         /// </summary>
@@ -402,7 +403,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </para>
         /// </summary>
         /// <returns>A<c>byte []</c> representation of this <c>SECSItem</c>'s content that is suitable for transmission.</returns>
-        public abstract byte[] ToRawSECSItem();
+        public abstract byte[] EncodeForTransport();
     }
 }
 
