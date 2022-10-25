@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2022 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -473,7 +473,7 @@ namespace SECSItemTests
 
             ListSECSItem secsItem = new ListSECSItem (expectedData1);
 
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test()]
@@ -697,7 +697,7 @@ namespace SECSItemTests
 
             ListSECSItem secsItem = new ListSECSItem (expectedData1, SECSItemNumLengthBytes.TWO);
 
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test()]
@@ -921,7 +921,7 @@ namespace SECSItemTests
 
             ListSECSItem secsItem = new ListSECSItem (expectedData1, SECSItemNumLengthBytes.THREE);
 
-            Assert.AreEqual (secsItem.ToRawSECSItem (), expectedResult);
+            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
         }
 
         [Test()]
