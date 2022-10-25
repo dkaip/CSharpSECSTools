@@ -102,7 +102,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// Creates and returns a <c>byte[]</c> that represents this <c>SECSItem</c> in &quot;wire/transmission format&quot;.
         /// </summary>
         /// <returns>A <c>byte[]</c> representation of this <c>SECSItem</c>'s content that is suitable for transmission.</returns>
-		public override byte[] ToRawSECSItem()
+		public override byte[] EncodeForTransport()
 		{
 			byte[] output = new byte[OutputHeaderLength()+value.Length];
 			int offset = PopulateSECSItemHeaderData(output, value.Length);
