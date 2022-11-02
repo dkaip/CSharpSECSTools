@@ -15,8 +15,6 @@
  */
 using Serilog;
 
-using System.Data;
-
 #nullable enable
 
 namespace com.CIMthetics.CSharpSECSTools.SECSStateMachines.HSMSConnectionSM
