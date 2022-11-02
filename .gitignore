@@ -12,6 +12,10 @@ SECSSpy/Logs
 SECSTee/bin
 SECSTee/obj
 SECSTee/Logs
+SECSStateMachines/bin
+SECSStateMachines/obj
+SECSStateMachinesTests/bin
+SECSStateMachinesTests/obj
 EquipmentSimulatorSupportStuff/bin
 EquipmentSimulatorSupportStuff/obj
 FixedBufferSimulatorConsole/bin
