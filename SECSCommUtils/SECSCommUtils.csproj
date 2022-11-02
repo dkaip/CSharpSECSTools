@@ -40,5 +40,9 @@
       <Project>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</Project>
       <Name>SECSItems</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SECSStateMachines\SECSStateMachines.csproj">
+      <Project>{7d95975e-064f-4a62-b546-48c2ecc2fca9}</Project>
+      <Name>SECSStateMachines</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
