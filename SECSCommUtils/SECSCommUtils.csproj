@@ -8,6 +8,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>10</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Configuration Condition=" '$(Configuration)' == 'Debug' ">Debug</Configuration>
