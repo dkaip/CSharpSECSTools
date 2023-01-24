@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,9 @@ using com.CIMthetics.CSharpSECSTools.SECSItems;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
+	/// <summary>
+	/// This class is for representing a SECS message.
+	/// </summary>
 	public class SECSMessage
 	{
 		private	byte[]		_binaryBody = null;
