@@ -22,7 +22,7 @@ using com.CIMthetics.CSharpSECSTools.SECSItems;
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
 	/// <summary>
-	/// This class is for representing a SECS message.
+	/// This class is for containing a SECS message in a .NET environment.
 	/// </summary>
 	public class SECSMessage
 	{
@@ -31,6 +31,12 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 
 		public SECSHeader Header { get; set; }
 
+		/// <summary>
+		/// This constructor is typically used in the situation where the
+		/// payload of a SECS message (a <c>SECSItem</c>) was created by
+		/// <c>.NET</c> by a programmer and is ready to be sent to some
+		/// entity.
+		/// </summary>
 		public SECSMessage(SECSHeader Header, SECSItem body)
 		{
 			this.Header = Header;
@@ -38,6 +44,13 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			this._binaryBody = null;
 		}
 
+		/// <summary>
+		/// This constructor is typically used in the situation where a
+		/// SECS message was receive from either a SECS-I connection or
+		/// an HSMS connection.  The body in this situation will be in
+		/// the form of a <c>byte[]</c>.  In this form it is very
+		/// tedious to deal with
+		/// </summary>
 		public SECSMessage(SECSHeader Header, byte[] body)
 		{
 			this.Header = Header;
