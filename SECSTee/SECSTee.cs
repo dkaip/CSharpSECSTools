@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Sockets;
 
 using com.CIMthetics.CSharpSECSTools.SECSCommUtils;
+using com.CIMthetics.CSharpSECSTools.SECSStateMachines;
+using com.CIMthetics.CSharpSECSTools.SECSStateMachines.HSMSConnectionSM;
 
 #nullable enable
 
@@ -208,7 +210,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSTee
 			string connectionType = connectionSection.GetValue<string>("Type");
 			if (String.IsNullOrEmpty(connectionType) == true)
 			{
-				Log.Fatal("Could not retrive \"Type\" element");
+				Log.Fatal("Could not retrieve \"Type\" element");
 				Environment.Exit(-1);
 			}
 
@@ -226,14 +228,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSTee
 				string connectionNetworkAddress = connectionSection.GetValue<string>("Address");
 				if (String.IsNullOrEmpty(connectionNetworkAddress) == true)
 				{
-					Log.Fatal("Could not retrive \"Address\" element of Connection1.");
+					Log.Fatal("Could not retrieve \"Address\" element of Connection1.");
 					Environment.Exit(-1);
 				}
 
 				string connectionNetworkAddressFamilyString = connectionSection.GetValue<string>("AddressFamily");
 				if (String.IsNullOrEmpty(connectionNetworkAddress) == true)
 				{
-					Log.Fatal("Could not retrive \"AddressFamily\" element of Connection1.");
+					Log.Fatal("Could not retrieve \"AddressFamily\" element of Connection1.");
 					Environment.Exit(-1);
 				}
 
@@ -250,7 +252,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSTee
 				UInt16 portNumber = connectionSection.GetValue<UInt16>("Port");
 				if (portNumber <= 0)
 				{
-					Log.Fatal("Error trying to retrive \"Port\" element of Connection1.  It must be a number greater than 0.");
+					Log.Fatal("Error trying to retrieve \"Port\" element of Connection1.  It must be a number greater than 0.");
 					Environment.Exit(-1);
 				}
 
@@ -258,7 +260,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSTee
 				string activeOrPassiveString = connectionSection.GetValue<string>("ActiveOrPassive");
 				if (String.IsNullOrEmpty(activeOrPassiveString) == true)
 				{
-					Log.Fatal("Could not retrive \"ActiveOrPassive\" element of Connection1.");
+					Log.Fatal("Could not retrieve \"ActiveOrPassive\" element of Connection1.");
 					Environment.Exit(-1);
 				}
 				
@@ -354,6 +356,48 @@ namespace com.CIMthetics.CSharpSECSTools.SECSTee
 				secsTee = new SECSTee(null);
 			}
 
+			Log.Warning("SM b4 constructor");
+			HSMSConnectionSM sm = new HSMSConnectionSM();
+			List<State> states = sm.GetStates();
+			// Log.Warning("Number of states is {0}", states.Count());
+			// foreach(State state in states)
+			// {
+			// 	Log.Debug("in SECSTee State {0}:{1}", state.StateName, state.StateID);
+			// }
+			Log.Warning("SM af constructor");
+			Console.ReadKey();
+			Log.Debug("SECSTee attempting {0}", HSMSConnectionSMTransitions.Transition1);
+			sm.PerformTransition((int)HSMSConnectionSMTransitions.Transition1);
+			Log.Warning("A state is {0}", sm.CurrentState.StateName);
+			Log.Debug("SECSTee attempting {0}", HSMSConnectionSMTransitions.Transition2);
+			sm.PerformTransition((int)HSMSConnectionSMTransitions.Transition2);
+			Log.Warning("B state is {0}", sm.CurrentState.StateName);
+			Log.Debug("SECSTee attempting {0}", HSMSConnectionSMTransitions.Transition4);
+			sm.PerformTransition((int)HSMSConnectionSMTransitions.Transition4);
+			Log.Warning("C state is {0}", sm.CurrentState.StateName);
+			Log.Debug("SECSTee attempting {0}", HSMSConnectionSMTransitions.Transition5);
+			sm.PerformTransition((int)HSMSConnectionSMTransitions.Transition5);
+			Log.Warning("D state is {0}", sm.CurrentState.StateName);
+			Log.Debug("SECSTee attempting {0}", HSMSConnectionSMTransitions.Transition4);
+			sm.PerformTransition((int)HSMSConnectionSMTransitions.Transition4);
+			Log.Warning("E state is {0}", sm.CurrentState.StateName);
+			Log.Debug("SECSTee attempting {0}", HSMSConnectionSMTransitions.Transition5);
+			sm.PerformTransition((int)HSMSConnectionSMTransitions.Transition5);
+			Log.Warning("F state is {0}", sm.CurrentState.StateName);
+			Log.Debug("SECSTee attempting {0}", HSMSConnectionSMTransitions.Transition6);
+			sm.PerformTransition((int)HSMSConnectionSMTransitions.Transition6);
+			Log.Warning("G state is {0}", sm.CurrentState.StateName);
+			Log.Debug("SECSTee attempting {0}", HSMSConnectionSMTransitions.Transition4);
+			sm.PerformTransition((int)HSMSConnectionSMTransitions.Transition4);
+			Log.Warning("H state is {0}", sm.CurrentState.StateName);
+//			sm.GoToState(HSMSConnectionStateMachine.State_NotSelected);
+//			sm.GoToState(HSMSConnectionStateMachine.State_Selected);
+//			sm.GoToState(HSMSConnectionStateMachine.State_NotSelected);
+//			sm.GoToState(HSMSConnectionStateMachine.State_NotConnected);
+
+			Console.ReadKey();
+
+
 			CancellationTokenSource _cancellationTokenSource  = new CancellationTokenSource();
 			CancellationToken 		_cancellationToken = _cancellationTokenSource.Token;
 
@@ -377,8 +421,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSTee
 			{
 				Log.Information("SECSTee shutting down due to ^c");
 
-				secsTee._connection1.Stop();
 				secsTee._connection2.Stop();
+				secsTee._connection1.Stop();
 
 				_cancellationTokenSource.Cancel();
 
@@ -393,14 +437,6 @@ namespace com.CIMthetics.CSharpSECSTools.SECSTee
 
 				Log.CloseAndFlush();
 			};
-
-
-			// Log.Debug("Debug.");
-			// Log.Error("Error.");
-			// Log.Warning("Warn.");
-			// Log.Fatal("Fatal.");
-			// Log.Verbose("Verbose.");
-
 		}
 	}
 }
