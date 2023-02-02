@@ -1,5 +1,5 @@
-﻿/*
- * Copyright 2019-2022 Douglas Kaip
+/*
+ * Copyright 2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,23 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
-	public enum HSMSConnectionMode
+	public enum HSMSConnectionNetworkFamily
 	{
 		/// <summary>
-		/// If a connection is <c>Passive</c> it will perform the necessary
-		/// setup and await a connection request from elsewhere.
+		/// Indicates that the underlying TCP/IP connection should be (or is) IPV4.
 		/// </summary>
-		Passive,
+		IPV4,
 
 		/// <summary>
-		/// If a connection is <c>Active</c> it will perform the necessary
-		/// setup and actively attempt to establish a connection.
+		/// Indicates that the underlying TCP/IP connection should be (or is) IPV6.
 		/// </summary>
-		Active
+		IPV6
 	}
 }
 

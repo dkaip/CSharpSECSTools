@@ -10,20 +10,14 @@
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governingprivate permissions and
+ * See the License for the specific language governing private permissions and
  * limitations under the License.
  */
 using Serilog;
-using System;
-using System.Collections.Generic;
 using System.Collections.Concurrent;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using SECSCommUtils;
+using com.CIMthetics.CSharpSECSTools.SECSStateMachines.HSMSConnectionSM;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
@@ -60,6 +54,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 		private Thread _connectionReaderThread = null;
 		private Thread _connectionWriterThread = null;
 
+		private HSMSConnectionSM hsmsConnectionSM = null;
+
 		public HSMSConnection(string connectionName, BlockingCollection<SECSMessage> messagesReceivedQueue, IPAddress ipAddress, UInt16 ipPortNumber, HSMSConnectionMode connectionMode) : base(connectionName, messagesReceivedQueue)
 		{
 			_exitNow = false;
@@ -77,6 +73,11 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			_ipEndPoint = new IPEndPoint(ipAddress, ipPortNumber);
 
 			Log.Debug("Connection {0} IP IPEndPoint {1}", connectionName, _ipEndPoint.ToString());
+
+			// Create the state machine...its initial state will be NoState
+			hsmsConnectionSM = new HSMSConnectionSM();
+			// Transition to state NotConnected
+			hsmsConnectionSM.PerformTransition((int)HSMSConnectionSMTransitions.Transition1);
 		}
 
 		override public void SendMessage(SECSMessage message)
@@ -117,6 +118,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 
 		override internal void Supervisor()
 		{
+
 			TcpListener tcpListener = null;
 
 			Log.Debug("{0} Supervisor thread  has started", ConnectionName);
@@ -155,6 +157,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 						{
 							try
 							{
+								Log.Verbose("{0} attempting to connect with \"server\" {1}", ConnectionName + ":Supervisor", _ipEndPoint.ToString());
 								_tcpClient.Connect(_ipEndPoint);
 								Log.Verbose("{0} connected with \"server\" {1}", ConnectionName + ":Supervisor", _ipEndPoint.ToString());
 							}
@@ -164,7 +167,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 								    (e.GetType().ToString().IndexOf("System.Net.Internals.SocketExceptionFactory+ExtendedSocketException", StringComparison.OrdinalIgnoreCase) >= 0))
 								{
 									retryCount--;
-									Log.Debug("{0} retries remaining", retryCount);
+									Log.Debug("{0} retries remaining {1}", retryCount, _exitNow);
 									Thread.Sleep(retryInterval);
 									continue;
 								}

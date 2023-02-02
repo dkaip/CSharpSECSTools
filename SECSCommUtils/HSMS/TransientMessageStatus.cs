@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SECSCommUtils
+namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
     public enum TransientMessageStatus
     {
