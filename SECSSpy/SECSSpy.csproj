@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>{f4aaf2f1-eb93-4f43-8c9d-94a4f6d56e15}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SECSSpy</RootNamespace>
+    <RootNamespace>com.CIMthetics.CSharpSECSTools.SECSSpy</RootNamespace>
     <AssemblyName>SECSSpy</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>10</LangVersion>
@@ -27,5 +27,26 @@
       <Project>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</Project>
       <Name>SECSItems</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SECSCommUtils\SECSCommUtils.csproj">
+      <Project>{4F722F74-D152-4671-B8DB-DD3E22CFFA78}</Project>
+      <Name>SECSItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextFormatter\TextFormatter.csproj">
+      <Project>{80d87ae3-3f12-49c1-bf5d-0e037e8d47d6}</Project>
+      <Name>SECSFormatter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SECSStateMachines\SECSStateMachines.csproj">
+      <Project>{7d95975e-064f-4a62-b546-48c2ecc2fca9}</Project>
+      <Name>SECSStateMachines</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

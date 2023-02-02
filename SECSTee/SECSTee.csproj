@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>{457964a5-7385-4152-989c-ce9d26e84da9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SECSTee</RootNamespace>
+    <RootNamespace>com.CIMthetics.CSharpSECSTools.SECSTee</RootNamespace>
     <AssemblyName>SECSTee</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>10</LangVersion>
