@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>{4F722F74-D152-4671-B8DB-DD3E22CFFA78}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SECSCommUtils</RootNamespace>
+    <RootNamespace>com.CIMthetics.CSharpSECSTools.SECSCommUtils</RootNamespace>
     <AssemblyName>SECSCommUtils</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>10</LangVersion>

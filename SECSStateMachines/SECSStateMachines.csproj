@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>{7d95975e-064f-4a62-b546-48c2ecc2fca9}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SECSStateMachines</RootNamespace>
+    <RootNamespace>com.CIMthetics.CSharpSECSTools.SECSStateMachines</RootNamespace>
     <AssemblyName>SECSStateMachines</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>10</LangVersion>
