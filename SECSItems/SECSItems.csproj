@@ -3,11 +3,12 @@
   <PropertyGroup>
     <ProjectGuid>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SECSItems</RootNamespace>
+    <RootNamespace>com.CIMthetics.CSharpSECSTools.SECSItems</RootNamespace>
     <AssemblyName>SECSItems</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>10</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Configuration Condition=" '$(Configuration)' == 'Debug' ">Debug</Configuration>
@@ -23,9 +24,6 @@
     <OutputPath Condition=" '$(Configuration)' == 'Release' ">bin\Release</OutputPath>
     <DocumentationFile Condition=" '$(Configuration)' == 'Debug' ">bin\Debug\SECSItems.xml</DocumentationFile>
     <DocumentationFile Condition=" '$(Configuration)' == 'Release' ">bin\Release\SECSItems.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
       <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
