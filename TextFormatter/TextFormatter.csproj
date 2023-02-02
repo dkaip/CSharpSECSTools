@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{80D87AE3-3F12-49C1-BF5D-0E037E8D47D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TextFormatter</RootNamespace>
+    <AssemblyName>TextFormatter</AssemblyName>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Debug' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Release' ">Release</Configuration>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Debug' ">true</DebugSymbols>
+    <DebugSymbols Condition=" '$(Configuration)' == 'Release' ">false</DebugSymbols>
+    <DebugType Condition=" '$(Configuration)' == 'Debug' ">full</DebugType>
+    <DebugType Condition=" '$(Configuration)' == 'Release' ">none</DebugType>
+    <Optimize Condition=" '$(Configuration)' == 'Debug' ">false</Optimize>
+    <Optimize Condition=" '$(Configuration)' == 'Release' ">true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1591</NoWarn>
+    <OutputPath Condition=" '$(Configuration)' == 'Debug' ">bin\Debug</OutputPath>
+    <OutputPath Condition=" '$(Configuration)' == 'Release' ">bin\Release</OutputPath>
+    <DocumentationFile Condition=" '$(Configuration)' == 'Debug' ">bin\Debug\SECSFormatter.xml</DocumentationFile>
+    <DocumentationFile Condition=" '$(Configuration)' == 'Release' ">bin\Release\SECSFormatter.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SECSItems\SECSItems.csproj">
+      <Project>{5FE19A00-496E-4142-A5FF-1814A6F273DD}</Project>
+      <Name>SECSItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SECSCommUtils\SECSCommUtils.csproj">
+      <Project>{4F722F74-D152-4671-B8DB-DD3E22CFFA78}</Project>
+      <Name>SECSItems</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
