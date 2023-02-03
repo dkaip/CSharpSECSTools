@@ -26,78 +26,104 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
     /// that will be able to turn <c>SECSMessage</c>s, <c>SECSHeader</c>s, and 
     /// <c>SECSITEM</c>s into a C# <c>string</c> suitable for output to a
     /// terminal and or a file.
-	/// </summary>
-    /// <remarks>
+    /// <para>
     /// Note: At this time the current max indentation level is 132 spaces.
-    /// </remarks>
+    /// </para>
+    /// </summary>
     public abstract class SECSFormatter
     {
-        /// <summary>
-        /// Indicates whether or not a timestamp should be added to the 
-        /// generated output.
-        /// </summary>
-        /// <value>
-        /// If <c>true</c> a timestamp will be included in the 
-        /// generated output.
-        /// </value>
-        /// <remarks>
-        /// The default value is <c>true</c>.
-        /// </remarks>
-        public bool AddTimestamp { get; set; } = true;
+        internal TextFormatterConfig configurationData;
 
         /// <summary>
-        /// If <c>AddTimestamp</c> is set to <c>true</c> this is the output
-        /// formatting string that is applied to the timestamp as it is 
-        /// converted to textual form.
+        /// This property allows for the viewing or changing of the configured
+        /// <c>AddTimestamp</c> parameter. See
+        /// <see cref="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.AddTimestamp">TextFormatterConfig</see>
+        /// for more information.
         /// </summary>
-        /// <value>
-        /// A format string to be applied to the timestamp.
-        /// </value>
-        /// <remarks>
-        /// The default value is &quot;yyyy-MM-ddTHH:mm:ss.fff&quot;.
-        /// </remarks>
-        public string TimestampFormat { get; set; } = "yyyy-MM-ddTHH:mm:ss.fff";
+        public bool AddTimestamp
+        {
+            get
+            {
+                return configurationData.AddTimestamp;
+            }
+            
+            set
+            {
+                configurationData.AddTimestamp = value;
+            }
+        }
 
         /// <summary>
-        /// Indicates whether or not message direction information should be 
-        /// added to the output.
+        /// This property allows for the viewing or changing of the configured
+        /// <c>TimestampFormat</c> parameter. See
+        /// <see cref="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.TimestampFormat">TextFormatterConfig</see>
+        /// for more information.
         /// </summary>
-        /// <value>
-        /// If <c>true</c> message direction information will be included in 
-        /// the generated output.
-        /// </value>
-        /// <remarks>
-        /// The default value is <c>true</c>.
-        /// </remarks>
-        public bool AddDirection { get; set; } = true;
+        public string TimestampFormat
+        {
+            get
+            {
+                return configurationData.TimestampFormat;
+            }
+            
+            set
+            {
+                configurationData.TimestampFormat = value;
+            }
+        }
 
         /// <summary>
-        /// The number of spaces to be used when indentation is required in the
-        /// generated output.
+        /// This property allows for the viewing or changing of the configured
+        /// <c>AddDirection</c> parameter. See
+        /// <see cref="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.AddDirection">TextFormatterConfig</see>
+        /// for more information.
         /// </summary>
-        /// <value>
-        /// The number of spaces to be used when indentation is required in the
-        /// generated output.
-        /// </value>
-        /// <remarks>
-        /// The default value is 2.
-        /// </remarks>
-        public int IndentAmount  { get; set; } = 2;
+        public bool AddDirection
+        {
+            get
+            {
+                return configurationData.AddDirection;
+            }
+            
+            set
+            {
+                configurationData.AddDirection = value;
+            }
+        }
+
+        /// <summary>
+        /// This property allows for the viewing or changing of the configured
+        /// <c>IndentAmount</c> parameter. See
+        /// <see cref="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.IndentAmount">TextFormatterConfig</see>
+        /// for more information.
+        /// </summary>
+        public int IndentAmount
+        {
+            get
+            {
+                return configurationData.IndentAmount;
+            }
+            
+            set
+            {
+                configurationData.IndentAmount = value;
+            }
+        }
+
         internal readonly string[]  Whitespace;
-        private const int           maxIndentionLevel = 132;
         private int                 _currentIndentLevel = 0;
 
         /// <summary>
         /// This is the current level of indention that the formatter is
         /// currently operating with.
         /// </summary>
-        internal int                 CurrentIndentLevel
+        public int                 CurrentIndentLevel
         {
             get { return _currentIndentLevel; }
             set
             {
-                if (value >= maxIndentionLevel)
-                    _currentIndentLevel = maxIndentionLevel - 1;
+                if (value >= configurationData.MaxIndentionSpaces)
+                    _currentIndentLevel = configurationData.MaxIndentionSpaces - 1;
                 else 
                     _currentIndentLevel = value;
 
@@ -105,8 +131,6 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     _currentIndentLevel = 0;
             }
         }
-
-        internal TextFormatterConfig configurationData;
 
         internal SECSFormatter(TextFormatterConfig configurationData)
         {
@@ -119,7 +143,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 Hopefully it will allow for much less memory intensive (think
                 GC) prepending of spaces to output lines.
             */
-            Whitespace = new string[maxIndentionLevel];
+            Whitespace = new string[configurationData.MaxIndentionSpaces + 1];
             for(int i = 0; i < Whitespace.Count(); i++)
             {
                 StringBuilder sb = new StringBuilder();

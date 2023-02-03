@@ -61,12 +61,12 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     return;
                 }
 
-                if (AddTimestamp)
+                if (configurationData.AddTimestamp)
                 {
                     // Add timestamp if requested
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.Append("<HSMSControlMessage Timestamp=\"");
-                    sb.Append(DateTime.Now.ToString(TimestampFormat));
+                    sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
                     sb.Append("\"");
                 }
                 else
@@ -119,14 +119,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             }
 
             // If we made it here this is a normal SECS-II message
-            if (AddTimestamp)
+            if (configurationData.AddTimestamp)
             {
                 // Add timestamp if requested
                 sb.Append("#Timestamp:");
-                sb.AppendLine(DateTime.Now.ToString(TimestampFormat));
+                sb.AppendLine(DateTime.Now.ToString(configurationData.TimestampFormat));
             }
 
-            if (AddDirection)
+            if (configurationData.AddDirection)
             {
                 // Add timestamp if requested
                 sb.Append("#Direction Src:");
@@ -218,7 +218,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("<L");
                 }
 
-                CurrentIndentLevel += IndentAmount;
+                CurrentIndentLevel += configurationData.IndentAmount;
 
                 int arrayLength = ((ListSECSItem)secsItem).GetValue().Count();
                 foreach (SECSItem listEntry in ((ListSECSItem)secsItem).GetValue())
@@ -228,7 +228,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("");
                 }
 
-                CurrentIndentLevel -= IndentAmount;
+                CurrentIndentLevel -= configurationData.IndentAmount;
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 sb.Append(">");
             }

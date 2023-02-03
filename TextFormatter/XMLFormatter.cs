@@ -70,12 +70,12 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     return;
                 }
 
-                if (AddTimestamp)
+                if (configurationData.AddTimestamp)
                 {
                     // Add timestamp if requested
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.Append("<HSMSControlMessage Timestamp=\"");
-                    sb.Append(DateTime.Now.ToString(TimestampFormat));
+                    sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
                     sb.Append("\"");
                 }
                 else
@@ -128,38 +128,38 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             } // End if it is an HSMS Control Message
 
             // If we made it here this is a normal SECS-II message
-            if (AddTimestamp || AddDirection)
+            if (configurationData.AddTimestamp || configurationData.AddDirection)
             {
-                if (AddTimestamp && AddDirection)
+                if (configurationData.AddTimestamp && configurationData.AddDirection)
                 {
                     if (configurationData.HeaderOutputConfig.DisplayAsType == DisplayAsType.Elements)
                     {
                         sb.AppendLine("<SECSMessage>");
-                        sb.Append(Whitespace[CurrentIndentLevel + IndentAmount]);
+                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
                         sb.Append("<Timestamp>");
-                        sb.Append(DateTime.Now.ToString(TimestampFormat));
+                        sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
                         sb.AppendLine("</Timestamp>");
 
-                        sb.Append(Whitespace[CurrentIndentLevel + IndentAmount]);
+                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
                         sb.AppendLine("<Direction>");
 
-                        sb.Append(Whitespace[CurrentIndentLevel + (IndentAmount * 2)]);
+                        sb.Append(Whitespace[CurrentIndentLevel + (configurationData.IndentAmount * 2)]);
                         sb.Append("<Source>");
                         sb.Append(source);
                         sb.AppendLine("</Source>");
 
-                        sb.Append(Whitespace[CurrentIndentLevel + (IndentAmount * 2)]);
+                        sb.Append(Whitespace[CurrentIndentLevel + (configurationData.IndentAmount * 2)]);
                         sb.Append("<Destination>");
                         sb.Append(destination);
                         sb.AppendLine("</Destination>");
 
-                        sb.Append(Whitespace[CurrentIndentLevel + IndentAmount]);
+                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
                         sb.AppendLine("</Direction>");
                     }
                     else
                     {
                         sb.Append("<SECSMessage Timestamp=\"");
-                        sb.Append(DateTime.Now.ToString(TimestampFormat));
+                        sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
                         sb.Append("\"");
 
                         sb.Append(" Src=\"");
@@ -169,42 +169,42 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         sb.AppendLine("\">");
                     }
                 }
-                else if (AddTimestamp)
+                else if (configurationData.AddTimestamp)
                 {
                     if (configurationData.HeaderOutputConfig.DisplayAsType == DisplayAsType.Elements)
                     {
                         sb.AppendLine("<SECSMessage>");
-                        sb.Append(Whitespace[CurrentIndentLevel + IndentAmount]);
+                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
                         sb.Append("<Timestamp>");
-                        sb.Append(DateTime.Now.ToString(TimestampFormat));
+                        sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
                         sb.AppendLine("</Timestamp>");
                     }
                     else
                     {
                         sb.Append("<SECSMessage Timestamp=\"");
-                        sb.Append(DateTime.Now.ToString(TimestampFormat));
+                        sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
                         sb.AppendLine("\">");
                     }
                 }
-                else if (AddDirection)
+                else if (configurationData.AddDirection)
                 {
                     if (configurationData.HeaderOutputConfig.DisplayAsType == DisplayAsType.Elements)
                     {
                         sb.AppendLine("<SECSMessage>");
-                        sb.Append(Whitespace[CurrentIndentLevel + IndentAmount]);
+                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
                         sb.AppendLine("<Direction>");
 
-                        sb.Append(Whitespace[CurrentIndentLevel + (IndentAmount * 2)]);
+                        sb.Append(Whitespace[CurrentIndentLevel + (configurationData.IndentAmount * 2)]);
                         sb.Append("<Source>");
                         sb.Append(source);
                         sb.AppendLine("</Source>");
 
-                        sb.Append(Whitespace[CurrentIndentLevel + (IndentAmount * 2)]);
+                        sb.Append(Whitespace[CurrentIndentLevel + (configurationData.IndentAmount * 2)]);
                         sb.Append("<Destination>");
                         sb.Append(destination);
                         sb.AppendLine("</Destination>");
 
-                        sb.Append(Whitespace[CurrentIndentLevel + IndentAmount]);
+                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
                         sb.AppendLine("</Direction>");
                     }
                     else
@@ -223,13 +223,13 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 sb.AppendLine("<SECSMessage>");
             }
 
-            CurrentIndentLevel += IndentAmount;
+            CurrentIndentLevel += configurationData.IndentAmount;
 
             GetHeaderAsText(sb, secsMessage.Header);
 
             // TODO fix case for header only message
             GetSECSItemAsText(sb, secsMessage.GetBodyAsSECSItem());
-            CurrentIndentLevel -= IndentAmount;
+            CurrentIndentLevel -= configurationData.IndentAmount;
 
             sb.Append("</SECSMessage>");
             return;
@@ -264,7 +264,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("<Header>");
 
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                     if (configurationData.HeaderOutputConfig.DisplayDeviceId)
                     {
@@ -316,7 +316,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         sb.AppendLine("</SystemBytes>");
                     }
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Header>");
                 }
@@ -405,13 +405,13 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                 {
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
                 }
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 sb.AppendLine("<Value>");
 
-                CurrentIndentLevel += IndentAmount;
+                CurrentIndentLevel += configurationData.IndentAmount;
 
                 //Console.WriteLine("List count is {0}.", ((ListSECSItem)secsItem).GetValue().Count());
                 foreach (SECSItem listEntry in ((ListSECSItem)secsItem).GetValue())
@@ -420,7 +420,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     GetSECSItemAsText(sb, listEntry);
                 }
 
-                CurrentIndentLevel -= IndentAmount;
+                CurrentIndentLevel -= configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 sb.AppendLine("</Value>");
@@ -428,7 +428,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.B)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
@@ -452,7 +452,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     // It has more than one element.
                     sb.AppendLine("<Value>");
 
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     int lineLength = CurrentIndentLevel;
 
@@ -480,7 +480,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -489,7 +489,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.BO)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -517,7 +517,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("<Value>");
 
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     int lineLength = CurrentIndentLevel;
 
@@ -552,7 +552,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -562,7 +562,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             {
                 // TODO deal with max line length, but, don't forget preserve formatting(whitespace)
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -574,7 +574,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             {
                 // TODO deal with max line length
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -586,7 +586,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             {
                 // TODO deal with max line length
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -597,7 +597,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.I8)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -630,7 +630,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -659,7 +659,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                         sb.AppendLine("");
 
-                        CurrentIndentLevel -= IndentAmount;
+                        CurrentIndentLevel -= configurationData.IndentAmount;
 
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         sb.AppendLine("</Value>");
@@ -669,7 +669,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.I1)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -702,7 +702,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -732,7 +732,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -741,7 +741,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.I2)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -774,7 +774,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -803,7 +803,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                         sb.AppendLine("");
 
-                        CurrentIndentLevel -= IndentAmount;
+                        CurrentIndentLevel -= configurationData.IndentAmount;
 
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         sb.AppendLine("</Value>");
@@ -813,7 +813,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.I4)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -846,7 +846,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -879,7 +879,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -888,7 +888,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.F8)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -921,7 +921,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -960,7 +960,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -969,7 +969,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.F4)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -1002,7 +1002,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -1041,7 +1041,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -1050,7 +1050,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.U8)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -1083,7 +1083,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -1114,7 +1114,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -1123,7 +1123,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.U1)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -1156,7 +1156,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -1186,7 +1186,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -1195,7 +1195,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.U2)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -1227,7 +1227,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -1257,7 +1257,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -1266,7 +1266,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             else if (secsItem.GetFormatCode() == SECSItemFormatCode.U4)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
-                    CurrentIndentLevel += IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
@@ -1299,7 +1299,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.AppendLine("<Value>");
 
-                        CurrentIndentLevel += IndentAmount;
+                        CurrentIndentLevel += configurationData.IndentAmount;
                         sb.Append(Whitespace[CurrentIndentLevel]);
                         int lineLength = CurrentIndentLevel;
 
@@ -1329,7 +1329,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                     sb.AppendLine("");
 
-                    CurrentIndentLevel -= IndentAmount;
+                    CurrentIndentLevel -= configurationData.IndentAmount;
 
                     sb.Append(Whitespace[CurrentIndentLevel]);
                     sb.AppendLine("</Value>");
@@ -1341,7 +1341,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 return;
             }
 
-            CurrentIndentLevel -= IndentAmount;
+            CurrentIndentLevel -= configurationData.IndentAmount;
 
             sb.Append(Whitespace[CurrentIndentLevel]);
             sb.AppendLine("</SECSItem>");
@@ -1358,7 +1358,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 sb.AppendLine("<SECSItem>");
 
-                CurrentIndentLevel += IndentAmount;
+                CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 sb.Append("<Type>");
