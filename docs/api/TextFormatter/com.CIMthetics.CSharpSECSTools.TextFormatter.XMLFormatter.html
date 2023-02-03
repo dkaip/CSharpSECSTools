@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class XMLFormatter
+ </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class XMLFormatter
+ ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter">
+
+
+  <h1 id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter" class="text-break">Class XMLFormatter
+</h1>
+  <div class="markdown level0 summary"><p>A class to create a textual representation of
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
+using using XML.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html">SECSFormatter</a></div>
+    <div class="level2"><span class="xref">XMLFormatter</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_AddTimestamp">SECSFormatter.AddTimestamp</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_TimestampFormat">SECSFormatter.TimestampFormat</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_AddDirection">SECSFormatter.AddDirection</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_IndentAmount">SECSFormatter.IndentAmount</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_CurrentIndentLevel">SECSFormatter.CurrentIndentLevel</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.html">com.CIMthetics.CSharpSECSTools.TextFormatter</a></h6>
+  <h6><strong>Assembly</strong>: TextFormatter.dll</h6>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class XMLFormatter : SECSFormatter</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.#ctor*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter__ctor_com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.#ctor(com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig)">XMLFormatter(TextFormatterConfig)</h4>
+  <div class="markdown level1 summary"><p>Create an <code>XMLFormatter</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XMLFormatter(TextFormatterConfig configurationData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html">TextFormatterConfig</a></td>
+        <td><span class="parametername">configurationData</span></td>
+        <td><p>A
+<a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html">TextFormatterConfig</a>
+object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetHeaderAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetHeaderAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetHeaderAsText_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetHeaderAsText(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)">GetHeaderAsText(SECSHeader)</h4>
+  <div class="markdown level1 summary"><p>A class to create a textual representation of
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
+using using XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetHeaderAsText(SECSHeader secsHeader)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
+        <td><span class="parametername">secsHeader</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_">SECSFormatter.GetHeaderAsText(SECSHeader)</a></div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetHeaderAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetHeaderAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetHeaderAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetHeaderAsText(System.Text.StringBuilder,com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)">GetHeaderAsText(StringBuilder, SECSHeader)</h4>
+  <div class="markdown level1 summary"><p>A class to create a textual representation of
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
+using using XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void GetHeaderAsText(StringBuilder sb, SECSHeader secsHeader)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.StringBuilder</span></td>
+        <td><span class="parametername">sb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
+        <td><span class="parametername">secsHeader</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_">SECSFormatter.GetHeaderAsText(StringBuilder, SECSHeader)</a></div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetSECSItemAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetSECSItemAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetSECSItemAsText_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetSECSItemAsText(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">GetSECSItemAsText(SECSItem)</h4>
+  <div class="markdown level1 summary"><p>A class to create a textual representation of
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
+using using XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetSECSItemAsText(SECSItem secsItem)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><span class="parametername">secsItem</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_">SECSFormatter.GetSECSItemAsText(SECSItem)</a></div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetSECSItemAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetSECSItemAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetSECSItemAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetSECSItemAsText(System.Text.StringBuilder,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">GetSECSItemAsText(StringBuilder, SECSItem)</h4>
+  <div class="markdown level1 summary"><p>Convert a SECSItem to XML.
+Some items of note: JIS-8 and C2 are not implemented yet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void GetSECSItemAsText(StringBuilder sb, SECSItem secsItem)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.StringBuilder</span></td>
+        <td><span class="parametername">sb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><span class="parametername">secsItem</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_">SECSFormatter.GetSECSItemAsText(StringBuilder, SECSItem)</a></div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetSECSMessageAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetSECSMessageAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetSECSMessageAsText_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetSECSMessageAsText(System.String,System.String,com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)">GetSECSMessageAsText(String, String, SECSMessage)</h4>
+  <div class="markdown level1 summary"><p>A class to create a textual representation of
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
+using using XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetSECSMessageAsText(string source, string destination, SECSMessage secsMessage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">destination</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a></td>
+        <td><span class="parametername">secsMessage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_">SECSFormatter.GetSECSMessageAsText(String, String, SECSMessage)</a></div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetSECSMessageAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetSECSMessageAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetSECSMessageAsText_System_Text_StringBuilder_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetSECSMessageAsText(System.Text.StringBuilder,System.String,System.String,com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)">GetSECSMessageAsText(StringBuilder, String, String, SECSMessage)</h4>
+  <div class="markdown level1 summary"><p>A class to create a textual representation of
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
+using using XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void GetSECSMessageAsText(StringBuilder sb, string source, string destination, SECSMessage secsMessage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.StringBuilder</span></td>
+        <td><span class="parametername">sb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">destination</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a></td>
+        <td><span class="parametername">secsMessage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_Text_StringBuilder_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_">SECSFormatter.GetSECSMessageAsText(StringBuilder, String, String, SECSMessage)</a></div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,954 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/dkaip/git/CSharpSECSTools/DocFx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.html",
+          "hash": "50xiV5TKh2Nt6QVofPY5/K0rTMysS0KPVYeEWDjzxpA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html",
+          "hash": "cjKz+fJR9qsrHU4AuFIzRHEkwLg01bTa6eqFOKhjIjk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode.html",
+          "hash": "sUs0WsEIXqF2Z+CeOP2Axef/AzRCrmnh4UGeDd0n67k="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionNetworkFamily.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionNetworkFamily.html",
+          "hash": "Ns29JT4mkXwxDDhPDxf/X19S7q+/rNqmL2JvyPKTKao="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionState.html",
+          "hash": "h74lsSxX5r6QjZNBsCswf6+/oG+pIj2AZ97m7V/1eko="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSHeader.html",
+          "hash": "JgNhi56I0A4Nyt1XJHjiMe6AENCzw70Hm2G5JmYthoQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.PTypeValues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.PTypeValues.html",
+          "hash": "XGKe3LY2rASXbYYxOiINqMsv5ZifSbJC8LO6mAtlyCA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html",
+          "hash": "/Vc+AfVZEVS13u/IkSAzDyMBGpK6sb5aq/wYr6TttGg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionType.html",
+          "hash": "MjzGDEldlzodLj2gkgcj7X+Z3jHvNclvPOIZoW4TpGs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html",
+          "hash": "b1HF4Xt0gAIIRml4nubpvkstjeNQG7qP817nrXyKsfo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html",
+          "hash": "CuhfUa8HZ/5e5TsovoBFVFG20iBvNtZ+Odj9PaPSxms="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIHeader.html",
+          "hash": "kIxqtnnvtdySBp7FjxhsWEPr6DM/08sDRtjdaWEQjp0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html",
+          "hash": "7hov4f3BiJQtzZAVwwCz5F8kzZj6nuytdJgd5SAhwYU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.STypeValues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.STypeValues.html",
+          "hash": "Knr+kbfvO7VkS5E4hxdsj8qt2ZOwK/0c0gSkWH/YCT8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.html",
+          "hash": "R8lx/4hnqyUJcqgFRyZvP8YQsKyQOyRcFzB0pctB9fg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.TransientMessageStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.TransientMessageStatus.html",
+          "hash": "2ScyqObjUBxd9RzGWAe0R8s84GYxobJqnv8202MKB/Q="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.html",
+          "hash": "ouXPRGmnbMT2hnvHGxSy5vIwp7BgK7411shQIkZu7/U="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/SECSCommUtils/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/index.html",
+          "hash": "G3sWxr6eXBp7yLxQDYCb/0gniLYcpk+FXmj72W2CqnM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/SECSCommUtils/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/toc.html",
+          "hash": "QVvYZbcQmgRwSLG1SC2nPP7/xIp8k3sreJlcCI836is="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.html",
+          "hash": "Ets6h5JOL1gIXp9F12m1zDuN44PXW6QH1OXycRrA9SE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.html",
+          "hash": "q/KAgdxT65gBDJTTP/0jkV6DaPuuV+dXnL+xL6kFq5k="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.html",
+          "hash": "4HXmvPgWIiEXtDSF0ImDWb4i59zGUnn+nCgJ1eqjKss="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.html",
+          "hash": "4ccvqSpudzkqG7qWDVi2cj4xJpwBWIsX401uu62UE4A="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.html",
+          "hash": "r5ca7rmsW+pMAFqAifp090vH5/7rpyuspSyRCNeCssY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.html",
+          "hash": "G9Vc29IvSKQ16IxA9f+aARVeGdJQZF9U1WkNFmzb7d4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.html",
+          "hash": "6McGnBqebtVD0d/sej3RcsJLGKjlyt+qP60c24zDwrA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.html",
+          "hash": "f9OjhSq6Yd/XZuwTHH/P7EuRbcDqwbAEH8LnMk86M+8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.html",
+          "hash": "9hsxHqIcblOnvHWL1Dg7mi2rb/Gv3q+jiSmZ/hGb1So="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.html",
+          "hash": "lqguV9tKYER3/rp9t6MU2lbM4dTFiMPjBw9+wugY+hE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.html",
+          "hash": "1aY7wjO2qH1Ropd8IbPvzaHX9DYNiJaLvm/nC63vnMQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.html",
+          "hash": "AV/axpG2oFyWSdjQD4W+e0rMO+6Tj7o1Mo/jweKrJU0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.html",
+          "hash": "13GOLI+tW0wRwJSXTqWEqp7sAmfP8RuQhlYHiaJTi0w="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.html",
+          "hash": "obHPRI/zdlsmrVpnTK4FOicc8O0rpYoTeWI53JgJlOA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.html",
+          "hash": "vTwhP0YoxmKVzYHL+BCgmOF8MIqkYhUtJ8FwqM2hvI4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.html",
+          "hash": "SlKkESeWWL0i6ETumvCLAxrn16GHwoIcTXSJcrFVsD0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html",
+          "hash": "29DqDTtpGmzeQj3JEx4Isi8DbdWAZTYDb8eALqr8LCQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html",
+          "hash": "iOI/lCqYoM7f6ZXbVD+Q20euRx3rVsVjrE6iFBh6lb8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFactory.html",
+          "hash": "Gt3QlifyKSR0uWnFdeuoSllhpVx/uMQBH+XlkPdJky8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCode.html",
+          "hash": "uCoINSwWq4SXGfcusj3pt0fxdohVNpq4xxTq+jCMplQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCodeFunctions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFormatCodeFunctions.html",
+          "hash": "45kEViAcFp5GGIea61kAWPahAPMBi2jB0zzXnAGRHhw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes.html",
+          "hash": "9mos+hnJoKQV9+C1vVfLHEiWtbsTId4XsolMriZA61Y="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.html",
+          "hash": "7OzvbUETASgN+7WQMFwZVTkvH2dQFDkr7IxGcfLBTgE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.html",
+          "hash": "hfuarXsOuDpulYOjyrHqJEQuPn9sQdIPgdpfkR/l6OQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.html",
+          "hash": "tsZXxbLUOwY7WLtCsS50ZhJBC4QI8tIfQLzcE2HB9Xo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.html",
+          "hash": "fIzCMW6bClIRzIFEXHAxqfSiG6QZE7mzHv+Z0GLNhoI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html",
+          "hash": "Y30oUzmKOkMjrzvP/VPH6iPZuZvMu0+lFNuqbRFjtFU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.html",
+          "hash": "SjIwBwH26kTNzXGCJHVPn9Ln14aa5FtsdHXx1H8mx6s="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.html",
+          "hash": "AOKjAmREWeWBJmzpTxDO6bF5lFh5+2uu7ydUpjGt0ss="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.html",
+          "hash": "CIu+qR1Onfu/fXEd4PCKC2bx2dgQrVcbdUB8JYw30Vw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.html",
+          "hash": "KoQqbf4WE7OE60rO3aROtyOQrkn4pnXU4wnz9nNMTVE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/SECSItems/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/index.html",
+          "hash": "kg2qGZuVhPn1+kNSrg7137+ovwnbZvSNbf1P+T7+5oE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/SECSItems/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSItems/toc.html",
+          "hash": "+9ye70W1yk4LnZrgz5AaJLB6ShD8krpD7ab90ZHyJns="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.html",
+          "hash": "cL60VaPMp4yhDVqBg6vnfDIXw6E0x+O7LDCwMHj6gKs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.DisplayAsType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.DisplayAsType.html",
+          "hash": "dkCqKtyaxjcQgqbuX75RwGgdeC2ZFY+yrD1k1BmPATQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.html",
+          "hash": "mW0qAYsV5qXbITYqItJclsfPHwWR6TZiD82kKuWz+u0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html",
+          "hash": "UuY/A7PM06VWngRxenongRPekZ2+RdYuNCBqhmQyLqI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatterFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatterFactory.html",
+          "hash": "7B59TtGCO7/rUqmMEjakpbPrO63C0jV9xWBFch8g/RI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.html",
+          "hash": "0J+Oq12PSI8rx1/h1WntrUtZbS7QXUWVYdsY635ZZw0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html",
+          "hash": "mQyjj7W0PottK+28o91IunkhSXn15AhLxuBOEbHM0gg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html",
+          "hash": "OOUrbQguyhUavuIFxwZIgIXlxYHWCElNUY3kVnrg2uo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.html",
+          "hash": "MOkAZq8ei9UAfFxDK4gud5NUtLfdGgt3Cp0neb59a1Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.XMLOutputConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.XMLOutputConfig.html",
+          "hash": "TvHa2EEWdHb9v3pLb0x+NJldTosExfWmPda1nUxic6c="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.html",
+          "hash": "HQPmnc0HCIJEKnXZa2viApZK3QeJbR+aEjFVxrRk7/E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/TextFormatter/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/index.html",
+          "hash": "JHsCpkcp2M1t8PCDrjSQOtjt+OsFc86tBpgZhabmxOI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/TextFormatter/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TextFormatter/toc.html",
+          "hash": "LxmzXh8oMDiu447HZitnkcVZvYhNoAwLXnzgm4owvzg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "ow9Vrr54g4Yg30QPKkp81J3t1sUZtl1OHEJ+7OKLVMU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "Upg+2PZF+bSkjPf/1/amIkGvQAHIaR91WCyvLy/MhPQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "bINz6o75FPw/kLxPtbaFuFvl3CjNmmmCV/cP4mr3Roc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "+FPCLcvmNhVb9VLasYr6Tnep0PZtIA6V/UOJ0u+1RmE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "ggJ+Irj2XXCmrvcDfQ5Xs6nlGiEM4CjmcFZO58Y3otM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "Fc9g2l4bnimR8jMvjtz0O/LjC2XqHdNQwO05t3GkvgM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "utilities/SECSSpy.md",
+      "output": {
+        ".html": {
+          "relative_path": "utilities/SECSSpy.html",
+          "hash": "okL0RETBsv8VB84m+TY97Hnb+fts3e7rnDm98e2UlXM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "utilities/SECSTee.md",
+      "output": {
+        ".html": {
+          "relative_path": "utilities/SECSTee.html",
+          "hash": "FQKpnoSlcyB2G1EiOJRSX+jRDr8q+GuGKKZNRsruA4A="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "utilities/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "utilities/intro.html",
+          "hash": "7uMvyx93cUuTgly9UoVZWdurs0X1d4+1JNqaDoHBV6g="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "utilities/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "utilities/toc.html",
+          "hash": "0Cv2XHBVpXHsfHqJcu0AJNZqsKhvSjx81XmhGWFBbZM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 9,
+          "skipped_file_count": 9
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 59,
+          "skipped_file_count": 58
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

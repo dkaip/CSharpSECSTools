@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace com.CIMthetics.CSharpSECSTools.TextFormatter
+ </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace com.CIMthetics.CSharpSECSTools.TextFormatter
+ ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter">
+
+  <h1 id="com_CIMthetics_CSharpSECSTools_TextFormatter" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter" class="text-break">Namespace com.CIMthetics.CSharpSECSTools.TextFormatter
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+</h3>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.html">BodyOutputConfig</a></h4>
+      <section></section>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.html">HeaderOutputConfig</a></h4>
+      <section></section>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html">SECSFormatter</a></h4>
+      <section><p>This is an <code>abstract</code> base class providing the framework for classes
+that will be able to turn <code>SECSMessage</code>s, <code>SECSHeader</code>s, and
+<code>SECSITEM</code>s into a C# <code>string</code> suitable for output to a
+terminal and or a file.</p>
+<p>
+Note: At this time the current max indentation level is 132 spaces.
+</p>
+</section>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatterFactory.html">SECSFormatterFactory</a></h4>
+      <section><p>A factory class used to create a <code>SECSFormatter</code> of the appropriate
+type.</p>
+</section>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.html">SMLFormatter</a></h4>
+      <section><p>A class to create a textual representation of
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
+using using SML.</p>
+</section>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html">SMLOutputConfig</a></h4>
+      <section></section>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html">TextFormatterConfig</a></h4>
+      <section><p>This class is used as the argument of the constructor of a
+<code>SECSFormatter</code> object in order to provide it with
+information it needs to do its job.</p>
+</section>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.html">XMLFormatter</a></h4>
+      <section><p>A class to create a textual representation of
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
+<a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
+using using XML.</p>
+</section>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLOutputConfig.html">XMLOutputConfig</a></h4>
+      <section></section>
+    <h3 id="enums">Enums
+</h3>
+      <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.DisplayAsType.html">DisplayAsType</a></h4>
+      <section></section>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

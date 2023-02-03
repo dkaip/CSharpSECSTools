@@ -1,0 +1,584 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SECSFormatter
+ </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SECSFormatter
+ ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter">
+
+
+  <h1 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter" class="text-break">Class SECSFormatter
+</h1>
+  <div class="markdown level0 summary"><p>This is an <code>abstract</code> base class providing the framework for classes
+that will be able to turn <code>SECSMessage</code>s, <code>SECSHeader</code>s, and
+<code>SECSITEM</code>s into a C# <code>string</code> suitable for output to a
+terminal and or a file.</p>
+<p>
+Note: At this time the current max indentation level is 132 spaces.
+</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">SECSFormatter</span></div>
+      <div class="level2"><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.html">SMLFormatter</a></div>
+      <div class="level2"><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.html">XMLFormatter</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.html">com.CIMthetics.CSharpSECSTools.TextFormatter</a></h6>
+  <h6><strong>Assembly</strong>: TextFormatter.dll</h6>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class SECSFormatter</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_AddDirection_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.AddDirection*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_AddDirection" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.AddDirection">AddDirection</h4>
+  <div class="markdown level1 summary"><p>This property allows for the viewing or changing of the configured
+<code>AddDirection</code> parameter. See
+<a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_AddDirection">TextFormatterConfig</a>
+for more information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddDirection { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_AddTimestamp_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.AddTimestamp*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_AddTimestamp" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.AddTimestamp">AddTimestamp</h4>
+  <div class="markdown level1 summary"><p>This property allows for the viewing or changing of the configured
+<code>AddTimestamp</code> parameter. See
+<a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_AddTimestamp">TextFormatterConfig</a>
+for more information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddTimestamp { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_CurrentIndentLevel_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.CurrentIndentLevel*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_CurrentIndentLevel" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.CurrentIndentLevel">CurrentIndentLevel</h4>
+  <div class="markdown level1 summary"><p>This is the current level of indention that the formatter is
+currently operating with.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CurrentIndentLevel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_IndentAmount_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.IndentAmount*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_IndentAmount" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.IndentAmount">IndentAmount</h4>
+  <div class="markdown level1 summary"><p>This property allows for the viewing or changing of the configured
+<code>IndentAmount</code> parameter. See
+<a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_IndentAmount">TextFormatterConfig</a>
+for more information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int IndentAmount { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_TimestampFormat_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.TimestampFormat*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_TimestampFormat" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.TimestampFormat">TimestampFormat</h4>
+  <div class="markdown level1 summary"><p>This property allows for the viewing or changing of the configured
+<code>TimestampFormat</code> parameter. See
+<a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_TimestampFormat">TextFormatterConfig</a>
+for more information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TimestampFormat { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetHeaderAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetHeaderAsText(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)">GetHeaderAsText(SECSHeader)</h4>
+  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSHeader</code>
+suitable for output to a terminal or a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string GetHeaderAsText(SECSHeader secsHeader)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
+        <td><span class="parametername">secsHeader</span></td>
+        <td><p>The <code>SECSHeader</code> object to generate the <code>string</code>
+representation of.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A representation of the <code>SECSHeader</code> in <code>string</code> form that
+is suitable for output to a terminal or file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The <code>SECSHeader</code> object is not modified.</p>
+</div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetHeaderAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetHeaderAsText(System.Text.StringBuilder,com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)">GetHeaderAsText(StringBuilder, SECSHeader)</h4>
+  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSHeader</code>
+suitable for output to a terminal or a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void GetHeaderAsText(StringBuilder sb, SECSHeader secsHeader)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.StringBuilder</span></td>
+        <td><span class="parametername">sb</span></td>
+        <td><p>A <code>StringBuilder</code> that the user creates and passes in to
+receive the resulting <code>string</code> representation of the
+<code>SECSHeader</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
+        <td><span class="parametername">secsHeader</span></td>
+        <td><p>The <code>SECSHeader</code> object to generate the <code>string</code>
+representation of.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The <code>SECSHeader</code> object is not modified.</p>
+</div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSItemAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSItemAsText(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">GetSECSItemAsText(SECSItem)</h4>
+  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSItem</code>
+suitable for output to a terminal or a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string GetSECSItemAsText(SECSItem secsItem)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><span class="parametername">secsItem</span></td>
+        <td><p>The <code>SECSItem</code> object to generate the <code>string</code>
+representation of.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A representation of the <code>SECSItem</code> in <code>string</code> form that
+is suitable for output to a terminal or file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The <code>SECSItem</code> object is not modified.</p>
+</div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSItemAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSItemAsText(System.Text.StringBuilder,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">GetSECSItemAsText(StringBuilder, SECSItem)</h4>
+  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSItem</code>
+suitable for output to a terminal or a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void GetSECSItemAsText(StringBuilder sb, SECSItem secsItem)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.StringBuilder</span></td>
+        <td><span class="parametername">sb</span></td>
+        <td><p>A <code>StringBuilder</code> that the user creates and passes in to
+receive the resulting <code>string</code> representation of the
+<code>SECSItem</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><span class="parametername">secsItem</span></td>
+        <td><p>The <code>SECSItem</code> object to generate the <code>string</code>
+representation of.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The <code>SECSItem</code> object is not modified.</p>
+</div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSMessageAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSMessageAsText(System.String,System.String,com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)">GetSECSMessageAsText(String, String, SECSMessage)</h4>
+  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSMessage</code>
+suitable for output to a terminal or a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string GetSECSMessageAsText(string source, string destination, SECSMessage secsMessage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The &quot;source&quot; or producer of the message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">destination</span></td>
+        <td><p>The &quot;destination&quot; or consumer of the message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a></td>
+        <td><span class="parametername">secsMessage</span></td>
+        <td><p>The <code>SECSMessage</code> object to generate the <code>string</code>
+representation of.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A representation of the <code>SECSMessage</code> in <code>string</code> form that
+is suitable for output to a terminal or file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The <code>SECSMessage</code> object is not modified.</p>
+</div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSMessageAsText*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_Text_StringBuilder_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSMessageAsText(System.Text.StringBuilder,System.String,System.String,com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)">GetSECSMessageAsText(StringBuilder, String, String, SECSMessage)</h4>
+  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSMessage</code>
+suitable for output to a terminal or a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void GetSECSMessageAsText(StringBuilder sb, string source, string destination, SECSMessage secsMessage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.StringBuilder</span></td>
+        <td><span class="parametername">sb</span></td>
+        <td><p>A <code>StringBuilder</code> that the user creates and passes in to
+receive the resulting <code>string</code> representation of the
+<code>SECSMessage</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The &quot;source&quot; or producer of the message.
+into a <code>string</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">destination</span></td>
+        <td><p>The &quot;destination&quot; or consumer of the message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a></td>
+        <td><span class="parametername">secsMessage</span></td>
+        <td><p>The <code>SECSMessage</code> object to generate the <code>string</code>
+representation of.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_Text_StringBuilder_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The <code>SECSMessage</code> object is not modified.</p>
+</div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class U4ArraySECSItem
+ </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class U4ArraySECSItem
+ ">
+  
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem">
+
+
+  <h1 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem" class="text-break">Class U4ArraySECSItem
+</h1>
+  <div class="markdown level0 summary"><p>This class represents/implements a SECSItem with the SECS data type of <code>U4</code>
+in an array form.  In this case it is an array of zero or more 32-bit unsigned
+integers.From the C# side this data type is handled as a C# <code>UInt32 []</code>.</p>
+<p>In wire/transmission format all SECS items, with the exception of those with an item format code
+of <code>L</code>(List), are sent in an array form.  For instance if an item is received which has
+an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
+containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
+-byte signed integers. Likewise, If an item is received which has an item format code of
+U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
+containing 3 2-byte unsigned integers.</p>
+<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
+length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
+vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></div>
+    <div class="level2"><span class="xref">U4ArraySECSItem</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_formatCode">SECSItem.formatCode</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_inboundNumberOfLengthBytes">SECSItem.inboundNumberOfLengthBytes</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_outboundNumberOfLengthBytes">SECSItem.outboundNumberOfLengthBytes</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_lengthInBytes">SECSItem.lengthInBytes</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_numberOfElements">SECSItem.numberOfElements</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_bytesConsumed">SECSItem.bytesConsumed</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_OutputHeaderLength">SECSItem.OutputHeaderLength()</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_PopulateSECSItemHeaderData_System_Byte___System_Int32_">SECSItem.PopulateSECSItemHeaderData(Byte[], Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetLengthInBytes">SECSItem.GetLengthInBytes()</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetInboundNumberOfLengthBytes">SECSItem.GetInboundNumberOfLengthBytes()</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetBytesConsumed">SECSItem.GetBytesConsumed()</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_SetOutboundNumberOfLengthBytes_System_Int32_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_">SECSItem.SetOutboundNumberOfLengthBytes(Int32, SECSItemNumLengthBytes)</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetSECSItemFormatCode">SECSItem.GetSECSItemFormatCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetFormatCode">SECSItem.GetFormatCode()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.html">com.CIMthetics.CSharpSECSTools.SECSItems</a></h6>
+  <h6><strong>Assembly</strong>: SECSItems.dll</h6>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class U4ArraySECSItem : SECSItem</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem__ctor_System_Byte___System_Int32_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor(System.Byte[],System.Int32)">U4ArraySECSItem(Byte[], Int32)</h4>
+  <div class="markdown level1 summary"><p>This constructor is used to create this SECSItem from
+data in &quot;wire/transmission&quot; format.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public U4ArraySECSItem(byte[] data, int itemOffset)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The buffer where the &quot;wire/transmission&quot; format data is contained.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">itemOffset</span></td>
+        <td><p>The offset into the data where the desired item starts.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem__ctor_System_UInt32___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor(System.UInt32[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)">U4ArraySECSItem(UInt32[], SECSItemNumLengthBytes)</h4>
+  <div class="markdown level1 summary"><p>This constructor creates a SECSItem that has a type of <code>U4</code>
+with the specified value.</p>
+<p>This form of the constructor is not needed much nowadays.  In the past
+there were situations where the equipment required that messages
+contained SECSItems that had a specified number of length bytes.
+This form of the constructor is here to handle these problem child cases.</p>
+<p>Note: It will be created with the number of length bytes set to greater of,
+the specified number of length bytes or the number required based on the
+length (in elements) of the <code>UInt32 []</code> provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public U4ArraySECSItem(uint[] value, SECSItemNumLengthBytes desiredNumberOfLengthBytes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to be assigned to this <code>SECSItem</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes.html">SECSItemNumLengthBytes</a></td>
+        <td><span class="parametername">desiredNumberOfLengthBytes</span></td>
+        <td><p>The number of length bytes to be used for this <code>SECSItem</code>.
+The value for the number of length bytes must be <code>ONE</code>, <code>TWO</code>, or <code>THREE</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem__ctor_System_UInt32___" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor(System.UInt32[])">U4ArraySECSItem(UInt32[])</h4>
+  <div class="markdown level1 summary"><p>This constructor creates a SECSItem that has a type of <code>U4</code> with
+the minimum number of length bytes required.
+Note: It will be created with the number of length bytes required
+based on the length (in elements) of the<code>UInt32 []</code> provided.
+The maximum array length allowed is <pre><code>16777215</code></pre> bytes(elements).
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public U4ArraySECSItem(uint[] value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>An array of <code>UInt32</code> values to be assigned to this <code>SECSItem</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_EncodeForTransport_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.EncodeForTransport*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_EncodeForTransport" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.EncodeForTransport">EncodeForTransport()</h4>
+  <div class="markdown level1 summary"><p>Creates and returns a <code>byte[]</code> that represents this <code>SECSItem</code> in &quot;wire/transmission format&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override byte[] EncodeForTransport()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>A <code>byte[]</code> representation of this <code>SECSItem</code>'s content that is suitable for transmission.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_EncodeForTransport">SECSItem.EncodeForTransport()</a></div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_Equals_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.Equals*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_Equals_System_Object_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the specified <span class="xref">System.Object</span> is equal to the current <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html">U4ArraySECSItem</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The <span class="xref">System.Object</span> to compare with the current <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html">U4ArraySECSItem</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the specified <span class="xref">System.Object</span> is equal to the current
+<a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html">U4ArraySECSItem</a>; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_Equals_System_Object_">SECSItem.Equals(Object)</a></div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_GetHashCode_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.GetHashCode*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_GetHashCode" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>Serves as a hash function for a <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html">U4ArraySECSItem</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a
+hash table.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetHashCode">SECSItem.GetHashCode()</a></div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_GetValue_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.GetValue*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_GetValue" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.GetValue">GetValue()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of this <code>SECSItem</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint[] GetValue()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span>[]</td>
+        <td><p>the value of the <code>SECSItem</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_ToString_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.ToString*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_ToString" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Returns a <code>string</code> representation of this item in a format
+suitable for debugging.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A <code>string</code> representation of this item in a format suitable for debugging.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.ToString()</span></div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

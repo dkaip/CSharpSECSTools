@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>API Libraries Overview </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="API Libraries Overview ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="api-libraries-overview">API Libraries Overview</h1>
+
+<p>This page contains overview level information for the API libraries available
+in this project.  For more specific and complete information please click on
+the section headers below.  This will take you to the detailed documentation
+for each API.</p>
+<p>If you just want to see the documentation for the methods, properties, etc.,
+that are available for a specific API click on the links to the left.</p>
+<h2 id="secsitems"><a href="SECSItems/index.html">SECSItems</a></h2>
+<p>This API library allows a user to create and manipulate <code>SECSItem</code>s in the
+programming language of C#.  A <code>SECSItem</code> is a base class for a collection
+of classes that represent individual SECS-II data items.  Examples of these
+classes include <code>ASCIISECSItem</code>, <code>BinarySECSItem</code>, <code>U4SECSItem</code>, etc.</p>
+<p>Normally in the course of life SECS-II message are sent between communication
+endpoints in a binary or &quot;transmission format&quot;.  This
+&quot;transmission format&quot; while good for sending information between
+the endpoints is not conducive for easy retrieval / manipulation in a
+programming language without some form of helper API.  This API was created
+to provide that help.</p>
+<h2 id="secscommutils"><a href="SECSCommUtils/index.html">SECSCommUtils</a></h2>
+<h2 id="textformatter"><a href="TextFormatter/index.html">TextFormatter</a></h2>
+<p>This API library allows a user to convert <code>SECSMessage</code>s, <code>SECSHeader</code>s, and
+<code>SECSItem</code>s into either <a href="#sml-output">SML</a> or <a href="#xml-output">XML</a> formats.
+These formats are suitable for output to a terminal and / or a file.</p>
+<p>The <code>SECSMessage</code> and <code>SECSHeader</code> classes are located in the
+<a href="#secscommutils">SECSCommUtils</a> API library.  The <code>SECSItem</code> classes are
+located in the <a href="#secsitems">SECSItems</a> API library.</p>
+<p>A primary use for features provided by this API are to generate output
+for logging.</p>
+<h3 id="sml-output">SML Output</h3>
+<p>SML, or <strong>S</strong>ECS <strong>M</strong>essage <strong>L</strong>anguage, is a somewhat compact display
+notation that many people who have been
+in the industry for a while will be familiar with.  Humans can read SML
+fairly well.  However, it can be a real pain to parse programmatically in
+cases where the contents of a log file need to be used as input to another
+program. i.e. Equipment or Host simulator scripts, data mining scripts, etc.</p>
+<p>For more information on SML see
+<a href="https://www.peergroup.com/resources/secs-message-language/">SECS Message Language (SML)</a>.</p>
+<h3 id="xml-output">XML Output</h3>
+<p>XML(eXtensible Markup Language) was designed to be a language for the
+storage and transport of data.  This API is able to produce output in
+this format.  XML can be quite human readable and it is much easier
+to parse programmatically in the event that output in this format needs
+to be used as input to another program. i.e. Equipment or Host simulator
+scripts, data mining scripts, etc.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

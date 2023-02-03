@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SECSSpy </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SECSSpy ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="secsspy">SECSSpy</h1>
+
+<p>This utility program is used to log the SECS message traffic between two endpoints of a &quot;SECS connection&quot; to a file.</p>
+<p>The output format of the resulting log file may be configured to be either <a href="https://www.peergroup.com/resources/secs-message-language/">SECS Message Language(SML)</a> or <a href="https://www.w3.org/standards/xml/core">XML(Extensible Markup Language)</a>.  When the output format is selected there are a number of customization options that may be applied depending on the output format selected.  Refer to the <a href="#smloutput">SML Output</a> or <a href="#xmloutput">XML Output</a> sections of this document for more information on these options.</p>
+<p>Why are there two output formats available?  SML has been around for many years now and is quite familiar to those who have been working in this part of this industry for a long time.  When looking at the log files with your own eyes it is very adequate.  However, it can be a real pain to write a parser for, hence the ability to write out log files in XML.  Why would you ever need to parse a log file?</p>
+<p>There are a number of reasons why being able to easily parse a log file is a good and useful thing.</p>
+<ul>
+<li>Equipment Interface(EI) Development/Enhancment/Debugging - It can be a great aide in the development and or debugging cycle to be able to generate an equipment simulator.  With this simulator you are able to run your EI against a simulator that is simulating a genuine equipment operation cycle complete with all of the data events and their respective reports, perhaps megabytes worth of data.  I will mention here that parsing the log file and producing code segments for <a href="https://github.com/dkaip/sc_open">sc_open</a> can be invaluable in EI development, maintenance, debugging, etc.</li>
+<li>Audit Trail - depending on your software integration / automation stack it may be much easier to generate audit trail information from log files generated from the communication between the MES software and the equipment than it is to generate the information from other sources.</li>
+</ul>
+<p>There are plenty of additional uses for a log files that may be parsed easily by a program.</p>
+<p><strong>Note:</strong> At this time this program is only able to log SECS messages between two endpoints of an HSMS connection.</p>
+<h2 id="configuration-file">Configuration File</h2>
+<p>The configuration file, unless specified on the command line, is <code>appsettings.json</code>.  This file contains several elements that are needed to configure <code>SECSSpy</code> for operation.  Following is documentation pertaining to various elements.</p>
+<h3 id="configurationpairs">&quot;ConfigurationPairs&quot;</h3>
+<p>This section contains an array of <code>ConfigurationPair</code> sections.  A configuration pair represents a &quot;SECS connection&quot; or link between two &quot;entities&quot; that are communicating to each other using the SECS protocol either using HSMS or SECS-I as the transport layer.</p>
+<p>In the normal case only one <code>ConfigurationPair</code> section is configured.  This will allow the logging of the SECS-II traffic (and potentially HSMS control messages) between one &quot;entities&quot; and different &quot;entities&quot;.  This is not done via magic however, you will need &quot;point&quot; the two entities to <code>SECSSpy</code> and configure <code>SECSSpy</code> to point to the two entities.</p>
+<p>An example may help, consider an HSMS connect/link betweem an EI and a piece of equipment.  You might configure the piece of equipment with a connection mode of <code>Passive</code> and listening on <code>Port</code> 50000.  In this case the EI would be configured to be <code>Active</code> and given port 50000 as the port it should attempt to connect to.  (Yes, the network address needs to be specified as well.)  In order to use <code>SECSSpy</code> to log the traffic between them you would configure your EI to use <code>Port</code> 50001 instead of <code>Port</code> 50000.  You would then configure one of the elements in the <code>ConfigurationPair</code> section <code>SECSSpy</code>'s configuration file to be <code>Passive</code> and listen on <code>Port</code> 50001 and the other element in the pair to be <code>Active</code> on port 50000.  This will effectively put <code>SECSSpy</code> in the middle and allow it to log all SECS-II traffic.</p>
+<p>It is possible to have multiple <code>ConfigurationPair</code> sections within the <code>ConfigurationPairs</code> section in order to allow for the logging of the traffic on multiple connections/links to the same log file.  This is not how <code>SECSSpy</code> would typically be used.   However, it might prove valuable in the case of a Litho cluster.  In this situation the messages are NOT logged in the order they are received, although it will probably be close enough.  Each message is received in its own thread.  Once it is passed on to its destination it will be dumped onto the FIFO queue that feeds the log output &quot;engine&quot; and from there it will be in FIFO order.</p>
+<h3 id="configurationpair">&quot;ConfigurationPair&quot;</h3>
+<p>This section is a <code>json</code> array that contains one entry for each end of a SECS connection.  There may only be two entries in this array.</p>
+<h3 id="loggingoutputformat">&quot;LoggingOutputFormat&quot;</h3>
+<p>This instructs <code>SECSSpy</code> to product logging output in either SML or XML.  Valid values for this element are &amp;quotSML&quot; or
+&quot;XML&quot;.</p>
+<h2 id="smloutput">&quot;SMLOutput&quot;</h2>
+<h3 id="sml-header-output-format-options">SML Header Output Format Options</h3>
+<h3 id="sml-body-output-format-options">SML Body Output Format Options</h3>
+<h2 id="xmloutput">&quot;XMLOutput&quot;</h2>
+<p>When outputting the log information in the XML format be warned that an XML document is <strong>NOT</strong> produced.  Only well-formed XML is output.  If you want to be able to parse the XML with any of the standard XML parser APIs available you will need to create an XML document.  Doing this is an easy task.  You must add an XML declaration to your file in addition to a root element of your choice.  Don't forget to close the root element.</p>
+<pre><code class="lang-C#">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;MyLogFileRootElement&gt;
+</code></pre>
+<p>Paste the contents of the log file you are interested in parsing here.</p>
+<pre><code class="lang-C#">&lt;/MyLogFileRootElement&gt;
+</code></pre>
+<p>Make sure when you are doing your copying and pasting that you &quot;grab&quot; complete XML element(s).</p>
+<p>When XML output is chosen there are some customization that may be applied.</p>
+<h3 id="xml-header-output-format-options">XML Header Output Format Options</h3>
+<table>
+<thead>
+<tr>
+<th>Header Config Element</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DisplayAsElementsOrAttributes</td>
+<td><code>Elements</code> or <code>Attributes</code> Display the individual header parts using XML elements or as XML Attributes in a single XML element</td>
+</tr>
+<tr>
+<td>DisplayMessageIdAsSxFy</td>
+<td><code>true</code> if you want the message Id displayed like <code>SxFy</code> false if otherwise</td>
+</tr>
+<tr>
+<td>DisplayDeviceId</td>
+<td><code>true</code> if you want the device Id displayed, <code>false</code> if otherwise</td>
+</tr>
+<tr>
+<td>DisplaySystemBytes</td>
+<td><code>true</code> if you want the System Bytes displayed, <code>false</code> if otherwise</td>
+</tr>
+<tr>
+<td>DisplayWBit</td>
+<td><code>true</code> if you want the W-bit displayed, <code>false</code> if otherwise</td>
+</tr>
+<tr>
+<td>DisplayControlMessages</td>
+<td><code>true</code> if you want control messages displayed, <code>false</code> if otherwise</td>
+</tr>
+</tbody>
+</table>
+<p>Example output with <code>DisplayAsElementsOrAttributes</code> set to <code>Elements</code></p>
+<pre><code class="lang-C#">&lt;SECSMessage&gt;
+  &lt;Direction&gt;
+    &lt;Source&gt;MES&lt;/Source&gt;
+    &lt;Destination&gt;Equipment&lt;/Destination&gt;
+  &lt;/Direction&gt;
+  &lt;Header&gt;
+    &lt;DeviceId&gt;0&lt;/DeviceId&gt;
+
+    &lt;Stream&gt;1&lt;/Stream&gt;
+    &lt;Function&gt;1&lt;/Function&gt;
+            or
+    &lt;SxFy&gt;S1F1&lt;/SxFy&gt;
+
+    &lt;WBit&gt;1&lt;/WBit&gt;
+    &lt;SystemBytes&gt;40127&lt;/SystemBytes&gt;
+  &lt;/Header&gt;
+  &lt;Body&gt;
+  &lt;/Body&gt;
+     or 
+  &lt;Body/&gt;
+&lt;/SECSMessage&gt;
+</code></pre>
+<p>Example output with <code>DisplayAsElementsOrAttributes</code> set to <code>Attributes</code></p>
+<pre><code class="lang-C#">&lt;SECSMessage&gt;
+  &lt;Direction src=&quot;MES&quot; Dest=&quot;Equipment&quot;/&gt;
+
+  &lt;Header DeviceId=&quot;0&quot; Stream=&quot;1&quot; Function=&quot;1&quot; WBit=&quot;1&quot; SystemBytes=&quot;40127&quot;/&gt;
+                             or
+  &lt;Header DeviceId=&quot;0&quot; SxFy=&quot;S1F1&quot; WBit=&quot;1&quot; SystemBytes=&quot;40127&quot;/&gt;
+  &lt;Body&gt;
+  &lt;/Body&gt;
+&lt;/SECSMessage&gt;
+</code></pre>
+<h3 id="xml-body-output-format-options">XML Body Output Format Options</h3>
+<p>Example body</p>
+<pre><code class="lang-C#">&lt;SECSItem&gt;
+  &lt;Type&gt;U4&lt;/Type&gt;
+  &lt;NumberOfLengthBytes&gt;1&lt;NumberOfLengthBytes&gt;
+  &lt;LengthByteValue&gt;4&lt;/LengthByteValue&gt;
+  &lt;Value&gt;1234567&lt;/Value&gt;
+&lt;/SECSItem&gt;
+</code></pre>
+<p>example 2</p>
+<pre><code class="lang-XML">&lt;SECSItem&gt;
+  &lt;Type&gt;L&lt;/Type&gt;
+  &lt;NumberOfLengthBytes&gt;1&lt;NumberOfLengthBytes&gt;
+  &lt;LengthByteValue&gt;3&lt;/LengthByteValue&gt;
+  &lt;SECSItems&gt;
+    &lt;SECSItem&gt;
+      &lt;Type&gt;U4&lt;/Type&gt;
+      &lt;NumberOfLengthBytes&gt;1&lt;NumberOfLengthBytes&gt;
+      &lt;LengthByteValue&gt;4&lt;/LengthByteValue&gt;
+      &lt;Value&gt;1234567&lt;/Value&gt;
+    &lt;/SECSItem&gt;
+    &lt;SECSItem&gt;
+      &lt;Type&gt;U2&lt;/Type&gt;
+      &lt;NumberOfLengthBytes&gt;1&lt;NumberOfLengthBytes&gt;
+      &lt;LengthByteValue&gt;6&lt;/LengthByteValue&gt;
+      &lt;Value&gt;65535 32767 0&lt;/Value&gt;
+    &lt;/SECSItem&gt;
+    &lt;SECSItem&gt;
+      &lt;Type&gt;I1&lt;/Type&gt;
+      &lt;NumberOfLengthBytes&gt;1&lt;NumberOfLengthBytes&gt;
+      &lt;LengthByteValue&gt;1&lt;/LengthByteValue&gt;
+      &lt;Value&gt;-128&lt;/Value&gt;
+    &lt;/SECSItem&gt;
+  &lt;/SECSItems&gt;
+&lt;/SECSItem&gt;
+</code></pre>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
