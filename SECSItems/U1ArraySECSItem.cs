@@ -49,7 +49,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <param name="value">An array of <c>byte</c> values to be assigned to this <c>SECSItem</c>.</param>
 		public U1ArraySECSItem(byte[] value) : base(SECSItemFormatCode.U1, value.Length)
 		{
-			this.value = value;
+            if (value == null)
+                this.value = new byte[0];
+            else
+			    this.value = value;
 		}
 
         /// <summary>
@@ -83,12 +86,19 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// signature than the one above. Hopefully this will not be much of an issue 
         /// since this constructor will most likely be used in the lower level code 
         /// that once running will tend to be very stable.</param>
+        /// <remarks>
+        /// This form of the constructor is required to be available because a 
+        /// distinction needs to be made between constructing a <c>U1ArraySECSItem</c>
+        /// from a normal <c>byte[]</c> verses constructing a 
+        /// <c>U1ArraySECSItem</c> from a <c>byte[]</c> that contains the information
+        /// in the &quot;wire/transmission&quot; format.
+        /// </remarks>
 		public U1ArraySECSItem(byte[] data, int itemOffset, int bogus) : base(data, itemOffset)
 		{
-            int offset = 1 + inboundNumberOfLengthBytes.ValueOf () + itemOffset;
-            bytesConsumed = 1 + inboundNumberOfLengthBytes.ValueOf () + lengthInBytes;
+            int offset = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
+            bytesConsumed = 1 + NumberOfLengthBytes.ValueOf () + LengthInBytes;
 
-			value = new byte[lengthInBytes];
+			value = new byte[LengthInBytes];
 			for(int i = 0, j = offset; i < value.Length; i++, j++)
 			{
 				value[i] = data[j];
