@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,39 +13,68 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Linq;
+
+#nullable enable
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems 
 {
     /// <summary>
-    /// This class represents/implements a <c>SECSItem</c> with the SECS data type of <c>U8</c>,
-    /// which is an 8 byte (64-bit) unsigned integer in an array form. From the C# side this data
-    /// type is handled as a C# <c>UInt64 []</c>.
+    /// This class represents a SECS item with a data type of <c>U8</c>
+    /// in an array form. In this case it is an array of zero or more 64-bit unsigned integers.
+    /// The C# data type is <c>UInt64[]</c>.
     /// </summary>
 	public class U8ArraySECSItem : SECSItem
 	{
-		private UInt64[] value;
+		private UInt64[] _value;
+
+		/// <summary>
+		/// The value of this <c>U8ArraySECSItem</c>.
+		/// </summary>
+		public UInt64[] Value { get { return _value; } }
 
         /// <summary>
-        /// This constructor creates a SECSItem that has a type of <c>U8</c> with
-        /// the minimum number of length bytes required.
+        /// This constructor creates a <c>U8ArraySECSItem</c> with no elements.
         /// </summary>
-        /// <param name="value">An array of <c>UInt64</c> values to be assigned to this <c>SECSItem</c>.</param>
-		public U8ArraySECSItem(UInt64[] value) : base(SECSItemFormatCode.U8, value.Length * 8)
+		public U8ArraySECSItem() : base(SECSItemFormatCode.U8, 0)
 		{
-			this.value = value;
+            this._value = new UInt64[0];
 		}
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem"/> class.
+        /// This constructor creates a U8ArraySECSItem that will have the value of
+        /// the supplied <c>UInt64[]</c>.
+        /// </summary>
+        /// <param name="value">An array of <c>UInt64</c> values to be assigned to this <c>SECSItem</c>.</param>
+        /// <remarks>
+        /// The array's length should not exceed <c>2097151</c> elements.
+        /// </remarks>
+		public U8ArraySECSItem(UInt64[]? value) : base(SECSItemFormatCode.U8, value == null ? 0 : value.Length * 8)
+		{
+			if (value == null)
+				this._value = new UInt64[0];
+			else
+				this._value = value;
+		}
+
+        /// <summary>
+        /// This constructor creates a U8ArraySECSItem that will have the value of
+        /// the supplied <c>UInt64[]</c>.  In addition when converted to 
+        /// &quot;transmission&quot; form it will use the number of length bytes
+        /// specified <b>OR</b> the minimum number necessary to actually contain 
+        /// the length of the content of the <c>UInt64[]</c>.
         /// </summary>
         /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
-        /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <c>SECSItem</c>.
+        /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <code>SECSItem</code>.
         /// The value for the number of length bytes must be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
-		public U8ArraySECSItem(UInt64[] value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.U8, value.Length * 8, desiredNumberOfLengthBytes)
+        /// <remarks>
+        /// The array's length should not exceed <c>2097151</c> elements.
+        /// </remarks>
+		public U8ArraySECSItem(UInt64[]? value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.U8, value == null ? 0 : value.Length * 8, desiredNumberOfLengthBytes)
 		{
-			this.value = value;
+			if (value == null)
+				this._value = new UInt64[0];
+			else
+				this._value = value;
 		}
 
         /// <summary>
@@ -54,16 +83,15 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </summary>
         /// <param name="data">The buffer where the &quot;wire/transmission&quot; format data is contained.</param>
         /// <param name="itemOffset">The offset into the data where the desired item starts.</param>
-		public U8ArraySECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
+		internal U8ArraySECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
 		{
-            int offset = 1 + inboundNumberOfLengthBytes.ValueOf () + itemOffset;
-            bytesConsumed = 1 + inboundNumberOfLengthBytes.ValueOf () + lengthInBytes;
-			if ((lengthInBytes == 0) || ((lengthInBytes % 8) != 0))
-                throw new ArgumentOutOfRangeException("Illegal data length of: " + lengthInBytes + " payload length must be a non-zero multiple of 8.");
+            int offset = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
+			if ((LengthInBytes % 8) != 0)
+                throw new ArgumentOutOfRangeException("Illegal data length of: " + LengthInBytes + " payload length must be a multiple of 8.");
 
-			value = new UInt64[lengthInBytes / 8];
+			_value = new UInt64[LengthInBytes / 8];
 			byte[] temp = new byte[8];
-			for (int i = offset, j = 0; j < value.Length; i += 8, j++)
+			for (int i = offset, j = 0; j < _value.Length; i += 8, j++)
 			{
 				temp[0] = data[i];
 				temp[1] = data[i+1];
@@ -77,7 +105,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 				if (BitConverter.IsLittleEndian)
 					Array.Reverse(temp);
 
-				value[j] = BitConverter.ToUInt64(temp, 0);
+				_value[j] = BitConverter.ToUInt64(temp, 0);
 			}
 		}
 
@@ -85,11 +113,11 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// Gets the value of this <c>SECSItem</c>.
         /// </summary>
         /// <returns>the value of the <c>SECSItem</c>.</returns>
+		[ObsoleteAttribute("This method has been deprecated, please use property Value instead.")]
 		public UInt64[] GetValue()
 		{
-			return value;
+			return _value;
 		}
-
 
         /// <summary>
         /// Creates and returns a <c>byte[]</c> that represents this <c>SECSItem</c> in &quot;wire/transmission format&quot;.
@@ -97,12 +125,12 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>A <c>byte[]</c> representation of this <c>SECSItem</c>'s content that is suitable for transmission.</returns>
 		public override byte[] EncodeForTransport()
 		{
-			byte[] output = new byte[OutputHeaderLength()+(value.Length * 8)];
-			int offset = PopulateSECSItemHeaderData(output, (value.Length * 8));
+			byte[] output = new byte[OutputHeaderLength()+(_value.Length * 8)];
+			int offset = PopulateSECSItemHeaderData(output, (_value.Length * 8));
 
-			for( int i = offset, j = 0; j < value.Length; i+=8, j++ )
+			for( int i = offset, j = 0; j < _value.Length; i+=8, j++ )
 			{
-				byte[] temp = BitConverter.GetBytes(value[j]);
+				byte[] temp = BitConverter.GetBytes(_value[j]);
 
 				if (BitConverter.IsLittleEndian)
 					Array.Reverse(temp);
@@ -127,7 +155,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>A <c>string</c> representation of this item in a format suitable for debugging.</returns>
 		public override String ToString()
 		{
-			return "Format:" + formatCode.ToString() + " Value: Array";
+			return "Format:" + ItemFormatCode.ToString() + " Value: Array";
 		}
 
         /// <summary>
@@ -137,7 +165,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// hash table.</returns>
 		public override int GetHashCode()
 		{
-			return value.GetHashCode();
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = (int) 2166136261;
+                // Suitable nullity checks etc, of course :)
+                hash = (hash * 16777619) ^ base.GetHashCode();
+                hash = (hash * 16777619) ^ _value.GetHashCode();
+                return hash;
+            }
 		}
 
         /// <summary>
@@ -145,32 +180,28 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </summary>
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
-        /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem"/>; otherwise, <c>false</c>.</returns>
-		public override bool Equals(Object obj)
+        /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem"/>, <c>false</c> otherwise.</returns>
+		public override bool Equals(Object? obj)
 		{
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
+            if (base.Equals(obj) == false)
+                return false;
+
+            // If we are here obj is not null
 			if (GetType() != obj.GetType())
 				return false;
-			U8ArraySECSItem other = (U8ArraySECSItem) obj;
-			if (value == null && other.value == null)
+
+			U8ArraySECSItem other = (U8ArraySECSItem)obj;
+			if (_value == null && other._value == null)
 				return true;
-			if (value == null)
-			{
-				if (other.value != null)
-					return false;
-			}
-			if (other.value == null)
-			{
-				if (value != null)
-					return false;
-			}
-			if (value.Length != other.value.Length)
+
+			if ((_value != null && other._value != null) == false)
 				return false;
 
-			return value.SequenceEqual(other.value);
+            // If we are here both _value fields are not null
+			if (_value.Length != other._value.Length)
+				return false;
+
+			return _value.SequenceEqual(other._value);
 		}
 	}
 }

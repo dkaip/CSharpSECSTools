@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,57 +13,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
+
+ #nullable enable
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
     /// <summary>
-    /// This class represents/implements a <c>SECSItem</c> with the SECS data type of <c>F4</c>,
-    /// which is a 4 byte floating point number. From the C# side this data
-    /// type is handled as a C# <c>float</c>.
+    /// This class represents a <c>SECSItem</c> with the SECS data type of <c>F4</c>,
+    ///  which is a 32-bit floating point number. From the C# side this data type is handled as a C# <c>float</c>.
     /// </summary>
 	public class F4SECSItem : SECSItem
 	{
-		private float value;
+		private float _value;
 
 		/// <summary>
-        /// This constructor creates a <c>SECSItem</c> that has a type of <c>F4</c>
-        /// with the specified value. Note: It will be created with 1 length byte.
+		/// The value of this <c>F4SECSItem</c>.
 		/// </summary>
+		public float Value { get { return _value; } }
+
+        /// <summary>
+        /// This constructor creates an F4SECSItem that will have the value of
+        /// the supplied <c>float</c>.
+        /// </summary>
         /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
 		public F4SECSItem(float value) : base(SECSItemFormatCode.F4, 4)
 		{
-			this.value = value;
+			this._value = value;
 		}
-		/// <summary>
-        /// This constructor creates a <c>SECSItem</c> that has a type of <c>F4</c>
-        /// with the specified value. This form of the constructor is not needed 
-        /// much nowadays.  In the past there were situations where the equipment 
-        /// required that messages contained SECSItems that had a specified number 
-        /// of length bytes. This form of the constructor is here to handle these 
-        /// problem child cases. Note: It will be created with the specified number 
-        /// of length bytes.
-		/// </summary>
+
+        /// <summary>
+        /// This constructor creates an F4SECSItem that will have the value of
+        /// the supplied <c>float</c>.  In addition when converted to 
+        /// &quot;transmission&quot; form it will use the number of length bytes
+        /// specified.
+        /// </summary>
         /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
         /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <code>SECSItem</code>.
         /// The value for the number of length bytes must be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
         public F4SECSItem(float value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.F4, 4, desiredNumberOfLengthBytes)
 	    {
-	        this.value = value;
+	        this._value = value;
 	    }
 	    
         /// <summary>
-        /// This constructor is used to create this SECSItem from
-        /// data in &quot;wire/transmission&quot; format.
+        /// This constructor is used to create this <c>SECSItem</c> from data in &quot;wire/transmission&quot; format.
         /// </summary>
-        /// <param name="data">The buffer where the &quot;wire/transmission&quot; format data is contained.</param>
+        /// <param name="data">The buffer where the wire/transmission format data is contained.</param>
         /// <param name="itemOffset">The offset into the data where the desired item starts.</param>
-	    public F4SECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
+	    internal F4SECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
 	    {
-            int offset = 1 + inboundNumberOfLengthBytes.ValueOf () + itemOffset;
-            bytesConsumed = 1 + inboundNumberOfLengthBytes.ValueOf () + lengthInBytes;
-	        if (lengthInBytes != 4)
-                throw new ArgumentOutOfRangeException("Illegal data length of: " + lengthInBytes +
+            int offset = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
+	        if (LengthInBytes != 4)
+                throw new ArgumentOutOfRangeException("Illegal data length of: " + LengthInBytes +
                     ".  The length of the data independent of the item header must be 4.");
 	        
 			byte[] temp = new byte[4];
@@ -75,16 +76,17 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 			if (BitConverter.IsLittleEndian)
 				Array.Reverse(temp);
 		
-			value = BitConverter.ToSingle(temp, 0);
+			_value = BitConverter.ToSingle(temp, 0);
 	    }
 	    
         /// <summary>
         /// Gets the value of this <c>SECSItem</c>.
         /// </summary>
         /// <returns>the value of the <c>SECSItem</c>.</returns>
+		[ObsoleteAttribute("This method has been deprecated, please use property Value instead.")]
 	    public float GetValue()
 	    {
-	        return value;
+	        return _value;
 	    }
 	
         /// <summary>
@@ -96,7 +98,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 	        byte[] output = new byte[OutputHeaderLength()+4];
 	        int offset = PopulateSECSItemHeaderData(output, 4);
 	        
-			byte[] temp = BitConverter.GetBytes(value);
+			byte[] temp = BitConverter.GetBytes(_value);
 
 			if (BitConverter.IsLittleEndian)
 				Array.Reverse(temp);
@@ -116,7 +118,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>a <c>string</c> representation of this item in a format suitable for debugging.</returns>
 	    public override String ToString()
 	    {
-	        return "Format:" + formatCode.ToString() + " Value: " + value;
+	        return "Format:" + ItemFormatCode.ToString() + " Value: " + _value;
 	    }
 	    
         /// <summary>
@@ -126,7 +128,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// hash table.</returns>
 	    public override int GetHashCode()
 	    {
-	        return value.GetHashCode();
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = (int) 2166136261;
+                // Suitable nullity checks etc, of course :)
+                hash = (hash * 16777619) ^ base.GetHashCode();
+                hash = (hash * 16777619) ^ _value.GetHashCode();
+                return hash;
+            }
 	    }
 	
         /// <summary>
@@ -134,18 +143,20 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </summary>
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
-        /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem"/>; otherwise, <c>false</c>.</returns>
-	    public override bool Equals(Object obj)
+        /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem"/>, <c>false</c> otherwise.</returns>
+	    public override bool Equals(Object? obj)
 	    {
-	        if (this == obj)
-	            return true;
-	        if (obj == null)
+            if (base.Equals(obj) == false)
+                return false;
+
+            // If we are here obj is not null
+			if (GetType() != obj.GetType())
+				return false;
+
+			F4SECSItem other = (F4SECSItem)obj;
+	        if (_value != other._value)
 	            return false;
-	        if (GetType() != obj.GetType())
-	            return false;
-	        F4SECSItem other = (F4SECSItem) obj;
-	        if (value != other.value)
-	            return false;
+
 	        return true;
 	    }
 	}

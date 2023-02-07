@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,52 +13,68 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Linq;
+
+ #nullable enable
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
     /// <summary>
-    /// This class represents/implements a SECSItem with the SECS data type of <c>B</c>(<c>BINARY</c>),
-    /// which is an array of unsigned bytes.
+    /// This class represents a SECS item with a data type of <c>B</c>
+    /// in an array form. In this case it is an array of zero or more 8-bit unsigned integers.
+    /// The C# data type is <c>byte[]</c>.
     /// </summary>
 	public class BinarySECSItem : SECSItem
 	{
-		private byte[] value = null;
+		private byte[] _value;
 		
+		/// <summary>
+		/// The value of this <c>BinarySECSItem</c>.
+		/// </summary>
+		public byte[] Value { get { return _value; } }
+
         /// <summary>
-        /// This constructor creates a SECSItem that has a type of <c>B</c> with 
-        /// the minimum number of length bytes required. Note: It will be created 
-        /// with the number of length bytes required based on the length (in elements) 
-        /// of the <c>byte []</c> provided. The maximum array length allowed is 
-        /// <c>16777215</c> bytes(elements).
+        /// This constructor creates a <c>BinarySECSItem</c> with no elements.
         /// </summary>
-        /// <param name="value">An array of binary values to be assigned to this <c>SECSItem</c>.</param>
-		public BinarySECSItem(byte[] value) : base(SECSItemFormatCode.B, value.Length)
+		public BinarySECSItem() : base(SECSItemFormatCode.B, 0)
 		{
-			this.value = value;
+            this._value = new byte[0];
+		}
+
+        /// <summary>
+        /// This constructor creates a BinarySECSItem that will have the value of
+        /// the supplied <c>byte[]</c>.
+        /// </summary>
+        /// <param name="value">An array of <c>byte</c> values to be assigned to this <c>SECSItem</c>.</param>
+        /// <remarks>
+        /// The array's length should not exceed <c>16777215</c> elements.
+        /// </remarks>
+		public BinarySECSItem(byte[]? value) : base(SECSItemFormatCode.B, value == null ? 0 : value.Length)
+		{
+            if (value == null)
+                this._value = new byte[0];
+            else
+                this._value = value;
 		}
 		
         /// <summary>
-        /// This constructor creates a SECSItem that has a type of <c>B</c> with
-        /// a specified number of length bytes.
-        /// 
-        /// This form of the constructor is not needed much nowadays.  In the past
-        /// there were situations where the equipment required that messages
-        /// contained SECSItems that had a specified number of length bytes.
-        /// This form of the constructor is here to handle these problem child cases.
-        /// 
-        /// Note: It will be created with the number of length bytes set
-        /// to the greater of the number of length bytes specified or
-        /// the number required based on the length of the <c>value</c>
-        /// parameter.
+        /// This constructor creates a BinarySECSItem that will have the value of
+        /// the supplied <c>byte[]</c>.  In addition when converted to 
+        /// &quot;transmission&quot; form it will use the number of length bytes
+        /// specified <b>OR</b> the minimum number necessary to actually contain 
+        /// the length of the content of the <c>byte[]</c>.
         /// </summary>
-        /// <param name="value">The value to be assigned to this SECSItem.</param>
-        /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this SECSItem.
-        /// The value for the number of length bytes must be ONE, TWO, or THREE..</param>
-        public BinarySECSItem(byte[] value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.B, value.Length, desiredNumberOfLengthBytes)
+        /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
+        /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <code>SECSItem</code>.
+        /// The value for the number of length bytes must be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
+        /// <remarks>
+        /// The array's length should not exceed <c>16777215</c> elements.
+        /// </remarks>
+        public BinarySECSItem(byte[]? value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.B, value == null ? 0 : value.Length, desiredNumberOfLengthBytes)
 		{
-			this.value = value;
+            if (value == null)
+                this._value = new byte[0];
+            else
+                this._value = value;
 		}
 		
         /// <summary>
@@ -67,15 +83,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </summary>
         /// <param name="data">The buffer where the &quot;wire/transmission&quot; format data is contained.</param>
         /// <param name="itemOffset">The offset into the data where the desired item starts.</param>
-		public BinarySECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
+		internal BinarySECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
 		{
-            int offset = 1 + inboundNumberOfLengthBytes.ValueOf () + itemOffset;
-            bytesConsumed = 1 + inboundNumberOfLengthBytes.ValueOf () + lengthInBytes;
+            int offset = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
 			
-			value = new byte[lengthInBytes];
-			for(int i = 0, j = offset; i < value.Length; i++, j++)
+			_value = new byte[LengthInBytes];
+			for(int i = 0, j = offset; i < _value.Length; i++, j++)
 			{
-				value[i] = data[j];
+				_value[i] = data[j];
 			}
 		}
 	    
@@ -83,9 +98,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// Gets the value of this <c>SECSItem</c>.
         /// </summary>
         /// <returns>the value of the <c>SECSItem</c>.</returns>
+		[ObsoleteAttribute("This method has been deprecated, please use property Value instead.")]
 		public byte[] GetValue()
 		{
-			return value;
+			return _value;
 		}
 		
         /// <summary>
@@ -94,12 +110,12 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>A <c>byte[]</c> representation of this <c>SECSItem</c>'s content that is suitable for transmission.</returns>
 		public override byte[] EncodeForTransport()
 		{
-			byte[] output = new byte[OutputHeaderLength()+value.Length];
-			int offset = PopulateSECSItemHeaderData(output, value.Length);
+			byte[] output = new byte[OutputHeaderLength()+_value.Length];
+			int offset = PopulateSECSItemHeaderData(output, _value.Length);
 			
-			for( int i = offset, j = 0; j < value.Length; i++, j++)
+			for( int i = offset, j = 0; j < _value.Length; i++, j++)
 			{
-				output[i] = value[j];
+				output[i] = _value[j];
 			}
 			
 			return output;
@@ -112,10 +128,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>A <c>string</c> representation of this item in a format suitable for debugging.</returns>
 	    public override String ToString()
 	    {
-			if (value.Length == 1)
-		        return "Format:" + formatCode.ToString() + " Value: " + value[0];
+			if (_value.Length == 1)
+		        return "Format:" + ItemFormatCode.ToString() + " Value: " + _value[0];
 			else
-		        return "Format:" + formatCode.ToString() + " Value: Array";
+		        return "Format:" + ItemFormatCode.ToString() + " Value: Array";
 	    }
 	    
         /// <summary>
@@ -125,7 +141,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// hash table.</returns>
 	    public override int GetHashCode()
 	    {
-	        return value.GetHashCode();
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = (int) 2166136261;
+                // Suitable nullity checks etc, of course :)
+                hash = (hash * 16777619) ^ base.GetHashCode();
+                hash = (hash * 16777619) ^ _value.GetHashCode();
+                return hash;
+            }
 	    }
 	
         /// <summary>
@@ -134,31 +157,27 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
         /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem"/>; otherwise, <c>false</c>.</returns>
-	    public override bool Equals(Object obj)
+	    public override bool Equals(Object? obj)
 	    {
-	        if (this == obj)
-	            return true;
-	        if (obj == null)
-	            return false;
-	        if (GetType() != obj.GetType())
-	            return false;
-	        BinarySECSItem other = (BinarySECSItem) obj;
-			if (value == null && other.value == null)
-				return true;
-			if (value == null)
-			{
-				if (other.value != null)
-					return false;
-			}
-			if (other.value == null)
-			{
-				if (value != null)
-					return false;
-			}
-			if (value.Length != other.value.Length)
+            if (base.Equals(obj) == false)
+                return false;
+
+            // If we are here obj is not null
+			if (GetType() != obj.GetType())
 				return false;
 
-			return value.SequenceEqual(other.value);
+			BinarySECSItem other = (BinarySECSItem)obj;
+			if (_value == null && other._value == null)
+				return true;
+
+			if ((_value != null && other._value != null) == false)
+				return false;
+
+            // If we are here both _value fields are not null
+			if (_value.Length != other._value.Length)
+				return false;
+
+			return _value.SequenceEqual(other._value);
 	    }
 		
 				

@@ -25,9 +25,4 @@
     <DocumentationFile Condition=" '$(Configuration)' == 'Debug' ">bin\Debug\SECSItems.xml</DocumentationFile>
     <DocumentationFile Condition=" '$(Configuration)' == 'Release' ">bin\Release\SECSItems.xml</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-      <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>SECSItemTests</_Parameter1>
-    </AssemblyAttribute>
-</ItemGroup>
 </Project>

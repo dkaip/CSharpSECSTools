@@ -32,25 +32,25 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// One length byte used.
         /// </summary>
         public static readonly SECSItemNumLengthBytes ONE =
-            new SECSItemNumLengthBytes (1, "ONE");
+            new SECSItemNumLengthBytes(1, "ONE");
 
         /// <summary>
         /// Two length bytes used.
         /// </summary>
         public static readonly SECSItemNumLengthBytes TWO =
-            new SECSItemNumLengthBytes (2, "TWO");
+            new SECSItemNumLengthBytes(2, "TWO");
 
         /// <summary>
         /// Three length bytes used.
         /// </summary>
         public static readonly SECSItemNumLengthBytes THREE =
-            new SECSItemNumLengthBytes (3, "THREE");
+            new SECSItemNumLengthBytes(3, "THREE");
 
         /// <summary>
         /// This class instance has not been initialized yet.
         /// </summary>
         public static readonly SECSItemNumLengthBytes NOT_INITIALIZED =
-            new SECSItemNumLengthBytes (-1, "NOT_INITIALIZED");
+            new SECSItemNumLengthBytes(-1, "NOT_INITIALIZED");
 
         private SECSItemNumLengthBytes(int value, string name)
         {

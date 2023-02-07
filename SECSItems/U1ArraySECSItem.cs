@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,95 +13,84 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Linq;
+
+#nullable enable
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
     /// <summary>
-    /// This class represents/implements a SECSItem with the SECS data type of <c>U1</c>
+    /// This class represents a SECS item with a data type of <c>U1</c>
     /// in an array form. In this case it is an array of zero or more 8-bit unsigned integers.
-    /// From the C# side this data type is handled as a C# <c>byte []</c>.
-    /// 
-    /// In wire/transmission format all SECS items, with the exception of those with an item format code
-    /// of <c>L</c>(List), are sent in an array form.For instance if an item is received which has
-    /// an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-    /// containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-    /// 4-byte signed integers. Likewise, If an item is received which has an item format code of 
-    /// U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-    /// containing 3 2-byte unsigned integers.
-    /// 
-    /// In practice, when only one item is received in the array (in the I4 case mentioned previously if the 
-    /// length was 4 instead of 8) it is handled and processed in a non array form.  Hence <c>I4SECSItem</c>
-    /// vs <c>I4ArraySECSItem</c>, <c>U2SECSItem</c> vs <c>U2ArraySECSItem</c>, etc.
+    /// The C# data type is <c>byte[]</c>.
     /// </summary>
 	public class U1ArraySECSItem : SECSItem
 	{
-		private byte[] value = null;
+		private byte[] _value;
+
+		/// <summary>
+		/// The value of this <c>U1ArraySECSItem</c>.
+		/// </summary>
+		public byte[] Value { get { return _value; } }
 
         /// <summary>
-        /// This constructor creates a SECSItem that has a type of <c>U1</c> with
-        /// the minimum number of length bytes required.
-        /// Note: It will be created with the number of length bytes required
-        /// based on the length (in elements) of the <c>byte []</c> provided.
-        /// The maximum array length allowed is <c>16777215</c> bytes(elements).
+        /// This constructor creates a <c>U1ArraySECSItem</c> with no elements.
         /// </summary>
-        /// <param name="value">An array of <c>byte</c> values to be assigned to this <c>SECSItem</c>.</param>
-		public U1ArraySECSItem(byte[] value) : base(SECSItemFormatCode.U1, value.Length)
+		public U1ArraySECSItem() : base(SECSItemFormatCode.U1, 0)
 		{
-            if (value == null)
-                this.value = new byte[0];
-            else
-			    this.value = value;
+            this._value = new byte[0];
 		}
 
         /// <summary>
-        /// This constructor creates a SECSItem that has a type of <c>U1</c>
-        /// with the specified value.
-        /// 
-        /// This form of the constructor is not needed much nowadays.  In the past
-        /// there were situations where the equipment required that messages
-        /// contained SECSItems that had a specified number of length bytes.
-        /// This form of the constructor is here to handle these problem child cases.
-        /// 
-        /// Note: It will be created with the number of length bytes set to greater of,
-        /// the specified number of length bytes or the number required based on the 
-        /// length (in elements) of the<c>byte []</c> provided.
+        /// This constructor creates a U1ArraySECSItem that will have the value of
+        /// the supplied <c>byte[]</c>.
+        /// </summary>
+        /// <param name="value">An array of <c>byte</c> values to be assigned to this <c>SECSItem</c>.</param>
+        /// <remarks>
+        /// The array's length should not exceed <c>16777215</c> elements.
+        /// </remarks>
+		public U1ArraySECSItem(byte[]? value) : base(SECSItemFormatCode.U1, value == null ? 0 : value.Length)
+		{
+            if (value == null)
+                this._value = new byte[0];
+            else
+                this._value = value;
+		}
+
+        /// <summary>
+        /// This constructor creates a U1ArraySECSItem that will have the value of
+        /// the supplied <c>byte[]</c>.  In addition when converted to 
+        /// &quot;transmission&quot; form it will use the number of length bytes
+        /// specified <b>OR</b> the minimum number necessary to actually contain 
+        /// the length of the content of the <c>byte[]</c>.
         /// </summary>
         /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
         /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <code>SECSItem</code>.
         /// The value for the number of length bytes must be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
-		public U1ArraySECSItem(byte[] value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.U1, value.Length, desiredNumberOfLengthBytes)
+        /// <remarks>
+        /// The array's length should not exceed <c>16777215</c> elements.
+        /// </remarks>
+		public U1ArraySECSItem(byte[]? value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.U1, value == null ? 0 : value.Length, desiredNumberOfLengthBytes)
 		{
-			this.value = value;
+            if (value == null)
+                this._value = new byte[0];
+            else
+                this._value = value;
 		}
 
         /// <summary>
-        /// This constructor is used to create this SECSItem from
-        /// data in &quot;wire/transmission&quot; format.
+        /// This constructor is only used by the <c>SECSItemFactory</c>.  Its
+        /// purpose is to load the <c>value</c> field with the data provided.
         /// </summary>
         /// <param name="data">The buffer where the &quot;wire/transmission&quot; format data is contained.</param>
         /// <param name="itemOffset">The offset into the data where the desired item starts.</param>
-        /// <param name="bogus">This argument is not used. This constructor requires a different 
-        /// signature than the one above. Hopefully this will not be much of an issue 
-        /// since this constructor will most likely be used in the lower level code 
-        /// that once running will tend to be very stable.</param>
-        /// <remarks>
-        /// This form of the constructor is required to be available because a 
-        /// distinction needs to be made between constructing a <c>U1ArraySECSItem</c>
-        /// from a normal <c>byte[]</c> verses constructing a 
-        /// <c>U1ArraySECSItem</c> from a <c>byte[]</c> that contains the information
-        /// in the &quot;wire/transmission&quot; format.
-        /// </remarks>
-		public U1ArraySECSItem(byte[] data, int itemOffset, int bogus) : base(data, itemOffset)
+		internal U1ArraySECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
 		{
-            int offset = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
-            bytesConsumed = 1 + NumberOfLengthBytes.ValueOf () + LengthInBytes;
+            int offsetToValue = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
 
-			value = new byte[LengthInBytes];
-			for(int i = 0, j = offset; i < value.Length; i++, j++)
+			_value = new byte[LengthInBytes];
+			for(int i = 0, j = offsetToValue; i < _value.Length; i++, j++)
 			{
-				value[i] = data[j];
+				_value[i] = data[j];
 			}
 		}
 
@@ -109,9 +98,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// Gets the value of this <c>SECSItem</c>.
         /// </summary>
         /// <returns>the value of the <c>SECSItem</c>.</returns>
+		[ObsoleteAttribute("This method has been deprecated, please use property Value instead.")]
 		public byte[] GetValue()
 		{
-			return value;
+			return _value;
 		}
 
         /// <summary>
@@ -120,12 +110,12 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>A <c>byte[]</c> representation of this <c>SECSItem</c>'s content that is suitable for transmission.</returns>
 		public override byte[] EncodeForTransport()
 		{
-			byte[] output = new byte[OutputHeaderLength()+value.Length];
-			int offset = PopulateSECSItemHeaderData(output, value.Length);
+			byte[] output = new byte[OutputHeaderLength()+_value.Length];
+			int offset = PopulateSECSItemHeaderData(output, _value.Length);
 
-			for( int i = offset, j = 0; j < value.Length; i++, j++)
+			for( int i = offset, j = 0; j < _value.Length; i++, j++)
 			{
-				output[i] = value[j];
+				output[i] = _value[j];
 			}
 
 			return output;
@@ -138,7 +128,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>a <c>string</c> representation of this item in a format suitable for debugging.</returns>
 		public override String ToString()
 		{
-			return "Format:" + formatCode.ToString() + " Value: Array";
+			return "Format:" + ItemFormatCode.ToString() + " Value: Array";
 		}
 
         /// <summary>
@@ -148,7 +138,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// hash table.</returns>
 		public override int GetHashCode()
 		{
-			return value.GetHashCode();
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = (int) 2166136261;
+                // Suitable nullity checks etc, of course :)
+                hash = (hash * 16777619) ^ base.GetHashCode();
+                hash = (hash * 16777619) ^ _value.GetHashCode();
+                return hash;
+            }
 		}
 
         /// <summary>
@@ -156,32 +153,28 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </summary>
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
-        /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem"/>; otherwise, <c>false</c>.</returns>
-		public override bool Equals(Object obj)
+        /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem"/>, <c>false</c> otherwise.</returns>
+		public override bool Equals(Object? obj)
 		{
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
+            if (base.Equals(obj) == false)
+                return false;
+
+            // If we are here obj is not null
 			if (GetType() != obj.GetType())
 				return false;
-			U1ArraySECSItem other = (U1ArraySECSItem) obj;
-			if (value == null && other.value == null)
+
+			U1ArraySECSItem other = (U1ArraySECSItem)obj;
+			if (_value == null && other._value == null)
 				return true;
-			if (value == null)
-			{
-				if (other.value != null)
-					return false;
-			}
-			if (other.value == null)
-			{
-				if (value != null)
-					return false;
-			}
-			if (value.Length != other.value.Length)
+
+			if ((_value != null && other._value != null) == false)
 				return false;
 
-			return value.SequenceEqual(other.value);
+            // If we are here both _value fields are not null
+			if (_value.Length != other._value.Length)
+				return false;
+
+			return _value.SequenceEqual(other._value);
 		}
 	}
 }

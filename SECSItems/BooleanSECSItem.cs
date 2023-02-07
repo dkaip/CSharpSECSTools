@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
+
+#nullable enable
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems 
 {
@@ -23,32 +24,35 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
     /// </summary>
 	public class BooleanSECSItem : SECSItem
 	{
-		private bool value;
+		private bool _value;
 		
+		/// <summary>
+		/// The value of this <c>BooleanSECSItem</c>.
+		/// </summary>
+		public bool Value { get { return _value; } }
+
         /// <summary>
-        /// This constructor creates a <c>SECSItem</c> that has a type of <c>BO</c> 
-        /// with the specified value. Note: It will be created with 1 length byte.
+        /// This constructor creates a BooleanSECSItem that will have the value of
+        /// the supplied <c>bool</c>.
         /// </summary>
-        /// <param name="value">The value to be assigned to this <code>SECSItem</code>.</param>
+        /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
 		public BooleanSECSItem(bool value) : base(SECSItemFormatCode.BO, 1)
 		{
-			this.value = value;
+			this._value = value;
 		}
 
         /// <summary>
-        /// This constructor creates a SECSItem that has a type of <c>BO</c>
-        /// with the specified value. This form of the constructor is not needed much nowadays. 
-        /// In the past there were situations where the equipment required that messages
-        /// contained SECSItems that had a specified number of length bytes. This form of the 
-        /// constructor is here to handle these problem child cases.
-        /// Note: It will be created with the specified number of length bytes.
+        /// This constructor creates a BooleanSECSItem that will have the value of
+        /// the supplied <c>bool</c>.  In addition when converted to 
+        /// &quot;transmission&quot; form it will use the number of length bytes
+        /// specified.
         /// </summary>
-        /// <param name="value">The value to be assigned to this <code>SECSItem</code>.</param>
+        /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
         /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <code>SECSItem</code>.
         /// The value for the number of length bytes must be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
         public BooleanSECSItem(bool value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.BO, 1, desiredNumberOfLengthBytes)
 	    {
-	        this.value = value;
+	        this._value = value;
 	    }
 	    
         /// <summary>
@@ -56,24 +60,24 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </summary>
         /// <param name="data">The buffer where the wire/transmission format data is contained.</param>
         /// <param name="itemOffset">The offset into the data where the desired item starts.</param>
-	    public BooleanSECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
+	    internal BooleanSECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
 	    {
-            int offset = 1 + inboundNumberOfLengthBytes.ValueOf () + itemOffset;
-            bytesConsumed = 1 + inboundNumberOfLengthBytes.ValueOf () + lengthInBytes;
+            int offset = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
 
 			if (data[offset] == 0)
-				value = false;
+				_value = false;
 			else
-				value = true;
+				_value = true;
 	    }
 	    
         /// <summary>
-        /// Gets the value of this <c>SECSItem</c> in a C# friendly format.
+        /// Gets the value of this <c>SECSItem</c>.
         /// </summary>
-        /// <returns>A C# <c>bool</c> that contains this item's value.</returns>
+        /// <returns>the value of the <c>SECSItem</c>.</returns>
+		[ObsoleteAttribute("This method has been deprecated, please use property Value instead.")]
 	    public bool GetValue()
 	    {
-	        return value;
+	        return _value;
 	    }
 	
         /// <summary>
@@ -85,7 +89,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 	        byte[] output = new byte[OutputHeaderLength()+1];
 	        int offset = PopulateSECSItemHeaderData(output, 1);
 	        
-			if (value == true)
+			if (_value == true)
 				output[offset] = 1;
 			else
 				output[offset] = 0;
@@ -100,7 +104,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>a <c>string</c> representation of this item in a format suitable for debugging.</returns>
 	    public override String ToString()
 	    {
-	        return "Format:" + formatCode.ToString() + " Value: " + value;
+	        return "Format:" + ItemFormatCode.ToString() + " Value: " + _value;
 	    }
 	    
         /// <summary>
@@ -110,7 +114,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// hash table.</returns>
 	    public override int GetHashCode()
 	    {
-	        return value.GetHashCode();
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = (int) 2166136261;
+                // Suitable nullity checks etc, of course :)
+                hash = (hash * 16777619) ^ base.GetHashCode();
+                hash = (hash * 16777619) ^ _value.GetHashCode();
+                return hash;
+            }
 	    }
 	
         /// <summary>
@@ -118,18 +129,20 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </summary>
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
-        /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem"/>; otherwise, <c>false</c>.</returns>
-	    public override bool Equals(Object obj)
+        /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem"/>, <c>false</c> otherwise.</returns>
+	    public override bool Equals(Object? obj)
 	    {
-	        if (this == obj)
-	            return true;
-	        if (obj == null)
+            if (base.Equals(obj) == false)
+                return false;
+
+            // If we are here obj is not null
+			if (GetType() != obj.GetType())
+				return false;
+
+			BooleanSECSItem other = (BooleanSECSItem)obj;
+	        if (_value != other._value)
 	            return false;
-	        if (GetType() != obj.GetType())
-	            return false;
-	        BooleanSECSItem other = (BooleanSECSItem) obj;
-	        if (value != other.value)
-	            return false;
+
 	        return true;
 	    }
 	}

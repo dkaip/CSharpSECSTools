@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#nullable enable
+
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
     /// <summary>
@@ -24,42 +26,81 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
     /// </summary>
     public abstract class SECSItem
     {
+        private SECSItemFormatCode _formatCode  = SECSItemFormatCode.UNDEFINED;
+
         /// <summary>
         /// The Format Code of this <c>SECSItem</c>.
         /// </summary>
-        protected SECSItemFormatCode  formatCode                  = SECSItemFormatCode.UNDEFINED;
+        public SECSItemFormatCode  ItemFormatCode
+        {
+            get { return _formatCode; }
+        }
 
         /// <summary>
-        /// This is the number of length bytes that the wire/transmission format
-        ///  data had when it was converted to this <c>SECSItem</c>.
+        /// Gets the <c>SECSItemFormatCode</c> of this <c>SECSItem</c>.
         /// </summary>
-        protected SECSItemNumLengthBytes    inboundNumberOfLengthBytes  = SECSItemNumLengthBytes.NOT_INITIALIZED;
+        /// <returns>the value of the <c>SECSItemFormatCode</c>.</returns>
+		[ObsoleteAttribute("This method has been deprecated, please use property ItemFormatCode instead.")]
+        public SECSItemFormatCode GetSECSItemFormatCode()
+        {
+            return _formatCode;
+        }
+
+        private SECSItemNumLengthBytes _numberOfLengthBytes = SECSItemNumLengthBytes.NOT_INITIALIZED;
 
         /// <summary>
-        /// This attribute will contain the number of length bytes to be
-        /// used when the wire/transmission form of this <c>SECSItem</c> is generated.
+        /// The number of length bytes associated with this <c>SECSItem</c>.
         /// </summary>
-        protected SECSItemNumLengthBytes    outboundNumberOfLengthBytes = SECSItemNumLengthBytes.NOT_INITIALIZED;
+        /// <remarks>
+        /// This property when set will end up with the greater of the
+        /// value specified or the minimum value required to contain a <c>LengthInBytes</c>
+        /// amount of data.
+        /// <para>
+        /// If the value is needed as an <c>int</c> use the <c>ValueOf()</c> method
+        /// of <c>SECSItemNumLengthBytes</c>to get it.
+        /// </para>
+        /// </remarks>
+        public SECSItemNumLengthBytes NumberOfLengthBytes
+        {
+            get
+            {
+                return _numberOfLengthBytes;
+            }
+            set
+            {
+                SECSItemNumLengthBytes minLengthBytes = SECSItemNumLengthBytes.ONE;
+                if (LengthInBytes > 255)
+                {
+                    if (LengthInBytes < 65536)
+                        minLengthBytes = SECSItemNumLengthBytes.TWO;
+                    else
+                        minLengthBytes = SECSItemNumLengthBytes.THREE;
+                }
 
+                if (value.ValueOf() > minLengthBytes.ValueOf())
+                {
+                    _numberOfLengthBytes = value;
+                }
+                else
+                {
+                    _numberOfLengthBytes = minLengthBytes;
+                }
+            }
+        }
+
+        private int _lengthInBytes = 0;
         /// <summary>
         /// This is the length in bytes that this SECSItem requires, 
-        /// in addition to the length of its item header, when 
-        /// it is converted into its wire/transmission format.
+        /// NOT including its item header.
         /// </summary>
-        protected int                 lengthInBytes               = 0;
+        public int LengthInBytes { get { return _lengthInBytes; } }
 
-        /// <summary>
-        /// If the <c>formatCode</c> of this <c>SECSItem</c> is an <c>L</c>(List)
-        /// this is the number of elements in the list.
-        /// </summary>
-        protected int                 numberOfElements            = 0;
-
-        /// <summary>
-        /// This contains the number of bytes that have been consumed when
-        /// a <c>SECSItem</c> is created from a SECS message that is in 
-        /// wire/transmission format.
-        /// </summary>
-        protected int                 bytesConsumed               = 0;
+        // /// <summary>
+        // /// This contains the number of bytes that have been consumed when
+        // /// a <c>SECSItem</c> is created from a SECS message that is in 
+        // /// wire/transmission format.
+        // /// </summary>
+        // protected int                 bytesConsumed               = 0;
         
         /// <summary>
         /// This is a base class constructor for a <c>SECSItem</c>.  When using this constructor, the
@@ -82,9 +123,9 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
                         "The value for the length argument must be between 0 and 16777215 inclusive.");
             }
 
-            this.formatCode = formatCode;
-            this.lengthInBytes = lengthInBytes;
-            outboundNumberOfLengthBytes = CalculateMinimumNumberOfLengthBytes(lengthInBytes);
+            _formatCode = formatCode;
+            _lengthInBytes = lengthInBytes;
+            _numberOfLengthBytes = CalculateMinimumNumberOfLengthBytes(lengthInBytes);
         }
         
         /// <summary>
@@ -110,9 +151,15 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// to its wire/transmission format.</param>
         protected SECSItem(SECSItemFormatCode formatCode, int lengthInBytes, SECSItemNumLengthBytes desiredNumberOfLengthBytes)
         {
-            this.formatCode = formatCode;
-            this.lengthInBytes = lengthInBytes;
-            SetOutboundNumberOfLengthBytes(lengthInBytes, desiredNumberOfLengthBytes);
+            if (lengthInBytes < 0 || lengthInBytes > (int)0x00FFFFFF)
+            {
+                throw new ArgumentException(
+                        "The value for the length argument must be between 0 and 16777215 inclusive.");
+            }
+
+            _formatCode = formatCode;
+            _lengthInBytes = lengthInBytes;
+            NumberOfLengthBytes = desiredNumberOfLengthBytes;
         }
     
         /// <summary>
@@ -156,10 +203,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
             }
             */
     
-            formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)((data[itemOffset] >> 2) & 0x0000003F));
+            _formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)((data[itemOffset] >> 2) & 0x0000003F));
     
             byte[] temp1 = new byte[4];
-            switch (data [itemOffset] & 0x03)
+            switch (data[itemOffset] & 0x03)
             {
                 case 0:
                 {
@@ -167,8 +214,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
                 }
                 case 1:
                 {
-                    inboundNumberOfLengthBytes = SECSItemNumLengthBytes.ONE;
-                    outboundNumberOfLengthBytes = inboundNumberOfLengthBytes;
+                    _numberOfLengthBytes = SECSItemNumLengthBytes.ONE;
                     temp1[0] = 0;
                     temp1[1] = 0;
                     temp1[2] = 0;
@@ -178,8 +224,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
                 }
                 case 2:
                 {
-                    inboundNumberOfLengthBytes = SECSItemNumLengthBytes.TWO;
-                    outboundNumberOfLengthBytes = inboundNumberOfLengthBytes;
+                    _numberOfLengthBytes = SECSItemNumLengthBytes.TWO;
                     if (data.Length < 3) {
                         throw new ArgumentException ("With two length bytes the minimum length for the \"data\" argument is 3.");
                     }
@@ -192,8 +237,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
                 }
                 case 3:
                 {
-                    inboundNumberOfLengthBytes = SECSItemNumLengthBytes.THREE;
-                    outboundNumberOfLengthBytes = inboundNumberOfLengthBytes;
+                    _numberOfLengthBytes = SECSItemNumLengthBytes.THREE;
                     if (data.Length < 4) {
                         throw new ArgumentException ("With three length bytes the minimum length for the \"data\" argument is 4.");
                     }
@@ -209,14 +253,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
             if (BitConverter.IsLittleEndian)
                 Array.Reverse(temp1);
         
-            lengthInBytes = BitConverter.ToInt32(temp1, 0);
-
-            /*
-            if (formatCode == SECSItemFormatCode.L)
-                numberOfElements = incomingDataLength;
-            else
-                lengthInBytes = incomingDataLength;
-            */
+            _lengthInBytes = BitConverter.ToInt32(temp1, 0);
         }
         
         /// <summary>
@@ -248,7 +285,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>The header length in bytes.</returns>
         protected int OutputHeaderLength()
         {
-            return outboundNumberOfLengthBytes.ValueOf () + 1;
+            return NumberOfLengthBytes.ValueOf() + 1;
         }
         
         /// <summary>
@@ -266,25 +303,25 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         protected int PopulateSECSItemHeaderData(byte[] buffer, int numberOfBytes)
         {
             int offset = 0;
-            buffer[0] = (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(formatCode) << 2) | outboundNumberOfLengthBytes.ValueOf ());
+            buffer[0] = (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(_formatCode) << 2) | NumberOfLengthBytes.ValueOf());
             
             byte[] outputLengthBytes = BitConverter.GetBytes(numberOfBytes);
             
             if (BitConverter.IsLittleEndian)
                 Array.Reverse(outputLengthBytes);
 
-            if (outboundNumberOfLengthBytes == SECSItemNumLengthBytes.ONE)
+            if (_numberOfLengthBytes == SECSItemNumLengthBytes.ONE)
             {
                 buffer [1] = outputLengthBytes [3];
                 offset = 2;
             }
-            else if (outboundNumberOfLengthBytes == SECSItemNumLengthBytes.TWO)
+            else if (_numberOfLengthBytes == SECSItemNumLengthBytes.TWO)
             {
                 buffer [1] = outputLengthBytes [2];
                 buffer [2] = outputLengthBytes [3];
                 offset = 3;
             }
-            else if (outboundNumberOfLengthBytes == SECSItemNumLengthBytes.THREE)
+            else if (_numberOfLengthBytes == SECSItemNumLengthBytes.THREE)
             {
                 buffer [1] = outputLengthBytes [1];
                 buffer [2] = outputLengthBytes [2];
@@ -299,86 +336,86 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
             return offset;
         }
         
-        /// <summary>
-        /// Return the length in bytes of the actual &quot;data&quot; portion of this <c>SECSItem</c>.
-        /// </summary>
-        /// <returns>The length in bytes of the &quot;payload&quot; portion of this <c>SECSItem</c>.</returns>
-        public int GetLengthInBytes()
-        {
-            return lengthInBytes;
-        }
+        // /// <summary>
+        // /// Return the length in bytes of the actual &quot;data&quot; portion of this <c>SECSItem</c>.
+        // /// </summary>
+        // /// <returns>The length in bytes of the &quot;payload&quot; portion of this <c>SECSItem</c>.</returns>
+        // public int GetLengthInBytes()
+        // {
+        //     return lengthInBytes;
+        // }
         
-        /// <summary>
-        /// Gets the inbound number of length bytes.
-        /// </summary>
-        /// <returns>The inbound number of length bytes.</returns>
-        public SECSItemNumLengthBytes GetInboundNumberOfLengthBytes()
-        {
-            return inboundNumberOfLengthBytes;
-        }
+        // /// <summary>
+        // /// Gets the inbound number of length bytes.
+        // /// </summary>
+        // /// <returns>The inbound number of length bytes.</returns>
+        // public SECSItemNumLengthBytes GetInboundNumberOfLengthBytes()
+        // {
+        //     return inboundNumberOfLengthBytes;
+        // }
         
-        /// <summary>
-        /// Gets the value of the bytesConsumed attribute.
-        /// </summary>
-        /// <returns>The value of the <c>bytesConsumed</c> attribute.</returns>
-        public int GetBytesConsumed()
-        {
-            return bytesConsumed;
-        }
+        // /// <summary>
+        // /// Gets the value of the bytesConsumed attribute.
+        // /// </summary>
+        // /// <returns>The value of the <c>bytesConsumed</c> attribute.</returns>
+        // public int GetBytesConsumed()
+        // {
+        //     return bytesConsumed;
+        // }
 
-        // This method is used for unit testing.
-        internal SECSItemNumLengthBytes GetOutboundNumberOfLengthBytes()
-        {
-            return outboundNumberOfLengthBytes;
-        }
+        // // This method is used for unit testing.
+        // internal SECSItemNumLengthBytes GetOutboundNumberOfLengthBytes()
+        // {
+        //     return outboundNumberOfLengthBytes;
+        // }
 
-        /// <summary>
-        /// This method is used to change the number of length bytes used when this
-        /// <c>SECSItem</c> is converted to its &quot;wire/transmission&quot; format. The
-        /// value the number of length bytes will actually set to the greater of
-        /// the minimum required or the number desired.
-        /// </summary>
-        /// <param name="length">The length length in bytes of the <c>SECSItem</c>.</param>
-        /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used 
-        /// for this <c>SECSItem</c>. The value for the number of length bytes must 
-        /// be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
-        public void SetOutboundNumberOfLengthBytes(int length, SECSItemNumLengthBytes desiredNumberOfLengthBytes)
-        {
-            if (length < 0 || length > (int)0x00FFFFFF)
-            {
-                throw new ArgumentException(
-                        "The value for the length argument must be between 0 and 16777215 inclusive.");
-            }
+        // /// <summary>
+        // /// This method is used to change the number of length bytes used when this
+        // /// <c>SECSItem</c> is converted to its &quot;wire/transmission&quot; format. The
+        // /// value the number of length bytes will actually set to the greater of
+        // /// the minimum required or the number desired.
+        // /// </summary>
+        // /// <param name="length">The length length in bytes of the <c>SECSItem</c>.</param>
+        // /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used 
+        // /// for this <c>SECSItem</c>. The value for the number of length bytes must 
+        // /// be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
+        // public void SetOutboundNumberOfLengthBytes(int length, SECSItemNumLengthBytes desiredNumberOfLengthBytes)
+        // {
+        //     if (length < 0 || length > (int)0x00FFFFFF)
+        //     {
+        //         throw new ArgumentException(
+        //                 "The value for the length argument must be between 0 and 16777215 inclusive.");
+        //     }
 
-            outboundNumberOfLengthBytes = CalculateMinimumNumberOfLengthBytes(length);
-            if (outboundNumberOfLengthBytes.CompareTo (desiredNumberOfLengthBytes) < 0)
-            {
-                outboundNumberOfLengthBytes = desiredNumberOfLengthBytes;
-            }
-        }
+        //     outboundNumberOfLengthBytes = CalculateMinimumNumberOfLengthBytes(length);
+        //     if (outboundNumberOfLengthBytes.CompareTo (desiredNumberOfLengthBytes) < 0)
+        //     {
+        //         outboundNumberOfLengthBytes = desiredNumberOfLengthBytes;
+        //     }
+        // }
 
-        /// <summary>
-        /// Gets the SECS item format code.
-        /// <para/>
-        /// This is probably not a method you need to be using.  It was
-        /// originally created for unit testing because its scope
-        /// needed to be set to public for unit testing access.
-        /// 
-        /// </summary>
-        /// <returns>The SECS item's format code.</returns>
-        public SECSItemFormatCode GetSECSItemFormatCode()
-        {
-            return GetFormatCode ();
-        }
+        // /// <summary>
+        // /// Gets the SECS item format code.
+        // /// <para/>
+        // /// This is probably not a method you need to be using.  It was
+        // /// originally created for unit testing because its scope
+        // /// needed to be set to public for unit testing access.
+        // /// 
+        // /// </summary>
+        // /// <returns>The SECS item's format code.</returns>
+        // public SECSItemFormatCode GetSECSItemFormatCode()
+        // {
+        //     return GetFormatCode ();
+        // }
 
-        /// <summary>
-        /// Gets the SECS item format code.
-        /// </summary>
-        /// <returns>The SECS item's format code.</returns>
-        public SECSItemFormatCode GetFormatCode()
-        {
-            return formatCode;
-        }
+        // /// <summary>
+        // /// Gets the SECS item format code.
+        // /// </summary>
+        // /// <returns>The SECS item's format code.</returns>
+        // public SECSItemFormatCode GetFormatCode()
+        // {
+        //     return formatCode;
+        // }
         
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem"/>.
@@ -386,14 +423,47 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
         /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem"/>; otherwise, <c>false</c>.</returns>
-        public abstract override bool Equals(Object obj);
+        public override bool Equals(Object? obj)
+        {
+            if (this == obj)
+				return true;
+
+			if (obj == null)
+				return false;
+
+            if (obj.GetType().IsSubclassOf(typeof(SECSItem)) == false)
+            {
+                return false;
+            }
+
+            SECSItem other = (SECSItem)obj;
+            if (_formatCode == other._formatCode &&
+                _numberOfLengthBytes == other._numberOfLengthBytes &&
+                _lengthInBytes == other._lengthInBytes)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Serves as a hash function for a <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem"/> object.
         /// </summary>
         /// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a
         /// hash table.</returns>
-        public abstract override int GetHashCode();
+        public override int GetHashCode()
+        {
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = (int) 2166136261;
+                // Suitable nullity checks etc, of course :)
+                hash = (hash * 16777619) ^ _formatCode.GetHashCode();
+                hash = (hash * 16777619) ^ _numberOfLengthBytes.GetHashCode();
+                hash = (hash * 16777619) ^ _lengthInBytes.GetHashCode();
+                return hash;
+            }
+        }
 
         /// <summary>
         /// Creates and returns a <code>byte[]</code> that represents this SECSItem 

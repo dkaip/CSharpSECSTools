@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,79 +13,84 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Linq;
+
+ #nullable enable
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
     /// <summary>
-    /// This class represents/implements a SECSItem with the SECS data type of <c>I1</c>
-    /// in an array form.  In this case it is an array of zero or more 8-bit signed integers.
-    /// From the C# side this data type is handled as a C# <c>sbyte []</c>.
-    /// 
-    /// In wire/transmission format all SECS items, with the exception of those with an item format code
-    /// of <c>L</c>(List), are sent in an array form.For instance if an item is received which has
-    /// an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-    /// containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-    /// 4-byte signed integers. Likewise, If an item is received which has
-    /// an item format code of U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-    /// containing 3 2-byte unsigned integers.
-    /// 
-    /// In practice, when only one item is received in the array (in the I4 case mentioned previously if the 
-    /// length was 4 instead of 8) it is handled and processed in a non array form.  Hence <c>I4SECSItem</c>
-    /// vs <c>I4ArraySECSItem</c>, <c>U2SECSItem</c> vs <c>U2ArraySECSItem</c>, etc.
+    /// This class represents a SECS item with a data type of <c>I1</c>
+    /// in an array form. In this case it is an array of zero or more 8-bit signed integers.
+    /// The C# data type is <c>sbyte[]</c>.
     /// </summary>
 	public class I1ArraySECSItem : SECSItem
 	{
-		private sbyte[] value = null;
+		private sbyte[] _value;
+
+		/// <summary>
+		/// The value of this <c>I1ArraySECSItem</c>.
+		/// </summary>
+		public sbyte[] Value { get { return _value; } }
 
         /// <summary>
-        /// This constructor creates a SECSItem that has a type of <c>I1</c> with 
-        /// the minimum number of length bytes required. Note: It will be created 
-        /// with the number of length bytes required based on the length (in elements) 
-        /// of the<c>sbyte []</c> provided. The maximum array length allowed is 
-        /// <c>16777215</c> bytes(elements).
+        /// This constructor creates a <c>I1ArraySECSItem</c> with no elements.
         /// </summary>
-        /// <param name="value">An array of signed 8-bit integers to be assigned to this SECSItem.</param>
-		public I1ArraySECSItem(sbyte[] value) : base(SECSItemFormatCode.I1, value.Length)
+		public I1ArraySECSItem() : base(SECSItemFormatCode.I1, 0)
 		{
-			this.value = value;
+            this._value = new sbyte[0];
 		}
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem"/> class.
+        /// This constructor creates an I1ArraySECSItem that will have the value of
+        /// the supplied <c>sbyte[]</c>.
+        /// </summary>
+        /// <param name="value">An array of <c>sbyte</c> values to be assigned to this <c>SECSItem</c>.</param>
+        /// <remarks>
+        /// The array's length should not exceed <c>16777215</c> elements.
+        /// </remarks>
+		public I1ArraySECSItem(sbyte[]? value) : base(SECSItemFormatCode.I1, value == null ? 0 : value.Length)
+		{
+			if (value == null)
+				this._value = new sbyte[0];
+			else
+				this._value = value;
+		}
+
+        /// <summary>
+        /// This constructor creates an I1ArraySECSItem that will have the value of
+        /// the supplied <c>sbyte[]</c>.  In addition when converted to 
+        /// &quot;transmission&quot; form it will use the number of length bytes
+        /// specified <b>OR</b> the minimum number necessary to actually contain 
+        /// the length of the content of the <c>sbyte[]</c>.
         /// </summary>
         /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
         /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <code>SECSItem</code>.
         /// The value for the number of length bytes must be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
-        public I1ArraySECSItem(sbyte[] value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.I1, value.Length, desiredNumberOfLengthBytes)
+        /// <remarks>
+        /// The array's length should not exceed <c>16777215</c> elements.
+        /// </remarks>
+        public I1ArraySECSItem(sbyte[]? value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.I1, value == null ? 0 : value.Length, desiredNumberOfLengthBytes)
 		{
-			this.value = value;
+			if (value == null)
+				this._value = new sbyte[0];
+			else
+				this._value = value;
 		}
 
-		/*
-		 * This constructor requires a different signature than the one above.
-		 * Hopefully this will not be much of an issue since this constructor
-		 * will most likely be used in the lower level code that once running
-		 * will tend to be very stable.
-		 */
         /// <summary>
-        /// This constructor is used to create this SECSItem from
-        /// data in &quot;wire/transmission&quot; format.
+        /// This constructor is only used by the <c>SECSItemFactory</c>.  Its
+        /// purpose is to load the <c>value</c> field with the data provided.
         /// </summary>
         /// <param name="data">The buffer where the &quot;wire/transmission&quot; format data is contained.</param>
         /// <param name="itemOffset">The offset into the data where the desired item starts.</param>
-        /// <param name="bogus">A dummy argument so that C# will properly distinguish between this 
-        /// and the previous constructor.</param>
-		public I1ArraySECSItem(byte[] data, int itemOffset, int bogus) : base(data, itemOffset)
+		internal I1ArraySECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
 		{
-            int offset = 1 + inboundNumberOfLengthBytes.ValueOf () + itemOffset;
-            bytesConsumed = 1 + inboundNumberOfLengthBytes.ValueOf () + lengthInBytes;
+            int offset = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
 
-			value = new sbyte[lengthInBytes];
-			for(int i = 0, j = offset; i < value.Length; i++, j++)
+			_value = new sbyte[LengthInBytes];
+			for(int i = 0, j = offset; i < _value.Length; i++, j++)
 			{
-				value[i] = (sbyte)data[j];
+				_value[i] = (sbyte)data[j];
 			}
 		}
 
@@ -93,9 +98,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// Gets the value of this <c>SECSItem</c>.
         /// </summary>
         /// <returns>the value of the <c>SECSItem</c>.</returns>
+		[ObsoleteAttribute("This method has been deprecated, please use property Value instead.")]
 		public sbyte[] GetValue()
 		{
-			return value;
+			return _value;
 		}
 
         /// <summary>
@@ -104,12 +110,12 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>A <c>byte[]</c> representation of this <c>SECSItem</c>'s content that is suitable for transmission.</returns>
 		public override byte[] EncodeForTransport()
 		{
-			byte[] output = new byte[OutputHeaderLength()+value.Length];
-			int offset = PopulateSECSItemHeaderData(output, value.Length);
+			byte[] output = new byte[OutputHeaderLength()+_value.Length];
+			int offset = PopulateSECSItemHeaderData(output, _value.Length);
 
-			for( int i = offset, j = 0; j < value.Length; i++, j++)
+			for( int i = offset, j = 0; j < _value.Length; i++, j++)
 			{
-				output[i] = (byte)value[j];
+				output[i] = (byte)_value[j];
 			}
 
 			return output;
@@ -122,7 +128,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <returns>a <c>string</c> representation of this item in a format suitable for debugging.</returns>
 		public override String ToString()
 		{
-			return "Format:" + formatCode.ToString() + " Value: Array";
+			return "Format:" + ItemFormatCode.ToString() + " Value: Array";
 		}
 
         /// <summary>
@@ -132,7 +138,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// hash table.</returns>
 		public override int GetHashCode()
 		{
-			return value.GetHashCode();
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = (int) 2166136261;
+                // Suitable nullity checks etc, of course :)
+                hash = (hash * 16777619) ^ base.GetHashCode();
+                hash = (hash * 16777619) ^ _value.GetHashCode();
+                return hash;
+            }
 		}
 
         /// <summary>
@@ -141,31 +154,27 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
         /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem"/>; otherwise, <c>false</c>.</returns>
-		public override bool Equals(Object obj)
+		public override bool Equals(Object? obj)
 		{
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
+            if (base.Equals(obj) == false)
+                return false;
+
+            // If we are here obj is not null
 			if (GetType() != obj.GetType())
 				return false;
-			I1ArraySECSItem other = (I1ArraySECSItem) obj;
-			if (value == null && other.value == null)
+
+			I1ArraySECSItem other = (I1ArraySECSItem)obj;
+			if (_value == null && other._value == null)
 				return true;
-			if (value == null)
-			{
-				if (other.value != null)
-					return false;
-			}
-			if (other.value == null)
-			{
-				if (value != null)
-					return false;
-			}
-			if (value.Length != other.value.Length)
+
+			if ((_value != null && other._value != null) == false)
 				return false;
 
-			return value.SequenceEqual(other.value);
+            // If we are here both _value fields are not null
+			if (_value.Length != other._value.Length)
+				return false;
+
+			return _value.SequenceEqual(other._value);
 		}
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Douglas Kaip
+ * Copyright 2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
+#nullable enable
+
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
     /// <summary>
     ///  This is a static &quot;factory&quot; class that is used to create a
-	/// <c>SECSItem</c> object from a <c>byte[]</c>.  As you might expect the
+	/// <c>SECSItem</c> object from a <c>byte[]</c> that is in &quot;wire/transmission&quot; form.
+	/// As you might expect the
 	/// bytes contained within the <c>byte[]</c> must actually be in the form
 	/// of those of an item in a SECS-II message.
     /// </summary>
@@ -31,7 +34,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </summary>
         /// <param name="data">An array of bytes that is in wire/transmission format.</param>
         /// <returns>The resulting <c>SECSItem</c>.</returns>
-        public static SECSItem GenerateSECSItem (byte[] data)
+        public static SECSItem? GenerateSECSItem(byte[] data)
         {
             return GenerateSECSItem(data, 0);
         }
@@ -54,9 +57,9 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <param name="data">An array of bytes that is in wire/transmission format.</param>
         /// <param name="offset">The byte offset into <c>data</c> where the data for
         /// a <c>SECSITEM</c> starts.</param>
-		public static SECSItem GenerateSECSItem(byte[] data, int offset)
+		public static SECSItem? GenerateSECSItem(byte[] data, int offset)
 		{
-			SECSItem result = null;
+			SECSItem? result = null;
 
 			SECSItemFormatCode formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)((data[offset] >> 2) & 0x0000003F));
 			int numberOfLengthBytes = (data[offset] & 0x03);
@@ -138,7 +141,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 					if (incomingDataLength == 1)
 						result = new I1SECSItem(data, offset);
 					else
-						result = new I1ArraySECSItem(data, offset, 0); // Need to use this version because of method signature issues
+						result = new I1ArraySECSItem(data, offset);
 					break;
 				case SECSItemFormatCode.I2:
 					if (incomingDataLength == 2)
@@ -174,7 +177,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 					if (incomingDataLength == 1)
 						result = new U1SECSItem(data, offset);
 					else
-						result = new U1ArraySECSItem(data, offset, 0);  // Remember to use the proper constructor for this case
+						result = new U1ArraySECSItem(data, offset);
 					break;
 				case SECSItemFormatCode.U2:
 					if (incomingDataLength == 2)

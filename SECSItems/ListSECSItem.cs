@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,63 +13,72 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Linq;
-using System.Collections.Generic;
+
 using System.Text;
-using System.Text.RegularExpressions;
+
+#nullable enable
 
 namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
     /// <summary>
-    /// This class represents/implements a <c>SECSItem</c> with the SECS data type of <c>L</c>,
+    /// This class represents a <c>SECSItem</c> with the SECS data type of <c>L</c>,
     ///  which is a list of <c>SECSItem</c>s. From the C# side this data
     /// type is handled as a C# <c>LinkedList&lt;SECSItem&gt;</c>.
     /// </summary>
 	public class ListSECSItem : SECSItem
 	{
-		private LinkedList<SECSItem> value = null;
+		private LinkedList<SECSItem> _value;
 
         private String[] delimiterArray = new string[1] { "." };
 
+		/// <summary>
+		/// The value of this <c>ListSECSItem</c>.
+		/// </summary>
+		public LinkedList<SECSItem> Value { get { return _value; } }
+
         /// <summary>
-        /// This constructor creates a <c>SECSItem</c> that has a type of <c>L</c>
-        /// with the specified value.
-		/// <para/>
-        /// Note: It will be created with the minimum number of length bytes required to
-        /// accommodate the size of the provided list of <c>SECSItem</c>s.
+        /// This constructor creates a <c>ListSECSItem</c> with no elements.
         /// </summary>
-        /// <param name="value">The value to be assigned to this <code>SECSItem</code>.</param>
-        public ListSECSItem(LinkedList<SECSItem> value) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count)
+		public ListSECSItem() : base(SECSItemFormatCode.L, 0)
 		{
-            if (value == null)
-                this.value = new LinkedList<SECSItem>();
-            else
-			this.value = value;
+            this._value = new LinkedList<SECSItem>();
 		}
 
         /// <summary>
-        /// This constructor creates a <c>SECSItem</c> that has a type of <c>L</c>
-        /// with the specified value and specified number of length bytes.
-        /// <para/>
-        /// This form of the constructor is not needed much nowadays.  In the past
-        /// there were situations where the equipment required that messages
-        /// contained SECSItems that had a specified number of length bytes.
-        /// This form of the constructor is here to handle these problem child cases.
-		/// <para/>
-        /// Note: It will be created with the greater of the specified number of length bytes 
-        /// or the number of length bytes required to
-        /// accommodate the size of the provided list of <c>SECSItem</c>s.
+        /// This constructor creates a ListSECSItem that will have the value of
+        /// the supplied <c>LinkedList&lt;SECSItem&gt;</c>.
         /// </summary>
-        /// <param name="value">The value to be assigned to this <code>SECSItem</code>.</param>
-        /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <c>SECSItem</c>.
+        /// <param name="value">A list of <c>LinkedList&lt;SECSItem&gt;</c> values to be assigned to this <c>SECSItem</c>.</param>
+        /// <remarks>
+        /// The array's length should not exceed <c>16777215</c> elements.
+        /// </remarks>
+        public ListSECSItem(LinkedList<SECSItem>? value) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count)
+		{
+            if (value == null)
+                this._value = new LinkedList<SECSItem>();
+            else
+				this._value = value;
+		}
+
+        /// <summary>
+        /// This constructor creates an ListSECSItem that will have the value of
+        /// the supplied <c>LinkedList&lt;SECSItem&gt;</c>.  In addition when converted to 
+        /// &quot;transmission&quot; form it will use the number of length bytes
+        /// specified <b>OR</b> the minimum number necessary to actually contain 
+        /// the length of the content of the <c>LinkedList&lt;SECSItem&gt;</c>.
+        /// </summary>
+        /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
+        /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <code>SECSItem</code>.
         /// The value for the number of length bytes must be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
+        /// <remarks>
+        /// The array's length should not exceed <c>16777215</c> elements.
+        /// </remarks>
         public ListSECSItem(LinkedList<SECSItem> value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count, desiredNumberOfLengthBytes)
 		{
             if (value == null)
-                this.value = new LinkedList<SECSItem>();
+                this._value = new LinkedList<SECSItem>();
             else
-			this.value = value;
+				this._value = value;
 		}
 
         /// <summary>
@@ -78,18 +87,20 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// </summary>
         /// <param name="data">The buffer where the &quot;wire/transmission&quot; format data is contained.</param>
         /// <param name="itemOffset">The offset into the data where the desired item starts.</param>
-		public ListSECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
+		internal ListSECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
 		{
-            int offset = 1 + inboundNumberOfLengthBytes.ValueOf () + itemOffset;
-			bytesConsumed = offset + lengthInBytes;
-			value = new LinkedList<SECSItem>();
+            int offset = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
 
-            for( int i = 0; i < lengthInBytes; i++)
+			_value = new LinkedList<SECSItem>();
+
+            for( int i = 0; i < LengthInBytes; i++)
 			{
-				SECSItem temp = SECSItemFactory.GenerateSECSItem(data, offset);
-				offset += temp.GetBytesConsumed();
-				this.bytesConsumed += temp.GetBytesConsumed();
-				value.AddLast(temp);
+				SECSItem? temp = SECSItemFactory.GenerateSECSItem(data, offset);
+				if (temp != null)
+				{
+					offset += 1 + temp.NumberOfLengthBytes.ValueOf() + temp.LengthInBytes;
+					_value.AddLast(temp);
+				}
 			}
 		}
 
@@ -97,9 +108,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// Gets the value of this <c>SECSItem</c>.
         /// </summary>
         /// <returns>the value of the <c>SECSItem</c>.</returns>
+		[ObsoleteAttribute("This method has been deprecated, please use property Value instead.")]
 		public LinkedList<SECSItem> GetValue()
 		{
-			return value;
+			return _value;
 		}
 
 		/// <summary>
@@ -123,19 +135,19 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 		/// </summary>
 		/// <returns>The <see cref="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem"/>.</returns>
 		/// <param name="address">The SECSItem at the provided address or null if not found.</param>
-		public SECSItem GetElementAt(String address)
+		public SECSItem? GetElementAt(String address)
 		{
-			SECSItem result = null;
+			SECSItem result;
             String[] addressArray = address.Split(delimiterArray, 2, StringSplitOptions.None);
 			int elementNumber = int.Parse(addressArray[0]);
 
-			if (elementNumber < 1 || elementNumber > value.Count)
+			if (elementNumber < 1 || elementNumber > _value.Count)
 				return null;
 
-			result = value.ElementAt(elementNumber-1);
+			result = _value.ElementAt(elementNumber-1);
 			if (addressArray.Length > 1)
 			{
-				if (result.GetSECSItemFormatCode() != SECSItemFormatCode.L)
+				if (result.ItemFormatCode != SECSItemFormatCode.L)
 				{
 					/*
                		 * If we are here the address has more levels, but, this 
@@ -162,7 +174,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 			LinkedList<byte[]> outputStorage = new LinkedList<byte[]>();
 
 			int outputBufferSize = 0;
-			foreach(SECSItem item in value)
+			foreach(SECSItem item in _value)
 			{
 				byte[] itemBytes = item.EncodeForTransport();
 				outputBufferSize += itemBytes.Length;
@@ -171,7 +183,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 
 
 			byte[] output = new byte[OutputHeaderLength()+outputBufferSize];
-			int offset = PopulateSECSItemHeaderData(output, value.Count);
+			int offset = PopulateSECSItemHeaderData(output, _value.Count);
 
 			foreach(byte[] rawData in outputStorage)
 			{
@@ -191,11 +203,11 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 		{
 			StringBuilder result = new StringBuilder();
 
-			result.Append("Format:" + formatCode.ToString() + " Value: " + value.Count);
-			foreach(SECSItem item in value)
+			result.Append("Format:" + ItemFormatCode.ToString() + " Value: " + _value.Count);
+			foreach(SECSItem item in _value)
 			{
-				String temp = item.ToString();
-				result.Append("\n" + temp);
+				if (item.ToString() != null)
+					result.Append("\n" + item.ToString() );
 			}
 
 			return result.ToString();
@@ -208,7 +220,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// hash table.</returns>
 		public override int GetHashCode()
 		{
-			return value.GetHashCode();
+            unchecked // Overflow is fine, just wrap
+            {
+                int hash = (int) 2166136261;
+                // Suitable nullity checks etc, of course :)
+                hash = (hash * 16777619) ^ base.GetHashCode();
+                hash = (hash * 16777619) ^ _value.GetHashCode();
+                return hash;
+            }
 		}
 
         /// <summary>
@@ -217,33 +236,29 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
         /// <see cref="T:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem"/>; otherwise, <c>false</c>.</returns>
-		public override bool Equals(Object obj)
+		public override bool Equals(Object? obj)
 		{
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
+            if (base.Equals(obj) == false)
+                return false;
+
+            // If we are here obj is not null
 			if (GetType() != obj.GetType())
 				return false;
-			ListSECSItem other = (ListSECSItem) obj;
-			if (value == null && other.value == null)
+
+			ListSECSItem other = (ListSECSItem)obj;
+			if (_value == null && other._value == null)
 				return true;
-			if (value == null)
-			{
-				if (other.value != null)
-					return false;
-			}
-			if (other.value == null)
-			{
-				if (value != null)
-					return false;
-			}
-			if (value.Count != other.value.Count)
+
+			if ((_value != null && other._value != null) == false)
 				return false;
-			
-			LinkedList<SECSItem>.Enumerator temp1 = value.GetEnumerator();
-			LinkedList<SECSItem>.Enumerator temp2 = other.value.GetEnumerator();
-			for(int i = 0; i < value.Count; i++)
+
+            // If we are here both _value fields are not null
+			if (_value.Count != other._value.Count)
+				return false;
+
+			LinkedList<SECSItem>.Enumerator temp1 = _value.GetEnumerator();
+			LinkedList<SECSItem>.Enumerator temp2 = other._value.GetEnumerator();
+			for(int i = 0; i < _value.Count; i++)
 			{
 				temp1.MoveNext();
 				temp2.MoveNext();
@@ -253,6 +268,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 					return false;
 				}
 			}
+
 			return true;
 		}
 	}
