@@ -203,14 +203,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
         public override void GetSECSItemAsText(StringBuilder sb, SECSItem secsItem)
         {
-            if (secsItem.GetFormatCode() == SECSItemFormatCode.L)
+            if (secsItem.ItemFormatCode == SECSItemFormatCode.L)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 if (configurationData.BodyOutputConfig.DisplayCount)
                 {
                     sb.Append("<L [");
-                    sb.Append(((ListSECSItem)secsItem).GetValue().Count());
+                    sb.Append(((ListSECSItem)secsItem).Value.Count());
                     sb.AppendLine("]");
                 }
                 else
@@ -220,8 +220,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 CurrentIndentLevel += configurationData.IndentAmount;
 
-                int arrayLength = ((ListSECSItem)secsItem).GetValue().Count();
-                foreach (SECSItem listEntry in ((ListSECSItem)secsItem).GetValue())
+                int arrayLength = ((ListSECSItem)secsItem).Value.Count();
+                foreach (SECSItem listEntry in ((ListSECSItem)secsItem).Value)
                 {
                     GetSECSItemAsText(sb, listEntry);
 
@@ -232,20 +232,20 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.B)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.B)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "B", secsItem.GetLengthInBytes(), out offsetToData);
-                if (secsItem.GetLengthInBytes() == 0)
+                AddPreText(sb, "B", secsItem.LengthInBytes, out offsetToData);
+                if (secsItem.LengthInBytes == 0)
                 {
                     // sb.Append(">");
                 }
-                else if (secsItem.GetLengthInBytes() == 1)
+                else if (secsItem.LengthInBytes == 1)
                 {
                     sb.Append("0x");
-                    sb.Append((((BinarySECSItem)secsItem).GetValue()[0]).ToString("X2"));
+                    sb.Append((((BinarySECSItem)secsItem).Value[0]).ToString("X2"));
                 }
                 else
                 {
@@ -254,8 +254,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     int lineLength = CurrentIndentLevel + offsetToData;
 
                     int currentArrayElement = 0;
-                    int arrayLength = ((BinarySECSItem)secsItem).GetValue().Count();
-                    foreach (byte item in ((BinarySECSItem)secsItem).GetValue())
+                    int arrayLength = ((BinarySECSItem)secsItem).Value.Count();
+                    foreach (byte item in ((BinarySECSItem)secsItem).Value)
                     {
                         if (lineLength + 4 >= configurationData.BodyOutputConfig.MaxOutputLineLength)
                         {
@@ -265,7 +265,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         }
 
                         sb.Append("0x");
-                        sb.Append((((BinarySECSItem)secsItem).GetValue()[0]).ToString("X2"));
+                        sb.Append((((BinarySECSItem)secsItem).Value[0]).ToString("X2"));
                         lineLength += 4;
 
                         if (++currentArrayElement < arrayLength && lineLength < configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -279,19 +279,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.BO)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.BO)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "BOOLEAN", secsItem.GetLengthInBytes(), out offsetToData);
-                if (secsItem.GetLengthInBytes() == 0)
+                AddPreText(sb, "BOOLEAN", secsItem.LengthInBytes, out offsetToData);
+                if (secsItem.LengthInBytes == 0)
                 {
                     sb.Append(">");
                 }
-                else if (secsItem.GetLengthInBytes() == 1)
+                else if (secsItem.LengthInBytes == 1)
                 {
-                    if (((BooleanSECSItem)secsItem).GetValue() == true)
+                    if (((BooleanSECSItem)secsItem).Value == true)
                         sb.Append("T");
                     else
                         sb.Append("F");
@@ -303,8 +303,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     int lineLength = CurrentIndentLevel + offsetToData;
 
                     int currentArrayElement = 0;
-                    int arrayLength = ((BooleanArraySECSItem)secsItem).GetValue().Count();
-                    foreach (bool item in ((BooleanArraySECSItem)secsItem).GetValue())
+                    int arrayLength = ((BooleanArraySECSItem)secsItem).Value.Count();
+                    foreach (bool item in ((BooleanArraySECSItem)secsItem).Value)
                     {
                         if (lineLength + 1 >= configurationData.BodyOutputConfig.MaxOutputLineLength)
                         {
@@ -335,26 +335,26 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.A)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.A)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
-                if (secsItem.GetLengthInBytes() == 0)
+                if (secsItem.LengthInBytes == 0)
                 {
                     ;
                 }
                 else
                 {
                     int offsetToData;
-                    AddPreText(sb, "A", secsItem.GetLengthInBytes(), out offsetToData);
+                    AddPreText(sb, "A", secsItem.LengthInBytes, out offsetToData);
 
 //                    sb.Append("\"");
 
                     int lineLength = CurrentIndentLevel + offsetToData;
 
                     bool withinQuotes = false;
-                    int arrayLength = ((ASCIISECSItem)secsItem).GetValue().Length;
-                    foreach (Char item in ((ASCIISECSItem)secsItem).GetValue())
+                    int arrayLength = ((ASCIISECSItem)secsItem).Value.Length;
+                    foreach (Char item in ((ASCIISECSItem)secsItem).Value)
                     {
                         int itemLength;
                         if (Char.IsLetterOrDigit(item) || Char.IsPunctuation(item) || Char.IsSymbol(item) || (item==' '))
@@ -405,27 +405,27 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.Append("\">");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.J8)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.J8)
             {
                 sb.Append("<J \"Not Implemented Yet\">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.C2)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.C2)
             {
                 sb.Append("<C \"Not Implemented Yet\">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.I8)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.I8)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "I8", secsItem.GetLengthInBytes()/sizeof(Int64), out offsetToData);
+                AddPreText(sb, "I8", secsItem.LengthInBytes/sizeof(Int64), out offsetToData);
                 if (secsItem.GetType() == typeof(I8SECSItem))
                 {
-                    sb.Append(((I8SECSItem)secsItem).GetValue());
+                    sb.Append(((I8SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -436,8 +436,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((I8ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (Int64 item in ((I8ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((I8ArraySECSItem)secsItem).Value.Count();
+                        foreach (Int64 item in ((I8ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetSignedItemLength(item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -463,19 +463,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.I1)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.I1)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "I1", secsItem.GetLengthInBytes()/sizeof(sbyte), out offsetToData);
+                AddPreText(sb, "I1", secsItem.LengthInBytes/sizeof(sbyte), out offsetToData);
                 if (secsItem.GetType() == typeof(I1SECSItem))
                 {
-                    sb.Append(((I1SECSItem)secsItem).GetValue());
+                    sb.Append(((I1SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -486,8 +486,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((I1ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (sbyte item in ((I1ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((I1ArraySECSItem)secsItem).Value.Count();
+                        foreach (sbyte item in ((I1ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetSignedItemLength(item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -513,19 +513,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.I2)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.I2)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "I2", secsItem.GetLengthInBytes()/sizeof(Int16), out offsetToData);
+                AddPreText(sb, "I2", secsItem.LengthInBytes/sizeof(Int16), out offsetToData);
                 if (secsItem.GetType() == typeof(I2SECSItem))
                 {
-                    sb.Append(((I2SECSItem)secsItem).GetValue());
+                    sb.Append(((I2SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -536,8 +536,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((I2ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (Int16 item in ((I2ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((I2ArraySECSItem)secsItem).Value.Count();
+                        foreach (Int16 item in ((I2ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetSignedItemLength(item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -563,19 +563,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.I4)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.I4)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "I4", secsItem.GetLengthInBytes()/sizeof(Int32), out offsetToData);
+                AddPreText(sb, "I4", secsItem.LengthInBytes/sizeof(Int32), out offsetToData);
                 if (secsItem.GetType() == typeof(I4SECSItem))
                 {
-                    sb.Append(((I4SECSItem)secsItem).GetValue());
+                    sb.Append(((I4SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -586,8 +586,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((I4ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (Int32 item in ((I4ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((I4ArraySECSItem)secsItem).Value.Count();
+                        foreach (Int32 item in ((I4ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetSignedItemLength(item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -613,19 +613,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.F8)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.F8)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "F8", secsItem.GetLengthInBytes()/sizeof(double), out offsetToData);
+                AddPreText(sb, "F8", secsItem.LengthInBytes/sizeof(double), out offsetToData);
                 if (secsItem.GetType() == typeof(F8SECSItem))
                 {
-                    sb.Append(((F8SECSItem)secsItem).GetValue());
+                    sb.Append(((F8SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -636,8 +636,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((F8ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (double item in ((F8ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((F8ArraySECSItem)secsItem).Value.Count();
+                        foreach (double item in ((F8ArraySECSItem)secsItem).Value)
                         {
                             /*
                                 This is not a good way to get the length of the item
@@ -672,19 +672,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.F4)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.F4)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "F4", secsItem.GetLengthInBytes()/sizeof(float), out offsetToData);
+                AddPreText(sb, "F4", secsItem.LengthInBytes/sizeof(float), out offsetToData);
                 if (secsItem.GetType() == typeof(F4SECSItem))
                 {
-                    sb.Append(((F4SECSItem)secsItem).GetValue());
+                    sb.Append(((F4SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -695,8 +695,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((F4ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (float item in ((F4ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((F4ArraySECSItem)secsItem).Value.Count();
+                        foreach (float item in ((F4ArraySECSItem)secsItem).Value)
                         {
                             /*
                                 This is not a good way to get the length of the item
@@ -730,19 +730,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.U8)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.U8)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "U8", secsItem.GetLengthInBytes()/sizeof(UInt64), out offsetToData);
+                AddPreText(sb, "U8", secsItem.LengthInBytes/sizeof(UInt64), out offsetToData);
                 if (secsItem.GetType() == typeof(U8SECSItem))
                 {
-                    sb.Append(((U8SECSItem)secsItem).GetValue());
+                    sb.Append(((U8SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -753,8 +753,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((U8ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (UInt64 item in ((U8ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((U8ArraySECSItem)secsItem).Value.Count();
+                        foreach (UInt64 item in ((U8ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetUnsignedItemLength(item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -780,19 +780,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.U1)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.U1)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "U1", secsItem.GetLengthInBytes()/sizeof(byte), out offsetToData);
+                AddPreText(sb, "U1", secsItem.LengthInBytes/sizeof(byte), out offsetToData);
                 if (secsItem.GetType() == typeof(U1SECSItem))
                 {
-                    sb.Append(((U1SECSItem)secsItem).GetValue());
+                    sb.Append(((U1SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -803,8 +803,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((U1ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (byte item in ((U1ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((U1ArraySECSItem)secsItem).Value.Count();
+                        foreach (byte item in ((U1ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetUnsignedItemLength(item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -830,19 +830,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.U2)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.U2)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "U2", secsItem.GetLengthInBytes()/sizeof(UInt16), out offsetToData);
+                AddPreText(sb, "U2", secsItem.LengthInBytes/sizeof(UInt16), out offsetToData);
                 if (secsItem.GetType() == typeof(U2SECSItem))
                 {
-                    sb.Append(((U2SECSItem)secsItem).GetValue());
+                    sb.Append(((U2SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -853,8 +853,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((U2ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (UInt16 item in ((U2ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((U2ArraySECSItem)secsItem).Value.Count();
+                        foreach (UInt16 item in ((U2ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetUnsignedItemLength(item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -880,19 +880,19 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(">");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.U4)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.U4)
             {
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
                 int offsetToData;
-                AddPreText(sb, "U4", secsItem.GetLengthInBytes()/sizeof(UInt32), out offsetToData);
+                AddPreText(sb, "U4", secsItem.LengthInBytes/sizeof(UInt32), out offsetToData);
                 if (secsItem.GetType() == typeof(U4SECSItem))
                 {
-                    sb.Append(((U4SECSItem)secsItem).GetValue());
+                    sb.Append(((U4SECSItem)secsItem).Value);
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         ;
                     }
@@ -903,8 +903,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel + offsetToData;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((U4ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (UInt32 item in ((U4ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((U4ArraySECSItem)secsItem).Value.Count();
+                        foreach (UInt32 item in ((U4ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetUnsignedItemLength(item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -932,7 +932,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             }
             else
             {
-                Console.Error.WriteLine("Unhandled format code of {0}.", secsItem.GetFormatCode());
+                Console.Error.WriteLine("Unhandled format code of {0}.", secsItem.ItemFormatCode);
                 return;
             }
         }
