@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Linq;
+
 using NUnit.Framework;
+
 using com.CIMthetics.CSharpSECSTools.SECSItems;
 
-namespace SECSItemTests
+namespace com.CIMthetics.CSharpSECSTools.SECSItemTests
 {
 	[TestFixture()]
 	public class SECSItemFormatCodeTests
@@ -81,7 +81,6 @@ namespace SECSItemTests
 
 			result = SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.HeaderOnly);
 			Assert.IsTrue( result == 0x3F );
-
 		}
 
 		[Test()]
@@ -89,9 +88,7 @@ namespace SECSItemTests
 		{
 			SECSItemFormatCode formatCode;
 
-			/*
-         * Test the codes that are supposed to be there.
-         */
+            // Test the codes that are supposed to be there.
 			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x00);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.L);
 
@@ -146,13 +143,12 @@ namespace SECSItemTests
 			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)0x3F);
 			Assert.IsTrue(formatCode == SECSItemFormatCode.HeaderOnly);
 
-			/*
-         * Now we need to verify that we do not get a legitimate code from empty
-         * elements in the table.
-         * 
-         * Yes, yes, it will blow up if a number is specified that is out of 
-         * bounds, but, deal with it.
-         */
+			// Now we need to verify that we do not get a legitimate code from empty
+			// elements in the table.
+			// 
+			// Yes, yes, it will blow up if a number is specified that is out of 
+			// bounds, but, deal with it.
+
 			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)1);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
 			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)2);
@@ -247,18 +243,16 @@ namespace SECSItemTests
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
 			formatCode = SECSItemFormatCodeFunctions.GetSECSItemFormatCodeFromNumber((byte)62);
 			Assert.IsTrue( formatCode == SECSItemFormatCode.UNDEFINED);
-
 		}
 
 		[Test()]
 		public void testConvertingToString()
 		{
-			/*
-         * This may seem like a silly test, but, hopefully it will prevent
-         * the situation where some silly twit decides to override the
-         * toString method.  If this happens it will most likely break
-         * quite a bit of code "way up" the food chain.
-         */
+			// This may seem like a silly test, but, hopefully it will prevent
+			// the situation where some silly twit decides to override the
+			// toString method.  If this happens it will most likely break
+			// quite a bit of code "way up" the food chain.
+
 			Assert.IsTrue( SECSItemFormatCode.L.ToString().Equals("L") );
 			Assert.IsTrue( SECSItemFormatCode.B.ToString().Equals("B") );
 			Assert.IsTrue( SECSItemFormatCode.BO.ToString().Equals("BO") );
@@ -277,7 +271,6 @@ namespace SECSItemTests
 			Assert.IsTrue( SECSItemFormatCode.U4.ToString().Equals("U4") );
 			Assert.IsTrue( SECSItemFormatCode.UNDEFINED.ToString().Equals("UNDEFINED") );
 			Assert.IsTrue( SECSItemFormatCode.HeaderOnly.ToString().Equals("HeaderOnly") );
-
 		}
 	}
 }

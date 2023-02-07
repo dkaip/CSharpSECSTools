@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,389 +14,390 @@
  * limitations under the License.
  */
 using NUnit.Framework;
-using System;
+
 using com.CIMthetics.CSharpSECSTools.SECSItems;
 
-namespace SECSItemTests
+namespace com.CIMthetics.CSharpSECSTools.SECSItemTests
 {
+    /// <summary>
+    /// This class is used for testing the class <c>SECSItem</c>.  Since
+    /// <c>SECSItem</c> is <c>abstract</c> this is how it is being tested.
+    /// </summary>
     [TestFixture ()]
     public class SECSItemsTests
     {
         public class SECSItemTest : SECSItem
         {
-            public SECSItemTest (SECSItemFormatCode formatCode, int length) : base (formatCode, length)
-            { }
+            public SECSItemTest(SECSItemFormatCode formatCode, int length) : base (formatCode, length) {}
 
-            public SECSItemTest (SECSItemFormatCode formatCode, int length, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base (formatCode, length, desiredNumberOfLengthBytes)
-            { }
+            public SECSItemTest(SECSItemFormatCode formatCode, int length, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base (formatCode, length, desiredNumberOfLengthBytes) {}
 
-            public SECSItemTest (byte [] data, int itemOffset) : base (data, itemOffset)
-            { }
+            public SECSItemTest(byte [] data, int itemOffset) : base (data, itemOffset) {}
 
-            public int TestPopulateSECSItemHeaderData (byte [] buffer, int numberOfBytes)
+            public int TestPopulateSECSItemHeaderData(byte [] buffer, int numberOfBytes)
             {
-                return PopulateSECSItemHeaderData (buffer, numberOfBytes);
+                return PopulateSECSItemHeaderData(buffer, numberOfBytes);
             }
 
-            public override bool Equals (Object obj)
+            public override bool Equals(Object obj)
             {
                 return false;
             }
 
-            public override int GetHashCode ()
+            public override int GetHashCode()
             {
                 return 0;
             }
 
-            public override byte [] EncodeForTransport ()
+            public override byte [] EncodeForTransport()
             {
                 return null;
             }
         }
 
         [Test ()]
-        public void Test01 ()
+        public void Test01()
         {
-            var exception = Assert.Catch (() => new SECSItemTest (SECSItemFormatCode.U1, -1));
+            var exception = Assert.Catch (() => new SECSItemTest(SECSItemFormatCode.U1, -1));
 
-            Assert.IsInstanceOf<ArgumentException> (exception);
+            Assert.IsInstanceOf<ArgumentException>(exception);
 
             Assert.IsTrue (exception.Message.Contains ("The value for the length argument must be between 0 and 16777215 inclusive."));
         }
 
         [Test ()]
-        public void Test02 ()
+        public void Test02()
         {
-            var exception = Assert.Catch (() => new SECSItemTest (SECSItemFormatCode.U1, 16777216));
+            var exception = Assert.Catch (() => new SECSItemTest(SECSItemFormatCode.U1, 16777216));
 
-            Assert.IsInstanceOf<ArgumentException> (exception);
+            Assert.IsInstanceOf<ArgumentException>(exception);
 
-            Assert.IsTrue (exception.Message.Contains ("The value for the length argument must be between 0 and 16777215 inclusive."));
+            Assert.IsTrue (exception.Message.Contains("The value for the length argument must be between 0 and 16777215 inclusive."));
         }
 
         [Test ()]
-        public void Test03 ()
+        public void Test03()
         {
-            foreach (SECSItemFormatCode formatCode in Enum.GetValues (typeof (SECSItemFormatCode))) {
-                SECSItemTest secsItem = new SECSItemTest (formatCode, 0);
+            foreach(SECSItemFormatCode formatCode in Enum.GetValues(typeof(SECSItemFormatCode)))
+            {
+                SECSItemTest secsItem = new SECSItemTest(formatCode, 0);
 
-                Assert.IsTrue (secsItem.GetSECSItemFormatCode () == formatCode);
-                Assert.IsTrue (secsItem.GetFormatCode () == formatCode);
+                Assert.IsTrue(secsItem.ItemFormatCode == formatCode);
             }
         }
 
         [Test ()]
-        public void Test04 ()
+        public void Test04()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 0);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 0);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.ONE);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.ONE);
         }
 
         [Test ()]
-        public void Test05 ()
+        public void Test05()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 255);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 255);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.ONE);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.ONE);
         }
 
         [Test ()]
-        public void Test06 ()
+        public void Test06()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 256);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 256);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.TWO);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.TWO);
         }
 
         [Test ()]
-        public void Test07 ()
+        public void Test07()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 65535);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 65535);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.TWO);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.TWO);
         }
 
         [Test ()]
-        public void Test08 ()
+        public void Test08()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 65536);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 65536);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.THREE);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.THREE);
         }
 
         [Test ()]
-        public void Test09 ()
+        public void Test09()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 16777215);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 16777215);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.THREE);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.THREE);
         }
 
         [Test ()]
-        public void Test10 ()
+        public void Test10()
         {
-            var exception = Assert.Catch (() => new SECSItemTest (SECSItemFormatCode.U1, -1, SECSItemNumLengthBytes.ONE));
+            var exception = Assert.Catch(() => new SECSItemTest(SECSItemFormatCode.U1, -1, SECSItemNumLengthBytes.ONE));
+
+            Assert.IsInstanceOf<ArgumentException>(exception);
+
+            Assert.IsTrue(exception.Message.Contains ("The value for the length argument must be between 0 and 16777215 inclusive."));
+        }
+
+        [Test ()]
+        public void Test11()
+        {
+            var exception = Assert.Catch(() => new SECSItemTest(SECSItemFormatCode.U1, 16777216, SECSItemNumLengthBytes.ONE));
 
             Assert.IsInstanceOf<ArgumentException> (exception);
 
-            Assert.IsTrue (exception.Message.Contains ("The value for the length argument must be between 0 and 16777215 inclusive."));
+            Assert.IsTrue (exception.Message.Contains("The value for the length argument must be between 0 and 16777215 inclusive."));
         }
 
         [Test ()]
-        public void Test11 ()
+        public void Test12()
         {
-            var exception = Assert.Catch (() => new SECSItemTest (SECSItemFormatCode.U1, 16777216, SECSItemNumLengthBytes.ONE));
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.ONE);
 
-            Assert.IsInstanceOf<ArgumentException> (exception);
-
-            Assert.IsTrue (exception.Message.Contains ("The value for the length argument must be between 0 and 16777215 inclusive."));
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.ONE);
         }
 
         [Test ()]
-        public void Test12 ()
+        public void Test13()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.ONE);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 256, SECSItemNumLengthBytes.ONE);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.ONE);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.TWO);
         }
 
         [Test ()]
-        public void Test13 ()
+        public void Test14()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 256, SECSItemNumLengthBytes.ONE);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 65536, SECSItemNumLengthBytes.ONE);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.TWO);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.THREE);
         }
 
         [Test ()]
-        public void Test14 ()
+        public void Test15()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 65536, SECSItemNumLengthBytes.ONE);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.TWO);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.THREE);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes== SECSItemNumLengthBytes.TWO);
         }
 
         [Test ()]
-        public void Test15 ()
+        public void Test16()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.TWO);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 256, SECSItemNumLengthBytes.TWO);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.TWO);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.TWO);
         }
 
         [Test ()]
-        public void Test16 ()
+        public void Test17()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 256, SECSItemNumLengthBytes.TWO);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 65536, SECSItemNumLengthBytes.TWO);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.TWO);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.THREE);
         }
 
         [Test ()]
-        public void Test17 ()
+        public void Test18()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 65536, SECSItemNumLengthBytes.TWO);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.THREE);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.THREE);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.THREE);
         }
 
         [Test ()]
-        public void Test18 ()
+        public void Test19()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.THREE);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 256, SECSItemNumLengthBytes.THREE);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.THREE);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.THREE);
         }
 
         [Test ()]
-        public void Test19 ()
+        public void Test20()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 256, SECSItemNumLengthBytes.THREE);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 65536, SECSItemNumLengthBytes.THREE);
 
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.THREE);
+            Assert.IsTrue(secsItem.NumberOfLengthBytes == SECSItemNumLengthBytes.THREE);
         }
 
         [Test ()]
-        public void Test20 ()
-        {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 65536, SECSItemNumLengthBytes.THREE);
-
-            Assert.IsTrue (secsItem.GetOutboundNumberOfLengthBytes () == SECSItemNumLengthBytes.THREE);
-        }
-
-        [Test ()]
-        public void Test21 ()
+        public void Test21()
         {
             byte [] input = { 128, 255, 0, 1, 127 };
 
             // This is just a lazy way to get a known SECSItem in "wire format"
-            BinarySECSItem secsItem = new BinarySECSItem (input, SECSItemNumLengthBytes.ONE);
+            BinarySECSItem secsItem = new BinarySECSItem(input, SECSItemNumLengthBytes.ONE);
 
-            SECSItemTest secsItemA = new SECSItemTest (secsItem.EncodeForTransport (), 0);
+            SECSItemTest secsItemA = new SECSItemTest(secsItem.EncodeForTransport(), 0);
 
-            Assert.IsTrue (secsItemA.GetInboundNumberOfLengthBytes () == SECSItemNumLengthBytes.ONE);
-            Assert.IsTrue (secsItemA.GetSECSItemFormatCode () == SECSItemFormatCode.B);
-            Assert.IsTrue (secsItemA.GetLengthInBytes () == 5);
+            Assert.IsTrue(secsItemA.NumberOfLengthBytes == SECSItemNumLengthBytes.ONE);
+            Assert.IsTrue(secsItemA.ItemFormatCode == SECSItemFormatCode.B);
+            Assert.IsTrue(secsItemA.LengthInBytes == 5);
         }
 
         [Test ()]
-        public void Test22 ()
+        public void Test22()
         {
             byte [] input = { 128, 255, 0, 1, 127 };
 
             // This is just a lazy way to get a known SECSItem in "wire format"
-            BinarySECSItem secsItem = new BinarySECSItem (input, SECSItemNumLengthBytes.TWO);
+            BinarySECSItem secsItem = new BinarySECSItem(input, SECSItemNumLengthBytes.TWO);
 
-            SECSItemTest secsItemA = new SECSItemTest (secsItem.EncodeForTransport (), 0);
+            SECSItemTest secsItemA = new SECSItemTest(secsItem.EncodeForTransport(), 0);
 
-            Assert.IsTrue (secsItemA.GetInboundNumberOfLengthBytes () == SECSItemNumLengthBytes.TWO);
-            Assert.IsTrue (secsItemA.GetSECSItemFormatCode () == SECSItemFormatCode.B);
-            Assert.IsTrue (secsItemA.GetLengthInBytes () == 5);
+            Assert.IsTrue(secsItemA.NumberOfLengthBytes == SECSItemNumLengthBytes.TWO);
+            Assert.IsTrue(secsItemA.ItemFormatCode == SECSItemFormatCode.B);
+            Assert.IsTrue(secsItemA.LengthInBytes == 5);
         }
 
         [Test ()]
-        public void Test23 ()
+        public void Test23()
         {
             byte [] input = { 128, 255, 0, 1, 127 };
 
             // This is just a lazy way to get a known SECSItem in "wire format"
-            BinarySECSItem secsItem = new BinarySECSItem (input, SECSItemNumLengthBytes.THREE);
+            BinarySECSItem secsItem = new BinarySECSItem(input, SECSItemNumLengthBytes.THREE);
 
-            SECSItemTest secsItemA = new SECSItemTest (secsItem.EncodeForTransport (), 0);
+            SECSItemTest secsItemA = new SECSItemTest(secsItem.EncodeForTransport (), 0);
 
-            Assert.IsTrue (secsItemA.GetInboundNumberOfLengthBytes () == SECSItemNumLengthBytes.THREE);
-            Assert.IsTrue (secsItemA.GetSECSItemFormatCode () == SECSItemFormatCode.B);
-            Assert.IsTrue (secsItemA.GetLengthInBytes () == 5);
+            Assert.IsTrue(secsItemA.NumberOfLengthBytes == SECSItemNumLengthBytes.THREE);
+            Assert.IsTrue(secsItemA.ItemFormatCode == SECSItemFormatCode.B);
+            Assert.IsTrue(secsItemA.LengthInBytes == 5);
         }
 
         [Test ()]
-        public void Test24 ()
+        public void Test24()
         {
             byte [] input = null;
 
-            var exception = Assert.Catch (() => new SECSItemTest (input, 0));
+            var exception = Assert.Catch(() => new SECSItemTest(input, 0));
 
-            Assert.IsInstanceOf<ArgumentNullException> (exception);
+            Assert.IsInstanceOf<ArgumentNullException>(exception);
 
             Assert.IsTrue (exception.Message.Contains ("\"data\" argument must not be null."));
         }
 
         [Test ()]
-        public void Test25 ()
+        public void Test25()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x01) };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x01) };
 
-            var exception = Assert.Catch (() => new SECSItemTest (input, 0));
+            var exception = Assert.Catch (() => new SECSItemTest(input, 0));
 
-            Assert.IsInstanceOf<ArgumentException> (exception);
+            Assert.IsInstanceOf<ArgumentException>(exception);
 
             Assert.IsTrue (exception.Message.Contains ("\"data\" argument must have a length >= 2."));
         }
 
         [Test ()]
-        public void Test26 ()
+        public void Test26()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x02), 0x00 };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x02), 0x00 };
 
-            var exception = Assert.Catch (() => new SECSItemTest (input, 0));
+            var exception = Assert.Catch (() => new SECSItemTest(input, 0));
 
-            Assert.IsInstanceOf<ArgumentException> (exception);
+            Assert.IsInstanceOf<ArgumentException>(exception);
 
-            Assert.IsTrue (exception.Message.Contains ("With two length bytes the minimum length for the \"data\" argument is 3."));
+            Assert.IsTrue (exception.Message.Contains("With two length bytes the minimum length for the \"data\" argument is 3."));
         }
 
         [Test ()]
-        public void Test27 ()
+        public void Test27()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x03), 0x00, 0x00 };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x03), 0x00, 0x00 };
 
-            var exception = Assert.Catch (() => new SECSItemTest (input, 0));
+            var exception = Assert.Catch(() => new SECSItemTest(input, 0));
 
-            Assert.IsInstanceOf<ArgumentException> (exception);
+            Assert.IsInstanceOf<ArgumentException>(exception);
 
             Assert.IsTrue (exception.Message.Contains ("With three length bytes the minimum length for the \"data\" argument is 4."));
         }
 
         [Test ()]
-        public void Test28 ()
+        public void Test28()
         {
             byte [] input = { };
 
-            var exception = Assert.Catch (() => new SECSItemTest (input, 0));
+            var exception = Assert.Catch(() => new SECSItemTest(input, 0));
 
-            Assert.IsInstanceOf<ArgumentException> (exception);
+            Assert.IsInstanceOf<ArgumentException>(exception);
 
             Assert.IsTrue (exception.Message.Contains ("\"data\" argument must have a length >= 2."));
         }
 
         [Test ()]
-        public void Test29 ()
+        public void Test29()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x01), 0x00 };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x01), 0x00 };
 
-            SECSItemTest secsItem = new SECSItemTest (input, 0);
+            SECSItemTest secsItem = new SECSItemTest(input, 0);
 
-            Assert.IsTrue (secsItem.GetLengthInBytes () == 0);
+            Assert.IsTrue (secsItem.LengthInBytes == 0);
         }
 
         [Test ()]
-        public void Test30 ()
+        public void Test30()
         {
             byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x01), (byte)0xFF };
 
             SECSItemTest secsItem = new SECSItemTest (input, 0);
 
-            Assert.IsTrue (secsItem.GetLengthInBytes () == 255);
+            Assert.IsTrue (secsItem.LengthInBytes == 255);
         }
 
         [Test ()]
-        public void Test31 ()
+        public void Test31()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x02), 0x01, 0x00 };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x02), 0x01, 0x00 };
 
-            SECSItemTest secsItem = new SECSItemTest (input, 0);
+            SECSItemTest secsItem = new SECSItemTest(input, 0);
 
-            Assert.IsTrue (secsItem.GetLengthInBytes () == 256);
+            Assert.IsTrue(secsItem.LengthInBytes == 256);
         }
 
         [Test ()]
-        public void Test32 ()
+        public void Test32()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x02), (byte)0xFF, (byte)0xFF };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x02), (byte)0xFF, (byte)0xFF };
 
-            SECSItemTest secsItem = new SECSItemTest (input, 0);
+            SECSItemTest secsItem = new SECSItemTest(input, 0);
 
-            Assert.IsTrue (secsItem.GetLengthInBytes () == 65535);
+            Assert.IsTrue(secsItem.LengthInBytes == 65535);
         }
 
         [Test ()]
-        public void Test33 ()
+        public void Test33()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x03), 0x01, 0x00, 0x00 };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x03), 0x01, 0x00, 0x00 };
 
-            SECSItemTest secsItem = new SECSItemTest (input, 0);
+            SECSItemTest secsItem = new SECSItemTest(input, 0);
 
-            Assert.IsTrue (secsItem.GetLengthInBytes () == 65536);
+            Assert.IsTrue(secsItem.LengthInBytes == 65536);
         }
 
         [Test ()]
-        public void Test34 ()
+        public void Test34()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x03), (byte)0xFF, (byte)0xFF, (byte)0xFF };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x03), (byte)0xFF, (byte)0xFF, (byte)0xFF };
 
-            SECSItemTest secsItem = new SECSItemTest (input, 0);
+            SECSItemTest secsItem = new SECSItemTest(input, 0);
 
-            Assert.IsTrue (secsItem.GetLengthInBytes () == 16777215);
+            Assert.IsTrue(secsItem.LengthInBytes == 16777215);
         }
 
         [Test ()]
-        public void Test35 ()
+        public void Test35()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.L) << 2) | 0x00), 0x00 };
-            var exception = Assert.Catch (() => new SECSItemTest (input, 0));
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x00), 0x00 };
+            var exception = Assert.Catch(() => new SECSItemTest(input, 0));
 
-            Assert.IsInstanceOf<ArgumentException> (exception);
+            Assert.IsInstanceOf<ArgumentException>(exception);
 
             Assert.IsTrue (exception.Message.Contains ("The number of length bytes is not allowed to be ZERO."));
         }
@@ -405,60 +406,60 @@ namespace SECSItemTests
          * Just to stop the coverage checker from complaining.
          */
         [Test ()]
-        public void Test36 ()
+        public void Test36()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.ONE);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.ONE);
 
-            Assert.IsTrue (secsItem.Equals (secsItem) == false);
+            Assert.IsTrue(secsItem.Equals(secsItem) == false);
         }
 
         /*
          * Just to stop the coverage checker from complaining.
          */
         [Test ()]
-        public void Test37 ()
+        public void Test37()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.ONE);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.ONE);
 
-            Assert.IsTrue (secsItem.EncodeForTransport () == null);
+            Assert.IsTrue(secsItem.EncodeForTransport() == null);
         }
 
         /*
          * Just to stop the coverage checker from complaining.
          */
         [Test ()]
-        public void Test38 ()
+        public void Test38()
         {
-            SECSItemTest secsItem = new SECSItemTest (SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.ONE);
+            SECSItemTest secsItem = new SECSItemTest(SECSItemFormatCode.U1, 1, SECSItemNumLengthBytes.ONE);
 
-            Assert.IsTrue (secsItem.GetHashCode () == 0);
+            Assert.IsTrue(secsItem.GetHashCode() == 0);
         }
 
         [Test ()]
-        public void Test39 ()
+        public void Test39()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.I1) << 2) | 0x01), 0x01, 0x7F };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I1) << 2) | 0x01), 0x01, 0x7F };
 
-            SECSItemTest secsItem = new SECSItemTest (input, 0);
+            SECSItemTest secsItem = new SECSItemTest(input, 0);
 
             byte [] itemHeader = new byte [2];
 
-            int offset = secsItem.TestPopulateSECSItemHeaderData (itemHeader, 1);
+            int offset = secsItem.TestPopulateSECSItemHeaderData(itemHeader, 1);
             Assert.IsTrue (offset == 2);
             Assert.IsTrue (itemHeader [0] == 0x65);
             Assert.IsTrue (itemHeader [1] == 1);
         }
 
         [Test ()]
-        public void Test40 ()
+        public void Test40()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.I1) << 2) | 0x02), 0x00, 0x01, 0x7F };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I1) << 2) | 0x02), 0x00, 0x01, 0x7F };
 
-            SECSItemTest secsItem = new SECSItemTest (input, 0);
+            SECSItemTest secsItem = new SECSItemTest(input, 0);
 
             byte [] itemHeader = new byte [3];
 
-            int offset = secsItem.TestPopulateSECSItemHeaderData (itemHeader, 1);
+            int offset = secsItem.TestPopulateSECSItemHeaderData(itemHeader, 1);
             Assert.IsTrue (offset == 3);
             Assert.IsTrue (itemHeader [0] == 0x66);
             Assert.IsTrue (itemHeader [1] == 0);
@@ -466,15 +467,15 @@ namespace SECSItemTests
         }
 
         [Test ()]
-        public void Test41 ()
+        public void Test41()
         {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.I1) << 2) | 0x03), 0x00, 0x00, 0x01, 0x7F };
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I1) << 2) | 0x03), 0x00, 0x00, 0x01, 0x7F };
 
-            SECSItemTest secsItem = new SECSItemTest (input, 0);
+            SECSItemTest secsItem = new SECSItemTest(input, 0);
 
             byte [] itemHeader = new byte [4];
 
-            int offset = secsItem.TestPopulateSECSItemHeaderData (itemHeader, 1);
+            int offset = secsItem.TestPopulateSECSItemHeaderData(itemHeader, 1);
             Assert.IsTrue (offset == 4);
             Assert.IsTrue (itemHeader [0] == 0x67);
             Assert.IsTrue (itemHeader [1] == 0);

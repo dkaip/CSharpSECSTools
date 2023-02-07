@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,199 +13,183 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Linq;
+
 using NUnit.Framework;
+
 using com.CIMthetics.CSharpSECSTools.SECSItems;
 
-namespace SECSItemTests
+namespace com.CIMthetics.CSharpSECSTools.SECSItemTests
 {
 	[TestFixture()]
 	public class U1SECSItemTests
 	{
         [Test()]
-        public void Test01 ()
+        public void Test01()
         {
             byte value = 255;
-            U1SECSItem secsItem = new U1SECSItem (value);
-            Assert.IsTrue (secsItem.GetValue () == 255);
+            U1SECSItem secsItem = new U1SECSItem(value);
+            Assert.IsTrue(secsItem.Value == 255);
         }
 
         [Test()]
-        public void Test02 ()
+        public void Test02()
         {
             byte value = 128;
-            U1SECSItem secsItem = new U1SECSItem (value);
-            Assert.IsTrue (secsItem.GetValue () == 128);
+            U1SECSItem secsItem = new U1SECSItem(value);
+            Assert.IsTrue(secsItem.Value == 128);
         }
 
         [Test()]
-        public void Test03 ()
+        public void Test03()
         {
             byte value = 0;
-            U1SECSItem secsItem = new U1SECSItem (value);
-            Assert.IsTrue (secsItem.GetValue () == 0);
+            U1SECSItem secsItem = new U1SECSItem(value);
+            Assert.IsTrue(secsItem.Value == 0);
         }
 
         [Test()]
-        public void Test04 ()
+        public void Test04()
         {
             byte value = 127;
-            U1SECSItem secsItem = new U1SECSItem (value);
-            Assert.IsTrue (secsItem.GetValue () == 127);
+            U1SECSItem secsItem = new U1SECSItem(value);
+            Assert.IsTrue(secsItem.Value == 127);
         }
 
         [Test()]
-        public void Test05 ()
+        public void Test04a()
+        {
+            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U1) << 2) | 0x01), 0x01, 255 };
+            SECSItem secsItem = SECSItemFactory.GenerateSECSItem(input);
+            Assert.IsTrue(secsItem.GetType() == typeof(U1SECSItem));
+        }
+
+        [Test()]
+        public void Test05()
         {
             byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x01), 0x01, 255 };
             short expectedOutput = 255;
-            U1SECSItem secsItem = new U1SECSItem (input, 0);
-            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+            SECSItem secsItem = SECSItemFactory.GenerateSECSItem(input);
+            Assert.IsTrue(((U1SECSItem)secsItem).Value == expectedOutput);
         }
 
         [Test()]
-        public void Test06 ()
+        public void Test06()
         {
             byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x01), 0x01, 128 };
             short expectedOutput = 128;
-            U1SECSItem secsItem = new U1SECSItem (input, 0);
-            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+            SECSItem secsItem = SECSItemFactory.GenerateSECSItem(input);
+            Assert.IsTrue(((U1SECSItem)secsItem).Value == expectedOutput);
         }
 
         [Test()]
-        public void Test07 ()
+        public void Test07()
         {
             byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x01), 0x01, 0 };
             short expectedOutput = 0;
-            U1SECSItem secsItem = new U1SECSItem (input, 0);
-            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+            SECSItem secsItem = SECSItemFactory.GenerateSECSItem(input);
+            Assert.IsTrue(((U1SECSItem)secsItem).Value == expectedOutput);
         }
 
         [Test()]
-        public void Test08 ()
+        public void Test08()
         {
             byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x01), 0x01, 127 };
             short expectedOutput = 127;
-            U1SECSItem secsItem = new U1SECSItem (input, 0);
-            Assert.IsTrue (secsItem.GetValue () == expectedOutput);
+            SECSItem secsItem = SECSItemFactory.GenerateSECSItem(input);
+            Assert.IsTrue(((U1SECSItem)secsItem).Value == expectedOutput);
         }
 
         [Test()]
-        public void Test09 ()
+        public void Test09()
         {
             byte value = 255;
-            U1SECSItem secsItem = new U1SECSItem (value);
-            Assert.IsTrue (secsItem.GetSECSItemFormatCode () == SECSItemFormatCode.U1);
+            U1SECSItem secsItem = new U1SECSItem(value);
+            Assert.IsTrue(secsItem.ItemFormatCode == SECSItemFormatCode.U1);
         }
 
         [Test()]
-        public void Test10 ()
+        public void Test10()
         {
             byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x01), 0x01, 255 };
-            U1SECSItem secsItem = new U1SECSItem (input, 0);
-            Assert.IsTrue (secsItem.GetSECSItemFormatCode () == SECSItemFormatCode.U1);
+            SECSItem secsItem = SECSItemFactory.GenerateSECSItem(input);
+            Assert.IsTrue(((U1SECSItem)secsItem).ItemFormatCode == SECSItemFormatCode.U1);
         }
 
         [Test()]
-        public void Test11 ()
+        public void Test11()
         {
             byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x01), 0x01, 255 };
 
-            U1SECSItem secsItem = new U1SECSItem (255);
-            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
+            U1SECSItem secsItem = new U1SECSItem(255);
+            Assert.AreEqual(secsItem.EncodeForTransport(), expectedResult);
         }
 
         [Test()]
-    public void Test12 ()
+    public void Test12()
         {
             byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x02), 0, 0x01, 255 };
 
-            U1SECSItem secsItem = new U1SECSItem (255, SECSItemNumLengthBytes.TWO);
-            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
+            U1SECSItem secsItem = new U1SECSItem(255, SECSItemNumLengthBytes.TWO);
+            Assert.AreEqual(secsItem.EncodeForTransport(), expectedResult);
         }
 
         [Test()]
-    public void Test13 ()
+    public void Test13()
         {
             byte [] expectedResult = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x03), 0, 0, 0x01, 255 };
 
-            U1SECSItem secsItem = new U1SECSItem (255, SECSItemNumLengthBytes.THREE);
-            Assert.AreEqual (secsItem.EncodeForTransport (), expectedResult);
+            U1SECSItem secsItem = new U1SECSItem(255, SECSItemNumLengthBytes.THREE);
+            Assert.AreEqual(secsItem.EncodeForTransport(), expectedResult);
         }
 
         [Test()]
-        public void Test14 ()
-        {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x01), 0x00 };
-
-            var exception = Assert.Catch (() => new U1SECSItem (input, 0));
-
-            Assert.IsInstanceOf<ArgumentOutOfRangeException> (exception);
-
-            Assert.IsTrue (exception.Message.Contains ("Illegal data length of: 0.  The length of the data independent of the item header must be 1."));
-        }
-
-        [Test()]
-        public void Test15 ()
-        {
-            byte [] input = { (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode (SECSItemFormatCode.U1) << 2) | 0x01), 0x02 };
-
-            var exception = Assert.Catch (() => new U1SECSItem (input, 0));
-
-            Assert.IsInstanceOf<ArgumentOutOfRangeException> (exception);
-
-            Assert.IsTrue (exception.Message.Contains ("Illegal data length of: 2.  The length of the data independent of the item header must be 1."));
-        }
-
-        [Test()]
-        public void Test16 ()
+        public void Test16()
         {
             U1SECSItem secsItem = new U1SECSItem (255);
-            Assert.IsTrue (secsItem.ToString ().Equals ("Format:U1 Value: 255"));
+            Assert.IsTrue(secsItem.ToString().Equals ("Format:U1 Value: 255"));
         }
 
         [Test()]
-        public void Test17 ()
+        public void Test17()
         {
             U1SECSItem secsItem1 = new U1SECSItem (255);
             U1SECSItem secsItem2 = new U1SECSItem (255);
-            Assert.IsTrue (secsItem1.Equals (secsItem2));
+            Assert.IsTrue(secsItem1.Equals(secsItem2));
         }
 
         [Test()]
-        public void Test18 ()
+        public void Test18()
         {
             U1SECSItem secsItem1 = new U1SECSItem (255);
             U1SECSItem secsItem2 = new U1SECSItem (127);
-            Assert.IsFalse (secsItem1.Equals (secsItem2));
+            Assert.IsFalse(secsItem1.Equals(secsItem2));
         }
 
         [Test()]
-        public void Test19 ()
+        public void Test19()
         {
             U1SECSItem secsItem1 = new U1SECSItem (255);
             U1SECSItem secsItem2 = null;
-            Assert.IsFalse (secsItem1.Equals (secsItem2));
+            Assert.IsFalse(secsItem1.Equals (secsItem2));
         }
 
         [Test()]
-        public void Test20 ()
+        public void Test20()
         {
             U1SECSItem secsItem1 = new U1SECSItem (255);
-            Assert.IsTrue (secsItem1.Equals (secsItem1));
+            Assert.IsTrue(secsItem1.Equals (secsItem1));
         }
 
         [Test()]
-        public void Test21 ()
+        public void Test21()
         {
             U1SECSItem secsItem1 = new U1SECSItem (255);
             Object secsItem2 = new F8SECSItem (2.141592D);
-            Assert.IsFalse (secsItem1.Equals (secsItem2));
+            Assert.IsFalse(secsItem1.Equals (secsItem2));
         }
 
         [Test()]
-        public void Test22 ()
+        public void Test22()
         {
             Assert.IsTrue (true);
             /*
@@ -215,11 +199,11 @@ namespace SECSItemTests
         }
 
         [Test()]
-        public void Test23 ()
+        public void Test23()
         {
             U1SECSItem secsItem1 = new U1SECSItem (255);
             U1SECSItem secsItem2 = new U1SECSItem (255);
-            Assert.IsTrue (secsItem1.GetHashCode () == secsItem2.GetHashCode ());
+            Assert.IsTrue(secsItem1.GetHashCode () == secsItem2.GetHashCode ());
         }
 	}
 }
