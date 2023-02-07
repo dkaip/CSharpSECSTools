@@ -399,9 +399,9 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         /// </summary>
         public override void GetSECSItemAsText(StringBuilder sb, SECSItem secsItem)
         {
-            AddSECSItemsStuff(sb, secsItem.GetFormatCode().ToString(), 77, secsItem.GetLengthInBytes());
+            AddSECSItemsStuff(sb, secsItem.ItemFormatCode.ToString(), 77, secsItem.LengthInBytes);
 
-            if (secsItem.GetFormatCode() == SECSItemFormatCode.L)
+            if (secsItem.ItemFormatCode == SECSItemFormatCode.L)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                 {
@@ -413,8 +413,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 CurrentIndentLevel += configurationData.IndentAmount;
 
-                //Console.WriteLine("List count is {0}.", ((ListSECSItem)secsItem).GetValue().Count());
-                foreach (SECSItem listEntry in ((ListSECSItem)secsItem).GetValue())
+                //Console.WriteLine("List count is {0}.", ((ListSECSItem)secsItem).Value.Count());
+                foreach (SECSItem listEntry in ((ListSECSItem)secsItem).Value)
                 {
                     //                                Console.WriteLine("Current indent level = {0}.", CurrentIndentLevel);
                     GetSECSItemAsText(sb, listEntry);
@@ -425,25 +425,25 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 sb.AppendLine("</Value>");
             } // End if List type
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.B)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.B)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
 
-                if (secsItem.GetLengthInBytes() == 0)
+                if (secsItem.LengthInBytes == 0)
                 {
                     // Its an empty SECSItem
                     sb.AppendLine("<Value/>");
                 }
-                else if (secsItem.GetLengthInBytes() == 1)
+                else if (secsItem.LengthInBytes == 1)
                 {
                     // It has only one element.
                     sb.Append("<Value>");
 
                     sb.Append("0x");
-                    sb.Append(((BinarySECSItem)secsItem).GetValue()[0].ToString("X2"));
+                    sb.Append(((BinarySECSItem)secsItem).Value[0].ToString("X2"));
 
                     sb.AppendLine("</Value>");
                 }
@@ -457,8 +457,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     int lineLength = CurrentIndentLevel;
 
                     int currentArrayElement = 0;
-                    int arrayLength = ((BinarySECSItem)secsItem).GetValue().Count();
-                    foreach (byte item in ((BinarySECSItem)secsItem).GetValue())
+                    int arrayLength = ((BinarySECSItem)secsItem).Value.Count();
+                    foreach (byte item in ((BinarySECSItem)secsItem).Value)
                     {
                         if (lineLength + 4 >= configurationData.BodyOutputConfig.MaxOutputLineLength)
                         {
@@ -486,25 +486,25 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("</Value>");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.BO)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.BO)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
-                if (secsItem.GetLengthInBytes() == 0)
+                if (secsItem.LengthInBytes == 0)
                 {
                     // Its an empty SECSItem
                     sb.AppendLine("<Value/>");
                 }
-                else if (secsItem.GetLengthInBytes() == 1)
+                else if (secsItem.LengthInBytes == 1)
                 {
                     // It is not an array.
 
                     sb.Append("<Value>");
 
-                    if (((BooleanSECSItem)secsItem).GetValue() == true)
+                    if (((BooleanSECSItem)secsItem).Value == true)
                         sb.Append("True");
                     else
                         sb.Append("False");
@@ -522,8 +522,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     int lineLength = CurrentIndentLevel;
 
                     int currentArrayElement = 0;
-                    int arrayLength = ((BooleanArraySECSItem)secsItem).GetValue().Count();
-                    foreach (bool item in ((BooleanArraySECSItem)secsItem).GetValue())
+                    int arrayLength = ((BooleanArraySECSItem)secsItem).Value.Count();
+                    foreach (bool item in ((BooleanArraySECSItem)secsItem).Value)
                     {
                         if (lineLength + (item ? 4 : 5) >= configurationData.BodyOutputConfig.MaxOutputLineLength)
                         {
@@ -558,7 +558,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("</Value>");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.A)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.A)
             {
                 // TODO deal with max line length, but, don't forget preserve formatting(whitespace)
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
@@ -567,10 +567,10 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
                 sb.Append("<Value>");
-                sb.Append(((ASCIISECSItem)secsItem).GetValue());
+                sb.Append(((ASCIISECSItem)secsItem).Value);
                 sb.AppendLine("</Value>");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.J8)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.J8)
             {
                 // TODO deal with max line length
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
@@ -582,7 +582,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 sb.Append("Not Implemented Yet");
                 sb.AppendLine("</Value>");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.C2)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.C2)
             {
                 // TODO deal with max line length
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
@@ -594,7 +594,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 sb.Append("Not Implemented Yet");
                 sb.AppendLine("</Value>");
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.I8)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.I8)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -605,24 +605,24 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((I8SECSItem)secsItem).GetValue());
+                    sb.Append(((I8SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
                     // It is an array
 
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 8)
+                    else if (secsItem.LengthInBytes == 8)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((I8ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((I8ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -635,8 +635,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((I8ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (Int64 item in ((I8ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((I8ArraySECSItem)secsItem).Value.Count();
+                        foreach (Int64 item in ((I8ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetSignedItemLength(item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -666,7 +666,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     }
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.I1)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.I1)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -677,22 +677,22 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((I1SECSItem)secsItem).GetValue());
+                    sb.Append(((I1SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 1)
+                    else if (secsItem.LengthInBytes == 1)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((I1ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((I1ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -707,8 +707,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((I1ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (sbyte item in ((I1ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((I1ArraySECSItem)secsItem).Value.Count();
+                        foreach (sbyte item in ((I1ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetSignedItemLength((Int64)item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -738,7 +738,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("</Value>");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.I2)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.I2)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -749,24 +749,24 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((I2SECSItem)secsItem).GetValue());
+                    sb.Append(((I2SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
                     // It is an array
 
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 2)
+                    else if (secsItem.LengthInBytes == 2)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((I2ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((I2ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -779,8 +779,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((I2ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (Int16 item in ((I2ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((I2ArraySECSItem)secsItem).Value.Count();
+                        foreach (Int16 item in ((I2ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetSignedItemLength((Int64)item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -810,7 +810,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     }
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.I4)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.I4)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -821,24 +821,24 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((I4SECSItem)secsItem).GetValue());
+                    sb.Append(((I4SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
                     // It is an array
 
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 4)
+                    else if (secsItem.LengthInBytes == 4)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((I4ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((I4ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -851,8 +851,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((I4ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (Int32 item in ((I4ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((I4ArraySECSItem)secsItem).Value.Count();
+                        foreach (Int32 item in ((I4ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetSignedItemLength((Int64)item);
 
@@ -885,7 +885,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("</Value>");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.F8)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.F8)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -896,24 +896,24 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((F8SECSItem)secsItem).GetValue());
+                    sb.Append(((F8SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
                     // It is an array
 
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 8)
+                    else if (secsItem.LengthInBytes == 8)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((F8ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((F8ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -926,8 +926,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((F8ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (double item in ((F8ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((F8ArraySECSItem)secsItem).Value.Count();
+                        foreach (double item in ((F8ArraySECSItem)secsItem).Value)
                         {
                             /*
                                 This is not a good way to get the length of the item
@@ -966,7 +966,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("</Value>");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.F4)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.F4)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -977,24 +977,24 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((F4SECSItem)secsItem).GetValue());
+                    sb.Append(((F4SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
                     // It is an array
 
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 4)
+                    else if (secsItem.LengthInBytes == 4)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((F4ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((F4ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -1007,8 +1007,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((F4ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (float item in ((F4ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((F4ArraySECSItem)secsItem).Value.Count();
+                        foreach (float item in ((F4ArraySECSItem)secsItem).Value)
                         {
                             /*
                                 This is not a good way to get the length of the item
@@ -1047,7 +1047,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("</Value>");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.U8)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.U8)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -1058,24 +1058,24 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((U8SECSItem)secsItem).GetValue());
+                    sb.Append(((U8SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
                     // It is an array
 
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 8)
+                    else if (secsItem.LengthInBytes == 8)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((U8ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((U8ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -1088,8 +1088,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((U8ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (UInt64 item in ((U8ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((U8ArraySECSItem)secsItem).Value.Count();
+                        foreach (UInt64 item in ((U8ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetUnsignedItemLength((UInt64)item);
 
@@ -1120,7 +1120,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("</Value>");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.U1)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.U1)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -1131,24 +1131,24 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((U1SECSItem)secsItem).GetValue());
+                    sb.Append(((U1SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
                     // It is an array
 
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 8)
+                    else if (secsItem.LengthInBytes == 8)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((U1ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((U1ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -1161,8 +1161,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((U1ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (byte item in ((U1ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((U1ArraySECSItem)secsItem).Value.Count();
+                        foreach (byte item in ((U1ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetUnsignedItemLength((UInt64)item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -1192,7 +1192,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("</Value>");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.U2)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.U2)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -1203,23 +1203,23 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((U2SECSItem)secsItem).GetValue());
+                    sb.Append(((U2SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
                     // It is an array
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 8)
+                    else if (secsItem.LengthInBytes == 8)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((U2ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((U2ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -1232,8 +1232,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((U2ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (UInt16 item in ((U2ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((U2ArraySECSItem)secsItem).Value.Count();
+                        foreach (UInt16 item in ((U2ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetUnsignedItemLength((UInt64)item);
                             if (lineLength + itemLength >= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -1263,7 +1263,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     sb.AppendLine("</Value>");
                 }
             }
-            else if (secsItem.GetFormatCode() == SECSItemFormatCode.U4)
+            else if (secsItem.ItemFormatCode == SECSItemFormatCode.U4)
             {
                 if (configurationData.BodyOutputConfig.DisplayAsType == DisplayAsType.Attributes)
                     CurrentIndentLevel += configurationData.IndentAmount;
@@ -1274,24 +1274,24 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // It is not an array.
                     sb.Append("<Value>");
-                    sb.Append(((U4SECSItem)secsItem).GetValue());
+                    sb.Append(((U4SECSItem)secsItem).Value);
                     sb.AppendLine("</Value>");
                 }
                 else
                 {
                     // It is an array
 
-                    if (secsItem.GetLengthInBytes() == 0)
+                    if (secsItem.LengthInBytes == 0)
                     {
                         // Its an empty SECSItem
                         sb.AppendLine("<Value/>");
                     }
-                    else if (secsItem.GetLengthInBytes() == 8)
+                    else if (secsItem.LengthInBytes == 8)
                     {
                         // It is an array, but, it has only one element.
                         sb.Append("<Value>");
 
-                        sb.Append(((U4ArraySECSItem)secsItem).GetValue()[0]);
+                        sb.Append(((U4ArraySECSItem)secsItem).Value[0]);
 
                         sb.AppendLine("</Value>");
                     }
@@ -1304,8 +1304,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         int lineLength = CurrentIndentLevel;
 
                         int currentArrayElement = 0;
-                        int arrayLength = ((U4ArraySECSItem)secsItem).GetValue().Count();
-                        foreach (UInt32 item in ((U4ArraySECSItem)secsItem).GetValue())
+                        int arrayLength = ((U4ArraySECSItem)secsItem).Value.Count();
+                        foreach (UInt32 item in ((U4ArraySECSItem)secsItem).Value)
                         {
                             int itemLength = GetUnsignedItemLength((UInt64)item);
                             if (lineLength + itemLength>= configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -1337,7 +1337,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             }
             else
             {
-                Console.Error.WriteLine("Unhandled format code of {0}.", secsItem.GetFormatCode());
+                Console.Error.WriteLine("Unhandled format code of {0}.", secsItem.ItemFormatCode);
                 return;
             }
 
