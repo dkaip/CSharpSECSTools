@@ -35,7 +35,19 @@ Currently, this project may be built using `dotnet` version 6.0.108. The unit te
 
 ## Documentation
 
-I have added some documentation that so that IntelliSense capable editors/IDEs will be able to provide support for method completion, etc.
+There is the documentation in the source files
+so that IntelliSense capable editors/IDEs will be able to provide support for method completion, etc.
+In addition there is documentation in the `DocFx` folder.
+
+The documentation in this folder can be processed with `docfx` to produce a WEB site that will
+be generated in the `docs` folder.  The command to do this is `docfx docfx.json` which should
+be executed within the `DocFx` folder.
+
+As stated the resulting output documentation will end up in the `docs` folder.  Running the command
+`docfx serve` in the `docs` folder will serve the WEB site at localhost:8080 unless something
+else is already using that port.
+
+Please refer to the documentation available for DocFx for more information.
 
 ## Usage Notes
 
