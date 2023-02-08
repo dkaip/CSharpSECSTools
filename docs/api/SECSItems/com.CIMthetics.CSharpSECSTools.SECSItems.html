@@ -77,157 +77,82 @@
     <h3 id="classes">Classes
 </h3>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.html">ASCIISECSItem</a></h4>
-      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>A</code>
+      <section><p>This class representsa <code>SECSItem</code> with the SECS data type of <code>A</code>
 (<code>ASCII</code>),
 which is a &quot;string&quot; of<code>ASCII</code> characters.From the C# side this data
 type is handled as a C# <code>string</code>. Be careful to only use appropriate character sets
-(System.Text.Encoding.ASCII) or undesirable behavior may be manifested.</p>
+(<code>System.Text.Encoding.ASCII</code>) or undesirable behavior may be manifested.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.html">BinarySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>B</code>(<code>BINARY</code>),
-which is an array of unsigned bytes.</p>
+      <section><p>This class represents a SECS item with a data type of <code>B</code>
+in an array form. In this case it is an array of zero or more 8-bit unsigned integers.
+The C# data type is <code>byte[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.html">BooleanArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>BO</code>
-in an array form. In this case it is an array of zero or more 8-bit boolean values.
-From the C# side this data type is handled as a C# <code>bool []</code>.</p>
-<p>In &quot;wire/transmission&quot; format all SECS items, with the exception of those
-with an item format code of <code>L</code>(List), are sent in an array form.For instance
-if an item is received which has an item format code of I4 (32-bit signed integer)
-and has a length of 8 you know that is it an array containing 2 4-byte signed integers.
-If it has a length of 0 you know it is an array with zero 4-byte signed integers.
-Likewise, If an item is received which has an item format code of U2 (16-bit unsigned integer)
-and has a length of 6 you know that is it an array containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously
-if the length was 4 instead of 8) it is handled and processed in a non array form.  Hence
-<code>I4SECSItem</code> * vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+      <section><p>This class represents a SECS item with a data type of <code>BO</code>
+in an array form. In this case it is an array of zero or more boolean values.
+The C# data type is <code>bool[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.html">BooleanSECSItem</a></h4>
       <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>BO</code>,
 which is a boolean. From the C# side this data type is handled as a C# <code>bool</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.html">F4ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>F4</code> in an array form.
-In this case it is an array of zero or more 32-bit floating point numbers.  From the C# side this
-data type is handled as a C# <code>float []</code>.</p>
-<p>In &quot;wire/transmission&quot; format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form. For instance if an item is received which has an item
-format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array containing
-2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero 4-byte signed integers.
-Likewise, If an item is received which has an item format code of U2 (16-bit unsigned integer) and has a
-length of 6 you know that is it an array containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+      <section><p>This class represents a SECS item with a data type of <code>F4</code>
+in an array form. In this case it is an array of zero or more 32-bit floating point numbers.
+The C# data type is <code>float[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.html">F4SECSItem</a></h4>
-      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>F4</code>,
-which is a 4 byte floating point number. From the C# side this data
-type is handled as a C# <code>float</code>.</p>
+      <section><p>This class represents a <code>SECSItem</code> with the SECS data type of <code>F4</code>,
+which is a 32-bit floating point number. From the C# side this data type is handled as a C# <code>float</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.html">F8ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>F8</code>
-in an array form. In this case it is an array of zero or more 64-bit floating point
-numbers.  From the C# side this data type is handled as a C# <code>double []</code>.</p>
-<p>In wire/transmission format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form. For instance if an item is received which has
-an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-4-byte signed integers. Likewise, If an item is received which has
-an item format code of U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+      <section><p>This class represents a SECS item with a data type of <code>F8</code>
+in an array form. In this case it is an array of zero or more 64-bit floating point numbers.
+The C# data type is <code>double[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.html">F8SECSItem</a></h4>
-      <section><p>This class represents/implements a <pre><code>SECSItem</code></pre> with the SECS data type of <code>F8</code>,
-which is an 8 byte floating point number. From the C# side this data type is handled as a
-C# <code>double</code>.
+      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>F8</code>,
+which is a double. From the C# side this data type is handled as a C# <code>double</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.html">I1ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>I1</code>
-in an array form.  In this case it is an array of zero or more 8-bit signed integers.
-From the C# side this data type is handled as a C# <code>sbyte []</code>.</p>
-<p>In wire/transmission format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form.For instance if an item is received which has
-an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-4-byte signed integers. Likewise, If an item is received which has
-an item format code of U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+      <section><p>This class represents a SECS item with a data type of <code>I1</code>
+in an array form. In this case it is an array of zero or more 8-bit signed integers.
+The C# data type is <code>sbyte[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.html">I1SECSItem</a></h4>
       <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>I1</code>,
-which is a 1 byte (8-bit) signed integer number. From the C# side this data
-type is handled as a C# <code>sbyte</code>.</p>
+which is a signed byte. From the C# side this data type is handled as an C# <code>sbyte</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.html">I2ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>I2</code>
+      <section><p>This class represents a SECS item with a data type of <code>I2</code>
 in an array form. In this case it is an array of zero or more 16-bit signed integers.
-From the C# side this data type is handled as a C# <code>Int16 []</code>.</p>
-<p>In wire/transmission format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form. For instance if an item is received which has
-an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-4-byte signed integers. Likewise, If an item is received which has an item format code of U2
-(16-bit unsigned integer) and has a length of 6 you know that is it an array
-containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+The C# data type is <code>Int16[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.html">I2SECSItem</a></h4>
-      <section><p>This class represents/implements a <pre><code>SECSItem</code></pre> with the SECS data type of <code>I2</code>,
-which is a 2 byte (16-bit) signed integer number. From the C# side this data
-type is handled as a C# <code>Int16</code>.
+      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>I2</code>,
+which is a signed 16 bit integer. From the C# side this data type is handled as a C# <code>Int16</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.html">I4ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>I4</code>
+      <section><p>This class represents a SECS item with a data type of <code>I4</code>
 in an array form. In this case it is an array of zero or more 32-bit signed integers.
-From the C# side this data type is handled as a C# <code>Int32 []</code>.</p>
-<p>In wire/transmission format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form.For instance if an item is received which has
-an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-4-byte signed integers. Likewise, If an item is received which has an item format code of
-U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+The C# data type is <code>Int32[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.html">I4SECSItem</a></h4>
-      <section><p>This class represents/implements a <code>SECSItem</code> with the
-SECS data type of <code>I4</code>, which is a 4 byte (32-bit) signed
-integer number. From the C# side this data type is handled as a
-C# <pre><code>Int32</code></pre>.
+      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>I4</code>,
+which is an Int32. From the C# side this data type is handled as a C# <code>Int32</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.html">I8ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>I8</code>
+      <section><p>This class represents a SECS item with a data type of <code>I8</code>
 in an array form. In this case it is an array of zero or more 64-bit signed integers.
-From the C# side this data type is handled as a C# <code>Int64 []</code>.</p>
-<p>In wire/transmission format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form.For instance if an item is received which has
-an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-4-byte signed integers. Likewise, If an item is received which has an item format code of
-U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+The C# data type is <code>Int64[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.html">I8SECSItem</a></h4>
       <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>I8</code>,
-which is an 8 byte (64-bit) signed integer number. From the C# side this data
-type is handled as a C# <code>Int64</code>.</p>
+which is an 64-bit signed integer. From the C# side this data type is handled as a C# <code>Int64</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html">ListSECSItem</a></h4>
-      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>L</code>,
+      <section><p>This class represents a <code>SECSItem</code> with the SECS data type of <code>L</code>,
 which is a list of <code>SECSItem</code>s. From the C# side this data
 type is handled as a C# <code>LinkedList&lt;SECSItem&gt;</code>.</p>
 </section>
@@ -239,7 +164,8 @@ the wire/transmission format that the transport layer(s) use.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFactory.html">SECSItemFactory</a></h4>
       <section><p>This is a static &quot;factory&quot; class that is used to create a
-<code>SECSItem</code> object from a <code>byte[]</code>.  As you might expect the
+<code>SECSItem</code> object from a <code>byte[]</code> that is in &quot;wire/transmission&quot; form.
+As you might expect the
 bytes contained within the <code>byte[]</code> must actually be in the form
 of those of an item in a SECS-II message.</p>
 </section>
@@ -254,73 +180,40 @@ cast an <code>enum</code> to an <code>int</code> when used as a method argument.
 to use the wrong method if the signatures will match because of this.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.html">U1ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>U1</code>
+      <section><p>This class represents a SECS item with a data type of <code>U1</code>
 in an array form. In this case it is an array of zero or more 8-bit unsigned integers.
-From the C# side this data type is handled as a C# <code>byte []</code>.</p>
-<p>In wire/transmission format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form.For instance if an item is received which has
-an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-4-byte signed integers. Likewise, If an item is received which has an item format code of
-U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+The C# data type is <code>byte[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.html">U1SECSItem</a></h4>
-      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>U1</code>,
-which is an unsigned byte.  From the C# side this data type is handled as a C# <pre><code>byte</code></pre>.
+      <section><p>This class represents a <code>SECSItem</code> with the SECS data type of <code>F4</code>,
+which is an 8-bit unsigned integer. From the C# side this data type is handled as a C# <code>byte</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.html">U2ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>U2</code>
-in an array form. In this case it is an array of zero or more 16-bit unsigned
-integers.From the C# side this data type is handled as a C# <pre><code>UInt16 []</code></pre>.
-<p>In wire/transmission format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form.For instance if an item is received which has
-an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-4-byte signed integers. Likewise, If an item is received which has
-an item format code of U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+      <section><p>This class represents a SECS item with a data type of <code>U2</code>
+in an array form. In this case it is an array of zero or more 16-bit unsigned integers.
+The C# data type is <code>UInt16[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.html">U2SECSItem</a></h4>
-      <section><p>This class represents/implements a <pre><code>SECSItem</code></pre> with the SECS data type of <code>U2</code>,
-which is a 2 byte (16-bit) unsigned integer. From the C# side this data type is handled as a
-C# <code>UInt16</code>.
+      <section><p>This class represents a <code>SECSItem</code> with the SECS data type of <code>U2</code>,
+which is a 16-bit unsigned integer. From the C# side this data type is handled as a C# <code>UInt16</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html">U4ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a SECSItem with the SECS data type of <code>U4</code>
-in an array form.  In this case it is an array of zero or more 32-bit unsigned
-integers.From the C# side this data type is handled as a C# <code>UInt32 []</code>.</p>
-<p>In wire/transmission format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form.  For instance if an item is received which has
-an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
--byte signed integers. Likewise, If an item is received which has an item format code of
-U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+      <section><p>This class represents a SECS item with a data type of <code>U4</code>
+in an array form. In this case it is an array of zero or more 32-bit unsigned integers.
+The C# data type is <code>UInt32[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.html">U4SECSItem</a></h4>
-      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>U4</code>,
-which is a 4 byte (32-bit) unsigned integer. From the C# side this data
-type is handled as a C# <pre><code>UInt32</code></pre>.
+      <section><p>This class represents a <code>SECSItem</code> with the SECS data type of <code>U4</code>,
+which is a 32-bit unsigned integer. From the C# side this data type is handled as a C# <code>UInt32</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.html">U8ArraySECSItem</a></h4>
-      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>U8</code>,
-which is an 8 byte (64-bit) unsigned integer in an array form. From the C# side this data
-type is handled as a C# <code>UInt64 []</code>.</p>
+      <section><p>This class represents a SECS item with a data type of <code>U8</code>
+in an array form. In this case it is an array of zero or more 64-bit unsigned integers.
+The C# data type is <code>UInt64[]</code>.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.html">U8SECSItem</a></h4>
-      <section><p>This class represents/implements a <pre><code>SECSItem</code></pre> with the SECS data type of <code>U8</code>,
-which is an 8 byte (64-bit) unsigned integer. From the C# side this data
-type is handled as a C# <pre><code>UInt64</code></pre>.
+      <section><p>This class represents/implements a <code>SECSItem</code> with the SECS data type of <code>U8</code>,
+which is an unsigned 64-bit integer. From the C# side this data type is handled as a C# <code>UInt64</code>.</p>
 </section>
     <h3 id="enums">Enums
 </h3>

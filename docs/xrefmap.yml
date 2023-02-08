@@ -4152,15 +4152,12 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem
   nameWithType: ASCIISECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.#ctor(System.Byte[],System.Int32)
-  name: ASCIISECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ASCIISECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: ASCIISECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.ASCIISECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.ASCIISECSItem(System.Byte(), System.Int32)
-  nameWithType: ASCIISECSItem.ASCIISECSItem(Byte[], Int32)
-  nameWithType.vb: ASCIISECSItem.ASCIISECSItem(Byte(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.#ctor
+  name: ASCIISECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ASCIISECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.ASCIISECSItem()
+  nameWithType: ASCIISECSItem.ASCIISECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.#ctor(System.String,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: ASCIISECSItem(String, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ASCIISECSItem__ctor_System_String_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -4245,12 +4242,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.ToString
   nameWithType: ASCIISECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ASCIISECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.Value
+  nameWithType: ASCIISECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ASCIISECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ASCIISECSItem.Value
+  nameWithType: ASCIISECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem
   name: BinarySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem
   nameWithType: BinarySECSItem
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.#ctor
+  name: BinarySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BinarySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.BinarySECSItem()
+  nameWithType: BinarySECSItem.BinarySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.#ctor(System.Byte[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: BinarySECSItem(Byte[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BinarySECSItem__ctor_System_Byte___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -4260,15 +4276,6 @@ references:
   fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.BinarySECSItem(System.Byte(), com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   nameWithType: BinarySECSItem.BinarySECSItem(Byte[], SECSItemNumLengthBytes)
   nameWithType.vb: BinarySECSItem.BinarySECSItem(Byte(), SECSItemNumLengthBytes)
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.#ctor(System.Byte[],System.Int32)
-  name: BinarySECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BinarySECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: BinarySECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.BinarySECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.BinarySECSItem(System.Byte(), System.Int32)
-  nameWithType: BinarySECSItem.BinarySECSItem(Byte[], Int32)
-  nameWithType.vb: BinarySECSItem.BinarySECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.#ctor(System.Byte[])
   name: BinarySECSItem(Byte[])
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BinarySECSItem__ctor_System_Byte___
@@ -4350,12 +4357,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.ToString
   nameWithType: BinarySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BinarySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.Value
+  nameWithType: BinarySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BinarySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BinarySECSItem.Value
+  nameWithType: BinarySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem
   name: BooleanArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem
   nameWithType: BooleanArraySECSItem
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.#ctor
+  name: BooleanArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.BooleanArraySECSItem()
+  nameWithType: BooleanArraySECSItem.BooleanArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.#ctor(System.Boolean[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: BooleanArraySECSItem(Boolean[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanArraySECSItem__ctor_System_Boolean___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -4374,15 +4400,6 @@ references:
   fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.BooleanArraySECSItem(System.Boolean())
   nameWithType: BooleanArraySECSItem.BooleanArraySECSItem(Boolean[])
   nameWithType.vb: BooleanArraySECSItem.BooleanArraySECSItem(Boolean())
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name: BooleanArraySECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanArraySECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: BooleanArraySECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.BooleanArraySECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.BooleanArraySECSItem(System.Byte(), System.Int32)
-  nameWithType: BooleanArraySECSItem.BooleanArraySECSItem(Byte[], Int32)
-  nameWithType.vb: BooleanArraySECSItem.BooleanArraySECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.#ctor*
   name: BooleanArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanArraySECSItem__ctor_
@@ -4455,6 +4472,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.ToString
   nameWithType: BooleanArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.Value
+  nameWithType: BooleanArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanArraySECSItem.Value
+  nameWithType: BooleanArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem
   name: BooleanSECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.html
@@ -4473,15 +4503,6 @@ references:
   commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.#ctor(System.Boolean)
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.BooleanSECSItem(System.Boolean)
   nameWithType: BooleanSECSItem.BooleanSECSItem(Boolean)
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.#ctor(System.Byte[],System.Int32)
-  name: BooleanSECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanSECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: BooleanSECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.BooleanSECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.BooleanSECSItem(System.Byte(), System.Int32)
-  nameWithType: BooleanSECSItem.BooleanSECSItem(Byte[], Int32)
-  nameWithType.vb: BooleanSECSItem.BooleanSECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.#ctor*
   name: BooleanSECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanSECSItem__ctor_
@@ -4554,21 +4575,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.ToString
   nameWithType: BooleanSECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanSECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.Value
+  nameWithType: BooleanSECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_BooleanSECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.BooleanSECSItem.Value
+  nameWithType: BooleanSECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem
   name: F4ArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem
   nameWithType: F4ArraySECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name: F4ArraySECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F4ArraySECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: F4ArraySECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.F4ArraySECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.F4ArraySECSItem(System.Byte(), System.Int32)
-  nameWithType: F4ArraySECSItem.F4ArraySECSItem(Byte[], Int32)
-  nameWithType.vb: F4ArraySECSItem.F4ArraySECSItem(Byte(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.#ctor
+  name: F4ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F4ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.F4ArraySECSItem()
+  nameWithType: F4ArraySECSItem.F4ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.#ctor(System.Single[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: F4ArraySECSItem(Single[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F4ArraySECSItem__ctor_System_Single___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -4659,21 +4690,25 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.ToString
   nameWithType: F4ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F4ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.Value
+  nameWithType: F4ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F4ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4ArraySECSItem.Value
+  nameWithType: F4ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem
   name: F4SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem
   nameWithType: F4SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.#ctor(System.Byte[],System.Int32)
-  name: F4SECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F4SECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: F4SECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.F4SECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.F4SECSItem(System.Byte(), System.Int32)
-  nameWithType: F4SECSItem.F4SECSItem(Byte[], Int32)
-  nameWithType.vb: F4SECSItem.F4SECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.#ctor(System.Single,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: F4SECSItem(Single, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F4SECSItem__ctor_System_Single_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -4758,21 +4793,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.ToString
   nameWithType: F4SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F4SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.Value
+  nameWithType: F4SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F4SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F4SECSItem.Value
+  nameWithType: F4SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem
   name: F8ArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem
   nameWithType: F8ArraySECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name: F8ArraySECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: F8ArraySECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.F8ArraySECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.F8ArraySECSItem(System.Byte(), System.Int32)
-  nameWithType: F8ArraySECSItem.F8ArraySECSItem(Byte[], Int32)
-  nameWithType.vb: F8ArraySECSItem.F8ArraySECSItem(Byte(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor
+  name: F8ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.F8ArraySECSItem()
+  nameWithType: F8ArraySECSItem.F8ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor(System.Double[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: F8ArraySECSItem(Double[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_System_Double___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -4863,21 +4908,25 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.ToString
   nameWithType: F8ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.Value
+  nameWithType: F8ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.Value
+  nameWithType: F8ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem
   name: F8SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem
   nameWithType: F8SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.#ctor(System.Byte[],System.Int32)
-  name: F8SECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F8SECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: F8SECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.F8SECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.F8SECSItem(System.Byte(), System.Int32)
-  nameWithType: F8SECSItem.F8SECSItem(Byte[], Int32)
-  nameWithType.vb: F8SECSItem.F8SECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.#ctor(System.Double,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: F8SECSItem(Double, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F8SECSItem__ctor_System_Double_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -4962,21 +5011,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.ToString
   nameWithType: F8SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F8SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.Value
+  nameWithType: F8SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_F8SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.F8SECSItem.Value
+  nameWithType: F8SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem
   name: I1ArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem
   nameWithType: I1ArraySECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.#ctor(System.Byte[],System.Int32,System.Int32)
-  name: I1ArraySECSItem(Byte[], Int32, Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I1ArraySECSItem__ctor_System_Byte___System_Int32_System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.#ctor(System.Byte[],System.Int32,System.Int32)
-  name.vb: I1ArraySECSItem(Byte(), Int32, Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.I1ArraySECSItem(System.Byte[], System.Int32, System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.I1ArraySECSItem(System.Byte(), System.Int32, System.Int32)
-  nameWithType: I1ArraySECSItem.I1ArraySECSItem(Byte[], Int32, Int32)
-  nameWithType.vb: I1ArraySECSItem.I1ArraySECSItem(Byte(), Int32, Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.#ctor
+  name: I1ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I1ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.I1ArraySECSItem()
+  nameWithType: I1ArraySECSItem.I1ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.#ctor(System.SByte[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: I1ArraySECSItem(SByte[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I1ArraySECSItem__ctor_System_SByte___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -5067,21 +5126,25 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.ToString
   nameWithType: I1ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I1ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.Value
+  nameWithType: I1ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I1ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1ArraySECSItem.Value
+  nameWithType: I1ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem
   name: I1SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem
   nameWithType: I1SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.#ctor(System.Byte[],System.Int32)
-  name: I1SECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I1SECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: I1SECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.I1SECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.I1SECSItem(System.Byte(), System.Int32)
-  nameWithType: I1SECSItem.I1SECSItem(Byte[], Int32)
-  nameWithType.vb: I1SECSItem.I1SECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.#ctor(System.SByte,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: I1SECSItem(SByte, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I1SECSItem__ctor_System_SByte_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -5166,21 +5229,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.ToString
   nameWithType: I1SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I1SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.Value
+  nameWithType: I1SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I1SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I1SECSItem.Value
+  nameWithType: I1SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem
   name: I2ArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem
   nameWithType: I2ArraySECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name: I2ArraySECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I2ArraySECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: I2ArraySECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.I2ArraySECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.I2ArraySECSItem(System.Byte(), System.Int32)
-  nameWithType: I2ArraySECSItem.I2ArraySECSItem(Byte[], Int32)
-  nameWithType.vb: I2ArraySECSItem.I2ArraySECSItem(Byte(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.#ctor
+  name: I2ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I2ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.I2ArraySECSItem()
+  nameWithType: I2ArraySECSItem.I2ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.#ctor(System.Int16[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: I2ArraySECSItem(Int16[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I2ArraySECSItem__ctor_System_Int16___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -5271,21 +5344,25 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.ToString
   nameWithType: I2ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I2ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.Value
+  nameWithType: I2ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I2ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2ArraySECSItem.Value
+  nameWithType: I2ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem
   name: I2SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem
   nameWithType: I2SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.#ctor(System.Byte[],System.Int32)
-  name: I2SECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I2SECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: I2SECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.I2SECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.I2SECSItem(System.Byte(), System.Int32)
-  nameWithType: I2SECSItem.I2SECSItem(Byte[], Int32)
-  nameWithType.vb: I2SECSItem.I2SECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.#ctor(System.Int16,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: I2SECSItem(Int16, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I2SECSItem__ctor_System_Int16_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -5370,12 +5447,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.ToString
   nameWithType: I2SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I2SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.Value
+  nameWithType: I2SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I2SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I2SECSItem.Value
+  nameWithType: I2SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem
   name: I4ArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem
   nameWithType: I4ArraySECSItem
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.#ctor
+  name: I4ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I4ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.I4ArraySECSItem()
+  nameWithType: I4ArraySECSItem.I4ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.#ctor(System.Byte[],System.Int32)
   name: I4ArraySECSItem(Byte[], Int32)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I4ArraySECSItem__ctor_System_Byte___System_Int32_
@@ -5475,21 +5571,25 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.ToString
   nameWithType: I4ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I4ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.Value
+  nameWithType: I4ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I4ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4ArraySECSItem.Value
+  nameWithType: I4ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem
   name: I4SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem
   nameWithType: I4SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.#ctor(System.Byte[],System.Int32)
-  name: I4SECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I4SECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: I4SECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.I4SECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.I4SECSItem(System.Byte(), System.Int32)
-  nameWithType: I4SECSItem.I4SECSItem(Byte[], Int32)
-  nameWithType.vb: I4SECSItem.I4SECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.#ctor(System.Int32,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: I4SECSItem(Int32, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I4SECSItem__ctor_System_Int32_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -5574,21 +5674,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.ToString
   nameWithType: I4SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I4SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.Value
+  nameWithType: I4SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I4SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I4SECSItem.Value
+  nameWithType: I4SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem
   name: I8ArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem
   nameWithType: I8ArraySECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name: I8ArraySECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I8ArraySECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: I8ArraySECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.I8ArraySECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.I8ArraySECSItem(System.Byte(), System.Int32)
-  nameWithType: I8ArraySECSItem.I8ArraySECSItem(Byte[], Int32)
-  nameWithType.vb: I8ArraySECSItem.I8ArraySECSItem(Byte(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.#ctor
+  name: I8ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I8ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.I8ArraySECSItem()
+  nameWithType: I8ArraySECSItem.I8ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.#ctor(System.Int64[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: I8ArraySECSItem(Int64[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I8ArraySECSItem__ctor_System_Int64___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -5679,21 +5789,25 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.ToString
   nameWithType: I8ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I8ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.Value
+  nameWithType: I8ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I8ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8ArraySECSItem.Value
+  nameWithType: I8ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem
   name: I8SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem
   nameWithType: I8SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.#ctor(System.Byte[],System.Int32)
-  name: I8SECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I8SECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: I8SECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.I8SECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.I8SECSItem(System.Byte(), System.Int32)
-  nameWithType: I8SECSItem.I8SECSItem(Byte[], Int32)
-  nameWithType.vb: I8SECSItem.I8SECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.#ctor(System.Int64,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: I8SECSItem(Int64, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I8SECSItem__ctor_System_Int64_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -5778,21 +5892,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.ToString
   nameWithType: I8SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I8SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.Value
+  nameWithType: I8SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_I8SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.I8SECSItem.Value
+  nameWithType: I8SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem
   name: ListSECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem
   nameWithType: ListSECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(System.Byte[],System.Int32)
-  name: ListSECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: ListSECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem(System.Byte(), System.Int32)
-  nameWithType: ListSECSItem.ListSECSItem(Byte[], Int32)
-  nameWithType.vb: ListSECSItem.ListSECSItem(Byte(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor
+  name: ListSECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem()
+  nameWithType: ListSECSItem.ListSECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(System.Collections.Generic.LinkedList{com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem},com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: ListSECSItem(LinkedList<SECSItem>, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_System_Collections_Generic_LinkedList_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -5896,6 +6020,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ToString
   nameWithType: ListSECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
+  nameWithType: ListSECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
+  nameWithType: ListSECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem
   name: SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html
@@ -5930,12 +6067,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.SECSItem
   nameWithType: SECSItem.SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.bytesConsumed
-  name: bytesConsumed
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_bytesConsumed
-  commentId: F:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.bytesConsumed
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.bytesConsumed
-  nameWithType: SECSItem.bytesConsumed
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.EncodeForTransport
   name: EncodeForTransport()
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_EncodeForTransport
@@ -5962,38 +6093,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.Equals
   nameWithType: SECSItem.Equals
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.formatCode
-  name: formatCode
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_formatCode
-  commentId: F:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.formatCode
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.formatCode
-  nameWithType: SECSItem.formatCode
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetBytesConsumed
-  name: GetBytesConsumed()
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetBytesConsumed
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetBytesConsumed
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetBytesConsumed()
-  nameWithType: SECSItem.GetBytesConsumed()
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetBytesConsumed*
-  name: GetBytesConsumed
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetBytesConsumed_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetBytesConsumed
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetBytesConsumed
-  nameWithType: SECSItem.GetBytesConsumed
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetFormatCode
-  name: GetFormatCode()
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetFormatCode
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetFormatCode
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetFormatCode()
-  nameWithType: SECSItem.GetFormatCode()
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetFormatCode*
-  name: GetFormatCode
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetFormatCode_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetFormatCode
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetFormatCode
-  nameWithType: SECSItem.GetFormatCode
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetHashCode
   name: GetHashCode()
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetHashCode
@@ -6007,32 +6106,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetHashCode
   nameWithType: SECSItem.GetHashCode
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetInboundNumberOfLengthBytes
-  name: GetInboundNumberOfLengthBytes()
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetInboundNumberOfLengthBytes
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetInboundNumberOfLengthBytes
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetInboundNumberOfLengthBytes()
-  nameWithType: SECSItem.GetInboundNumberOfLengthBytes()
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetInboundNumberOfLengthBytes*
-  name: GetInboundNumberOfLengthBytes
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetInboundNumberOfLengthBytes_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetInboundNumberOfLengthBytes
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetInboundNumberOfLengthBytes
-  nameWithType: SECSItem.GetInboundNumberOfLengthBytes
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetLengthInBytes
-  name: GetLengthInBytes()
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetLengthInBytes
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetLengthInBytes
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetLengthInBytes()
-  nameWithType: SECSItem.GetLengthInBytes()
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetLengthInBytes*
-  name: GetLengthInBytes
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetLengthInBytes_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetLengthInBytes
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetLengthInBytes
-  nameWithType: SECSItem.GetLengthInBytes
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetSECSItemFormatCode
   name: GetSECSItemFormatCode()
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetSECSItemFormatCode
@@ -6046,30 +6119,45 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.GetSECSItemFormatCode
   nameWithType: SECSItem.GetSECSItemFormatCode
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.inboundNumberOfLengthBytes
-  name: inboundNumberOfLengthBytes
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_inboundNumberOfLengthBytes
-  commentId: F:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.inboundNumberOfLengthBytes
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.inboundNumberOfLengthBytes
-  nameWithType: SECSItem.inboundNumberOfLengthBytes
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.lengthInBytes
-  name: lengthInBytes
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_lengthInBytes
-  commentId: F:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.lengthInBytes
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.lengthInBytes
-  nameWithType: SECSItem.lengthInBytes
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.numberOfElements
-  name: numberOfElements
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_numberOfElements
-  commentId: F:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.numberOfElements
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.numberOfElements
-  nameWithType: SECSItem.numberOfElements
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.outboundNumberOfLengthBytes
-  name: outboundNumberOfLengthBytes
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_outboundNumberOfLengthBytes
-  commentId: F:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.outboundNumberOfLengthBytes
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.outboundNumberOfLengthBytes
-  nameWithType: SECSItem.outboundNumberOfLengthBytes
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.ItemFormatCode
+  name: ItemFormatCode
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_ItemFormatCode
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.ItemFormatCode
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.ItemFormatCode
+  nameWithType: SECSItem.ItemFormatCode
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.ItemFormatCode*
+  name: ItemFormatCode
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_ItemFormatCode_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.ItemFormatCode
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.ItemFormatCode
+  nameWithType: SECSItem.ItemFormatCode
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.LengthInBytes
+  name: LengthInBytes
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_LengthInBytes
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.LengthInBytes
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.LengthInBytes
+  nameWithType: SECSItem.LengthInBytes
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.LengthInBytes*
+  name: LengthInBytes
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_LengthInBytes_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.LengthInBytes
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.LengthInBytes
+  nameWithType: SECSItem.LengthInBytes
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.NumberOfLengthBytes
+  name: NumberOfLengthBytes
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_NumberOfLengthBytes
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.NumberOfLengthBytes
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.NumberOfLengthBytes
+  nameWithType: SECSItem.NumberOfLengthBytes
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.NumberOfLengthBytes*
+  name: NumberOfLengthBytes
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_NumberOfLengthBytes_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.NumberOfLengthBytes
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.NumberOfLengthBytes
+  nameWithType: SECSItem.NumberOfLengthBytes
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.OutputHeaderLength
   name: OutputHeaderLength()
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_OutputHeaderLength
@@ -6099,19 +6187,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.PopulateSECSItemHeaderData
   nameWithType: SECSItem.PopulateSECSItemHeaderData
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.SetOutboundNumberOfLengthBytes(System.Int32,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
-  name: SetOutboundNumberOfLengthBytes(Int32, SECSItemNumLengthBytes)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_SetOutboundNumberOfLengthBytes_System_Int32_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.SetOutboundNumberOfLengthBytes(System.Int32,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.SetOutboundNumberOfLengthBytes(System.Int32, com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
-  nameWithType: SECSItem.SetOutboundNumberOfLengthBytes(Int32, SECSItemNumLengthBytes)
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.SetOutboundNumberOfLengthBytes*
-  name: SetOutboundNumberOfLengthBytes
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_SetOutboundNumberOfLengthBytes_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.SetOutboundNumberOfLengthBytes
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.SetOutboundNumberOfLengthBytes
-  nameWithType: SECSItem.SetOutboundNumberOfLengthBytes
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFactory
   name: SECSItemFactory
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemFactory.html
@@ -6364,6 +6439,12 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem
   nameWithType: U1ArraySECSItem
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.#ctor
+  name: U1ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U1ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.U1ArraySECSItem()
+  nameWithType: U1ArraySECSItem.U1ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.#ctor(System.Byte[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: U1ArraySECSItem(Byte[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U1ArraySECSItem__ctor_System_Byte___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -6373,15 +6454,6 @@ references:
   fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.U1ArraySECSItem(System.Byte(), com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   nameWithType: U1ArraySECSItem.U1ArraySECSItem(Byte[], SECSItemNumLengthBytes)
   nameWithType.vb: U1ArraySECSItem.U1ArraySECSItem(Byte(), SECSItemNumLengthBytes)
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.#ctor(System.Byte[],System.Int32,System.Int32)
-  name: U1ArraySECSItem(Byte[], Int32, Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U1ArraySECSItem__ctor_System_Byte___System_Int32_System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.#ctor(System.Byte[],System.Int32,System.Int32)
-  name.vb: U1ArraySECSItem(Byte(), Int32, Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.U1ArraySECSItem(System.Byte[], System.Int32, System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.U1ArraySECSItem(System.Byte(), System.Int32, System.Int32)
-  nameWithType: U1ArraySECSItem.U1ArraySECSItem(Byte[], Int32, Int32)
-  nameWithType.vb: U1ArraySECSItem.U1ArraySECSItem(Byte(), Int32, Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.#ctor(System.Byte[])
   name: U1ArraySECSItem(Byte[])
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U1ArraySECSItem__ctor_System_Byte___
@@ -6463,6 +6535,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.ToString
   nameWithType: U1ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U1ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.Value
+  nameWithType: U1ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U1ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U1ArraySECSItem.Value
+  nameWithType: U1ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem
   name: U1SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.html
@@ -6562,21 +6647,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.ToString
   nameWithType: U1SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U1SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.Value
+  nameWithType: U1SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U1SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U1SECSItem.Value
+  nameWithType: U1SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem
   name: U2ArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem
   nameWithType: U2ArraySECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name: U2ArraySECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U2ArraySECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: U2ArraySECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.U2ArraySECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.U2ArraySECSItem(System.Byte(), System.Int32)
-  nameWithType: U2ArraySECSItem.U2ArraySECSItem(Byte[], Int32)
-  nameWithType.vb: U2ArraySECSItem.U2ArraySECSItem(Byte(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.#ctor
+  name: U2ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U2ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.U2ArraySECSItem()
+  nameWithType: U2ArraySECSItem.U2ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.#ctor(System.UInt16[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: U2ArraySECSItem(UInt16[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U2ArraySECSItem__ctor_System_UInt16___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -6667,21 +6762,25 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.ToString
   nameWithType: U2ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U2ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.Value
+  nameWithType: U2ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U2ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2ArraySECSItem.Value
+  nameWithType: U2ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem
   name: U2SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem
   nameWithType: U2SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.#ctor(System.Byte[],System.Int32)
-  name: U2SECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U2SECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: U2SECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.U2SECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.U2SECSItem(System.Byte(), System.Int32)
-  nameWithType: U2SECSItem.U2SECSItem(Byte[], Int32)
-  nameWithType.vb: U2SECSItem.U2SECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.#ctor(System.UInt16,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: U2SECSItem(UInt16, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U2SECSItem__ctor_System_UInt16_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -6766,21 +6865,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.ToString
   nameWithType: U2SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U2SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.Value
+  nameWithType: U2SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U2SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U2SECSItem.Value
+  nameWithType: U2SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem
   name: U4ArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem
   nameWithType: U4ArraySECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name: U4ArraySECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: U4ArraySECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.U4ArraySECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.U4ArraySECSItem(System.Byte(), System.Int32)
-  nameWithType: U4ArraySECSItem.U4ArraySECSItem(Byte[], Int32)
-  nameWithType.vb: U4ArraySECSItem.U4ArraySECSItem(Byte(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor
+  name: U4ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.U4ArraySECSItem()
+  nameWithType: U4ArraySECSItem.U4ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.#ctor(System.UInt32[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: U4ArraySECSItem(UInt32[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem__ctor_System_UInt32___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -6871,21 +6980,25 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.ToString
   nameWithType: U4ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.Value
+  nameWithType: U4ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U4ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4ArraySECSItem.Value
+  nameWithType: U4ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem
   name: U4SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem
   nameWithType: U4SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.#ctor(System.Byte[],System.Int32)
-  name: U4SECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U4SECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: U4SECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.U4SECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.U4SECSItem(System.Byte(), System.Int32)
-  nameWithType: U4SECSItem.U4SECSItem(Byte[], Int32)
-  nameWithType.vb: U4SECSItem.U4SECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.#ctor(System.UInt32,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: U4SECSItem(UInt32, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U4SECSItem__ctor_System_UInt32_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -6970,21 +7083,31 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.ToString
   nameWithType: U4SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U4SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.Value
+  nameWithType: U4SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U4SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U4SECSItem.Value
+  nameWithType: U4SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem
   name: U8ArraySECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem
   nameWithType: U8ArraySECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name: U8ArraySECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U8ArraySECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: U8ArraySECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.U8ArraySECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.U8ArraySECSItem(System.Byte(), System.Int32)
-  nameWithType: U8ArraySECSItem.U8ArraySECSItem(Byte[], Int32)
-  nameWithType.vb: U8ArraySECSItem.U8ArraySECSItem(Byte(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.#ctor
+  name: U8ArraySECSItem()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U8ArraySECSItem__ctor
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.#ctor
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.U8ArraySECSItem()
+  nameWithType: U8ArraySECSItem.U8ArraySECSItem()
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.#ctor(System.UInt64[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: U8ArraySECSItem(UInt64[], SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U8ArraySECSItem__ctor_System_UInt64___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -7075,21 +7198,25 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.ToString
   nameWithType: U8ArraySECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U8ArraySECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.Value
+  nameWithType: U8ArraySECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U8ArraySECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8ArraySECSItem.Value
+  nameWithType: U8ArraySECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem
   name: U8SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.html
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem
   nameWithType: U8SECSItem
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.#ctor(System.Byte[],System.Int32)
-  name: U8SECSItem(Byte[], Int32)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U8SECSItem__ctor_System_Byte___System_Int32_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.#ctor(System.Byte[],System.Int32)
-  name.vb: U8SECSItem(Byte(), Int32)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.U8SECSItem(System.Byte[], System.Int32)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.U8SECSItem(System.Byte(), System.Int32)
-  nameWithType: U8SECSItem.U8SECSItem(Byte[], Int32)
-  nameWithType.vb: U8SECSItem.U8SECSItem(Byte(), Int32)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.#ctor(System.UInt64,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
   name: U8SECSItem(UInt64, SECSItemNumLengthBytes)
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U8SECSItem__ctor_System_UInt64_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
@@ -7174,6 +7301,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.ToString
   nameWithType: U8SECSItem.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.Value
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U8SECSItem_Value
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.Value
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.Value
+  nameWithType: U8SECSItem.Value
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.Value*
+  name: Value
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_U8SECSItem_Value_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.Value
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.U8SECSItem.Value
+  nameWithType: U8SECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.TextFormatter
   name: com.CIMthetics.CSharpSECSTools.TextFormatter
   href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.html

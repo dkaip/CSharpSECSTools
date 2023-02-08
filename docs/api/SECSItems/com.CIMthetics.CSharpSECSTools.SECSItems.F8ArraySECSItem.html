@@ -72,19 +72,9 @@
 
   <h1 id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem" class="text-break">Class F8ArraySECSItem
 </h1>
-  <div class="markdown level0 summary"><p>This class represents/implements a SECSItem with the SECS data type of <code>F8</code>
-in an array form. In this case it is an array of zero or more 64-bit floating point
-numbers.  From the C# side this data type is handled as a C# <code>double []</code>.</p>
-<p>In wire/transmission format all SECS items, with the exception of those with an item format code
-of <code>L</code>(List), are sent in an array form. For instance if an item is received which has
-an item format code of I4 (32-bit signed integer) and has a length of 8 you know that is it an array
-containing 2 4-byte signed integers.  If it has a length of 0 you know it is an array with zero
-4-byte signed integers. Likewise, If an item is received which has
-an item format code of U2 (16-bit unsigned integer) and has a length of 6 you know that is it an array
-containing 3 2-byte unsigned integers.</p>
-<p>In practice, when only one item is received in the array (in the I4 case mentioned previously if the
-length was 4 instead of 8) it is handled and processed in a non array form.  Hence <code>I4SECSItem</code>
-vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSItem</code>, etc.</p>
+  <div class="markdown level0 summary"><p>This class represents a SECS item with a data type of <code>F8</code>
+in an array form. In this case it is an array of zero or more 64-bit floating point numbers.
+The C# data type is <code>double[]</code>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -96,46 +86,22 @@ vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSIte
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_formatCode">SECSItem.formatCode</a>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_ItemFormatCode">SECSItem.ItemFormatCode</a>
     </div>
     <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_inboundNumberOfLengthBytes">SECSItem.inboundNumberOfLengthBytes</a>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetSECSItemFormatCode">SECSItem.GetSECSItemFormatCode()</a>
     </div>
     <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_outboundNumberOfLengthBytes">SECSItem.outboundNumberOfLengthBytes</a>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_NumberOfLengthBytes">SECSItem.NumberOfLengthBytes</a>
     </div>
     <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_lengthInBytes">SECSItem.lengthInBytes</a>
-    </div>
-    <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_numberOfElements">SECSItem.numberOfElements</a>
-    </div>
-    <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_bytesConsumed">SECSItem.bytesConsumed</a>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_LengthInBytes">SECSItem.LengthInBytes</a>
     </div>
     <div>
       <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_OutputHeaderLength">SECSItem.OutputHeaderLength()</a>
     </div>
     <div>
       <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_PopulateSECSItemHeaderData_System_Byte___System_Int32_">SECSItem.PopulateSECSItemHeaderData(Byte[], Int32)</a>
-    </div>
-    <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetLengthInBytes">SECSItem.GetLengthInBytes()</a>
-    </div>
-    <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetInboundNumberOfLengthBytes">SECSItem.GetInboundNumberOfLengthBytes()</a>
-    </div>
-    <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetBytesConsumed">SECSItem.GetBytesConsumed()</a>
-    </div>
-    <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_SetOutboundNumberOfLengthBytes_System_Int32_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_">SECSItem.SetOutboundNumberOfLengthBytes(Int32, SECSItemNumLengthBytes)</a>
-    </div>
-    <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetSECSItemFormatCode">SECSItem.GetSECSItemFormatCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetFormatCode">SECSItem.GetFormatCode()</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.html">com.CIMthetics.CSharpSECSTools.SECSItems</a></h6>
@@ -149,52 +115,23 @@ vs <code>I4ArraySECSItem</code>, <code>U2SECSItem</code> vs <code>U2ArraySECSIte
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_System_Byte___System_Int32_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor(System.Byte[],System.Int32)">F8ArraySECSItem(Byte[], Int32)</h4>
-  <div class="markdown level1 summary"><p>This constructor is used to create this SECSItem from
-data in &quot;wire/transmission&quot; format.</p>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor">F8ArraySECSItem()</h4>
+  <div class="markdown level1 summary"><p>This constructor creates a <code>F8ArraySECSItem</code> with no elements.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public F8ArraySECSItem(byte[] data, int itemOffset)</code></pre>
+    <pre><code class="lang-csharp hljs">public F8ArraySECSItem()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
-        <td><span class="parametername">data</span></td>
-        <td><p>The buffer where the &quot;wire/transmission&quot; format data is contained.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">itemOffset</span></td>
-        <td><p>The offset into the data where the desired item starts.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_System_Double___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor(System.Double[],com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)">F8ArraySECSItem(Double[], SECSItemNumLengthBytes)</h4>
-  <div class="markdown level1 summary"><p>This constructor creates a SECSItem that has a type of <code>F8</code>
-with the specified value. This form of the constructor is not
-needed much nowadays.  In the past there were situations where
-the equipment required that messages contained SECSItems that
-had a specified number of length bytes. This form of the constructor
-is here to handle these problem child cases.</p>
-<p>Note: It will be created with the number of length bytes set to greater of,
-the specified number of length bytes or the number required based on the
-length (in elements) of the<pre><code>double []</code></pre> provided.
+  <div class="markdown level1 summary"><p>This constructor creates an F8ArraySECSItem that will have the value of
+the supplied <code>double[]</code>.  In addition when converted to
+&quot;transmission&quot; form it will use the number of length bytes
+specified <strong>OR</strong> the minimum number necessary to actually contain
+the length of the content of the <code>double[]</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -220,22 +157,21 @@ length (in elements) of the<pre><code>double []</code></pre> provided.
       <tr>
         <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes.html">SECSItemNumLengthBytes</a></td>
         <td><span class="parametername">desiredNumberOfLengthBytes</span></td>
-        <td><p>The number of length bytes to be used for
-this <code>SECSItem</code>. The value for the number of length bytes must be
-<code>ONE</code>, <code>TWO</code>, or <code>THREE</code>.</p>
+        <td><p>The number of length bytes to be used for this <pre><code>SECSItem</code></pre>.
+The value for the number of length bytes must be <code>ONE</code>, <code>TWO</code>, or <code>THREE</code>.
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_System_Double___com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The array's length should not exceed <code>2097151</code> elements.</p>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_System_Double___" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.#ctor(System.Double[])">F8ArraySECSItem(Double[])</h4>
-  <div class="markdown level1 summary"><p>This constructor creates a SECSItem that has a type of <code>F8</code> with
-the minimum number of length bytes required. Note: It will be created
-with the number of length bytes required based on the length (in elements)
-of the <code>double []</code> provided. The maximum array length allowed is
-<code>16777215</code> bytes(elements).</p>
+  <div class="markdown level1 summary"><p>This constructor creates an F8ArraySECSItem that will have the value of
+the supplied <code>double[]</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -255,8 +191,39 @@ of the <code>double []</code> provided. The maximum array length allowed is
       <tr>
         <td><span class="xref">System.Double</span>[]</td>
         <td><span class="parametername">value</span></td>
-        <td><p>An array of c# <code>double</code> to be assigned to this SECSItem.</p>
+        <td><p>An array of <code>double</code> values to be assigned to this <code>SECSItem</code>.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem__ctor_System_Double____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The array's length should not exceed <code>2097151</code> elements.</p>
+</div>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem_Value_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.Value*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_F8ArraySECSItem_Value" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.F8ArraySECSItem.Value">Value</h4>
+  <div class="markdown level1 summary"><p>The value of this <code>F8ArraySECSItem</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double[] Value { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span>[]</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -378,7 +345,8 @@ hash table.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double[] GetValue()</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This method has been deprecated, please use property Value instead.&quot;)]
+public double[] GetValue()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
