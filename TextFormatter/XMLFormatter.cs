@@ -399,7 +399,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         /// </summary>
         public override void GetSECSItemAsText(StringBuilder sb, SECSItem secsItem)
         {
-            AddSECSItemsStuff(sb, secsItem.ItemFormatCode.ToString(), 77, secsItem.LengthInBytes);
+            AddSECSItemsStuff(sb, secsItem.ItemFormatCode.ToString(), secsItem.NumberOfLengthBytes.ValueOf(), secsItem.LengthInBytes);
 
             if (secsItem.ItemFormatCode == SECSItemFormatCode.L)
             {
