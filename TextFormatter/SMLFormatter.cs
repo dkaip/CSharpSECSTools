@@ -222,10 +222,22 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     sb.Append("<L [");
                     sb.Append(((ListSECSItem)secsItem).Value.Count());
+                    if (((ListSECSItem)secsItem).Value.Count() == 0)
+                    {
+                        sb.Append("]>");
+                        return;
+                    }
+
                     sb.AppendLine("]");
                 }
                 else
                 {
+                    if (((ListSECSItem)secsItem).Value.Count() == 0)
+                    {
+                        sb.Append("<L>");
+                        return;
+                    }
+
                     sb.AppendLine("<L");
                 }
 
@@ -251,7 +263,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 AddPreText(sb, "B", secsItem.LengthInBytes, out offsetToData);
                 if (secsItem.LengthInBytes == 0)
                 {
-                    // sb.Append(">");
+                    ;
                 }
                 else if (secsItem.LengthInBytes == 1)
                 {
@@ -298,7 +310,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 AddPreText(sb, "BOOLEAN", secsItem.LengthInBytes, out offsetToData);
                 if (secsItem.LengthInBytes == 0)
                 {
-                    sb.Append(">");
+                   ;
                 }
                 else if (secsItem.LengthInBytes == 1)
                 {
@@ -352,7 +364,10 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 if (secsItem.LengthInBytes == 0)
                 {
-                    sb.Append("<A>");
+                    if (configurationData.BodyOutputConfig.DisplayCount)
+                        sb.Append("<A [0]>");
+                    else
+                        sb.Append("<A>");
                 }
                 else
                 {
@@ -957,6 +972,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     // No ending space if count is 0
                     tempSb.Append("<");
                     tempSb.Append(elementType);
+                    tempSb.Append(" [0]");
                 }
                 else
                 {
