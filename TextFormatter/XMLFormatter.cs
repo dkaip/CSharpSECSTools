@@ -24,11 +24,10 @@ using com.CIMthetics.CSharpSECSTools.SECSItems;
 namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 {
 	/// <summary>
-	/// A class to create a textual representation of 
+	/// A class to create a textual representation in XML of 
     /// <see cref="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage">SECSMessage</see>s,
     /// <see cref="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader">SECSHeader</see>s, and
-    /// <see cref="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem">SECSItem</see>s 
-    /// using using XML.
+    /// <see cref="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem">SECSItem</see>s.
 	/// </summary>
     public class XMLFormatter : SECSFormatter
     {
@@ -43,8 +42,9 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         /// <remarks>
         /// </remarks>
 
-        public XMLFormatter(TextFormatterConfig configurationData) : base(configurationData) {}
+        internal XMLFormatter(TextFormatterConfig configurationData) : base(configurationData) {}
 
+        /// <inheritdoc/>
         public override string GetSECSMessageAsText(string source, string destination, SECSMessage secsMessage)
         {
             StringBuilder sb = new StringBuilder();
@@ -54,6 +54,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             return sb.ToString();
         }
 
+        /// <inheritdoc/>
         public override void GetSECSMessageAsText(StringBuilder sb, string source, string destination, SECSMessage secsMessage)
         {
             SECSHeader hdr = secsMessage.Header;
@@ -235,6 +236,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             return;
         }
 
+        /// <inheritdoc/>
         public override string GetHeaderAsText(SECSHeader secsHeader)
         {
             StringBuilder sb = new StringBuilder();
@@ -244,6 +246,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             return sb.ToString();
         }
 
+        /// <inheritdoc/>
         public override void GetHeaderAsText(StringBuilder sb, SECSHeader secsHeader)
         {
             SECSHeader hdr = secsHeader;
@@ -384,6 +387,10 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             return;
         }
 
+        /// <inheritdoc/>
+        /// <remarks>
+        /// JIS-8 and C2 are not implemented yet.
+        /// </remarks>
         public override string GetSECSItemAsText(SECSItem secsItem)
         {
             StringBuilder sb = new StringBuilder();
@@ -393,10 +400,10 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             return sb.ToString();
         }
 
-        /// <summary>
-        /// Convert a SECSItem to XML.
-        /// Some items of note: JIS-8 and C2 are not implemented yet.
-        /// </summary>
+        /// <inheritdoc/>
+        /// <remarks>
+        /// JIS-8 and C2 are not implemented yet.
+        /// </remarks>
         public override void GetSECSItemAsText(StringBuilder sb, SECSItem secsItem)
         {
             AddSECSItemsStuff(sb, secsItem.ItemFormatCode.ToString(), secsItem.NumberOfLengthBytes.ValueOf(), secsItem.LengthInBytes);
