@@ -276,7 +276,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                         }
 
                         sb.Append("0x");
-                        sb.Append((((BinarySECSItem)secsItem).Value[0]).ToString("X2"));
+                        sb.Append(item.ToString("X2"));
                         lineLength += 4;
 
                         if (++currentArrayElement < arrayLength && lineLength < configurationData.BodyOutputConfig.MaxOutputLineLength)
@@ -352,7 +352,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 if (secsItem.LengthInBytes == 0)
                 {
-                    ;
+                    sb.Append("<A>");
                 }
                 else
                 {
