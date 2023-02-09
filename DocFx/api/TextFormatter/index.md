@@ -138,7 +138,9 @@ above `json` configuration will.
 ```
 
 Now that you have the `TextFormatterConfig` object you are able to create
-a formatter.
+a formatter.  See [Creating a Formatter](#creating-a-formatter) or continue
+reading to get an understanding of how the various configuration options
+alter the output.
 
 ### Output Examples
 
@@ -218,7 +220,6 @@ S6F11
     >
   >
 >.
-
 ```
 
 #### XML Output Examples
@@ -251,8 +252,270 @@ Since output in XML can be a bit verbose there are a number of configuration
 options available for controlling the resulting output. In the following text
 these options will be explored.
 
-resume here
+For brevity's sake we are going to look at the individual options and how they
+effect the output produced.
 
+| AddTimestamp | AddDirection | Result |
+| ------------ | ------------ | ------ |
+|       T      |      T       |    1   |
+|       F      |      T       |    2   |
+|       T      |      F       |    3   |
+|       F      |      F       |    4   |
+
+```xml
+1. <SECSMessage Timestamp="2023-02-09T09:31:01.194" Src="EI" Dest="EQ">
+2. <SECSMessage Src="EI" Dest="EQ">
+3. <SECSMessage Timestamp="2023-02-09T09:37:04.993">
+4. <SECSMessage>
+```
+
+##### **HeaderOutputConfig:DisplayAsElementsOrAttributes is Elements**
+
+Now for the header where `DisplayAsElementsOrAttributes` is &quot;Elements&quot;.
+
+###### **HSMS Control Messages**
+
+###### **SECS Messages**
+
+A message's Stream and Function are always displayed. `DisplayMessageIdAsSxFy`
+controls what the output looks like. If `DisplayMessageIdAsSxFy` is `true`
+the header might look like (depending on the other options):
+
+```xml
+  <Header>
+    <SxFy>S6F11</SxFy>
+  </Header>
+```
+
+If `DisplayMessageIdAsSxFy` is `false` the header might look like (depending on the other options):
+
+```xml
+  <Header>
+    <Stream>6</Stream>
+    <Function>11</Function>
+  </Header>
+```
+
+As for most of the rest of the header options.
+
+| DisplayDeviceId | DisplaySystemBytes | DisplayWBit | Result |
+| --------------- | ------------------ | ----------- | ------ |
+|        T        |          T         |      T      |    1   |
+|        T        |          T         |      F      |        |
+|        T        |          F         |      T      |        |
+|        T        |          F         |      F      |        |
+|        F        |          T         |      T      |        |
+|        F        |          T         |      F      |        |
+|        F        |          F         |      T      |    2   |
+|        F        |          F         |      F      |    3   |
+
+```xml
+1. <Header>
+    <DeviceId>1234</DeviceId>
+    <SxFy>S6F11</SxFy>
+    <Wbit>True</Wbit>
+    <SystemBytes>14</SystemBytes>
+  </Header>
+
+2. <Header>
+    <SxFy>S6F11</SxFy>
+    <Wbit>True</Wbit>
+  </Header>
+
+3. <Header>
+    <SxFy>S6F11</SxFy>
+  </Header>
+```
+
+As you can see, examples for all of the combinations are not displayed, but,
+you get the idea.
+
+##### **HeaderOutputConfig:DisplayAsElementsOrAttributes is Attributes**
+
+Now for the header where `DisplayAsElementsOrAttributes` is &quot;Attributes&quot;.
+
+###### **HSMS Control Messages**
+
+###### **SECS Messages**
+
+A message's Stream and Function are always displayed. `DisplayMessageIdAsSxFy`
+controls what the output looks like. If `DisplayMessageIdAsSxFy` is `true`
+the header might look like (depending on the other options):
+
+```xml
+  <Header SxFy="S6F11"/>
+```
+
+If `DisplayMessageIdAsSxFy` is `false` the header might look like (depending on the other options):
+
+```xml
+  <Header Stream="6" Function="11"/>
+```
+
+As for most of the rest of the header options.
+
+| DisplayDeviceId | DisplaySystemBytes | DisplayWBit | Result |
+| --------------- | ------------------ | ----------- | ------ |
+|        T        |          T         |      T      |    1   |
+|        T        |          T         |      F      |        |
+|        T        |          F         |      T      |        |
+|        T        |          F         |      F      |        |
+|        F        |          T         |      T      |        |
+|        F        |          T         |      F      |        |
+|        F        |          F         |      T      |    2   |
+|        F        |          F         |      F      |    3   |
+
+```xml
+1. <Header DeviceId="1234" Stream="6" Function="11" Wbit="True" SystemBytes="14"/>
+
+2. <Header SxFy="S6F11" Wbit="True"/>
+
+3. <Header Stream="6" Function="11"/>
+```
+
+As you can see, examples for all of the combinations are not displayed, but,
+you get the idea.
+
+##### **BodyOutputConfig:DisplayAsElementsOrAttributes is Elements**
+
+Now for the body where `DisplayAsElementsOrAttributes` is &quot;Elements&quot;.
+
+| DisplayNumberOfLengthBytes | DisplayLengthByteValue | Result |
+| -------------------------- | ---------------------- | ------ |
+|             T              |           T            |    1   |
+|             T              |           F            |    2   |
+|             F              |           T            |    3   |
+|             F              |           F            |    4   |
+
+```xml
+1. <SECSItem>
+     <Type>A</Type>
+     <NumLengthBytes>1</NumLengthBytes>
+     <LengthByteValue>6</LengthByteValue>
+     <Value>DATAID</Value>
+   </SECSItem>
+
+2. <SECSItem>
+     <Type>A</Type>
+     <NumLengthBytes>1</NumLengthBytes>
+     <Value>DATAID</Value>
+   </SECSItem>
+
+3. <SECSItem>
+     <Type>A</Type>
+     <LengthByteValue>6</LengthByteValue>
+     <Value>DATAID</Value>
+   </SECSItem>
+
+4. <SECSItem>
+     <Type>A</Type>
+     <Value>DATAID</Value>
+   </SECSItem>
+```
+
+##### **BodyOutputConfig:DisplayAsElementsOrAttributes is Attributes**
+
+Now for the body where `DisplayAsElementsOrAttributes` is &quot;Attributes&quot;.
+
+| DisplayNumberOfLengthBytes | DisplayLengthByteValue | Result |
+| -------------------------- | ---------------------- | ------ |
+|             T              |           T            |    1   |
+|             T              |           F            |    2   |
+|             F              |           T            |    3   |
+|             F              |           F            |    4   |
+
+```xml
+1. <SECSItem type="A" NumLengthBytes="1" LengthByteValue="6">
+     <Value>DATAID</Value>
+   </SECSItem>
+
+2. <SECSItem type="A" NumLengthBytes="1">
+     <Value>DATAID</Value>
+   </SECSItem>
+
+3. <SECSItem type="A" LengthByteValue="6">
+     <Value>DATAID</Value>
+   </SECSItem>
+
+4. <SECSItem type="A">
+     <Value>DATAID</Value>
+   </SECSItem>
+```
+
+Following is pretty much the same message as formatted above in SML.
+In this case it is formatted in XML.  As you will notice it is considerably
+more verbose, but, as mentioned before it is much easier to parse into a
+machine readable format.
+
+```xml
+<SECSMessage Timestamp="2023-02-09T14:18:14.088" Src="EQ" Dest="EI">
+  <Header DeviceId="1234" Stream="6" Function="11" Wbit="True" SystemBytes="14"/>
+  <SECSItem type="L">
+    <Value>
+      <SECSItem type="A">
+        <Value>DATAID</Value>
+      </SECSItem>
+      <SECSItem type="A">
+        <Value>CEID</Value>
+      </SECSItem>
+      <SECSItem type="L">
+        <Value>
+          <SECSItem type="L">
+            <Value>
+              <SECSItem type="A">
+                <Value>RPTID1</Value>
+              </SECSItem>
+              <SECSItem type="L">
+                <Value>
+                  <SECSItem type="U2">
+                    <Value>1</Value>
+                  </SECSItem>
+                  <SECSItem type="U2">
+                    <Value>2</Value>
+                  </SECSItem>
+                  <SECSItem type="BO">
+                    <Value>True</Value>
+                  </SECSItem>
+                </Value>
+              </SECSItem>
+            </Value>
+          </SECSItem>
+          <SECSItem type="L">
+            <Value>
+              <SECSItem type="A">
+                <Value>RPTID2</Value>
+              </SECSItem>
+              <SECSItem type="L">
+                <Value>
+                  <SECSItem type="A">
+                    <Value/>
+                  </SECSItem>
+                  <SECSItem type="B">
+                    <Value>
+                      0x00 0x01 0x7F 0xFF 0x00 0x64
+                    </Value>
+                  </SECSItem>
+                  <SECSItem type="F8">
+                    <Value>3.141593</Value>
+                  </SECSItem>
+                  <SECSItem type="BO">
+                    <Value>
+                      True False True True False
+                    </Value>
+                  </SECSItem>
+                  <SECSItem type="I4">
+                    <Value>2147483647</Value>
+                  </SECSItem>
+                </Value>
+              </SECSItem>
+            </Value>
+          </SECSItem>
+        </Value>
+      </SECSItem>
+    </Value>
+  </SECSItem>
+</SECSMessage>
+```
 
 ## Creating a Formatter
 

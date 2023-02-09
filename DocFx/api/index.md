@@ -23,11 +23,16 @@ to provide that help.
 
 ## [SECSCommUtils](SECSCommUtils/index.md)
 
+The ability to send and receive messages using the SECS-II protocol is a requirement for
+automating the shop floor of semiconductor manufacturing facilities.  This API library provides
+objects that will allow the user to build &quot;communication links&quot; and to be able to
+send message to and receive messages from an endpoint of those links.
+
 ## [TextFormatter](TextFormatter/index.md)
 
 This API library allows a user to convert `SECSMessage`s, `SECSHeader`s, and
 `SECSItem`s into a `string` that is in either [SML](#sml-output) or [XML](#xml-output).
-The produced `string`s are suitable for output to a terminal and / or a file.
+The produced `string`(s) are suitable for output to a terminal and / or a file.
 
 The `SECSMessage` and `SECSHeader` classes are located in the
 [SECSCommUtils](#secscommutils) API library.  The `SECSItem` classes are

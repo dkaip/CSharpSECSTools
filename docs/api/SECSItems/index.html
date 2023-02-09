@@ -101,40 +101,160 @@ to say the least. This is why this API has been created.  It allows a programmer
 deal with SECS items in a manner that is much more natural to the language they
 currently are working in, in this case C#.</p>
 <p>The following table shows the SECS item types and their corresponding C# data types:</p>
-<pre><code class="lang-csharp">| SECS Item Code | C# Data Type         | C# SECS Item Type |
-| -------------- | -------------------- | ----------------- |
-| L              | LinkedList&lt;SECSItem&gt; | ListSECSItem      |
-| B              | byte[]               | BinarySECSItem    |
-| BO             | bool                 | BooleanSECSItem   |
-| JIS-8          | not implemented yet  |                   |
-| C-2            | not implemented yet  |                   |
-| I8             | Int64                | I8SECSItem        |
-| I1             | sbyte                | I1SECSItem        |
-| I2             | Int16                | I2SECSItem        |
-| I4             | Int32                | I4SECSItem        |
-| F8             | double               | F8SECSItem        |
-| F4             | float                | F4SECSItem        |
-| U8             | UInt64               | U8SECSItem        |
-| U1             | byte                 | U1SECSItem        |
-| U2             | UInt16               | U2SECSItem        |
-| U4             | UInt32               | U4SECSItem        |
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>SECS Item Code</th>
+<th>C# Data Type</th>
+<th>C# SECS Item Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L</td>
+<td>LinkedList&lt;SECSItem&gt;</td>
+<td>ListSECSItem</td>
+</tr>
+<tr>
+<td>B</td>
+<td>byte[]</td>
+<td>BinarySECSItem</td>
+</tr>
+<tr>
+<td>BO</td>
+<td>bool</td>
+<td>BooleanSECSItem</td>
+</tr>
+<tr>
+<td>JIS-8</td>
+<td>not implemented yet</td>
+<td></td>
+</tr>
+<tr>
+<td>C-2</td>
+<td>not implemented yet</td>
+<td></td>
+</tr>
+<tr>
+<td>I8</td>
+<td>Int64</td>
+<td>I8SECSItem</td>
+</tr>
+<tr>
+<td>I1</td>
+<td>sbyte</td>
+<td>I1SECSItem</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>Int16</td>
+<td>I2SECSItem</td>
+</tr>
+<tr>
+<td>I4</td>
+<td>Int32</td>
+<td>I4SECSItem</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>double</td>
+<td>F8SECSItem</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>float</td>
+<td>F4SECSItem</td>
+</tr>
+<tr>
+<td>U8</td>
+<td>UInt64</td>
+<td>U8SECSItem</td>
+</tr>
+<tr>
+<td>U1</td>
+<td>byte</td>
+<td>U1SECSItem</td>
+</tr>
+<tr>
+<td>U2</td>
+<td>UInt16</td>
+<td>U2SECSItem</td>
+</tr>
+<tr>
+<td>U4</td>
+<td>UInt32</td>
+<td>U4SECSItem</td>
+</tr>
+</tbody>
+</table>
 <p>The following table shows the SECS item types and their corresponding C# data types
 in the case where their value is thought of as an array:</p>
-<pre><code class="lang-csharp">| SECS Item Code | C# Data Type         | C# SECS Item Type      |
-| -------------- | -------------------- | ---------------------- |
-| BO             | bool[]               | BooleanArraySECSItem   |
-| I8             | Int64[]              | I8ArraySECSItem        |
-| I1             | sbyte[]              | I1ArraySECSItem        |
-| I2             | Int16[]              | I2ArraySECSItem        |
-| I4             | Int32[]              | I4ArraySECSItem        |
-| F8             | double[]             | F8ArraySECSItem        |
-| F4             | float[]              | F4ArraySECSItem        |
-| U8             | UInt64[]             | U8ArraySECSItem        |
-| U1             | byte[]               | U1ArraySECSItem        |
-| U2             | UInt16[]             | U2ArraySECSItem        |
-| U4             | UInt32[]             | U4ArraySECSItem        |
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>SECS Item Code</th>
+<th>C# Data Type</th>
+<th>C# SECS Item Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BO</td>
+<td>bool[]</td>
+<td>BooleanArraySECSItem</td>
+</tr>
+<tr>
+<td>I8</td>
+<td>Int64[]</td>
+<td>I8ArraySECSItem</td>
+</tr>
+<tr>
+<td>I1</td>
+<td>sbyte[]</td>
+<td>I1ArraySECSItem</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>Int16[]</td>
+<td>I2ArraySECSItem</td>
+</tr>
+<tr>
+<td>I4</td>
+<td>Int32[]</td>
+<td>I4ArraySECSItem</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>double[]</td>
+<td>F8ArraySECSItem</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>float[]</td>
+<td>F4ArraySECSItem</td>
+</tr>
+<tr>
+<td>U8</td>
+<td>UInt64[]</td>
+<td>U8ArraySECSItem</td>
+</tr>
+<tr>
+<td>U1</td>
+<td>byte[]</td>
+<td>U1ArraySECSItem</td>
+</tr>
+<tr>
+<td>U2</td>
+<td>UInt16[]</td>
+<td>U2ArraySECSItem</td>
+</tr>
+<tr>
+<td>U4</td>
+<td>UInt32[]</td>
+<td>U4ArraySECSItem</td>
+</tr>
+</tbody>
+</table>
 <h3 id="receiving-a-secs-message">Receiving a SECS message</h3>
 <p>This API does not provide the functionality to be able to send and receive
 SECS messages.  It only provides the functionality to be able to encode, decode,
@@ -147,7 +267,7 @@ Something like this:</p>
 <pre><code class="lang-csharp">    byte[] rawSECSData;
 
     .
-    . Its value gets set here somewhere.
+    . // Its value gets set here somewhere.
     .
 
     SECSItem secsItem = SECSItemFactory.GenerateSECSItem(rawSECSData);

@@ -188,7 +188,9 @@ above <code>json</code> configuration will.</p>
 
 </code></pre>
 <p>Now that you have the <code>TextFormatterConfig</code> object you are able to create
-a formatter.</p>
+a formatter.  See <a href="#creating-a-formatter">Creating a Formatter</a> or continue
+reading to get an understanding of how the various configuration options
+alter the output.</p>
 <h3 id="output-examples">Output Examples</h3>
 <p>This sections contains some examples of the type of output produced depending
 on the value of the configuration parameters.  If the value of <code>LoggingOutputFormat</code>
@@ -258,7 +260,6 @@ set to <code>false</code> as well.</p>
     &gt;
   &gt;
 &gt;.
-
 </code></pre>
 <h4 id="xml-output-examples">XML Output Examples</h4>
 <h5 id="an-important-reminder"><strong>An Important Reminder</strong></h5>
@@ -285,6 +286,399 @@ perform your copy / paste operations make sure and get complete XML elements.</p
 <p>Since output in XML can be a bit verbose there are a number of configuration
 options available for controlling the resulting output. In the following text
 these options will be explored.</p>
+<p>For brevity's sake we are going to look at the individual options and how they
+effect the output produced.</p>
+<table>
+<thead>
+<tr>
+<th>AddTimestamp</th>
+<th>AddDirection</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>1</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>2</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>3</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-xml">1. &lt;SECSMessage Timestamp=&quot;2023-02-09T09:31:01.194&quot; Src=&quot;EI&quot; Dest=&quot;EQ&quot;&gt;
+2. &lt;SECSMessage Src=&quot;EI&quot; Dest=&quot;EQ&quot;&gt;
+3. &lt;SECSMessage Timestamp=&quot;2023-02-09T09:37:04.993&quot;&gt;
+4. &lt;SECSMessage&gt;
+</code></pre>
+<h5 id="headeroutputconfigdisplayaselementsorattributes-is-elements"><strong>HeaderOutputConfig:DisplayAsElementsOrAttributes is Elements</strong></h5>
+<p>Now for the header where <code>DisplayAsElementsOrAttributes</code> is &quot;Elements&quot;.</p>
+<h6 id="hsms-control-messages"><strong>HSMS Control Messages</strong></h6>
+<h6 id="secs-messages"><strong>SECS Messages</strong></h6>
+<p>A message's Stream and Function are always displayed. <code>DisplayMessageIdAsSxFy</code>
+controls what the output looks like. If <code>DisplayMessageIdAsSxFy</code> is <code>true</code>
+the header might look like (depending on the other options):</p>
+<pre><code class="lang-xml">  &lt;Header&gt;
+    &lt;SxFy&gt;S6F11&lt;/SxFy&gt;
+  &lt;/Header&gt;
+</code></pre>
+<p>If <code>DisplayMessageIdAsSxFy</code> is <code>false</code> the header might look like (depending on the other options):</p>
+<pre><code class="lang-xml">  &lt;Header&gt;
+    &lt;Stream&gt;6&lt;/Stream&gt;
+    &lt;Function&gt;11&lt;/Function&gt;
+  &lt;/Header&gt;
+</code></pre>
+<p>As for most of the rest of the header options.</p>
+<table>
+<thead>
+<tr>
+<th>DisplayDeviceId</th>
+<th>DisplaySystemBytes</th>
+<th>DisplayWBit</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td>1</td>
+</tr>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td>2</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-xml">1. &lt;Header&gt;
+    &lt;DeviceId&gt;1234&lt;/DeviceId&gt;
+    &lt;SxFy&gt;S6F11&lt;/SxFy&gt;
+    &lt;Wbit&gt;True&lt;/Wbit&gt;
+    &lt;SystemBytes&gt;14&lt;/SystemBytes&gt;
+  &lt;/Header&gt;
+
+2. &lt;Header&gt;
+    &lt;SxFy&gt;S6F11&lt;/SxFy&gt;
+    &lt;Wbit&gt;True&lt;/Wbit&gt;
+  &lt;/Header&gt;
+
+3. &lt;Header&gt;
+    &lt;SxFy&gt;S6F11&lt;/SxFy&gt;
+  &lt;/Header&gt;
+</code></pre>
+<p>As you can see, examples for all of the combinations are not displayed, but,
+you get the idea.</p>
+<h5 id="headeroutputconfigdisplayaselementsorattributes-is-attributes"><strong>HeaderOutputConfig:DisplayAsElementsOrAttributes is Attributes</strong></h5>
+<p>Now for the header where <code>DisplayAsElementsOrAttributes</code> is &quot;Attributes&quot;.</p>
+<h6 id="hsms-control-messages-1"><strong>HSMS Control Messages</strong></h6>
+<h6 id="secs-messages-1"><strong>SECS Messages</strong></h6>
+<p>A message's Stream and Function are always displayed. <code>DisplayMessageIdAsSxFy</code>
+controls what the output looks like. If <code>DisplayMessageIdAsSxFy</code> is <code>true</code>
+the header might look like (depending on the other options):</p>
+<pre><code class="lang-xml">  &lt;Header SxFy=&quot;S6F11&quot;/&gt;
+</code></pre>
+<p>If <code>DisplayMessageIdAsSxFy</code> is <code>false</code> the header might look like (depending on the other options):</p>
+<pre><code class="lang-xml">  &lt;Header Stream=&quot;6&quot; Function=&quot;11&quot;/&gt;
+</code></pre>
+<p>As for most of the rest of the header options.</p>
+<table>
+<thead>
+<tr>
+<th>DisplayDeviceId</th>
+<th>DisplaySystemBytes</th>
+<th>DisplayWBit</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td>1</td>
+</tr>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td>2</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-xml">1. &lt;Header DeviceId=&quot;1234&quot; Stream=&quot;6&quot; Function=&quot;11&quot; Wbit=&quot;True&quot; SystemBytes=&quot;14&quot;/&gt;
+
+2. &lt;Header SxFy=&quot;S6F11&quot; Wbit=&quot;True&quot;/&gt;
+
+3. &lt;Header Stream=&quot;6&quot; Function=&quot;11&quot;/&gt;
+</code></pre>
+<p>As you can see, examples for all of the combinations are not displayed, but,
+you get the idea.</p>
+<h5 id="bodyoutputconfigdisplayaselementsorattributes-is-elements"><strong>BodyOutputConfig:DisplayAsElementsOrAttributes is Elements</strong></h5>
+<p>Now for the body where <code>DisplayAsElementsOrAttributes</code> is &quot;Elements&quot;.</p>
+<table>
+<thead>
+<tr>
+<th>DisplayNumberOfLengthBytes</th>
+<th>DisplayLengthByteValue</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>1</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>2</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>3</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-xml">1. &lt;SECSItem&gt;
+     &lt;Type&gt;A&lt;/Type&gt;
+     &lt;NumLengthBytes&gt;1&lt;/NumLengthBytes&gt;
+     &lt;LengthByteValue&gt;6&lt;/LengthByteValue&gt;
+     &lt;Value&gt;DATAID&lt;/Value&gt;
+   &lt;/SECSItem&gt;
+
+2. &lt;SECSItem&gt;
+     &lt;Type&gt;A&lt;/Type&gt;
+     &lt;NumLengthBytes&gt;1&lt;/NumLengthBytes&gt;
+     &lt;Value&gt;DATAID&lt;/Value&gt;
+   &lt;/SECSItem&gt;
+
+3. &lt;SECSItem&gt;
+     &lt;Type&gt;A&lt;/Type&gt;
+     &lt;LengthByteValue&gt;6&lt;/LengthByteValue&gt;
+     &lt;Value&gt;DATAID&lt;/Value&gt;
+   &lt;/SECSItem&gt;
+
+4. &lt;SECSItem&gt;
+     &lt;Type&gt;A&lt;/Type&gt;
+     &lt;Value&gt;DATAID&lt;/Value&gt;
+   &lt;/SECSItem&gt;
+</code></pre>
+<h5 id="bodyoutputconfigdisplayaselementsorattributes-is-attributes"><strong>BodyOutputConfig:DisplayAsElementsOrAttributes is Attributes</strong></h5>
+<p>Now for the body where <code>DisplayAsElementsOrAttributes</code> is &quot;Attributes&quot;.</p>
+<table>
+<thead>
+<tr>
+<th>DisplayNumberOfLengthBytes</th>
+<th>DisplayLengthByteValue</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>1</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>2</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>3</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-xml">1. &lt;SECSItem type=&quot;A&quot; NumLengthBytes=&quot;1&quot; LengthByteValue=&quot;6&quot;&gt;
+     &lt;Value&gt;DATAID&lt;/Value&gt;
+   &lt;/SECSItem&gt;
+
+2. &lt;SECSItem type=&quot;A&quot; NumLengthBytes=&quot;1&quot;&gt;
+     &lt;Value&gt;DATAID&lt;/Value&gt;
+   &lt;/SECSItem&gt;
+
+3. &lt;SECSItem type=&quot;A&quot; LengthByteValue=&quot;6&quot;&gt;
+     &lt;Value&gt;DATAID&lt;/Value&gt;
+   &lt;/SECSItem&gt;
+
+4. &lt;SECSItem type=&quot;A&quot;&gt;
+     &lt;Value&gt;DATAID&lt;/Value&gt;
+   &lt;/SECSItem&gt;
+</code></pre>
+<p>Following is pretty much the same message as formatted above in SML.
+In this case it is formatted in XML.  As you will notice it is considerably
+more verbose, but, as mentioned before it is much easier to parse into a
+machine readable format.</p>
+<pre><code class="lang-xml">&lt;SECSMessage Timestamp=&quot;2023-02-09T14:18:14.088&quot; Src=&quot;EQ&quot; Dest=&quot;EI&quot;&gt;
+  &lt;Header DeviceId=&quot;1234&quot; Stream=&quot;6&quot; Function=&quot;11&quot; Wbit=&quot;True&quot; SystemBytes=&quot;14&quot;/&gt;
+  &lt;SECSItem type=&quot;L&quot;&gt;
+    &lt;Value&gt;
+      &lt;SECSItem type=&quot;A&quot;&gt;
+        &lt;Value&gt;DATAID&lt;/Value&gt;
+      &lt;/SECSItem&gt;
+      &lt;SECSItem type=&quot;A&quot;&gt;
+        &lt;Value&gt;CEID&lt;/Value&gt;
+      &lt;/SECSItem&gt;
+      &lt;SECSItem type=&quot;L&quot;&gt;
+        &lt;Value&gt;
+          &lt;SECSItem type=&quot;L&quot;&gt;
+            &lt;Value&gt;
+              &lt;SECSItem type=&quot;A&quot;&gt;
+                &lt;Value&gt;RPTID1&lt;/Value&gt;
+              &lt;/SECSItem&gt;
+              &lt;SECSItem type=&quot;L&quot;&gt;
+                &lt;Value&gt;
+                  &lt;SECSItem type=&quot;U2&quot;&gt;
+                    &lt;Value&gt;1&lt;/Value&gt;
+                  &lt;/SECSItem&gt;
+                  &lt;SECSItem type=&quot;U2&quot;&gt;
+                    &lt;Value&gt;2&lt;/Value&gt;
+                  &lt;/SECSItem&gt;
+                  &lt;SECSItem type=&quot;BO&quot;&gt;
+                    &lt;Value&gt;True&lt;/Value&gt;
+                  &lt;/SECSItem&gt;
+                &lt;/Value&gt;
+              &lt;/SECSItem&gt;
+            &lt;/Value&gt;
+          &lt;/SECSItem&gt;
+          &lt;SECSItem type=&quot;L&quot;&gt;
+            &lt;Value&gt;
+              &lt;SECSItem type=&quot;A&quot;&gt;
+                &lt;Value&gt;RPTID2&lt;/Value&gt;
+              &lt;/SECSItem&gt;
+              &lt;SECSItem type=&quot;L&quot;&gt;
+                &lt;Value&gt;
+                  &lt;SECSItem type=&quot;A&quot;&gt;
+                    &lt;Value/&gt;
+                  &lt;/SECSItem&gt;
+                  &lt;SECSItem type=&quot;B&quot;&gt;
+                    &lt;Value&gt;
+                      0x00 0x01 0x7F 0xFF 0x00 0x64
+                    &lt;/Value&gt;
+                  &lt;/SECSItem&gt;
+                  &lt;SECSItem type=&quot;F8&quot;&gt;
+                    &lt;Value&gt;3.141593&lt;/Value&gt;
+                  &lt;/SECSItem&gt;
+                  &lt;SECSItem type=&quot;BO&quot;&gt;
+                    &lt;Value&gt;
+                      True False True True False
+                    &lt;/Value&gt;
+                  &lt;/SECSItem&gt;
+                  &lt;SECSItem type=&quot;I4&quot;&gt;
+                    &lt;Value&gt;2147483647&lt;/Value&gt;
+                  &lt;/SECSItem&gt;
+                &lt;/Value&gt;
+              &lt;/SECSItem&gt;
+            &lt;/Value&gt;
+          &lt;/SECSItem&gt;
+        &lt;/Value&gt;
+      &lt;/SECSItem&gt;
+    &lt;/Value&gt;
+  &lt;/SECSItem&gt;
+&lt;/SECSMessage&gt;
+</code></pre>
 <h2 id="creating-a-formatter">Creating a Formatter</h2>
 <p>In order to create a formatter use the factory method shown below:</p>
 <pre><code class="lang-csharp">    SECSFormatter formatter = SECSFormatterFactory.CreateFormatter(formatterConfiguration);

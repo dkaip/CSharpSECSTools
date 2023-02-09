@@ -43,10 +43,9 @@ currently are working in, in this case C#.
 
 The following table shows the SECS item types and their corresponding C# data types:
 
-```csharp
 | SECS Item Code | C# Data Type         | C# SECS Item Type |
 | -------------- | -------------------- | ----------------- |
-| L              | LinkedList<SECSItem> | ListSECSItem      |
+| L              | LinkedList&lt;SECSItem&gt; | ListSECSItem      |
 | B              | byte[]               | BinarySECSItem    |
 | BO             | bool                 | BooleanSECSItem   |
 | JIS-8          | not implemented yet  |                   |
@@ -61,12 +60,10 @@ The following table shows the SECS item types and their corresponding C# data ty
 | U1             | byte                 | U1SECSItem        |
 | U2             | UInt16               | U2SECSItem        |
 | U4             | UInt32               | U4SECSItem        |
-```
 
 The following table shows the SECS item types and their corresponding C# data types
 in the case where their value is thought of as an array:
 
-```csharp
 | SECS Item Code | C# Data Type         | C# SECS Item Type      |
 | -------------- | -------------------- | ---------------------- |
 | BO             | bool[]               | BooleanArraySECSItem   |
@@ -80,7 +77,7 @@ in the case where their value is thought of as an array:
 | U1             | byte[]               | U1ArraySECSItem        |
 | U2             | UInt16[]             | U2ArraySECSItem        |
 | U4             | UInt32[]             | U4ArraySECSItem        |
-```
+
 
 ### Receiving a SECS message
 
@@ -98,7 +95,7 @@ Something like this:
     byte[] rawSECSData;
 
     .
-    . Its value gets set here somewhere.
+    . // Its value gets set here somewhere.
     .
 
     SECSItem secsItem = SECSItemFactory.GenerateSECSItem(rawSECSData);
