@@ -14,23 +14,14 @@
  * limitations under the License.
  */
 
-using System.Text;
-
 namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 {
-    public class SMLOutputConfig
-    {
-        public HeaderOutputConfig  HeaderOutputConfig { get; set; }
-        public BodyOutputConfig    BodyOutputConfig { get; set; }
-
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine(HeaderOutputConfig.ToString());
-            sb.AppendLine(BodyOutputConfig.ToString());
-
-            return sb.ToString();
-        }
-    }
+    /// <summary>
+    /// This class is effectively a copy of the class <c>XMLOutputConfig</c>.  Its
+    /// only purpose is to facilitate the &quot;automatic&quot; reading of the
+    /// <c>TextFormatterConfig</c> section of a <c>appsettings.json</c> file.
+    /// Refer to the documentation for the class <c>XMLOutputConfig</c> for
+    /// more information.
+    /// </summary>
+    public class SMLOutputConfig : XMLOutputConfig {}
 }
