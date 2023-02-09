@@ -735,14 +735,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                                 lineLength++;
                             }
                         }
+
+                        sb.AppendLine("");
+
+                        CurrentIndentLevel -= configurationData.IndentAmount;
+
+                        sb.Append(Whitespace[CurrentIndentLevel]);
+                        sb.AppendLine("</Value>");
                     }
-
-                    sb.AppendLine("");
-
-                    CurrentIndentLevel -= configurationData.IndentAmount;
-
-                    sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.AppendLine("</Value>");
                 }
             }
             else if (secsItem.ItemFormatCode == SECSItemFormatCode.I2)
@@ -882,14 +882,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                                 lineLength++;
                             }
                         }
+
+                        sb.AppendLine("");
+
+                        CurrentIndentLevel -= configurationData.IndentAmount;
+
+                        sb.Append(Whitespace[CurrentIndentLevel]);
+                        sb.AppendLine("</Value>");
                     }
-
-                    sb.AppendLine("");
-
-                    CurrentIndentLevel -= configurationData.IndentAmount;
-
-                    sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.AppendLine("</Value>");
                 }
             }
             else if (secsItem.ItemFormatCode == SECSItemFormatCode.F8)
@@ -963,14 +963,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                                 lineLength++;
                             }
                         }
+
+                        sb.AppendLine("");
+
+                        CurrentIndentLevel -= configurationData.IndentAmount;
+
+                        sb.Append(Whitespace[CurrentIndentLevel]);
+                        sb.AppendLine("</Value>");
                     }
-
-                    sb.AppendLine("");
-
-                    CurrentIndentLevel -= configurationData.IndentAmount;
-
-                    sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.AppendLine("</Value>");
                 }
             }
             else if (secsItem.ItemFormatCode == SECSItemFormatCode.F4)
@@ -1044,14 +1044,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                                 lineLength++;
                             }
                         }
+
+                        sb.AppendLine("");
+
+                        CurrentIndentLevel -= configurationData.IndentAmount;
+
+                        sb.Append(Whitespace[CurrentIndentLevel]);
+                        sb.AppendLine("</Value>");
                     }
-
-                    sb.AppendLine("");
-
-                    CurrentIndentLevel -= configurationData.IndentAmount;
-
-                    sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.AppendLine("</Value>");
                 }
             }
             else if (secsItem.ItemFormatCode == SECSItemFormatCode.U8)
@@ -1117,14 +1117,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                                 lineLength++;
                             }
                         }
+
+                        sb.AppendLine("");
+
+                        CurrentIndentLevel -= configurationData.IndentAmount;
+
+                        sb.Append(Whitespace[CurrentIndentLevel]);
+                        sb.AppendLine("</Value>");
                     }
-
-                    sb.AppendLine("");
-
-                    CurrentIndentLevel -= configurationData.IndentAmount;
-
-                    sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.AppendLine("</Value>");
                 }
             }
             else if (secsItem.ItemFormatCode == SECSItemFormatCode.U1)
@@ -1189,14 +1189,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                                 lineLength++;
                             }
                         }
+
+                        sb.AppendLine("");
+
+                        CurrentIndentLevel -= configurationData.IndentAmount;
+
+                        sb.Append(Whitespace[CurrentIndentLevel]);
+                        sb.AppendLine("</Value>");
                     }
-
-                    sb.AppendLine("");
-
-                    CurrentIndentLevel -= configurationData.IndentAmount;
-
-                    sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.AppendLine("</Value>");
                 }
             }
             else if (secsItem.ItemFormatCode == SECSItemFormatCode.U2)
@@ -1260,14 +1260,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                                 lineLength++;
                             }
                         }
+
+                        sb.AppendLine("");
+
+                        CurrentIndentLevel -= configurationData.IndentAmount;
+
+                        sb.Append(Whitespace[CurrentIndentLevel]);
+                        sb.AppendLine("</Value>");
                     }
-
-                    sb.AppendLine("");
-
-                    CurrentIndentLevel -= configurationData.IndentAmount;
-
-                    sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.AppendLine("</Value>");
                 }
             }
             else if (secsItem.ItemFormatCode == SECSItemFormatCode.U4)
@@ -1332,14 +1332,14 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                                 lineLength++;
                             }
                         }
+
+                        sb.AppendLine("");
+
+                        CurrentIndentLevel -= configurationData.IndentAmount;
+
+                        sb.Append(Whitespace[CurrentIndentLevel]);
+                        sb.AppendLine("</Value>");
                     }
-
-                    sb.AppendLine("");
-
-                    CurrentIndentLevel -= configurationData.IndentAmount;
-
-                    sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.AppendLine("</Value>");
                 }
             }
             else
