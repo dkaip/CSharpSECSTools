@@ -133,90 +133,30 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             {
                 if (configurationData.AddTimestamp && configurationData.AddDirection)
                 {
-                    if (configurationData.HeaderOutputConfig.DisplayAsType == DisplayAsType.Elements)
-                    {
-                        sb.AppendLine("<SECSMessage>");
-                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
-                        sb.Append("<Timestamp>");
-                        sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
-                        sb.AppendLine("</Timestamp>");
+                    sb.Append("<SECSMessage Timestamp=\"");
+                    sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
+                    sb.Append("\"");
 
-                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
-                        sb.AppendLine("<Direction>");
-
-                        sb.Append(Whitespace[CurrentIndentLevel + (configurationData.IndentAmount * 2)]);
-                        sb.Append("<Source>");
-                        sb.Append(source);
-                        sb.AppendLine("</Source>");
-
-                        sb.Append(Whitespace[CurrentIndentLevel + (configurationData.IndentAmount * 2)]);
-                        sb.Append("<Destination>");
-                        sb.Append(destination);
-                        sb.AppendLine("</Destination>");
-
-                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
-                        sb.AppendLine("</Direction>");
-                    }
-                    else
-                    {
-                        sb.Append("<SECSMessage Timestamp=\"");
-                        sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
-                        sb.Append("\"");
-
-                        sb.Append(" Src=\"");
-                        sb.Append(source);
-                        sb.Append("\" Dest=\"");
-                        sb.Append(destination);
-                        sb.AppendLine("\">");
-                    }
+                    sb.Append(" Src=\"");
+                    sb.Append(source);
+                    sb.Append("\" Dest=\"");
+                    sb.Append(destination);
+                    sb.AppendLine("\">");
                 }
                 else if (configurationData.AddTimestamp)
                 {
-                    if (configurationData.HeaderOutputConfig.DisplayAsType == DisplayAsType.Elements)
-                    {
-                        sb.AppendLine("<SECSMessage>");
-                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
-                        sb.Append("<Timestamp>");
-                        sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
-                        sb.AppendLine("</Timestamp>");
-                    }
-                    else
-                    {
-                        sb.Append("<SECSMessage Timestamp=\"");
-                        sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
-                        sb.AppendLine("\">");
-                    }
+                    sb.Append("<SECSMessage Timestamp=\"");
+                    sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
+                    sb.AppendLine("\">");
                 }
                 else if (configurationData.AddDirection)
                 {
-                    if (configurationData.HeaderOutputConfig.DisplayAsType == DisplayAsType.Elements)
-                    {
-                        sb.AppendLine("<SECSMessage>");
-                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
-                        sb.AppendLine("<Direction>");
-
-                        sb.Append(Whitespace[CurrentIndentLevel + (configurationData.IndentAmount * 2)]);
-                        sb.Append("<Source>");
-                        sb.Append(source);
-                        sb.AppendLine("</Source>");
-
-                        sb.Append(Whitespace[CurrentIndentLevel + (configurationData.IndentAmount * 2)]);
-                        sb.Append("<Destination>");
-                        sb.Append(destination);
-                        sb.AppendLine("</Destination>");
-
-                        sb.Append(Whitespace[CurrentIndentLevel + configurationData.IndentAmount]);
-                        sb.AppendLine("</Direction>");
-                    }
-                    else
-                    {
-                        sb.Append("<SECSMessage");
-                        sb.Append(" Src=\"");
-                        sb.Append(source);
-                        sb.Append("\" Dest=\"");
-                        sb.Append(destination);
-                        sb.AppendLine("\">");
-                    }
+                    sb.Append("<SECSMessage");
+                    sb.Append(" Src=\"");
+                    sb.Append(source);
+                    sb.Append("\" Dest=\"");
+                    sb.Append(destination);
+                    sb.AppendLine("\">");
                 }
             }
             else
@@ -416,21 +356,29 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 }
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
-                sb.AppendLine("<Value>");
 
-                CurrentIndentLevel += configurationData.IndentAmount;
-
-                //Console.WriteLine("List count is {0}.", ((ListSECSItem)secsItem).Value.Count());
-                foreach (SECSItem listEntry in ((ListSECSItem)secsItem).Value)
+                if (secsItem.LengthInBytes == 0)
                 {
-                    //                                Console.WriteLine("Current indent level = {0}.", CurrentIndentLevel);
-                    GetSECSItemAsText(sb, listEntry);
+                    sb.AppendLine("<Value/>");
                 }
+                else
+                {
+                    sb.AppendLine("<Value>");
 
-                CurrentIndentLevel -= configurationData.IndentAmount;
+                    CurrentIndentLevel += configurationData.IndentAmount;
 
-                sb.Append(Whitespace[CurrentIndentLevel]);
-                sb.AppendLine("</Value>");
+                    //Console.WriteLine("List count is {0}.", ((ListSECSItem)secsItem).Value.Count());
+                    foreach (SECSItem listEntry in ((ListSECSItem)secsItem).Value)
+                    {
+                        //                                Console.WriteLine("Current indent level = {0}.", CurrentIndentLevel);
+                        GetSECSItemAsText(sb, listEntry);
+                    }
+
+                    CurrentIndentLevel -= configurationData.IndentAmount;
+
+                    sb.Append(Whitespace[CurrentIndentLevel]);
+                    sb.AppendLine("</Value>");
+                }
             } // End if List type
             else if (secsItem.ItemFormatCode == SECSItemFormatCode.B)
             {
@@ -573,9 +521,16 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 sb.Append(Whitespace[CurrentIndentLevel]);
                 
-                sb.Append("<Value>");
-                sb.Append(((ASCIISECSItem)secsItem).Value);
-                sb.AppendLine("</Value>");
+                if (secsItem.LengthInBytes == 0)
+                {
+                    sb.AppendLine("<Value/>");
+                }
+                else
+                {
+                    sb.Append("<Value>");
+                    sb.Append(((ASCIISECSItem)secsItem).Value);
+                    sb.AppendLine("</Value>");
+                }
             }
             else if (secsItem.ItemFormatCode == SECSItemFormatCode.J8)
             {
