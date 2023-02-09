@@ -54,6 +54,11 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
                 this._value = new byte[0];
             else
                 this._value = value;
+
+            foreach(byte datum in _value)
+            {
+                Console.WriteLine("Datum {0}", datum);
+            }
 		}
 		
         /// <summary>
