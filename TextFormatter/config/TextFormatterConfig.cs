@@ -19,9 +19,10 @@ using System.Text;
 namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 {
     /// <summary>
-    /// This class is used as the argument of the constructor of a 
-    /// <c>SECSFormatter</c> object in order to provide it with
-    /// information it needs to do its job.
+    /// This class is used as the argument of the <c>CreateFormatter</c>
+    /// method of the <c>SECSFormatterFactory</c> which creates a
+    /// <c>SECSFormatter</c> object that is implemented to produce logging output
+    /// as either SML or XML formatted text.
     /// </summary>
     public class TextFormatterConfig
     {
@@ -39,7 +40,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         public bool         AddTimestamp { get; set; } = true;
 
         /// <summary>
-        /// If <c>AddTimestamp</c> is set to <c>true</c> this is the output
+        /// If the <c>AddTimestamp</c> property is set to <c>true</c> this is the output
         /// formatting string that is applied to the timestamp as it is 
         /// converted to textual form.
         /// </summary>
@@ -134,9 +135,29 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             }
         }
 
+        /// <summary>
+        /// This property specifies the output format information for
+        /// a formatter when it is producing output in the SML format.
+        /// </summary>
         public SMLOutputConfig SMLOutputConfig { get; set; }
+
+        /// <summary>
+        /// This property specifies the output format information for
+        /// a formatter when it is producing output in the XML format.
+        /// </summary>
         public XMLOutputConfig XMLOutputConfig { get; set; }
 
+        /// <summary>
+        /// This property returns the current output configuration 
+        /// (for <c>SECSHeader</c>s) that this formatter is currently
+        /// working with.
+        /// </summary>
+        /// <value>
+        /// If the <c>LoggingOutputFormat</c> property value is &quot;SML&quot;
+        /// then the value returned is the value of the <c>SMLOutputConfig.HeaderOutputConfig</c>
+        /// property.  Otherwise the value returned is the value of the
+        /// <c>XMLOutputConfig.HeaderOutputConfig</c> property.
+        /// </value>
         public HeaderOutputConfig HeaderOutputConfig
         {
             get
@@ -151,6 +172,18 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 }
             }
         }
+
+        /// <summary>
+        /// This property returns the current output configuration 
+        /// (for <c>SECSItem</c>s) that this formatter is currently
+        /// working with.
+        /// </summary>
+        /// <value>
+        /// If the <c>LoggingOutputFormat</c> property value is &quot;SML&quot;
+        /// then the value returned is the value of the <c>SMLOutputConfig.BodyOutputConfig</c>
+        /// property.  Otherwise the value returned is the value of the
+        /// <c>XMLOutputConfig.BodyOutputConfig</c> property.
+        /// </value>
         public BodyOutputConfig   BodyOutputConfig
         {
             get
@@ -167,7 +200,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         }
 
         /// <summary>
-        /// 
+        /// Creates a <c>string</c> displaying the current &quot;state&quot; of this instance.
+        /// This is mostly only useful for debugging.
         /// </summary>
         public override string ToString()
         {

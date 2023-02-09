@@ -18,9 +18,22 @@ using System.Text;
 
 namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 {
+    /// <summary>
+    /// This class contains the information for a formatter to use when producing
+    /// output.
+    /// </summary>
     public class XMLOutputConfig
     {
+        /// <summary>
+        /// This property contains the information a formatter needs to generate output
+        /// when producing output for a <c>SECSHeader</c> class.
+        /// </summary>
         public HeaderOutputConfig  HeaderOutputConfig { get; set; }
+
+        /// <summary>
+        /// This property contains the information a formatter needs to generate output
+        /// when producing output for a <c>SECSItem</c> class.
+        /// </summary>
         public BodyOutputConfig    BodyOutputConfig { get; set; }
 
         public override string ToString()
