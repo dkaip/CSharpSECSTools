@@ -7342,7 +7342,14 @@ references:
 - uid: com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType
   name: DisplayAsType
   href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayAsType
-  commentId: F:com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType
+  commentId: P:com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType
+  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType
+  nameWithType: BodyOutputConfig.DisplayAsType
+- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType*
+  name: DisplayAsType
+  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayAsType_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType
+  isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType
   nameWithType: BodyOutputConfig.DisplayAsType
 - uid: com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayCount
@@ -7450,7 +7457,14 @@ references:
 - uid: com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType
   name: DisplayAsType
   href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayAsType
-  commentId: F:com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType
+  commentId: P:com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType
+  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType
+  nameWithType: HeaderOutputConfig.DisplayAsType
+- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType*
+  name: DisplayAsType
+  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayAsType_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType
+  isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType
   nameWithType: HeaderOutputConfig.DisplayAsType
 - uid: com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayControlMessages
@@ -7684,19 +7698,6 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter
   fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter
   nameWithType: SMLFormatter
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.#ctor(com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig)
-  name: SMLFormatter(TextFormatterConfig)
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SMLFormatter__ctor_com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_
-  commentId: M:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.#ctor(com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig)
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.SMLFormatter(com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig)
-  nameWithType: SMLFormatter.SMLFormatter(TextFormatterConfig)
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.#ctor*
-  name: SMLFormatter
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SMLFormatter__ctor_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.#ctor
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.SMLFormatter
-  nameWithType: SMLFormatter.SMLFormatter
 - uid: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.GetHeaderAsText(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)
   name: GetHeaderAsText(SECSHeader)
   href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SMLFormatter_GetHeaderAsText_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_
@@ -7760,45 +7761,6 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig
   fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig
   nameWithType: SMLOutputConfig
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.BodyOutputConfig
-  name: BodyOutputConfig
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SMLOutputConfig_BodyOutputConfig
-  commentId: P:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.BodyOutputConfig
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.BodyOutputConfig
-  nameWithType: SMLOutputConfig.BodyOutputConfig
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.BodyOutputConfig*
-  name: BodyOutputConfig
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SMLOutputConfig_BodyOutputConfig_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.BodyOutputConfig
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.BodyOutputConfig
-  nameWithType: SMLOutputConfig.BodyOutputConfig
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.HeaderOutputConfig
-  name: HeaderOutputConfig
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SMLOutputConfig_HeaderOutputConfig
-  commentId: P:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.HeaderOutputConfig
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.HeaderOutputConfig
-  nameWithType: SMLOutputConfig.HeaderOutputConfig
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.HeaderOutputConfig*
-  name: HeaderOutputConfig
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SMLOutputConfig_HeaderOutputConfig_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.HeaderOutputConfig
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.HeaderOutputConfig
-  nameWithType: SMLOutputConfig.HeaderOutputConfig
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.ToString
-  name: ToString()
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SMLOutputConfig_ToString
-  commentId: M:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.ToString
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.ToString()
-  nameWithType: SMLOutputConfig.ToString()
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.ToString*
-  name: ToString
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html#com_CIMthetics_CSharpSECSTools_TextFormatter_SMLOutputConfig_ToString_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.ToString
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.ToString
-  nameWithType: SMLOutputConfig.ToString
 - uid: com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig
   name: TextFormatterConfig
   href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html
@@ -7954,19 +7916,6 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter
   fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter
   nameWithType: XMLFormatter
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.#ctor(com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig)
-  name: XMLFormatter(TextFormatterConfig)
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter__ctor_com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_
-  commentId: M:com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.#ctor(com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig)
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.XMLFormatter(com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig)
-  nameWithType: XMLFormatter.XMLFormatter(TextFormatterConfig)
-- uid: com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.#ctor*
-  name: XMLFormatter
-  href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter__ctor_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.#ctor
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.XMLFormatter
-  nameWithType: XMLFormatter.XMLFormatter
 - uid: com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.GetHeaderAsText(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)
   name: GetHeaderAsText(SECSHeader)
   href: api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.html#com_CIMthetics_CSharpSECSTools_TextFormatter_XMLFormatter_GetHeaderAsText_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_

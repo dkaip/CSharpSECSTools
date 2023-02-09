@@ -68,43 +68,283 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="textformatter">TextFormatter</h1>
 
-<h3 id="sml-output">SML Output</h3>
-<p>SML is a somewhat compact display notation that many people who have been
-in the industry for a while will be familiar with.  Humans can read SML
-fairly well.  However, it can be a real pain to parse programmatically in
-cases where the contents of a log file need to be used as input to another
-program. i.e. Equipment or Host simulator scripts, data mining scripts, etc.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Logging of SECS message traffic (information flow) between the two endpoints
+of a SECS &quot;connection&quot; is an indispensable ability in the automation
+of semiconductor manufacturing.  This logging is used for debugging purposes
+during initial development of <strong>E</strong>quipment <strong>I</strong>nterfaces, etc.  In addition logging
+can be critical in the forensic analysis of scrap events and other unexpected
+and abnormal processing scenarios.</p>
+<p>This API provides the functionality to convert <code>SECSMessage</code>s, <code>SECSHeader</code>s, and
+<code>SECSItem</code>s into a <code>string</code> that may be displayed on a terminal and / or output
+to a file.</p>
+<p><strong>Note:</strong> The <code>SECSMessage</code> and <code>SECSHeader</code> classes are located in the
+<a href="../SECSCommUtils/index.html">SECSCommUtils</a> API library and the <code>SECSItem</code>
+classes are located in the <a href="../SECSItems/index.html">SECSItems</a> API library.</p>
+<h2 id="configuring-a-formatter">Configuring a Formatter</h2>
+<h3 id="using-a-json-file">Using a <code>json</code> file</h3>
+<p>If you are already reading and processing an <code>appsettings.json</code> file during your
+application's startup the easiest
+way to create the configuration for the formatter is to add a <code>TextFormatterConfig</code>
+section to the <code>json</code> file. Then use the following code to extract the configuration
+information:</p>
+<pre><code class="lang-csharp">    TextFormatterConfig formatterConfiguration = configuration.GetSection(&quot;TextFormatterConfig&quot;).Get&lt;TextFormatterConfig&gt;();
+</code></pre>
+<p>The <code>TextFormatterConfig</code> section should look like this (with the appropriate changes for your environment):</p>
+<pre><code class="lang-json">    &quot;TextFormatterConfig&quot;:
+    {
+        &quot;AddTimestamp&quot;: true,
+        &quot;TimestampFormat&quot;: &quot;yyyy-MM-ddTHH:mm:ss.fff&quot;,
+        &quot;AddDirection&quot;: true,
+        &quot;IndentAmount&quot;: 2,
+        &quot;MaxIndentionSpaces&quot;: 50,
+        &quot;LoggingOutputFormat&quot;: &quot;SML&quot;,
+        &quot;XMLOutputConfig&quot;:
+        {
+            &quot;HeaderOutputConfig&quot;:
+            {
+                &quot;DisplayAsElementsOrAttributes&quot;: &quot;Attributes&quot;,
+                &quot;DisplayMessageIdAsSxFy&quot;: true,
+                &quot;DisplayDeviceId&quot;: true,
+                &quot;DisplaySystemBytes&quot;: true,
+                &quot;DisplayWBit&quot;: true,
+                &quot;DisplayControlMessages&quot;: true
+            },
+            &quot;BodyOutputConfig&quot;:
+            {
+                &quot;DisplayAsElementsOrAttributes&quot;: &quot;Attributes&quot;,
+                &quot;DisplayNumberOfLengthBytes&quot;: true,
+                &quot;DisplayLengthByteValue&quot;: true,
+                &quot;MaxOutputLineLength&quot;: 80
+            }
+        },
+        &quot;SMLOutputConfig&quot;:
+        {
+            &quot;HeaderOutputConfig&quot;:
+            {
+                &quot;DisplayWBit&quot;: true
+            },
+            &quot;BodyOutputConfig&quot;:
+            {
+                &quot;DisplayCount&quot;: false,
+                &quot;MaxOutputLineLength&quot;: 80
+            }
+        }
+    }
+</code></pre>
+<p>If the value of <code>LoggingOutputFormat</code> is SML the formatter created will use the information in the
+<code>SMLOutputConfig</code> section.  If its value is XML the formatter created will use the information in
+the <code>XMLOutputConfig</code> section.  Since both <code>SMLOutputConfig</code> and <code>XMLOutputConfig</code>  are present
+all the user has to do is changed the value of <code>LoggingOutputFormat</code> between &quot;SML&quot; and
+&quot;XML&quot; to switch between the two output formats.</p>
+<h3 id="not-using-a-json-file">Not using a <code>json</code> file</h3>
+<p>If you do not want to use a <code>json</code> file to create the <code>TextFormatterConfig</code> object you will need
+to create it manually.</p>
+<p>Examine the <code>json</code> text above.  You will notice that there are simple line items and compound
+line items.  You will need to go from inside to outside and create the <code>TextFormatterConfig</code> object.
+Each of the &quot;compound&quot; objects has a class associated with it.  Here is a code snippet
+that gives a rough idea of what needs to be done.  This should produce the same results as the
+above <code>json</code> configuration will.</p>
+<pre><code class="lang-csharp">    // Set up stuff for SML output config
+    HeaderOutputConfig headerOutputConfig = new HeaderOutputConfig();
+    headerOutputConfig.DisplayWBit = true;
+
+    BodyOutputConfig bodyOutputConfig = new BodyOutputConfig();
+    bodyOutputConfig.DisplayCount = true;
+    bodyOutputConfig.MaxOutputLineLength = 80;
+
+    SMLOutputConfig smlOutputConfig = new SMLOutputConfig();
+    smlOutputConfig.HeaderOutputConfig = headerOutputConfig;
+    smlOutputConfig.BodyOutputConfig = bodyOutputConfig;
+
+    // Set up stuff for XML output config
+    headerOutputConfig = new HeaderOutputConfig();
+    headerOutputConfig.DisplayAsType = DisplayAsType.Attributes;
+    headerOutputConfig.DisplayMessageIdAsSxFy = true;
+    headerOutputConfig.DisplayDeviceId = true;
+    headerOutputConfig.DisplaySystemBytes = true;
+    headerOutputConfig.DisplayWBit = true;
+    headerOutputConfig.DisplayControlMessages = true;
+
+    bodyOutputConfig = new BodyOutputConfig();
+    bodyOutputConfig.DisplayAsType = DisplayAsType.Attributes;
+    bodyOutputConfig.DisplayNumberOfLengthBytes = true;
+    bodyOutputConfig.DisplayLengthByteValue = true;
+    bodyOutputConfig.MaxOutputLineLength = 80;
+
+    XMLOutputConfig xmlOutputConfig = new XMLOutputConfig();
+    xmlOutputConfig.HeaderOutputConfig = headerOutputConfig;
+    xmlOutputConfig.BodyOutputConfig = bodyOutputConfig;
+
+    TextFormatterConfig formatterConfiguration = new TextFormatterConfig();
+    formatterConfiguration.AddTimestamp = true;
+    formatterConfiguration.TimestampFormat = &quot;yyyy-MM-ddTHH:mm:ss.fff&quot;;
+    formatterConfiguration.AddDirection = true;
+    formatterConfiguration.IndentAmount = 2;
+    formatterConfiguration.MaxIndentionSpaces = 50;
+    formatterConfiguration.LoggingOutputFormat = &quot;SML&quot;;
+    formatterConfiguration.SMLOutputConfig = smlOutputConfig;
+    formatterConfiguration.XMLOutputConfig = xmlOutputConfig;
+
+</code></pre>
+<p>Now that you have the <code>TextFormatterConfig</code> object you are able to create
+a formatter.</p>
+<h3 id="output-examples">Output Examples</h3>
+<p>This sections contains some examples of the type of output produced depending
+on the value of the configuration parameters.  If the value of <code>LoggingOutputFormat</code>
+is &quot;SML&quot; output will be in SML so look at the <a href="#sml-output-examples">SML Output Examples</a>.
+If the value of <code>LoggingOutputFormat</code>
+is &quot;XML&quot; output will be in XML so look at the <a href="#xml-output-examples">XML Output Examples</a>.</p>
+<h4 id="sml-output-examples">SML Output Examples</h4>
 <p>Given the nature of SML there are only a small number of configuration options
-available for controlling the resulting output.  These options may be found....</p>
-<p>For more information on SML see
-<a href="https://www.peergroup.com/resources/secs-message-language/">SECS Message Language (SML)</a>.</p>
-<h3 id="xml-output">XML Output</h3>
-<p>XML(eXtensible Markup Language) was designed to be a language for the
-storage and transport of data.  This API is able to produce output in
-this format.  This format is quite human readable and it is much easier
-to parse programmatically in the event that output in this format needs
-to be used as input to another program. i.e. Equipment or Host simulator
-scripts, data mining scripts, etc.</p>
-<p>Since output in XML can be a bit verbose there are a number of configuration
-options available for controlling the resulting output.  These options
-may be found....</p>
-<p><strong>Note:</strong>  This API, when producing XML output, does NOT output an XML
+available for controlling the resulting output.  These options and their effects
+are described and illustrated in the following text.</p>
+<p>Here are some examples of output in SML.  This first example has <code>AddTimestamp</code> and
+<code>AddDirection</code> set to <code>true</code>.  In addition <code>DisplayCount</code> and <code>DisplayWBit</code> are
+set to <code>true</code>.</p>
+<pre><code class="lang-csharp">#Timestamp:2023-02-08T19:33:31.043
+#Direction Src:EQ Dest:EI
+S6F11 W
+&lt;L [3]
+  &lt;A [6] &quot;DATAID&quot;&gt;
+  &lt;A [4] &quot;CEID&quot;&gt;
+  &lt;L [2]
+    &lt;L [2]
+      &lt;A [6] &quot;RPTID1&quot;&gt;
+      &lt;L [3]
+        &lt;U2 [1] 1&gt;
+        &lt;U2 [4] 2 3 4 5&gt;
+        &lt;BOOLEAN [1] T&gt;
+      &gt;
+    &gt;
+    &lt;L [2]
+      &lt;A [6] &quot;RPTID2&quot;&gt;
+      &lt;L [4]
+        &lt;A [0]&gt;
+        &lt;B [6] 0x00 0x00 0x00 0x00 0x00 0x00&gt;
+        &lt;F8 [1] 3.141593&gt;
+        &lt;BOOLEAN [5] T F T T F&gt;
+        &lt;I4 [1] 2147483647&gt;
+      &gt;
+    &gt;
+  &gt;
+&gt;.
+</code></pre>
+<p>This second example has <code>AddTimestamp</code> and
+<code>AddDirection</code> set to <code>false</code>.  In addition <code>DisplayCount</code> and <code>DisplayWBit</code> are
+set to <code>false</code> as well.</p>
+<pre><code class="lang-csharp">S6F11
+&lt;L
+  &lt;A &quot;DATAID&quot;&gt;
+  &lt;A &quot;CEID&quot;&gt;
+  &lt;L
+    &lt;L
+      &lt;A &quot;RPTID1&quot;&gt;
+      &lt;L
+        &lt;U2 1&gt;
+        &lt;U2 2 3 4 5&gt;
+        &lt;BOOLEAN T&gt;
+      &gt;
+    &gt;
+    &lt;L
+      &lt;A &quot;RPTID2&quot;&gt;
+      &lt;L
+        &lt;A&gt;
+        &lt;B 0x00 0x00 0x00 0x00 0x00 0x00&gt;
+        &lt;F8 3.141593&gt;
+        &lt;BOOLEAN T F T T F&gt;
+        &lt;I4 2147483647&gt;
+      &gt;
+    &gt;
+  &gt;
+&gt;.
+
+</code></pre>
+<h4 id="xml-output-examples">XML Output Examples</h4>
+<h5 id="an-important-reminder"><strong>An Important Reminder</strong></h5>
+<p>Before we get started we need to discuss XML output a little bit.
+This API, when producing XML output, does NOT output an XML
 Document.  It outputs well-formed XML elements.  If you desire to take
 the XML output produced by this program and parse it with many of the
-available XML tool kits you will need to create an XML Document.  This
-is easy to do.</p>
+available XML tool kits, available in many languages, you will need to
+create an XML Document.  This is easy to do.</p>
 <ol>
-<li>First create an empty file and add the line (or a line like it
-depending on the version number) to the top <code>&lt;?xml version=&quot;1.0&quot;?&gt;</code>.</li>
-<li>After the previous line add a root element.  For example
-<code>&lt;MyRootElement&gt;</code>.</li>
+<li>First create an empty file and add the line <code>&lt;?xml version=&quot;1.0&quot;?&gt;</code>
+(or a line like it depending on the version number) as the first line of the file.</li>
+<li>After the previous line add a root element line as the second line of the file.
+For example <code>&lt;MyRootElement&gt;</code>.</li>
 <li>Insert the desired XML output produced by this API after the root element.</li>
-<li>Add the closure to the root element added previously. In this case <code>&lt;/MyRootElement&gt;</code>.</li>
+<li>Add a closure line to the root element added previously at the end of the file.
+In this case <code>&lt;/MyRootElement&gt;</code>.</li>
 <li>Save the file and read it with whatever utility you prefer to use
 to parse XML.</li>
 </ol>
 <p>Additional formatting and or indention is unnecessary, <strong>however</strong>, when you
 perform your copy / paste operations make sure and get complete XML elements.</p>
+<h5 id="on-with-the-examples"><strong>On With the Examples</strong></h5>
+<p>Since output in XML can be a bit verbose there are a number of configuration
+options available for controlling the resulting output. In the following text
+these options will be explored.</p>
+<h2 id="creating-a-formatter">Creating a Formatter</h2>
+<p>In order to create a formatter use the factory method shown below:</p>
+<pre><code class="lang-csharp">    SECSFormatter formatter = SECSFormatterFactory.CreateFormatter(formatterConfiguration);
+</code></pre>
+<p>The information found in <code>formatterConfiguration</code> will determine what the created
+formatter will be.  It will be either be an <code>SMLFormatter</code> or an <code>XMLFormatter</code>
+depending on the value of <code>LoggingOutputFormat</code>.  In either case the methods
+available are the same.</p>
+<h2 id="using-a-formatter">Using a Formatter</h2>
+<p>Using a <code>SECSFormatter</code> is easy.  You just need to use the appropriate methods
+to format objects of type <a href="#for-secsmessage-objects"><code>SECSMessage</code></a>,
+<a href="#for-secsheader-objects"><code>SECSHeader</code></a>, or <a href="#for-secsitem-objects"><code>SECSItem</code></a>.</p>
+<h3 id="for-secsmessage-objects">For <code>SECSMessage</code> objects</h3>
+<p>If you have a <code>SECSMessage</code> you wish to log just
+produce some code like the following:</p>
+<pre><code class="lang-csharp">    string outputString = formatter.GetSECSMessageAsText(&quot;TheSource&quot;,
+                                                         &quot;TheDestination&quot;,
+                                                         secsMessage);
+</code></pre>
+<p><code>outputString</code> will end up with a formatted version of the <code>secsMessage</code> argument.
+This string can be displayed on the console or written to a file.</p>
+<p>One thing to note, a SECS message by itself really has no concept of a source or a
+destination.  The source and destination arguments are present so that the
+application, which probably does know the message's source and destination, can
+assign some meaningful name to each to help in the reading of the resulting text.
+An example of a source could be something like &quot;Implanter1 EI&quot;
+and the destination could be &quot;Equipment&quot;.  In the cases where multiple
+connections are being logged to the same file this could help a lot. Think of
+a litho cell where there are both a scanner and track to communicate with.</p>
+<p>There is another form of the <code>GetSECSMessageAsText</code> method that includes a
+<code>StringBuilder</code> object as the first argument.  Using this method will
+cause the formatted output to be appended to the <code>StringBuilder</code> object
+provided.</p>
+<pre><code class="lang-csharp">    StringBuilder sb = new StringBuilder();
+
+    string outputString = formatter.GetSECSMessageAsText(sb,
+                                                         &quot;TheSource&quot;,
+                                                         &quot;TheDestination&quot;,
+                                                         secsMessage);
+</code></pre>
+<h3 id="for-secsheader-objects">For <code>SECSHeader</code> objects</h3>
+<p>If you have a <code>SECSHeader</code> object and desire to format it on its own,
+as opposed to it being in a <code>SECSMessage</code>,
+there are two methods that are appropriate.  They are:</p>
+<pre><code class="lang-csharp">    public abstract string GetHeaderAsText(SECSHeader secsHeader);
+    public abstract void GetHeaderAsText(StringBuilder sb, SECSHeader secsHeader);
+</code></pre>
+<p>The one you should choose will depend on whether or not you want to get
+the result as a <code>string</code> or desire the result to be appended to a
+<code>StringBuilder</code> that you create and supply.</p>
+<h3 id="for-secsitem-objects">For <code>SECSItem</code> objects</h3>
+<p>If you have a <code>SECSItem</code> object and desire to format it on its own,
+as opposed to it being in a <code>SECSMessage</code>,
+there are two methods that are appropriate.  They are:</p>
+<pre><code class="lang-csharp">    public abstract string GetSECSItemAsText(SECSItem secsItem);
+    public abstract void GetSECSItemAsText(StringBuilder sb, SECSItem secsItem);
+</code></pre>
+<p>The one you should choose will depend on whether or not you want to get
+the result as a <code>string</code> or desire the result to be appended to a
+<code>StringBuilder</code> that you create and supply.</p>
 </article>
           </div>
 

@@ -26,8 +26,8 @@ to provide that help.
 ## [TextFormatter](TextFormatter/index.md)
 
 This API library allows a user to convert `SECSMessage`s, `SECSHeader`s, and
-`SECSItem`s into either [SML](#sml-output) or [XML](#xml-output) formats.
-These formats are suitable for output to a terminal and / or a file.
+`SECSItem`s into a `string` that is in either [SML](#sml-output) or [XML](#xml-output).
+The produced `string`s are suitable for output to a terminal and / or a file.
 
 The `SECSMessage` and `SECSHeader` classes are located in the
 [SECSCommUtils](#secscommutils) API library.  The `SECSItem` classes are

@@ -633,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.html",
-          "hash": "cL60VaPMp4yhDVqBg6vnfDIXw6E0x+O7LDCwMHj6gKs="
+          "hash": "5M+EoE/xCjtah7mEVyRzH4wjTU03oQxQ/lZhjcXtQt4="
         }
       },
       "is_incremental": true,
@@ -657,7 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.html",
-          "hash": "mW0qAYsV5qXbITYqItJclsfPHwWR6TZiD82kKuWz+u0="
+          "hash": "mIwNDYsSMEUFTc79AlaxKWMDp/YlJao1WCD7cC9hm/o="
         }
       },
       "is_incremental": true,
@@ -669,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html",
-          "hash": "UuY/A7PM06VWngRxenongRPekZ2+RdYuNCBqhmQyLqI="
+          "hash": "rgT/BewUofEJ3JvLdw+KN47QxAhdCUYMYfa0P2d4Y6c="
         }
       },
       "is_incremental": true,
@@ -693,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.html",
-          "hash": "0J+Oq12PSI8rx1/h1WntrUtZbS7QXUWVYdsY635ZZw0="
+          "hash": "C08ER2wjeMad93HR7mNNzqLA3QjYjWuOawJ7TVeYV+A="
         }
       },
       "is_incremental": true,
@@ -705,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html",
-          "hash": "mQyjj7W0PottK+28o91IunkhSXn15AhLxuBOEbHM0gg="
+          "hash": "C/JiaCYRyyXjmA/6i8vxmjTGOaLpzVNS9GXdczeZs/4="
         }
       },
       "is_incremental": true,
@@ -717,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html",
-          "hash": "OOUrbQguyhUavuIFxwZIgIXlxYHWCElNUY3kVnrg2uo="
+          "hash": "35tEUtNxsoAbdg7H6DqVuok6z7YHK/1ZW/srJMJqpcw="
         }
       },
       "is_incremental": true,
@@ -729,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.html",
-          "hash": "MOkAZq8ei9UAfFxDK4gud5NUtLfdGgt3Cp0neb59a1Q="
+          "hash": "MFkqQcvT5absOE5gCWGYNDCBKZYXXvNLx638IaTXrwc="
         }
       },
       "is_incremental": true,
@@ -741,7 +741,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.XMLOutputConfig.html",
-          "hash": "TvHa2EEWdHb9v3pLb0x+NJldTosExfWmPda1nUxic6c="
+          "hash": "tFCWjOUfm8wqeBfPveytYK1aysgG+G9/fTANZ7DOIoI="
         }
       },
       "is_incremental": true,
@@ -753,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/com.CIMthetics.CSharpSECSTools.TextFormatter.html",
-          "hash": "HQPmnc0HCIJEKnXZa2viApZK3QeJbR+aEjFVxrRk7/E="
+          "hash": "hX51u7m1Sz6GTcSoEzQcEsY0BggqFn80tJdl2ZCZ+qw="
         }
       },
       "is_incremental": true,
@@ -765,10 +765,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TextFormatter/index.html",
-          "hash": "JHsCpkcp2M1t8PCDrjSQOtjt+OsFc86tBpgZhabmxOI="
+          "hash": "Ts8drMk7myAjId+CN3fX6fGi9V9un/8bp6kYlUEVwWk="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -789,10 +789,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "ow9Vrr54g4Yg30QPKkp81J3t1sUZtl1OHEJ+7OKLVMU="
+          "hash": "nCotgG3gZB6uecTRCMMJZFy4L40Ruf+K/etrROi28h8="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -917,7 +917,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 9,
-          "skipped_file_count": 9
+          "skipped_file_count": 8
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

@@ -72,7 +72,10 @@
 
   <h1 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig" class="text-break">Class BodyOutputConfig
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>The properties of this class control the output format of
+<code>SECSItem</code> objects or in other words the body or content of
+a SECS message.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -85,39 +88,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BodyOutputConfig</code></pre>
   </div>
-  <h3 id="fields">Fields
-</h3>
-
-
-  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayAsType" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType">DisplayAsType</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DisplayAsType DisplayAsType</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.DisplayAsType.html">DisplayAsType</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="properties">Properties
 </h3>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayAsElementsOrAttributes_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsElementsOrAttributes*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayAsElementsOrAttributes" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsElementsOrAttributes">DisplayAsElementsOrAttributes</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property is pretty much only here to support &quot;automatic&quot; creation
+from a <code>json</code> file.  It will ultimately set the <code>DisplayAsType</code>
+property.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -134,15 +114,57 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The only permissible value is &quot;Elements&quot; or &quot;Attributes&quot;.</p>
+</td>
       </tr>
     </tbody>
   </table>
 
 
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayAsType_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayAsType" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayAsType">DisplayAsType</h4>
+  <div class="markdown level1 summary"><p>This property controls how a <code>SECSItem</code> is displayed in the
+case where a formatter is configured to output using XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DisplayAsType DisplayAsType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.DisplayAsType.html">DisplayAsType</a></td>
+        <td><p>If this property's value is <code>DisplayAsType.Elements</code> a message's
+body will be displayed using XML elements for the various <code>SECSItem</code>(s)
+elements therein. If the value is <code>DisplayAsType.Attributes</code>
+the body will be displayed using XML attributes for the various <code>SECSItem</code>(s)
+elements therein.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayAsType_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This property's value has no effect if the output ends up being SML.</p>
+<p>
+The default is to display as Attributes.
+</p>
+</div>
+
+
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayCount_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayCount*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayCount" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayCount">DisplayCount</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>If the display format is SML this property controls whether or not &quot;count&quot;
+values are displayed in the output.  These &quot;count&quot; values indicate how
+many elements are in the individual <code>SECSItem</code>s.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -159,15 +181,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>If <code>true</code> the value of the number of a <code>SECSItem</code>s elements is include in the output.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayCount_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This property only has an effect on output if the display format is SML.</p>
+<p>
+The default is <code>true</code>.
+</p>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayLengthByteValue_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayLengthByteValue*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayLengthByteValue" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayLengthByteValue">DisplayLengthByteValue</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property controls whether or not the value of the length bytes is
+displayed in the output.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -184,15 +215,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>If <code>true</code> the value of the length bytes is include in the output.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayLengthByteValue_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default is <code>false</code>.</p>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayNumberOfLengthBytes_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayNumberOfLengthBytes*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayNumberOfLengthBytes" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.DisplayNumberOfLengthBytes">DisplayNumberOfLengthBytes</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property controls whether or not the number of length bytes is
+displayed in the output.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -209,15 +246,20 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>If <code>true</code> the number of length bytes is include in the output.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_DisplayNumberOfLengthBytes_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default is <code>false</code>.</p>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_MaxOutputLineLength_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.MaxOutputLineLength*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_MaxOutputLineLength" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.MaxOutputLineLength">MaxOutputLineLength</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property controls the maximum length of line(s) produced for output.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -234,17 +276,28 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>The maximum length in characters of output lines produced.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_MaxOutputLineLength_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><strong>Warning:</strong> If the length of this property is set too small an
+infinite loop may be entered.  Setting the value of this property to
+50 or larger should be okay.</p>
+<p>
+The default is <code>132</code> characters in length.
+</p>
+</div>
   <h3 id="methods">Methods
 </h3>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_ToString_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.ToString*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_BodyOutputConfig_ToString" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.ToString">ToString()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a <code>string</code> displaying the current &quot;state&quot; of this instance.
+This is mostly only useful for debugging.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

@@ -74,8 +74,8 @@
 </h1>
   <div class="markdown level0 summary"><p>This is an <code>abstract</code> base class providing the framework for classes
 that will be able to turn <code>SECSMessage</code>s, <code>SECSHeader</code>s, and
-<code>SECSITEM</code>s into a C# <code>string</code> suitable for output to a
-terminal and or a file.</p>
+<code>SECSITEM</code>s into a C# <code>string</code> (or append the results to a supplied
+<code>StringBuilder</code>) producing output suitable for output to a terminal and or a file.</p>
 <p>
 Note: At this time the current max indentation level is 132 spaces.
 </p>
@@ -245,7 +245,7 @@ for more information.</p>
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetHeaderAsText*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetHeaderAsText(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)">GetHeaderAsText(SECSHeader)</h4>
-  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSHeader</code>
+  <div class="markdown level1 summary"><p>Create and return a <code>string</code> representation of a <code>SECSHeader</code>
 suitable for output to a terminal or a file.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -266,7 +266,7 @@ suitable for output to a terminal or a file.</p>
       <tr>
         <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
         <td><span class="parametername">secsHeader</span></td>
-        <td><p>The <code>SECSHeader</code> object to generate the <code>string</code>
+        <td><p>The <code>SECSHeader</code> object to generate the textual
 representation of.</p>
 </td>
       </tr>
@@ -283,21 +283,19 @@ representation of.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>A representation of the <code>SECSHeader</code> in <code>string</code> form that
+        <td><p>A textual representation of the <code>SECSHeader</code> in <code>string</code> form that
 is suitable for output to a terminal or file.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The <code>SECSHeader</code> object is not modified.</p>
-</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetHeaderAsText*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetHeaderAsText(System.Text.StringBuilder,com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)">GetHeaderAsText(StringBuilder, SECSHeader)</h4>
-  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSHeader</code>
-suitable for output to a terminal or a file.</p>
+  <div class="markdown level1 summary"><p>Create a textual representation of a <code>SECSHeader</code>
+suitable for output to a terminal or a file and append it
+to the supplied <code>StringBuilder</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -318,27 +316,24 @@ suitable for output to a terminal or a file.</p>
         <td><span class="xref">System.Text.StringBuilder</span></td>
         <td><span class="parametername">sb</span></td>
         <td><p>A <code>StringBuilder</code> that the user creates and passes in to
-receive the resulting <code>string</code> representation of the
+receive the resulting textual representation of the
 <code>SECSHeader</code>.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
         <td><span class="parametername">secsHeader</span></td>
-        <td><p>The <code>SECSHeader</code> object to generate the <code>string</code>
+        <td><p>The <code>SECSHeader</code> object to generate the textual
 representation of.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetHeaderAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The <code>SECSHeader</code> object is not modified.</p>
-</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSItemAsText*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSItemAsText(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">GetSECSItemAsText(SECSItem)</h4>
-  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSItem</code>
+  <div class="markdown level1 summary"><p>Create and return a <code>string</code> representation of a <code>SECSItem</code>
 suitable for output to a terminal or a file.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -376,21 +371,19 @@ representation of.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>A representation of the <code>SECSItem</code> in <code>string</code> form that
+        <td><p>A representation of the <code>SECSItem</code> in textual form that
 is suitable for output to a terminal or file.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The <code>SECSItem</code> object is not modified.</p>
-</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSItemAsText*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSItemAsText(System.Text.StringBuilder,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">GetSECSItemAsText(StringBuilder, SECSItem)</h4>
-  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSItem</code>
-suitable for output to a terminal or a file.</p>
+  <div class="markdown level1 summary"><p>Create a textual representation of a <code>SECSItem</code>
+suitable for output to a terminal or a file and append it
+to the supplied <code>StringBuilder</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -424,14 +417,11 @@ representation of.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSItemAsText_System_Text_StringBuilder_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The <code>SECSItem</code> object is not modified.</p>
-</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSMessageAsText*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSMessageAsText(System.String,System.String,com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)">GetSECSMessageAsText(String, String, SECSMessage)</h4>
-  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSMessage</code>
+  <div class="markdown level1 summary"><p>Create and return a <code>string</code> representation of a <code>SECSMessage</code>
 suitable for output to a terminal or a file.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -481,21 +471,26 @@ representation of.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>A representation of the <code>SECSMessage</code> in <code>string</code> form that
+        <td><p>A representation of the <code>SECSMessage</code> as a <code>string</code> that
 is suitable for output to a terminal or file.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The <code>SECSMessage</code> object is not modified.</p>
+  <div class="markdown level1 remarks"><p>The <code>source</code> and <code>destination</code> arguments are available for
+the user of this method in order to allow for the adding of important
+context information to the generated output text.  A <code>SECSMessage</code> on its
+own does not inherently contain information pertaining to where it
+came from or where it is going.</p>
 </div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSMessageAsText*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_Text_StringBuilder_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.GetSECSMessageAsText(System.Text.StringBuilder,System.String,System.String,com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)">GetSECSMessageAsText(StringBuilder, String, String, SECSMessage)</h4>
-  <div class="markdown level1 summary"><p>Create a <code>string</code> representation of a <code>SECSMessage</code>
-suitable for output to a terminal or a file.</p>
+  <div class="markdown level1 summary"><p>Create a textual representation of a <code>SECSMessage</code>
+suitable for output to a terminal or a file and append it
+to the supplied <code>StringBuilder</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -516,7 +511,7 @@ suitable for output to a terminal or a file.</p>
         <td><span class="xref">System.Text.StringBuilder</span></td>
         <td><span class="parametername">sb</span></td>
         <td><p>A <code>StringBuilder</code> that the user creates and passes in to
-receive the resulting <code>string</code> representation of the
+receive the resulting textual representation of the
 <code>SECSMessage</code>.</p>
 </td>
       </tr>
@@ -543,7 +538,11 @@ representation of.</p>
     </tbody>
   </table>
   <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_SECSFormatter_GetSECSMessageAsText_System_Text_StringBuilder_System_String_System_String_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The <code>SECSMessage</code> object is not modified.</p>
+  <div class="markdown level1 remarks"><p>The <code>source</code> and <code>destination</code> arguments are available for
+the user of this method in order to allow for the adding of important
+context information to the generated output text.  A <code>SECSMessage</code> on its
+own does not inherently contain information pertaining to where it
+came from or where it is going.</p>
 </div>
 </article>
           </div>

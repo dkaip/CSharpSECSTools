@@ -1,48 +1,341 @@
 # TextFormatter
 
+## Introduction
 
-### SML Output
+Logging of SECS message traffic (information flow) between the two endpoints
+of a SECS &quot;connection&quot; is an indispensable ability in the automation
+of semiconductor manufacturing.  This logging is used for debugging purposes
+during initial development of **E**quipment **I**nterfaces, etc.  In addition logging
+can be critical in the forensic analysis of scrap events and other unexpected
+and abnormal processing scenarios.
 
-SML is a somewhat compact display notation that many people who have been
-in the industry for a while will be familiar with.  Humans can read SML
-fairly well.  However, it can be a real pain to parse programmatically in
-cases where the contents of a log file need to be used as input to another
-program. i.e. Equipment or Host simulator scripts, data mining scripts, etc.
+This API provides the functionality to convert `SECSMessage`s, `SECSHeader`s, and
+`SECSItem`s into a `string` that may be displayed on a terminal and / or output
+to a file.
+
+**Note:** The `SECSMessage` and `SECSHeader` classes are located in the
+[SECSCommUtils](../SECSCommUtils/index.md) API library and the `SECSItem`
+classes are located in the [SECSItems](../SECSItems/index.md) API library.
+
+## Configuring a Formatter
+
+### Using a `json` file
+
+If you are already reading and processing an `appsettings.json` file during your
+application's startup the easiest
+way to create the configuration for the formatter is to add a `TextFormatterConfig`
+section to the `json` file. Then use the following code to extract the configuration
+information:
+
+```csharp
+    TextFormatterConfig formatterConfiguration = configuration.GetSection("TextFormatterConfig").Get<TextFormatterConfig>();
+```
+
+The `TextFormatterConfig` section should look like this (with the appropriate changes for your environment):
+
+```json
+    "TextFormatterConfig":
+    {
+        "AddTimestamp": true,
+        "TimestampFormat": "yyyy-MM-ddTHH:mm:ss.fff",
+        "AddDirection": true,
+        "IndentAmount": 2,
+        "MaxIndentionSpaces": 50,
+        "LoggingOutputFormat": "SML",
+        "XMLOutputConfig":
+        {
+            "HeaderOutputConfig":
+            {
+                "DisplayAsElementsOrAttributes": "Attributes",
+                "DisplayMessageIdAsSxFy": true,
+                "DisplayDeviceId": true,
+                "DisplaySystemBytes": true,
+                "DisplayWBit": true,
+                "DisplayControlMessages": true
+            },
+            "BodyOutputConfig":
+            {
+                "DisplayAsElementsOrAttributes": "Attributes",
+                "DisplayNumberOfLengthBytes": true,
+                "DisplayLengthByteValue": true,
+                "MaxOutputLineLength": 80
+            }
+        },
+        "SMLOutputConfig":
+        {
+            "HeaderOutputConfig":
+            {
+                "DisplayWBit": true
+            },
+            "BodyOutputConfig":
+            {
+                "DisplayCount": false,
+                "MaxOutputLineLength": 80
+            }
+        }
+    }
+```
+
+If the value of `LoggingOutputFormat` is SML the formatter created will use the information in the
+`SMLOutputConfig` section.  If its value is XML the formatter created will use the information in
+the `XMLOutputConfig` section.  Since both `SMLOutputConfig` and `XMLOutputConfig`  are present
+all the user has to do is changed the value of `LoggingOutputFormat` between &quot;SML&quot; and
+&quot;XML&quot; to switch between the two output formats.
+
+### Not using a `json` file
+
+If you do not want to use a `json` file to create the `TextFormatterConfig` object you will need
+to create it manually.
+
+Examine the `json` text above.  You will notice that there are simple line items and compound
+line items.  You will need to go from inside to outside and create the `TextFormatterConfig` object.
+Each of the &quot;compound&quot; objects has a class associated with it.  Here is a code snippet
+that gives a rough idea of what needs to be done.  This should produce the same results as the
+above `json` configuration will.
+
+```csharp
+    // Set up stuff for SML output config
+    HeaderOutputConfig headerOutputConfig = new HeaderOutputConfig();
+    headerOutputConfig.DisplayWBit = true;
+
+    BodyOutputConfig bodyOutputConfig = new BodyOutputConfig();
+    bodyOutputConfig.DisplayCount = true;
+    bodyOutputConfig.MaxOutputLineLength = 80;
+
+    SMLOutputConfig smlOutputConfig = new SMLOutputConfig();
+    smlOutputConfig.HeaderOutputConfig = headerOutputConfig;
+    smlOutputConfig.BodyOutputConfig = bodyOutputConfig;
+
+    // Set up stuff for XML output config
+    headerOutputConfig = new HeaderOutputConfig();
+    headerOutputConfig.DisplayAsType = DisplayAsType.Attributes;
+    headerOutputConfig.DisplayMessageIdAsSxFy = true;
+    headerOutputConfig.DisplayDeviceId = true;
+    headerOutputConfig.DisplaySystemBytes = true;
+    headerOutputConfig.DisplayWBit = true;
+    headerOutputConfig.DisplayControlMessages = true;
+
+    bodyOutputConfig = new BodyOutputConfig();
+    bodyOutputConfig.DisplayAsType = DisplayAsType.Attributes;
+    bodyOutputConfig.DisplayNumberOfLengthBytes = true;
+    bodyOutputConfig.DisplayLengthByteValue = true;
+    bodyOutputConfig.MaxOutputLineLength = 80;
+
+    XMLOutputConfig xmlOutputConfig = new XMLOutputConfig();
+    xmlOutputConfig.HeaderOutputConfig = headerOutputConfig;
+    xmlOutputConfig.BodyOutputConfig = bodyOutputConfig;
+
+    TextFormatterConfig formatterConfiguration = new TextFormatterConfig();
+    formatterConfiguration.AddTimestamp = true;
+    formatterConfiguration.TimestampFormat = "yyyy-MM-ddTHH:mm:ss.fff";
+    formatterConfiguration.AddDirection = true;
+    formatterConfiguration.IndentAmount = 2;
+    formatterConfiguration.MaxIndentionSpaces = 50;
+    formatterConfiguration.LoggingOutputFormat = "SML";
+    formatterConfiguration.SMLOutputConfig = smlOutputConfig;
+    formatterConfiguration.XMLOutputConfig = xmlOutputConfig;
+
+```
+
+Now that you have the `TextFormatterConfig` object you are able to create
+a formatter.
+
+### Output Examples
+
+This sections contains some examples of the type of output produced depending
+on the value of the configuration parameters.  If the value of `LoggingOutputFormat`
+is &quot;SML&quot; output will be in SML so look at the [SML Output Examples](#sml-output-examples).
+If the value of `LoggingOutputFormat`
+is &quot;XML&quot; output will be in XML so look at the [XML Output Examples](#xml-output-examples).
+
+#### SML Output Examples
 
 Given the nature of SML there are only a small number of configuration options
-available for controlling the resulting output.  These options may be found....
+available for controlling the resulting output.  These options and their effects
+are described and illustrated in the following text.
 
-For more information on SML see
-[SECS Message Language (SML)](https://www.peergroup.com/resources/secs-message-language/).
+Here are some examples of output in SML.  This first example has `AddTimestamp` and
+`AddDirection` set to `true`.  In addition `DisplayCount` and `DisplayWBit` are
+set to `true`.
 
-### XML Output
+```csharp
+#Timestamp:2023-02-08T19:33:31.043
+#Direction Src:EQ Dest:EI
+S6F11 W
+<L [3]
+  <A [6] "DATAID">
+  <A [4] "CEID">
+  <L [2]
+    <L [2]
+      <A [6] "RPTID1">
+      <L [3]
+        <U2 [1] 1>
+        <U2 [4] 2 3 4 5>
+        <BOOLEAN [1] T>
+      >
+    >
+    <L [2]
+      <A [6] "RPTID2">
+      <L [4]
+        <A [0]>
+        <B [6] 0x00 0x00 0x00 0x00 0x00 0x00>
+        <F8 [1] 3.141593>
+        <BOOLEAN [5] T F T T F>
+        <I4 [1] 2147483647>
+      >
+    >
+  >
+>.
+```
 
-XML(eXtensible Markup Language) was designed to be a language for the
-storage and transport of data.  This API is able to produce output in
-this format.  This format is quite human readable and it is much easier
-to parse programmatically in the event that output in this format needs
-to be used as input to another program. i.e. Equipment or Host simulator
-scripts, data mining scripts, etc.
+This second example has `AddTimestamp` and
+`AddDirection` set to `false`.  In addition `DisplayCount` and `DisplayWBit` are
+set to `false` as well.
 
-Since output in XML can be a bit verbose there are a number of configuration
-options available for controlling the resulting output.  These options
-may be found....
+```csharp
+S6F11
+<L
+  <A "DATAID">
+  <A "CEID">
+  <L
+    <L
+      <A "RPTID1">
+      <L
+        <U2 1>
+        <U2 2 3 4 5>
+        <BOOLEAN T>
+      >
+    >
+    <L
+      <A "RPTID2">
+      <L
+        <A>
+        <B 0x00 0x00 0x00 0x00 0x00 0x00>
+        <F8 3.141593>
+        <BOOLEAN T F T T F>
+        <I4 2147483647>
+      >
+    >
+  >
+>.
 
-**Note:**  This API, when producing XML output, does NOT output an XML
+```
+
+#### XML Output Examples
+
+##### **An Important Reminder**
+
+Before we get started we need to discuss XML output a little bit.
+This API, when producing XML output, does NOT output an XML
 Document.  It outputs well-formed XML elements.  If you desire to take
 the XML output produced by this program and parse it with many of the
-available XML tool kits you will need to create an XML Document.  This
-is easy to do.
+available XML tool kits, available in many languages, you will need to
+create an XML Document.  This is easy to do.
 
-1. First create an empty file and add the line (or a line like it
-depending on the version number) to the top `<?xml version="1.0"?>`.
-2. After the previous line add a root element.  For example
-`<MyRootElement>`.
-3. Insert the desired XML output produced by this API after the root element.
-4. Add the closure to the root element added previously. In this case `</MyRootElement>`.
-5. Save the file and read it with whatever utility you prefer to use
+1. First create an empty file and add the line `<?xml version="1.0"?>`
+(or a line like it depending on the version number) as the first line of the file.
+1. After the previous line add a root element line as the second line of the file.
+For example `<MyRootElement>`.
+1. Insert the desired XML output produced by this API after the root element.
+1. Add a closure line to the root element added previously at the end of the file.
+In this case `</MyRootElement>`.
+1. Save the file and read it with whatever utility you prefer to use
 to parse XML.
 
 Additional formatting and or indention is unnecessary, **however**, when you
 perform your copy / paste operations make sure and get complete XML elements.
 
+##### **On With the Examples**
+
+Since output in XML can be a bit verbose there are a number of configuration
+options available for controlling the resulting output. In the following text
+these options will be explored.
+
+resume here
+
+
+## Creating a Formatter
+
+In order to create a formatter use the factory method shown below:
+
+```csharp
+    SECSFormatter formatter = SECSFormatterFactory.CreateFormatter(formatterConfiguration);
+```
+
+The information found in `formatterConfiguration` will determine what the created
+formatter will be.  It will be either be an `SMLFormatter` or an `XMLFormatter`
+depending on the value of `LoggingOutputFormat`.  In either case the methods
+available are the same.
+
+## Using a Formatter
+
+Using a `SECSFormatter` is easy.  You just need to use the appropriate methods
+to format objects of type [`SECSMessage`](#for-secsmessage-objects),
+[`SECSHeader`](#for-secsheader-objects), or [`SECSItem`](#for-secsitem-objects).
+
+### For `SECSMessage` objects
+
+If you have a `SECSMessage` you wish to log just
+produce some code like the following:
+
+```csharp
+    string outputString = formatter.GetSECSMessageAsText("TheSource",
+                                                         "TheDestination",
+                                                         secsMessage);
+```
+
+`outputString` will end up with a formatted version of the `secsMessage` argument.
+This string can be displayed on the console or written to a file.
+
+One thing to note, a SECS message by itself really has no concept of a source or a
+destination.  The source and destination arguments are present so that the
+application, which probably does know the message's source and destination, can
+assign some meaningful name to each to help in the reading of the resulting text.
+An example of a source could be something like &quot;Implanter1 EI&quot;
+and the destination could be &quot;Equipment&quot;.  In the cases where multiple
+connections are being logged to the same file this could help a lot. Think of
+a litho cell where there are both a scanner and track to communicate with.
+
+There is another form of the `GetSECSMessageAsText` method that includes a
+`StringBuilder` object as the first argument.  Using this method will
+cause the formatted output to be appended to the `StringBuilder` object
+provided.
+
+```csharp
+    StringBuilder sb = new StringBuilder();
+
+    string outputString = formatter.GetSECSMessageAsText(sb,
+                                                         "TheSource",
+                                                         "TheDestination",
+                                                         secsMessage);
+```
+
+### For `SECSHeader` objects
+
+If you have a `SECSHeader` object and desire to format it on its own,
+as opposed to it being in a `SECSMessage`,
+there are two methods that are appropriate.  They are:
+
+```csharp
+    public abstract string GetHeaderAsText(SECSHeader secsHeader);
+    public abstract void GetHeaderAsText(StringBuilder sb, SECSHeader secsHeader);
+```
+
+The one you should choose will depend on whether or not you want to get
+the result as a `string` or desire the result to be appended to a
+`StringBuilder` that you create and supply.
+
+### For `SECSItem` objects
+
+If you have a `SECSItem` object and desire to format it on its own,
+as opposed to it being in a `SECSMessage`,
+there are two methods that are appropriate.  They are:
+
+```csharp
+    public abstract string GetSECSItemAsText(SECSItem secsItem);
+    public abstract void GetSECSItemAsText(StringBuilder sb, SECSItem secsItem);
+```
+
+The one you should choose will depend on whether or not you want to get
+the result as a `string` or desire the result to be appended to a
+`StringBuilder` that you create and supply.

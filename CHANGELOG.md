@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+8-Feb-2023
+
+For the most part just added documentation.  The few minor changes I
+did make will not break anything.
+
+## Fixed
+
+I fixed some display bugs in `SMLFormatter.cs`.  Since the API library containing
+this file is not really released yet it should not create issues.
+
+7-Feb-2023
+
 The short answer is I recommend you to stay with the Baseline(v1.0.0)
 for the moment.  I have made some changes to the `SECSItems` API which
 will cause some rework.  If you do change to the latest at this point

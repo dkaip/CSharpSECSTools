@@ -77,14 +77,19 @@
     <h3 id="classes">Classes
 </h3>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.html">BodyOutputConfig</a></h4>
-      <section></section>
+      <section><p>The properties of this class control the output format of
+<code>SECSItem</code> objects or in other words the body or content of
+a SECS message.</p>
+</section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.html">HeaderOutputConfig</a></h4>
-      <section></section>
+      <section><p>The properties of this class control the output format of
+<code>SECSHeader</code> objects.</p>
+</section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SECSFormatter.html">SECSFormatter</a></h4>
       <section><p>This is an <code>abstract</code> base class providing the framework for classes
 that will be able to turn <code>SECSMessage</code>s, <code>SECSHeader</code>s, and
-<code>SECSITEM</code>s into a C# <code>string</code> suitable for output to a
-terminal and or a file.</p>
+<code>SECSITEM</code>s into a C# <code>string</code> (or append the results to a supplied
+<code>StringBuilder</code>) producing output suitable for output to a terminal and or a file.</p>
 <p>
 Note: At this time the current max indentation level is 132 spaces.
 </p>
@@ -94,28 +99,34 @@ Note: At this time the current max indentation level is 132 spaces.
 type.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SMLFormatter.html">SMLFormatter</a></h4>
-      <section><p>A class to create a textual representation of
+      <section><p>A class to create a textual representation in SML of
 <a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
 <a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
-<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
-using using SML.</p>
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.SMLOutputConfig.html">SMLOutputConfig</a></h4>
-      <section></section>
+      <section><p>This class is effectively a copy of the class <code>XMLOutputConfig</code>.  Its
+only purpose is to facilitate the &quot;automatic&quot; reading of the
+<code>TextFormatterConfig</code> section of a <code>appsettings.json</code> file.
+Refer to the documentation for the class <code>XMLOutputConfig</code> for
+more information.</p>
+</section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.html">TextFormatterConfig</a></h4>
-      <section><p>This class is used as the argument of the constructor of a
-<code>SECSFormatter</code> object in order to provide it with
-information it needs to do its job.</p>
+      <section><p>This class is used as the argument of the <code>CreateFormatter</code>
+method of the <code>SECSFormatterFactory</code> which creates a
+<code>SECSFormatter</code> object that is implemented to produce logging output
+as either SML or XML formatted text.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLFormatter.html">XMLFormatter</a></h4>
-      <section><p>A class to create a textual representation of
+      <section><p>A class to create a textual representation in XML of
 <a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>s,
 <a class="xref" href="../SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a>s, and
-<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s
-using using XML.</p>
+<a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>s.</p>
 </section>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.XMLOutputConfig.html">XMLOutputConfig</a></h4>
-      <section></section>
+      <section><p>This class contains the information for a formatter to use when producing
+output.</p>
+</section>
     <h3 id="enums">Enums
 </h3>
       <h4><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.DisplayAsType.html">DisplayAsType</a></h4>

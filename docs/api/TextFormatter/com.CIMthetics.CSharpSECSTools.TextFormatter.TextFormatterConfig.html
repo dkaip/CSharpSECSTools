@@ -72,9 +72,10 @@
 
   <h1 id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig" class="text-break">Class TextFormatterConfig
 </h1>
-  <div class="markdown level0 summary"><p>This class is used as the argument of the constructor of a
-<code>SECSFormatter</code> object in order to provide it with
-information it needs to do its job.</p>
+  <div class="markdown level0 summary"><p>This class is used as the argument of the <code>CreateFormatter</code>
+method of the <code>SECSFormatterFactory</code> which creates a
+<code>SECSFormatter</code> object that is implemented to produce logging output
+as either SML or XML formatted text.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -158,9 +159,9 @@ generated output.</p>
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_BodyOutputConfig_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.BodyOutputConfig*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_BodyOutputConfig" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.BodyOutputConfig">BodyOutputConfig</h4>
-  <div class="markdown level1 summary"><p>This class is used as the argument of the constructor of a
-<code>SECSFormatter</code> object in order to provide it with
-information it needs to do its job.</p>
+  <div class="markdown level1 summary"><p>This property returns the current output configuration
+(for <code>SECSItem</code>s) that this formatter is currently
+working with.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -178,7 +179,11 @@ information it needs to do its job.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.BodyOutputConfig.html">BodyOutputConfig</a></td>
-        <td></td>
+        <td><p>If the <code>LoggingOutputFormat</code> property value is &quot;SML&quot;
+then the value returned is the value of the <code>SMLOutputConfig.BodyOutputConfig</code>
+property.  Otherwise the value returned is the value of the
+<code>XMLOutputConfig.BodyOutputConfig</code> property.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -186,9 +191,9 @@ information it needs to do its job.</p>
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_HeaderOutputConfig_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.HeaderOutputConfig*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_HeaderOutputConfig" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.HeaderOutputConfig">HeaderOutputConfig</h4>
-  <div class="markdown level1 summary"><p>This class is used as the argument of the constructor of a
-<code>SECSFormatter</code> object in order to provide it with
-information it needs to do its job.</p>
+  <div class="markdown level1 summary"><p>This property returns the current output configuration
+(for <code>SECSHeader</code>s) that this formatter is currently
+working with.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -206,7 +211,11 @@ information it needs to do its job.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.html">HeaderOutputConfig</a></td>
-        <td></td>
+        <td><p>If the <code>LoggingOutputFormat</code> property value is &quot;SML&quot;
+then the value returned is the value of the <code>SMLOutputConfig.HeaderOutputConfig</code>
+property.  Otherwise the value returned is the value of the
+<code>XMLOutputConfig.HeaderOutputConfig</code> property.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -328,9 +337,8 @@ for more information.
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_SMLOutputConfig_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.SMLOutputConfig*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_SMLOutputConfig" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.SMLOutputConfig">SMLOutputConfig</h4>
-  <div class="markdown level1 summary"><p>This class is used as the argument of the constructor of a
-<code>SECSFormatter</code> object in order to provide it with
-information it needs to do its job.</p>
+  <div class="markdown level1 summary"><p>This property specifies the output format information for
+a formatter when it is producing output in the SML format.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -356,7 +364,7 @@ information it needs to do its job.</p>
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_TimestampFormat_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.TimestampFormat*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_TimestampFormat" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.TimestampFormat">TimestampFormat</h4>
-  <div class="markdown level1 summary"><p>If <code>AddTimestamp</code> is set to <code>true</code> this is the output
+  <div class="markdown level1 summary"><p>If the <code>AddTimestamp</code> property is set to <code>true</code> this is the output
 formatting string that is applied to the timestamp as it is
 converted to textual form.</p>
 </div>
@@ -388,9 +396,8 @@ converted to textual form.</p>
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_XMLOutputConfig_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.XMLOutputConfig*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_XMLOutputConfig" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.XMLOutputConfig">XMLOutputConfig</h4>
-  <div class="markdown level1 summary"><p>This class is used as the argument of the constructor of a
-<code>SECSFormatter</code> object in order to provide it with
-information it needs to do its job.</p>
+  <div class="markdown level1 summary"><p>This property specifies the output format information for
+a formatter when it is producing output in the XML format.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -418,9 +425,8 @@ information it needs to do its job.</p>
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_ToString_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.ToString*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_TextFormatterConfig_ToString" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.TextFormatterConfig.ToString">ToString()</h4>
-  <div class="markdown level1 summary"><p>This class is used as the argument of the constructor of a
-<code>SECSFormatter</code> object in order to provide it with
-information it needs to do its job.</p>
+  <div class="markdown level1 summary"><p>Creates a <code>string</code> displaying the current &quot;state&quot; of this instance.
+This is mostly only useful for debugging.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>

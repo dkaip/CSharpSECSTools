@@ -72,7 +72,9 @@
 
   <h1 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig" class="text-break">Class HeaderOutputConfig
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>The properties of this class control the output format of
+<code>SECSHeader</code> objects.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -85,39 +87,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class HeaderOutputConfig</code></pre>
   </div>
-  <h3 id="fields">Fields
-</h3>
-
-
-  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayAsType" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType">DisplayAsType</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DisplayAsType DisplayAsType</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.DisplayAsType.html">DisplayAsType</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="properties">Properties
 </h3>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayAsElementsOrAttributes_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsElementsOrAttributes*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayAsElementsOrAttributes" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsElementsOrAttributes">DisplayAsElementsOrAttributes</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property is pretty much only here to support &quot;automatic&quot; creation
+from a <code>json</code> file.  It will ultimately set the <code>DisplayAsType</code>
+property.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -134,15 +113,56 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The only permissible value is &quot;Elements&quot; or &quot;Attributes&quot;.</p>
+</td>
       </tr>
     </tbody>
   </table>
 
 
+  <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayAsType_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayAsType" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayAsType">DisplayAsType</h4>
+  <div class="markdown level1 summary"><p>This property controls how a <code>SECSHeader</code> is displayed in the
+case where a formatter is configured to output using XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DisplayAsType DisplayAsType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.TextFormatter.DisplayAsType.html">DisplayAsType</a></td>
+        <td><p>If this property's value is <code>DisplayAsType.Elements</code> the message's
+header will be displayed using XML elements for the various members of
+the <code>SECSHeader</code>. If the value is <code>DisplayAsType.Attributes</code>
+the header will be display using XML attributes for the various members
+of the <code>SECSHeader</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayAsType_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This property's value has no effect if the output ends up being SML.</p>
+<p>
+The default is to display as Attributes.
+</p>
+</div>
+
+
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayControlMessages_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayControlMessages*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayControlMessages" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayControlMessages">DisplayControlMessages</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property controls whether or not HSMS control messages are
+displayed in the output.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -159,15 +179,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>If <code>true</code> control messages will be displayed in the output.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayControlMessages_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The value of this property is used when the communication is going over an HSMS connection.</p>
+<p>
+The default is <code>false</code>.
+</p>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayDeviceId_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayDeviceId*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayDeviceId" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayDeviceId">DisplayDeviceId</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property controls whether or not the &quot;Device Id&quot; is
+displayed in the output.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -184,15 +213,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>If <code>true</code> a message's Device Id is include in the output.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayDeviceId_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default is <code>false</code>.</p>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayMessageIdAsSxFy_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayMessageIdAsSxFy*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayMessageIdAsSxFy" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayMessageIdAsSxFy">DisplayMessageIdAsSxFy</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property controls how a <code>SECSMessage</code>'s stream and function
+are displayed when the output format is XML.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -209,15 +244,27 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>If <code>true</code>, a message's stream and function are output in a form
+similar to &quot;SxFy&quot;. For example, S1F13. If <code>false</code>
+the message's stream and function are output separately in either
+attribute or element form.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayMessageIdAsSxFy_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This property's value has no effect if the output ends up being SML.</p>
+<p>
+The default is <code>false</code>.
+</p>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplaySystemBytes_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplaySystemBytes*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplaySystemBytes" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplaySystemBytes">DisplaySystemBytes</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property controls whether or not the value of the &quot;System Bytes&quot; are
+displayed in the output.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -234,15 +281,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>If <code>true</code> the value of the system bytes will be displayed in the output.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplaySystemBytes_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default is <code>false</code>.</p>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayWBit_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayWBit*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayWBit" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.DisplayWBit">DisplayWBit</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This property controls whether or not the value of the &quot;W-bit&quot; is
+displayed in the output.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -259,17 +312,26 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>If <code>true</code> the value of the W-bit will be displayed in the output.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_DisplayWBit_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The value of this property is used when generating output in both SML and XML.</p>
+<p>
+The default is <code>true</code>.
+</p>
+</div>
   <h3 id="methods">Methods
 </h3>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_ToString_" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.ToString*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_TextFormatter_HeaderOutputConfig_ToString" data-uid="com.CIMthetics.CSharpSECSTools.TextFormatter.HeaderOutputConfig.ToString">ToString()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a <code>string</code> displaying the current &quot;state&quot; of this instance.
+This is mostly only useful for debugging.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

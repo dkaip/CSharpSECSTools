@@ -35,7 +35,9 @@ Currently, this project may be built using `dotnet` version 6.0.108. The unit te
 
 ## Documentation
 
-There is the documentation in the source files
+Find the documentation WEB site here [CSharpSECSTools](https://dkaip.github.io/CSharpSECSTools).
+
+There is documentation in the source files
 so that IntelliSense capable editors/IDEs will be able to provide support for method completion, etc.
 In addition there is documentation in the `DocFx` folder.
 
