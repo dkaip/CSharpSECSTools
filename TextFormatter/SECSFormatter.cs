@@ -24,8 +24,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 	/// <summary>
 	/// This is an <c>abstract</c> base class providing the framework for classes
     /// that will be able to turn <c>SECSMessage</c>s, <c>SECSHeader</c>s, and 
-    /// <c>SECSITEM</c>s into a C# <c>string</c> suitable for output to a
-    /// terminal and or a file.
+    /// <c>SECSITEM</c>s into a C# <c>string</c> (or append the results to a supplied 
+    /// <c>StringBuilder</c>) producing output suitable for output to a terminal and or a file.
     /// <para>
     /// Note: At this time the current max indentation level is 132 spaces.
     /// </para>
@@ -158,11 +158,11 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         }
 
         /// <summary>
-        /// Create a <c>string</c> representation of a <c>SECSMessage</c>
+        /// Create and return a <c>string</c> representation of a <c>SECSMessage</c>
         /// suitable for output to a terminal or a file.
         /// </summary>
         /// <returns>
-        /// A representation of the <c>SECSMessage</c> in <c>string</c> form that
+        /// A representation of the <c>SECSMessage</c> as a <c>string</c> that
         /// is suitable for output to a terminal or file.
         /// </returns>
         /// <param name="source">
@@ -176,17 +176,22 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         /// representation of.
         /// </param>
         /// <remarks>
-        /// The <c>SECSMessage</c> object is not modified.
+        /// The <c>source</c> and <c>destination</c> arguments are available for
+        /// the user of this method in order to allow for the adding of important
+        /// context information to the generated output text.  A <c>SECSMessage</c> on its
+        /// own does not inherently contain information pertaining to where it
+        /// came from or where it is going.
         /// </remarks>
         public abstract string GetSECSMessageAsText(string source, string destination, SECSMessage secsMessage);
 
         /// <summary>
-        /// Create a <c>string</c> representation of a <c>SECSMessage</c>
-        /// suitable for output to a terminal or a file.
+        /// Create a textual representation of a <c>SECSMessage</c>
+        /// suitable for output to a terminal or a file and append it
+        /// to the supplied <c>StringBuilder</c>.
         /// </summary>
         /// <param name="sb">
         /// A <c>StringBuilder</c> that the user creates and passes in to 
-        /// receive the resulting <c>string</c> representation of the
+        /// receive the resulting textual representation of the
         /// <c>SECSMessage</c>.
         /// </param>
         /// <param name="source">
@@ -201,48 +206,62 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         /// representation of.
         /// </param>
         /// <remarks>
-        /// The <c>SECSMessage</c> object is not modified.
+        /// The <c>source</c> and <c>destination</c> arguments are available for
+        /// the user of this method in order to allow for the adding of important
+        /// context information to the generated output text.  A <c>SECSMessage</c> on its
+        /// own does not inherently contain information pertaining to where it
+        /// came from or where it is going.
         /// </remarks>
         public abstract void GetSECSMessageAsText(StringBuilder sb, string source, string destination, SECSMessage secsMessage);
 
         /// <summary>
-        /// Create a <c>string</c> representation of a <c>SECSHeader</c>
-        /// suitable for output to a terminal or a file.
-        /// </summary>
-        /// <param name="sb">
-        /// A <c>StringBuilder</c> that the user creates and passes in to 
-        /// receive the resulting <c>string</c> representation of the
-        /// <c>SECSHeader</c>.
-        /// </param>
-        /// <param name="secsHeader">
-        /// The <c>SECSHeader</c> object to generate the <c>string</c>
-        /// representation of.
-        /// </param>
-        /// <remarks>
-        /// The <c>SECSHeader</c> object is not modified.
-        /// </remarks>
-        public abstract void GetHeaderAsText(StringBuilder sb, SECSHeader secsHeader);
-
-        /// <summary>
-        /// Create a <c>string</c> representation of a <c>SECSHeader</c>
+        /// Create and return a <c>string</c> representation of a <c>SECSHeader</c>
         /// suitable for output to a terminal or a file.
         /// </summary>
         /// <returns>
-        /// A representation of the <c>SECSHeader</c> in <c>string</c> form that
+        /// A textual representation of the <c>SECSHeader</c> in <c>string</c> form that
         /// is suitable for output to a terminal or file.
         /// </returns>
         /// <param name="secsHeader">
-        /// The <c>SECSHeader</c> object to generate the <c>string</c>
+        /// The <c>SECSHeader</c> object to generate the textual
         /// representation of.
         /// </param>
-        /// <remarks>
-        /// The <c>SECSHeader</c> object is not modified.
-        /// </remarks>
         public abstract string GetHeaderAsText(SECSHeader secsHeader);
 
         /// <summary>
-        /// Create a <c>string</c> representation of a <c>SECSItem</c>
+        /// Create a textual representation of a <c>SECSHeader</c>
+        /// suitable for output to a terminal or a file and append it
+        /// to the supplied <c>StringBuilder</c>.
+        /// </summary>
+        /// <param name="sb">
+        /// A <c>StringBuilder</c> that the user creates and passes in to 
+        /// receive the resulting textual representation of the
+        /// <c>SECSHeader</c>.
+        /// </param>
+        /// <param name="secsHeader">
+        /// The <c>SECSHeader</c> object to generate the textual
+        /// representation of.
+        /// </param>
+        public abstract void GetHeaderAsText(StringBuilder sb, SECSHeader secsHeader);
+
+        /// <summary>
+        /// Create and return a <c>string</c> representation of a <c>SECSItem</c>
         /// suitable for output to a terminal or a file.
+        /// </summary>
+        /// <returns>
+        /// A representation of the <c>SECSItem</c> in textual form that
+        /// is suitable for output to a terminal or file.
+        /// </returns>
+        /// <param name="secsItem">
+        /// The <c>SECSItem</c> object to generate the <c>string</c>
+        /// representation of.
+        /// </param>
+        public abstract string GetSECSItemAsText(SECSItem secsItem);
+
+        /// <summary>
+        /// Create a textual representation of a <c>SECSItem</c>
+        /// suitable for output to a terminal or a file and append it
+        /// to the supplied <c>StringBuilder</c>.
         /// </summary>
         /// <param name="sb">
         /// A <c>StringBuilder</c> that the user creates and passes in to 
@@ -253,27 +272,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         /// The <c>SECSItem</c> object to generate the <c>string</c>
         /// representation of.
         /// </param>
-        /// <remarks>
-        /// The <c>SECSItem</c> object is not modified.
-        /// </remarks>
         public abstract void GetSECSItemAsText(StringBuilder sb, SECSItem secsItem);
-
-        /// <summary>
-        /// Create a <c>string</c> representation of a <c>SECSItem</c>
-        /// suitable for output to a terminal or a file.
-        /// </summary>
-        /// <returns>
-        /// A representation of the <c>SECSItem</c> in <c>string</c> form that
-        /// is suitable for output to a terminal or file.
-        /// </returns>
-        /// <param name="secsItem">
-        /// The <c>SECSItem</c> object to generate the <c>string</c>
-        /// representation of.
-        /// </param>
-        /// <remarks>
-        /// The <c>SECSItem</c> object is not modified.
-        /// </remarks>
-        public abstract string GetSECSItemAsText(SECSItem secsItem);
 
         /// <summary>
         /// Return the number of string digits a signed number will need when
