@@ -13,6 +13,24 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults
   nameWithType: ConnectionDefaults
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.BaudRate
+  name: BaudRate
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_ConnectionDefaults_BaudRate
+  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.BaudRate
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.BaudRate
+  nameWithType: ConnectionDefaults.BaudRate
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.Bits
+  name: Bits
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_ConnectionDefaults_Bits
+  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.Bits
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.Bits
+  nameWithType: ConnectionDefaults.Bits
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.Parity
+  name: Parity
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_ConnectionDefaults_Parity
+  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.Parity
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.Parity
+  nameWithType: ConnectionDefaults.Parity
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.Port
   name: Port
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_ConnectionDefaults_Port
@@ -25,6 +43,12 @@ references:
   commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.RetryCount
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.RetryCount
   nameWithType: ConnectionDefaults.RetryCount
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.StopBits
+  name: StopBits
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_ConnectionDefaults_StopBits
+  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.StopBits
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.StopBits
+  nameWithType: ConnectionDefaults.StopBits
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.T1
   name: T1
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_ConnectionDefaults_T1
@@ -79,15 +103,18 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection
   nameWithType: HSMSConnection
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage},System.Net.IPAddress,System.UInt16,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
-  name: HSMSConnection(String, BlockingCollection<SECSMessage>, IPAddress, UInt16, HSMSConnectionMode)
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_System_String_System_Collections_Concurrent_BlockingCollection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__System_Net_IPAddress_System_UInt16_com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnectionMode_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage},System.Net.IPAddress,System.UInt16,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
-  name.vb: HSMSConnection(String, BlockingCollection(Of SECSMessage), IPAddress, UInt16, HSMSConnectionMode)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnection(System.String, System.Collections.Concurrent.BlockingCollection<com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage>, System.Net.IPAddress, System.UInt16, com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnection(System.String, System.Collections.Concurrent.BlockingCollection(Of com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage), System.Net.IPAddress, System.UInt16, com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
-  nameWithType: HSMSConnection.HSMSConnection(String, BlockingCollection<SECSMessage>, IPAddress, UInt16, HSMSConnectionMode)
-  nameWithType.vb: HSMSConnection.HSMSConnection(String, BlockingCollection(Of SECSMessage), IPAddress, UInt16, HSMSConnectionMode)
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
+  name: HSMSConnection(SECSConnectionConfigInfo)
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
+  nameWithType: HSMSConnection.HSMSConnection(SECSConnectionConfigInfo)
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Net.IPAddress,System.UInt16,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
+  name: HSMSConnection(String, IPAddress, UInt16, HSMSConnectionMode)
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_System_String_System_Net_IPAddress_System_UInt16_com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnectionMode_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Net.IPAddress,System.UInt16,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnection(System.String, System.Net.IPAddress, System.UInt16, com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
+  nameWithType: HSMSConnection.HSMSConnection(String, IPAddress, UInt16, HSMSConnectionMode)
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor*
   name: HSMSConnection
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_
@@ -95,6 +122,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnection
   nameWithType: HSMSConnection.HSMSConnection
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.AddressFamily
+  name: AddressFamily
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_AddressFamily
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.AddressFamily
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.AddressFamily
+  nameWithType: HSMSConnection.AddressFamily
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.AddressFamily*
+  name: AddressFamily
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_AddressFamily_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.AddressFamily
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.AddressFamily
+  nameWithType: HSMSConnection.AddressFamily
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionMode
   name: ConnectionMode
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_ConnectionMode
@@ -147,19 +187,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.PortNumber
   nameWithType: HSMSConnection.PortNumber
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.SendMessage(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)
-  name: SendMessage(SECSMessage)
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_SendMessage_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.SendMessage(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.SendMessage(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)
-  nameWithType: HSMSConnection.SendMessage(SECSMessage)
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.SendMessage*
-  name: SendMessage
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_SendMessage_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.SendMessage
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.SendMessage
-  nameWithType: HSMSConnection.SendMessage
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.Start
   name: Start()
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_Start
@@ -186,6 +213,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.Stop
   nameWithType: HSMSConnection.Stop
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.T3
+  name: T3
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_T3
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.T3
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.T3
+  nameWithType: HSMSConnection.T3
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.T3*
+  name: T3
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_T3_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.T3
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.T3
+  nameWithType: HSMSConnection.T3
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.T5
   name: T5
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_T5
@@ -2029,15 +2069,12 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection
   nameWithType: SECSConnection
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.#ctor(System.String,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage})
-  name: SECSConnection(String, BlockingCollection<SECSMessage>)
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection__ctor_System_String_System_Collections_Concurrent_BlockingCollection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.#ctor(System.String,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage})
-  name.vb: SECSConnection(String, BlockingCollection(Of SECSMessage))
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.SECSConnection(System.String, System.Collections.Concurrent.BlockingCollection<com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage>)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.SECSConnection(System.String, System.Collections.Concurrent.BlockingCollection(Of com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage))
-  nameWithType: SECSConnection.SECSConnection(String, BlockingCollection<SECSMessage>)
-  nameWithType.vb: SECSConnection.SECSConnection(String, BlockingCollection(Of SECSMessage))
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.#ctor(System.String)
+  name: SECSConnection(String)
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection__ctor_System_String_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.#ctor(System.String)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.SECSConnection(System.String)
+  nameWithType: SECSConnection.SECSConnection(String)
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.#ctor*
   name: SECSConnection
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection__ctor_
@@ -2058,19 +2095,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.ConnectionName
   nameWithType: SECSConnection.ConnectionName
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.GetThread
-  name: GetThread()
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_GetThread
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.GetThread
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.GetThread()
-  nameWithType: SECSConnection.GetThread()
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.GetThread*
-  name: GetThread
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_GetThread_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.GetThread
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.GetThread
-  nameWithType: SECSConnection.GetThread
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.MessagesReceivedQueue
   name: MessagesReceivedQueue
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_MessagesReceivedQueue
@@ -2136,19 +2160,285 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.Stop
   nameWithType: SECSConnection.Stop
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.T3
-  name: T3
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_T3
-  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.T3
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.T3
-  nameWithType: SECSConnection.T3
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.T3*
-  name: T3
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_T3_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.T3
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo
+  name: SECSConnectionConfigInfo
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html
+  commentId: T:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo
+  nameWithType: SECSConnectionConfigInfo
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Address
+  name: Address
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Address
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Address
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Address
+  nameWithType: SECSConnectionConfigInfo.Address
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Address*
+  name: Address
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Address_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Address
   isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.T3
-  nameWithType: SECSConnection.T3
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Address
+  nameWithType: SECSConnectionConfigInfo.Address
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.AddressFamily
+  name: AddressFamily
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_AddressFamily
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.AddressFamily
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.AddressFamily
+  nameWithType: SECSConnectionConfigInfo.AddressFamily
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.AddressFamily*
+  name: AddressFamily
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_AddressFamily_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.AddressFamily
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.AddressFamily
+  nameWithType: SECSConnectionConfigInfo.AddressFamily
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.BaudRate
+  name: BaudRate
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_BaudRate
+  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.BaudRate
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.BaudRate
+  nameWithType: SECSConnectionConfigInfo.BaudRate
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Bits
+  name: Bits
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Bits
+  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Bits
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Bits
+  nameWithType: SECSConnectionConfigInfo.Bits
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ConnectionMode
+  name: ConnectionMode
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_ConnectionMode
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ConnectionMode
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ConnectionMode
+  nameWithType: SECSConnectionConfigInfo.ConnectionMode
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ConnectionMode*
+  name: ConnectionMode
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_ConnectionMode_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ConnectionMode
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ConnectionMode
+  nameWithType: SECSConnectionConfigInfo.ConnectionMode
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.HSMSConnectionMode
+  name: HSMSConnectionMode
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_HSMSConnectionMode
+  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.HSMSConnectionMode
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.HSMSConnectionMode
+  nameWithType: SECSConnectionConfigInfo.HSMSConnectionMode
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Name
+  name: Name
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Name
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Name
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Name
+  nameWithType: SECSConnectionConfigInfo.Name
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Name*
+  name: Name
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Name_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Name
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Name
+  nameWithType: SECSConnectionConfigInfo.Name
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Parity
+  name: Parity
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Parity
+  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Parity
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Parity
+  nameWithType: SECSConnectionConfigInfo.Parity
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Port
+  name: Port
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Port
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Port
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Port
+  nameWithType: SECSConnectionConfigInfo.Port
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Port*
+  name: Port
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Port_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Port
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Port
+  nameWithType: SECSConnectionConfigInfo.Port
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.RetryCount
+  name: RetryCount
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_RetryCount
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.RetryCount
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.RetryCount
+  nameWithType: SECSConnectionConfigInfo.RetryCount
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.RetryCount*
+  name: RetryCount
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_RetryCount_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.RetryCount
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.RetryCount
+  nameWithType: SECSConnectionConfigInfo.RetryCount
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.StopBits
+  name: StopBits
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_StopBits
+  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.StopBits
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.StopBits
+  nameWithType: SECSConnectionConfigInfo.StopBits
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T1
+  name: T1
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T1
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T1
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T1
+  nameWithType: SECSConnectionConfigInfo.T1
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T1*
+  name: T1
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T1_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T1
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T1
+  nameWithType: SECSConnectionConfigInfo.T1
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T2
+  name: T2
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T2
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T2
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T2
+  nameWithType: SECSConnectionConfigInfo.T2
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T2*
+  name: T2
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T2_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T2
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T2
+  nameWithType: SECSConnectionConfigInfo.T2
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T3
+  name: T3
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T3
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T3
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T3
+  nameWithType: SECSConnectionConfigInfo.T3
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T3*
+  name: T3
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T3_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T3
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T3
+  nameWithType: SECSConnectionConfigInfo.T3
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T4
+  name: T4
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T4
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T4
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T4
+  nameWithType: SECSConnectionConfigInfo.T4
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T4*
+  name: T4
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T4_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T4
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T4
+  nameWithType: SECSConnectionConfigInfo.T4
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T5
+  name: T5
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T5
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T5
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T5
+  nameWithType: SECSConnectionConfigInfo.T5
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T5*
+  name: T5
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T5_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T5
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T5
+  nameWithType: SECSConnectionConfigInfo.T5
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T6
+  name: T6
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T6
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T6
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T6
+  nameWithType: SECSConnectionConfigInfo.T6
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T6*
+  name: T6
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T6_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T6
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T6
+  nameWithType: SECSConnectionConfigInfo.T6
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T7
+  name: T7
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T7
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T7
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T7
+  nameWithType: SECSConnectionConfigInfo.T7
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T7*
+  name: T7
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T7_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T7
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T7
+  nameWithType: SECSConnectionConfigInfo.T7
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T8
+  name: T8
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T8
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T8
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T8
+  nameWithType: SECSConnectionConfigInfo.T8
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T8*
+  name: T8
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_T8_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T8
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.T8
+  nameWithType: SECSConnectionConfigInfo.T8
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ToString
+  name: ToString()
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_ToString
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ToString
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ToString()
+  nameWithType: SECSConnectionConfigInfo.ToString()
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ToString*
+  name: ToString
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_ToString_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ToString
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.ToString
+  nameWithType: SECSConnectionConfigInfo.ToString
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.TTYPort
+  name: TTYPort
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_TTYPort
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.TTYPort
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.TTYPort
+  nameWithType: SECSConnectionConfigInfo.TTYPort
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.TTYPort*
+  name: TTYPort
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_TTYPort_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.TTYPort
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.TTYPort
+  nameWithType: SECSConnectionConfigInfo.TTYPort
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Type
+  name: Type
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Type
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Type
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Type
+  nameWithType: SECSConnectionConfigInfo.Type
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Type*
+  name: Type
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_Type_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Type
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.Type
+  nameWithType: SECSConnectionConfigInfo.Type
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory
+  name: SECSConnectionFactory
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.html
+  commentId: T:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory
+  nameWithType: SECSConnectionFactory
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage})
+  name: CreateConnection(SECSConnectionConfigInfo, BlockingCollection<SECSMessage>)
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionFactory_CreateConnection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_System_Collections_Concurrent_BlockingCollection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage})
+  name.vb: CreateConnection(SECSConnectionConfigInfo, BlockingCollection(Of SECSMessage))
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo, System.Collections.Concurrent.BlockingCollection<com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage>)
+  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo, System.Collections.Concurrent.BlockingCollection(Of com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage))
+  nameWithType: SECSConnectionFactory.CreateConnection(SECSConnectionConfigInfo, BlockingCollection<SECSMessage>)
+  nameWithType.vb: SECSConnectionFactory.CreateConnection(SECSConnectionConfigInfo, BlockingCollection(Of SECSMessage))
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection*
+  name: CreateConnection
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionFactory_CreateConnection_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection
+  nameWithType: SECSConnectionFactory.CreateConnection
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionType
   name: SECSConnectionType
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionType.html
@@ -2247,19 +2537,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.RetryCount
   nameWithType: SECSIConnection.RetryCount
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SendMessage(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)
-  name: SendMessage(SECSMessage)
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_SendMessage_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SendMessage(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SendMessage(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)
-  nameWithType: SECSIConnection.SendMessage(SECSMessage)
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SendMessage*
-  name: SendMessage
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_SendMessage_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SendMessage
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SendMessage
-  nameWithType: SECSIConnection.SendMessage
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.Start
   name: Start()
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_Start
@@ -2312,6 +2589,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T2
   nameWithType: SECSIConnection.T2
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T3
+  name: T3
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T3
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T3
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T3
+  nameWithType: SECSIConnection.T3
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T3*
+  name: T3
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T3_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T3
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T3
+  nameWithType: SECSIConnection.T3
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T4
   name: T4
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T4

@@ -72,7 +72,9 @@
 
   <h1 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection" class="text-break">Class SECSIConnection
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>This class implements a <code>SECSConnection</code> that uses SECS-I for
+its transport layer.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -83,9 +85,6 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_T3">SECSConnection.T3</a>
-    </div>
-    <div>
       <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_ConnectionName">SECSConnection.ConnectionName</a>
     </div>
     <div>
@@ -95,7 +94,7 @@
       <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_MessagesReceivedQueue">SECSConnection.MessagesReceivedQueue</a>
     </div>
     <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_GetThread">SECSConnection.GetThread()</a>
+      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_SendMessage_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_">SECSConnection.SendMessage(SECSMessage)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.html">com.CIMthetics.CSharpSECSTools.SECSCommUtils</a></h6>
@@ -110,7 +109,9 @@
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.#ctor*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection__ctor_System_String_System_Collections_Concurrent_BlockingCollection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__System_String_System_Boolean_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.#ctor(System.String,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage},System.String,System.Boolean)">SECSIConnection(String, BlockingCollection&lt;SECSMessage&gt;, String, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses SECS-I for
+its transport layer.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -154,7 +155,9 @@
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_Master_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.Master*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_Master" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.Master">Master</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses SECS-I for
+its transport layer.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -179,7 +182,9 @@
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_RetryCount_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.RetryCount*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_RetryCount" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.RetryCount">RetryCount</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses SECS-I for
+its transport layer.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -204,7 +209,8 @@
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T1_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T1*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T1" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T1">T1</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Inter-Character Timeout</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -221,15 +227,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
-        <td></td>
+        <td><p>The Inter-Character timeout in milliseconds.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T1_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>Default: 0.5 seconds (500 milliseconds)</li>
+<li>Range: 0.1 - 10.0 seconds</li>
+<li>Resolution: 0.1 second (100 milliseconds)</li>
+</ul>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T2_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T2*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T2" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T2">T2</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Protocol Timeout</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -246,15 +261,58 @@
     <tbody>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
-        <td></td>
+        <td><p>The Protocol timeout in milliseconds.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T2_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>Default: 10 seconds (10000 milliseconds)</li>
+<li>Range: 0.2 - 25.0 seconds</li>
+<li>Resolution: 0.1 second (100 milliseconds)</li>
+</ul>
+</div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T3_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T3*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T3" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T3">T3</h4>
+  <div class="markdown level1 summary"><p>Transaction Reply Timeout</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint T3 { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The transaction reply timeout in seconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T3_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>Default: 45 seconds</li>
+<li>Range: 1 - 120 seconds</li>
+<li>Resolution: 1 second</li>
+</ul>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T4_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T4*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T4" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.T4">T4</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Inter-Block Timeout</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -271,15 +329,25 @@
     <tbody>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
-        <td></td>
+        <td><p>The Inter-Block timeout in seconds.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_T4_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>Default: 45 seconds</li>
+<li>Range: 1 - 120 seconds</li>
+<li>Resolution: 1 second</li>
+</ul>
+</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_TTYPort_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.TTYPort*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_TTYPort" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.TTYPort">TTYPort</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses SECS-I for
+its transport layer.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -304,38 +372,11 @@
 </h3>
 
 
-  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_SendMessage_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SendMessage*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_SendMessage_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SendMessage(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage)">SendMessage(SECSMessage)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void SendMessage(SECSMessage message)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_SendMessage_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_">SECSConnection.SendMessage(SECSMessage)</a></div>
-
-
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_Start_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.Start*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_Start" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.Start">Start()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses SECS-I for
+its transport layer.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -347,7 +388,9 @@
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_Stop_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.Stop*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection_Stop" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.Stop">Stop()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses SECS-I for
+its transport layer.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.ConnectionDefaults.html",
-          "hash": "50xiV5TKh2Nt6QVofPY5/K0rTMysS0KPVYeEWDjzxpA="
+          "hash": "6T8wAA7O4OOt+s9X6Nv8N9pnxFfsIALqZ1hcgrtjExg="
         }
       },
       "is_incremental": true,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html",
-          "hash": "cjKz+fJR9qsrHU4AuFIzRHEkwLg01bTa6eqFOKhjIjk="
+          "hash": "RjDpF5R0KmN1hJRePYIF0T8jG23qHky0svFu9i0Fz/M="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode.html",
-          "hash": "sUs0WsEIXqF2Z+CeOP2Axef/AzRCrmnh4UGeDd0n67k="
+          "hash": "5HRQJNdag3qW+DuyjqpE2NSyvHMumQXbQ/xSMzzLjKs="
         }
       },
       "is_incremental": true,
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSHeader.html",
-          "hash": "PRtPFqpb9sovWh8n3MdYLYs0NExQ1UV8/KqA4l5OaH8="
+          "hash": "up5wnE7e9AjkkHDoSDcUAHt+tDZVYeKvn1Qw6WTuSmM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,7 +93,31 @@
       "output": {
         ".html": {
           "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html",
-          "hash": "/Vc+AfVZEVS13u/IkSAzDyMBGpK6sb5aq/wYr6TttGg="
+          "hash": "otVxdbPx+dxKyvH8G3i5KMlrFh5DOFYC2ntXbzOJ3G4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo.html",
+          "hash": "hBntZB0qEw6DsZKOAvCzcKknh6oT60/do9+VUgXPA0A="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.html",
+          "hash": "CHjMFgyFvSZ3ZEJV0b2wxIxPgMc9Jhp5il7PllfDyc0="
         }
       },
       "is_incremental": false,
@@ -120,7 +144,7 @@
           "hash": "ciHHhohpt9ZoD9ZwvI/nzwFT2y2LDlhVcKtd4i494LE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -129,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html",
-          "hash": "CuhfUa8HZ/5e5TsovoBFVFG20iBvNtZ+Odj9PaPSxms="
+          "hash": "DCya95gSZrIKF/ETSB1eN8FrtxwaKhuv6snCwC+McPE="
         }
       },
       "is_incremental": false,
@@ -144,7 +168,7 @@
           "hash": "kIxqtnnvtdySBp7FjxhsWEPr6DM/08sDRtjdaWEQjp0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -201,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.html",
-          "hash": "tDWkXRMkAaCwvkp0RvWHAhxTu1dJiC4TdlDqlIYsPpw="
+          "hash": "AFnXVxkx0k/lDXJ0l7WZ+AThaawIp9/OVtEGbeqqG3c="
         }
       },
       "is_incremental": false,
@@ -225,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SECSCommUtils/toc.html",
-          "hash": "QVvYZbcQmgRwSLG1SC2nPP7/xIp8k3sreJlcCI836is="
+          "hash": "iYu5qnCZOJhm38dhQ0VStNP+fvKCz20r1Z4PPc0jaBo="
         }
       },
       "is_incremental": false,
@@ -861,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "utilities/SECSSpy.html",
-          "hash": "okL0RETBsv8VB84m+TY97Hnb+fts3e7rnDm98e2UlXM="
+          "hash": "3sd+rX/aBXJgWGlLb/DVDEVU1KVdHUAJzpvGEFtRFMg="
         }
       },
       "is_incremental": true,
@@ -922,8 +946,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 59,
-          "skipped_file_count": 55
+          "total_file_count": 61,
+          "skipped_file_count": 59
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

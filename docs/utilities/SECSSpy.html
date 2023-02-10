@@ -68,7 +68,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="secsspy">SECSSpy</h1>
 
-<p>This utility program is used to log the SECS message traffic between two endpoints of a &quot;SECS connection&quot; to a file.</p>
+<p>This utility program is used to log the SECS message traffic between two endpoints of a &quot;SECS connection&quot; to a terminal  or a file.</p>
 <p>The output format of the resulting log file may be configured to be either <a href="https://www.peergroup.com/resources/secs-message-language/">SECS Message Language(SML)</a> or <a href="https://www.w3.org/standards/xml/core">XML(Extensible Markup Language)</a>.  When the output format is selected there are a number of customization options that may be applied depending on the output format selected.  Refer to the <a href="#smloutput">SML Output</a> or <a href="#xmloutput">XML Output</a> sections of this document for more information on these options.</p>
 <p>Why are there two output formats available?  SML has been around for many years now and is quite familiar to those who have been working in this part of this industry for a long time.  When looking at the log files with your own eyes it is very adequate.  However, it can be a real pain to write a parser for, hence the ability to write out log files in XML.  Why would you ever need to parse a log file?</p>
 <p>There are a number of reasons why being able to easily parse a log file is a good and useful thing.</p>
@@ -77,7 +77,11 @@
 <li>Audit Trail - depending on your software integration / automation stack it may be much easier to generate audit trail information from log files generated from the communication between the MES software and the equipment than it is to generate the information from other sources.</li>
 </ul>
 <p>There are plenty of additional uses for a log files that may be parsed easily by a program.</p>
-<p><strong>Note:</strong> At this time this program is only able to log SECS messages between two endpoints of an HSMS connection.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>At this time this program is only able to log SECS messages between two endpoints of an HSMS connection.</li>
+<li>The IP Address Family of the HSMS connection may be either IPV4 or IPV6.</li>
+</ul>
 <h2 id="configuration-file">Configuration File</h2>
 <p>The configuration file, unless specified on the command line, is <code>appsettings.json</code>.  This file contains several elements that are needed to configure <code>SECSSpy</code> for operation.  Following is documentation pertaining to various elements.</p>
 <h3 id="configurationpairs">&quot;ConfigurationPairs&quot;</h3>
