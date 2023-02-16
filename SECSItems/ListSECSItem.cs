@@ -27,9 +27,29 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
     /// </summary>
 	public class ListSECSItem : SECSItem
 	{
-		private LinkedList<SECSItem> _value;
+		private LinkedList<SECSItem> _value = new LinkedList<SECSItem>();
 
         private String[] delimiterArray = new string[1] { "." };
+
+		/// <summary>
+		/// This property, as per the specification, returns the number of 
+		/// elements this <c>ListSECEItem</c> contains, NOT, the number of
+		/// bytes it take up.
+		/// </summary>
+        public override int LengthInBytes { get { return _value.Count; } }
+
+		/// <summary>
+		/// This is the offset to the next byte needing processing when constructing
+		/// this <c>ListSECSItem</c> from a <c>byte[]</c>.  When processing
+		/// <c>SECSItem</c> in <c>byte[]</c> form you cannot know the length in
+		/// bytes that a list consumes from the <c>byte[]</c> until after 
+		/// you have &quot;filled it out&quot;.  List
+		/// generation is done recursively.  Once a sub list is generated the
+		/// offset to the next byte to process needs to calculated.  This
+		/// attribute contains the offset to the next byte that needs to be
+		/// processed after a list is generated.
+		/// </summary>
+		private UInt32 _offsetToNextItemToProcess = 0;
 
 		/// <summary>
 		/// The value of this <c>ListSECSItem</c>.
@@ -39,10 +59,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <summary>
         /// This constructor creates a <c>ListSECSItem</c> with no elements.
         /// </summary>
-		public ListSECSItem() : base(SECSItemFormatCode.L, 0)
-		{
-            this._value = new LinkedList<SECSItem>();
-		}
+		public ListSECSItem() : base(SECSItemFormatCode.L, 0) { }
 
         /// <summary>
         /// This constructor creates a ListSECSItem that will have the value of
@@ -52,12 +69,9 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <remarks>
         /// The array's length should not exceed <c>16777215</c> elements.
         /// </remarks>
-        public ListSECSItem(LinkedList<SECSItem>? value) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count)
+        public ListSECSItem(LinkedList<SECSItem> value) : base(SECSItemFormatCode.L, value.Count)
 		{
-            if (value == null)
-                this._value = new LinkedList<SECSItem>();
-            else
-				this._value = value;
+			this._value = value;
 		}
 
         /// <summary>
@@ -73,32 +87,48 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <remarks>
         /// The array's length should not exceed <c>16777215</c> elements.
         /// </remarks>
-        public ListSECSItem(LinkedList<SECSItem> value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count, desiredNumberOfLengthBytes)
+        public ListSECSItem(LinkedList<SECSItem>? value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count, desiredNumberOfLengthBytes)
 		{
-            if (value == null)
-                this._value = new LinkedList<SECSItem>();
-            else
+            if (value != null)
 				this._value = value;
 		}
 
         /// <summary>
-        /// This constructor is used to create this SECSItem from
+        /// This constructor is used to create a  <c>ListSECSItem</c> from
         /// data in &quot;wire/transmission&quot; format.
         /// </summary>
         /// <param name="data">The buffer where the &quot;wire/transmission&quot; format data is contained.</param>
         /// <param name="itemOffset">The offset into the data where the desired item starts.</param>
-		internal ListSECSItem(byte[] data, int itemOffset) : base(data, itemOffset)
+        /// <param name="numberOfElements">The number of elements that the list contains.</param>
+		/// <remarks>
+		/// This constructor is different from the other constructors of this type in that
+		/// the number of elements in the list to be created is passed in as an argument.
+		/// Since the <c>SECSItemFactory</c> that calls this form of constructor has already
+		/// calculated the number of elements I thought it was much cleaner to just pass
+		/// in the number that was already calculated as opposed to adding the code here
+		/// to accomplish the same thing.
+		/// </remarks>
+		internal ListSECSItem(byte[] data, int itemOffset, int numberOfElements) : base(data, itemOffset)
 		{
-            int offset = 1 + NumberOfLengthBytes.ValueOf() + itemOffset;
 
-			_value = new LinkedList<SECSItem>();
+            _offsetToNextItemToProcess = (UInt32)(1 + NumberOfLengthBytes.ValueOf() + itemOffset);
 
-            for( int i = 0; i < LengthInBytes; i++)
+            for( int i = 0; i < numberOfElements; i++)
 			{
-				SECSItem? temp = SECSItemFactory.GenerateSECSItem(data, offset);
+				SECSItem? temp = SECSItemFactory.GenerateSECSItem(data, (int)_offsetToNextItemToProcess);
 				if (temp != null)
 				{
-					offset += 1 + temp.NumberOfLengthBytes.ValueOf() + temp.LengthInBytes;
+					if (temp.ItemFormatCode == SECSItemFormatCode.L)
+					{
+						// temp is a list
+						_offsetToNextItemToProcess = ((ListSECSItem)temp)._offsetToNextItemToProcess;
+					}
+					else
+					{
+						// temp is not a list
+						_offsetToNextItemToProcess += (UInt32)(1 + temp.NumberOfLengthBytes.ValueOf() + temp.LengthInBytes);
+					}
+
 					_value.AddLast(temp);
 				}
 			}
@@ -116,19 +146,20 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 
 		/// <summary>
 		///       This method returns a SECSItem contained in this list based on its 
-		/// "address" or null if the item does not exist.  
+		/// &quot;address&quot; or null if the item does not exist.  
 		///
-		///	In the example below a specified address of "3.2" would return the
+		///	In the example below, which represents the content of a list, a specified address of "3.2" would return the
 		///		element with the value 'Answer'.
 		///
 		///		<ol>
 		///		<li>A 'ABC' </li>
 		///		<li>A 'DEF' </li>
-		///		<li>L 3 </li>
+		///		<li>L 4 </li>
 		///		<ol>
 		///		<li>I2 -32768</li>
 		///		<li>A 'Answer'</li>
 		///		<li>U1 255</li>
+		///     <li>A 'Not The Answer'</li>
 		///		</ol>
 		///		<li>F4 3.141592</li>
 		///		</ol>
