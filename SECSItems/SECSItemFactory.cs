@@ -109,11 +109,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 					}
 			}
 
-
 			switch(formatCode)
 			{
 				case SECSItemFormatCode.L:
-					result = new ListSECSItem(data, offset);
+					result = new ListSECSItem(data, offset, incomingDataLength);
 					break;
 				case SECSItemFormatCode.B:
 					result = new BinarySECSItem(data, offset);
