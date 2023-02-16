@@ -93,7 +93,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// This is the length in bytes that this SECSItem requires, 
         /// NOT including its item header.
         /// </summary>
-        public int LengthInBytes { get { return _lengthInBytes; } }
+        public virtual int LengthInBytes { get { return _lengthInBytes; } }
 
         // /// <summary>
         // /// This contains the number of bytes that have been consumed when
@@ -163,6 +163,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         }
     
         /// <summary>
+        /// FIXME
         ///  This is a base class constructor for a SECSItem.  This form of the constructor
         /// is used when parsing wire/transmission format data and converting it into
         /// its "C# form".
