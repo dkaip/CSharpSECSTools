@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using System.Collections;
 using System.Text;
 
 #nullable enable
@@ -22,12 +23,11 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 {
     /// <summary>
     /// This class represents a <c>SECSItem</c> with the SECS data type of <c>L</c>,
-    ///  which is a list of <c>SECSItem</c>s. From the C# side this data
-    /// type is handled as a C# <c>LinkedList&lt;SECSItem&gt;</c>.
+    ///  which is a list of <c>SECSItem</c>s.
     /// </summary>
-	public class ListSECSItem : SECSItem
+	public class ListSECSItem : SECSItem, IList<SECSItem>
 	{
-		private LinkedList<SECSItem> _value = new LinkedList<SECSItem>();
+		private readonly IList<SECSItem> _value = new List<SECSItem>();
 
         private String[] delimiterArray = new string[1] { "." };
 
@@ -36,50 +36,93 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 		/// elements this <c>ListSECEItem</c> contains, NOT, the number of
 		/// bytes it take up.
 		/// </summary>
+		/// <remarks>
+		/// This property only counts the elements in this list. It does not
+		/// account for any elements within any <c>ListSECSItem</c>s that may be contained in this list.
+		/// For example, if this <c>ListSECSItem</c> has 5 elements that are themselves
+		/// <c>ListSECSItem</c>s each with 5 elements. It will still only return
+		/// a value of 5.
+		/// </remarks>
         public override int LengthInBytes { get { return _value.Count; } }
 
 		/// <summary>
-		/// This is the offset to the next byte needing processing when constructing
-		/// this <c>ListSECSItem</c> from a <c>byte[]</c>.  When processing
-		/// <c>SECSItem</c> in <c>byte[]</c> form you cannot know the length in
-		/// bytes that a list consumes from the <c>byte[]</c> until after 
-		/// you have &quot;filled it out&quot;.  List
-		/// generation is done recursively.  Once a sub list is generated the
-		/// offset to the next byte to process needs to calculated.  This
-		/// attribute contains the offset to the next byte that needs to be
-		/// processed after a list is generated.
+		/// The number of <c>SECSItem</c> elements contained within this <c>ListSECSItem</c>
 		/// </summary>
-		private UInt32 _offsetToNextItemToProcess = 0;
+		/// <remarks>
+		/// This property only counts the elements in this list. It does not
+		/// account for any elements within any <c>ListSECSItem</c>s that may be contained in this list.
+		/// For example, if this <c>ListSECSItem</c> has 5 elements that are themselves
+		/// <c>ListSECSItem</c>s each with 5 elements. It will still only return
+		/// a value of 5.
+		/// <para>
+		/// This returns the same value as the <c>LengthInBytes</c> property.
+		/// </para>
+		/// </remarks>
+        public int Count => _value.Count;
 
 		/// <summary>
-		/// The value of this <c>ListSECSItem</c>.
+		/// Indicates whether or not this Object is read only.
 		/// </summary>
-		public LinkedList<SECSItem> Value { get { return _value; } }
+        public bool IsReadOnly => _value.IsReadOnly;
+
+		/// <summary>
+		/// Gets or sets the <c>SECSItem</c> element at the provided index(zero-based) in this list.
+		/// <code>
+		/// SECSItem item = myFullListSECSItem[4];
+		/// 
+		///     or
+		/// 
+		/// myFullListSECSItem[4] = theReplacementSECSItem;
+		/// </code>
+		/// </summary>
+		/// <param name="index">The zero-based index of the <c>SECSItem</c> that will be retrieved or
+		/// replaced in this list.</param>
+		/// <value>
+		/// A <c>SECSItem</c> at the specified position.
+		/// </value>
+		/// <exception cref="ArgumentOutOfRangeException">
+		/// Thrown if <c>index</c> is <c>&lt; 0 </c> or greater than <c>Count</c>.
+		/// </exception>
+        public SECSItem this[int index] { get => _value[index]; set => _value[index] = value; }
+
+        /// <summary>
+        /// This is the offset to the next byte needing processing when constructing
+        /// this <c>ListSECSItem</c> from a <c>byte[]</c>.  When processing
+        /// <c>SECSItem</c> in <c>byte[]</c> form you cannot know the length in
+        /// bytes that a list consumes from the <c>byte[]</c> until after 
+        /// you have &quot;filled it out&quot;.  List
+        /// generation is done recursively.  Once a sub list is generated the
+        /// offset to the next byte to process needs to calculated.  This
+        /// attribute contains the offset to the next byte that needs to be
+        /// processed after a list is generated.
+        /// </summary>
+        private UInt32 _offsetToNextItemToProcess = 0;
 
         /// <summary>
         /// This constructor creates a <c>ListSECSItem</c> with no elements.
         /// </summary>
-		public ListSECSItem() : base(SECSItemFormatCode.L, 0) { }
+        public ListSECSItem() : base(SECSItemFormatCode.L, 0) { }
 
         /// <summary>
         /// This constructor creates a ListSECSItem that will have the value of
-        /// the supplied <c>LinkedList&lt;SECSItem&gt;</c>.
+        /// the supplied <c>ListSECSItem</c>.
         /// </summary>
-        /// <param name="value">A list of <c>LinkedList&lt;SECSItem&gt;</c> values to be assigned to this <c>SECSItem</c>.</param>
+        /// <param name="value">A l<c>ListSECSItem</c>.</param>
         /// <remarks>
         /// The array's length should not exceed <c>16777215</c> elements.
         /// </remarks>
-        public ListSECSItem(LinkedList<SECSItem> value) : base(SECSItemFormatCode.L, value.Count)
+        public ListSECSItem(ListSECSItem? value) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count)
 		{
-			this._value = value;
+			if (value != null)
+				this._value = value._value;
 		}
 
         /// <summary>
         /// This constructor creates an ListSECSItem that will have the value of
-        /// the supplied <c>LinkedList&lt;SECSItem&gt;</c>.  In addition when converted to 
+        /// the supplied <c>ListSECSItem</c>.  In addition when converted to 
         /// &quot;transmission&quot; form it will use the number of length bytes
         /// specified <b>OR</b> the minimum number necessary to actually contain 
-        /// the length of the content of the <c>LinkedList&lt;SECSItem&gt;</c>.
+        /// the length of the content of this <c>ListSECSItem</c>.
         /// </summary>
         /// <param name="value">The value to be assigned to this <c>SECSItem</c>.</param>
         /// <param name="desiredNumberOfLengthBytes">The number of length bytes to be used for this <code>SECSItem</code>.
@@ -87,10 +130,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <remarks>
         /// The array's length should not exceed <c>16777215</c> elements.
         /// </remarks>
-        public ListSECSItem(LinkedList<SECSItem>? value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count, desiredNumberOfLengthBytes)
+        public ListSECSItem(ListSECSItem? value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count, desiredNumberOfLengthBytes)
 		{
-            if (value != null)
-				this._value = value;
+			if (value != null)
+				this._value = value._value;
 		}
 
         /// <summary>
@@ -129,24 +172,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 						_offsetToNextItemToProcess += (UInt32)(1 + temp.NumberOfLengthBytes.ValueOf() + temp.LengthInBytes);
 					}
 
-					_value.AddLast(temp);
+					_value.Add(temp);
 				}
 			}
 		}
 
-        /// <summary>
-        /// Gets the value of this <c>SECSItem</c>.
-        /// </summary>
-        /// <returns>the value of the <c>SECSItem</c>.</returns>
-		[ObsoleteAttribute("This method has been deprecated, please use property Value instead.")]
-		public LinkedList<SECSItem> GetValue()
-		{
-			return _value;
-		}
-
 		/// <summary>
-		///       This method returns a SECSItem contained in this list based on its 
-		/// &quot;address&quot; or null if the item does not exist.  
+		/// This method returns a SECSItem contained in this list based on its 
+		/// &quot;address&quot;.
 		///
 		///	In the example below, which represents the content of a list, a specified address of "3.2" would return the
 		///		element with the value 'Answer'.
@@ -164,8 +197,10 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 		///		<li>F4 3.141592</li>
 		///		</ol>
 		/// </summary>
-		/// <returns>The <see cref="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem"/>.</returns>
-		/// <param name="address">The SECSItem at the provided address or null if not found.</param>
+		/// <param name="address">The &quot;address&quot; of the desired item in the format described above.</param>
+		/// <returns>The <see cref="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem"/>
+		/// The SECSItem at the provided address or <c>null</c> if not found.
+		/// </returns>
 		public SECSItem? GetElementAt(String address)
 		{
 			SECSItem result;
@@ -287,8 +322,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 			if (_value.Count != other._value.Count)
 				return false;
 
-			LinkedList<SECSItem>.Enumerator temp1 = _value.GetEnumerator();
-			LinkedList<SECSItem>.Enumerator temp2 = other._value.GetEnumerator();
+			IEnumerator<SECSItem> temp1 = _value.GetEnumerator();
+			IEnumerator<SECSItem>temp2 = other.GetEnumerator();
 			for(int i = 0; i < _value.Count; i++)
 			{
 				temp1.MoveNext();
@@ -302,6 +337,120 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 
 			return true;
 		}
-	}
+
+		/// <summary>
+		/// Return the zero-based index (position) of first occurrence of the specified <c>SECSItem</c> in the list.
+		/// </summary>
+		/// <param name="item">The <c>SECSItem</c> to search for within this <c>ListSECSItem</c>.</param>
+		/// <returns>
+		/// The zero-based index (position) of first occurrence of the specified <c>SECSItem</c> in the list or
+		/// -1 if the item was not found in this list.
+		/// </returns>
+        public int IndexOf(SECSItem item)
+        {
+            return _value.IndexOf(item);
+        }
+
+		/// <summary>
+		/// Insert a <c>SECSItem</c> at the specified position in the list.
+		/// </summary>
+		/// <param name="index">The position where to add <c>item</c> to this list.</param>
+		/// <param name="item">The <c>SECSItem</c> to add to insert into this list.</param>
+		/// <exception cref="ArgumentOutOfRangeException">
+		/// Thrown if <c>index</c> is <c>&lt; 0 </c> or greater than <c>Count</c>.
+		/// </exception>
+        public void Insert(int index, SECSItem item)
+        {
+            _value.Insert(index, item);
+        }
+
+		/// <summary>
+		/// Remove the <c>SECSItem</c> located at the specified position in the list.
+		/// </summary>
+		/// <param name="index">The zero-based index (position) of the <c>SECSItem</c> to removed.</param>
+		/// <exception cref="ArgumentOutOfRangeException">
+		/// Thrown if <c>index</c> is <c>&lt; 0 </c> or greater than <c>Count</c>.
+		/// </exception>
+        public void RemoveAt(int index)
+        {
+            _value.RemoveAt(index);
+        }
+
+		/// <summary>
+		/// Add a <c>SECSItem</c> to the end of the list.
+		/// </summary>
+		/// <param name="item">The <c>SECSItem</c> to add to this list.</param>
+        public void Add(SECSItem item)
+        {
+            _value.Add(item);
+        }
+
+		/// <summary>
+		/// Remove all of the <c>SECSItems</c> within this list.
+		/// </summary>
+        public void Clear()
+        {
+            _value.Clear();
+        }
+
+		/// <summary>
+		/// Determine whether the specified <c>SECSItem</c> is contained within this list.
+		/// </summary>
+		/// <param name="item">The <c>SECSItem</c> to search for.</param>
+		/// <returns>
+		/// <c>true</c> if this list contains the specified <c>SECSItem</c>,
+		/// <c>false</c> if otherwise.
+		/// </returns> 
+        public bool Contains(SECSItem item)
+        {
+            return _value.Contains(item);
+        }
+
+		/// <summary>
+		/// Determine whether the specified <c>SECSItem</c> is contained within this list.
+		/// </summary>
+		/// <param name="array">A one dimensional array of <c>SECSItem</c>s that will be
+		/// the destination for the copy.</param>
+		/// <param name="arrayIndex">The zero-based index where the copying begins.</param>
+		/// <exception cref="ArgumentOutOfRangeException">
+		/// Thrown if <c>arrayIndex</c> is <c>&lt; 0 </c>.
+		/// </exception>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if <c>array</c> is <c>null</c>.
+		/// </exception>
+        public void CopyTo(SECSItem[] array, int arrayIndex)
+        {
+            _value.CopyTo(array, arrayIndex);
+        }
+
+		/// <summary>
+		/// Remove the first occurrence of the specified <c>SECSItem</c> from the list.
+		/// </summary>
+		/// <param name="item">The <c>SECSItem</c> to be removed from this list.</param>
+		/// <returns>
+		/// <c>true</c> if the item was successfully removed,
+		/// <c>false</c> if otherwise.
+		/// </returns> 
+        public bool Remove(SECSItem item)
+        {
+            return _value.Remove(item);
+        }
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the items contained in this list.
+		/// </summary>
+		/// <returns>
+		/// An enumerator that may be used to iterate through the items contained in this list.
+		/// </returns> 
+        public IEnumerator<SECSItem> GetEnumerator()
+        {
+            return _value.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable)_value).GetEnumerator();
+        }
+    }
 }
 
