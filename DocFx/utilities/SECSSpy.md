@@ -1,6 +1,6 @@
 # SECSSpy
 
-This utility program is used to log the SECS message traffic between two endpoints of a &quot;SECS connection&quot; to a file.
+This utility program is used to log the SECS message traffic between two endpoints of a &quot;SECS connection&quot; to a terminal  or a file.
 
 The output format of the resulting log file may be configured to be either [SECS Message Language(SML)](https://www.peergroup.com/resources/secs-message-language/) or [XML(Extensible Markup Language)](https://www.w3.org/standards/xml/core).  When the output format is selected there are a number of customization options that may be applied depending on the output format selected.  Refer to the [SML Output](#smloutput) or [XML Output](#xmloutput) sections of this document for more information on these options.
 
@@ -13,7 +13,10 @@ There are a number of reasons why being able to easily parse a log file is a goo
 
 There are plenty of additional uses for a log files that may be parsed easily by a program.
 
-**Note:** At this time this program is only able to log SECS messages between two endpoints of an HSMS connection.
+**Note:**
+
+- At this time this program is only able to log SECS messages between two endpoints of an HSMS connection.
+- The IP Address Family of the HSMS connection may be either IPV4 or IPV6. 
 
 ## Configuration File
 
