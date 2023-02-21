@@ -16,7 +16,7 @@ There are plenty of additional uses for a log files that may be parsed easily by
 **Note:**
 
 - At this time this program is only able to log SECS messages between two endpoints of an HSMS connection.
-- The IP Address Family of the HSMS connection may be either IPV4 or IPV6. 
+- The IP Address Family of the HSMS connection may be either IPV4 or IPV6.
 
 ## Configuration File
 
