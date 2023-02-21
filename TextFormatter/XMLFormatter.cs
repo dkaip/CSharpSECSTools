@@ -59,7 +59,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         {
             SECSHeader hdr = secsMessage.Header;
             if (hdr.GetType() == typeof(HSMSHeader) &&
-                ((HSMSHeader)hdr).PType != 0)
+                ((HSMSHeader)hdr).SType != 0)
             {
                 HSMSHeader header = (HSMSHeader)hdr;
 
@@ -168,8 +168,12 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
             GetHeaderAsText(sb, secsMessage.Header);
 
-            // TODO fix case for header only message
-            GetSECSItemAsText(sb, secsMessage.GetBodyAsSECSItem());
+            if (secsMessage.IsHeaderOnly == false)
+            {
+                SECSItem? secsItem = SECSItemFactory.GenerateSECSItem(secsMessage.Body);
+                GetSECSItemAsText(sb, secsItem);
+            }
+
             CurrentIndentLevel -= configurationData.IndentAmount;
 
             sb.Append("</SECSMessage>");
@@ -368,7 +372,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     CurrentIndentLevel += configurationData.IndentAmount;
 
                     //Console.WriteLine("List count is {0}.", ((ListSECSItem)secsItem).Value.Count());
-                    foreach (SECSItem listEntry in ((ListSECSItem)secsItem).Value)
+                    foreach (SECSItem listEntry in ((ListSECSItem)secsItem))
                     {
                         //                                Console.WriteLine("Current indent level = {0}.", CurrentIndentLevel);
                         GetSECSItemAsText(sb, listEntry);

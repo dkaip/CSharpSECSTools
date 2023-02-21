@@ -48,7 +48,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
         {
             SECSHeader hdr = secsMessage.Header;
             if (hdr.GetType() == typeof(HSMSHeader) &&
-                ((HSMSHeader)hdr).PType != 0)
+                ((HSMSHeader)hdr).SType != 0)
             {
                 // This is an HSMS Control message
 
@@ -138,11 +138,12 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
             GetHeaderAsText(sb, secsMessage.Header);
 
-            bool headerOnly = false;
-            if (headerOnly == false)
+//            Console.WriteLine("Body Length = {0}", secsMessage.Body.Length);
+            if (secsMessage.IsHeaderOnly == false)
             {
                 sb.AppendLine("");
-                GetSECSItemAsText(sb, secsMessage.GetBodyAsSECSItem());
+                SECSItem? secsItem = SECSItemFactory.GenerateSECSItem(secsMessage.Body);
+                GetSECSItemAsText(sb, secsItem);
             }
 
             sb.Append(".");
@@ -221,8 +222,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 if (configurationData.BodyOutputConfig.DisplayCount)
                 {
                     sb.Append("<L [");
-                    sb.Append(((ListSECSItem)secsItem).Value.Count());
-                    if (((ListSECSItem)secsItem).Value.Count() == 0)
+                    sb.Append(((ListSECSItem)secsItem).Count());
+                    if (((ListSECSItem)secsItem).Count() == 0)
                     {
                         sb.Append("]>");
                         return;
@@ -232,7 +233,7 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 }
                 else
                 {
-                    if (((ListSECSItem)secsItem).Value.Count() == 0)
+                    if (((ListSECSItem)secsItem).Count() == 0)
                     {
                         sb.Append("<L>");
                         return;
@@ -243,8 +244,8 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
 
                 CurrentIndentLevel += configurationData.IndentAmount;
 
-                int arrayLength = ((ListSECSItem)secsItem).Value.Count();
-                foreach (SECSItem listEntry in ((ListSECSItem)secsItem).Value)
+                int arrayLength = ((ListSECSItem)secsItem).Count();
+                foreach (SECSItem listEntry in ((ListSECSItem)secsItem))
                 {
                     GetSECSItemAsText(sb, listEntry);
 
