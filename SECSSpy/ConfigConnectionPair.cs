@@ -14,10 +14,21 @@
  * limitations under the License.
  */
 
+using com.CIMthetics.CSharpSECSTools.SECSCommUtils;
+
+#nullable enable
+
 namespace com.CIMthetics.CSharpSECSTools.SECSSpy
 {
     public class ConfigConnectionPair
     {
-        public ConfigConnectionInfo[] ConnectionInfo  { get; } = new ConfigConnectionInfo[2];
+        public SECSConnectionConfigInfo Endpoint1 { get; }
+        public SECSConnectionConfigInfo Endpoint2 { get; }
+
+        public ConfigConnectionPair(SECSConnectionConfigInfo Endpoint1, SECSConnectionConfigInfo Endpoint2)
+        {
+            this.Endpoint1 = Endpoint1;
+            this.Endpoint2 = Endpoint2;
+        }
     }
 }
