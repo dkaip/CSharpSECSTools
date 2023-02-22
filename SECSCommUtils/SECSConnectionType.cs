@@ -17,9 +17,20 @@ using System;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
+	/// <summary>
+	/// This `enum` is used to indicate whether a <c>SECSConnection</c> uses
+	/// SECS-I or HSMS as its transport layer.
+	/// </summary>
 	public enum SECSConnectionType
 	{
+		/// <summary>
+		/// The transport layer is SECS-I.
+		/// </summary>
 		SECSI,
+
+		/// <summary>
+		/// The transport layer is HSMS.
+		/// </summary>
 		HSMS
 	}
 }
