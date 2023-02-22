@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
+    /// <summary>
+    /// This is an <c>abstract</c> base class for a SECS message header.
+    /// </summary>
 	abstract public class SECSHeader
 	{
 		/// <summary>
@@ -40,6 +43,12 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
         /// </summary>
 		public UInt32 SystemBytes { get; set; } = 0;
 
+        /// <summary>
+        /// This method encodes the header (this object) into its &quot;transmission&quot; form.
+        /// </summary>
+        /// <returns>
+        /// A <c>byte[]</c> that is this object's &quot;value&quot; in a transmittable form.
+        /// </returns>
 		abstract public byte[] EncodeForTransport();
 
 	} // End abstract public class SECSHeader
