@@ -52,7 +52,6 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             {
                 // This is an HSMS Control message
 
-                // TODO figure out what to do with control messages for SML
                 HSMSHeader header = (HSMSHeader)hdr;
                 // This is an HSMS control message
                 if (configurationData.HeaderOutputConfig.DisplayControlMessages == false)
@@ -66,54 +65,65 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                 {
                     // Add timestamp if requested
                     sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.Append("<HSMSControlMessage Timestamp=\"");
-                    sb.Append(DateTime.Now.ToString(configurationData.TimestampFormat));
-                    sb.Append("\"");
+                    sb.Append("#Timestamp:");
+                    sb.AppendLine(DateTime.Now.ToString(configurationData.TimestampFormat));
+                }
+
+                if (configurationData.AddDirection)
+                {
+                    // Add timestamp if requested
+                    sb.Append("#Direction Src:");
+                    sb.Append(source);
+                    sb.Append(" Dest:");
+                    sb.AppendLine(destination);
+                }
+
+                sb.Append("#HSMS Control Message: ");
+                sb.Append(header.SType.ToString());
+                sb.Append(" SessionId:");
+                sb.Append(header.SessionID);
+
+                if (header.SType == STypeValues.SelectRsp)
+                {
+                    sb.Append(" Select Status:");
+                    sb.Append(header.HeaderByte3);
+                }
+                else if (header.SType == STypeValues.DeselectRsp)
+                {
+                    sb.Append(" Deselect Status:");
+                    sb.Append(header.HeaderByte3);
+                }
+                else if (header.SType == STypeValues.RejectReq)
+                {
+                    sb.Append(" Reason Code:");
+                    sb.Append(header.HeaderByte3);
                 }
                 else
                 {
-                    sb.Append(Whitespace[CurrentIndentLevel]);
-                    sb.Append("<HSMSControlMessage");
+                    if (
+                        header.SType != STypeValues.SelectReq &&
+                        header.SType != STypeValues.SelectRsp &&
+                        header.SType != STypeValues.DeselectReq &&
+                        header.SType != STypeValues.DeselectRsp &&
+                        header.SType != STypeValues.LinkTestReq &&
+                        header.SType != STypeValues.LinkTestRsp &&
+                        header.SType != STypeValues.RejectReq &&
+                        header.SType != STypeValues.SeparateReq)
+                    {
+                        // Okay, it is something unexpected so just include what you can.
+                        sb.Append(" Byte2:");
+                        sb.Append(header.HeaderByte2);
+                        sb.Append(" Byte3:");
+                        sb.Append(header.HeaderByte3);
+                        sb.Append(" PType:");
+                        sb.Append(header.PType.ToString());
+                        sb.Append(" SType:");
+                        sb.Append(header.SType.ToString());
+                    }
                 }
 
-                sb.Append(" Src=\"");
-                sb.Append(source);
-                sb.Append("\" Dest=\"");
-                sb.Append(destination);
-                sb.Append("\"");
-
-                if (configurationData.HeaderOutputConfig.DisplayDeviceId)
-                {
-                    // Display the Session Id (DeviceId)
-                    sb.Append(" DeviceId=\"");
-                    sb.Append(header.SessionID);
-                    sb.Append("\"");
-                }
-
-                sb.Append(" HeaderByte2=\"");
-                sb.Append(header.HeaderByte2);
-                sb.Append("\"");
-
-                sb.Append(" HeaderByte3=\"");
-                sb.Append(header.HeaderByte3);
-                sb.Append("\"");
-
-                sb.Append(" PType=\"");
-                sb.Append(((PTypeValues)header.PType).ToString());
-                sb.Append("\"");
-
-                sb.Append(" SType=\"");
-                sb.Append(((STypeValues)header.SType).ToString());
-                sb.Append("\"");
-
-                if (configurationData.HeaderOutputConfig.DisplaySystemBytes)
-                {
-                    sb.Append(" SystemBytes=\"");
-                    sb.Append(header.SystemBytes);
-                    sb.Append("\"");
-                }
-
-                sb.AppendLine("/>");
+                sb.Append(" System Bytes:");
+                sb.Append(header.SystemBytes.ToString());
 
                 // We finished with the control message so just return it.
                 return;
@@ -168,9 +178,9 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             if (hdr.GetType() == typeof(HSMSHeader))
             {
                 HSMSHeader header = (HSMSHeader)hdr;
-                if (header.PType != 0)
+                if (header.SType != 0)
                 {
-                    // This is an HSMS control message
+                    // This is an HSMS control message this is dealt with elsewhere.
                     return;
                 }
 
@@ -185,6 +195,18 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
                     {
                         sb.Append(" W");
                     }
+                }
+
+                if (configurationData.HeaderOutputConfig.DisplayDeviceId)
+                {
+                    sb.Append(" DevId:");
+                    sb.Append(header.SessionID);
+                }
+
+                if (configurationData.HeaderOutputConfig.DisplaySystemBytes)
+                {
+                    sb.Append(" SysBytes:");
+                    sb.Append(header.SystemBytes);
                 }
             }
             else
