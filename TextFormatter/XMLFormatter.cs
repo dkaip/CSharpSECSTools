@@ -197,9 +197,10 @@ namespace com.CIMthetics.CSharpSECSTools.TextFormatter
             if (hdr.GetType() == typeof(HSMSHeader))
             {
                 HSMSHeader header = (HSMSHeader)hdr;
-                if (header.PType != 0)
+                if (header.SType != 0)
                 {
                     // This is an HSMS control message
+                    return;
                 }
 
                 // This is a normal SECS-II message
