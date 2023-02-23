@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2019-2022 Douglas Kaip
+ * Copyright 2019-2023 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,10 @@ using System;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
+	/// <summary>
+	/// This `enum` is used to indicate whether an  <c>HSMSConnection</c> is to
+	/// operate in an <c>Active</c> or <c>Passive</c> manner.
+	/// </summary>
 	public enum HSMSConnectionMode
 	{
 		/// <summary>
