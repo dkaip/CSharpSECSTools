@@ -72,7 +72,9 @@
 
   <h1 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage" class="text-break">Class SECSMessage
 </h1>
-  <div class="markdown level0 summary"><p>This class is for containing a SECS message in a .NET environment.</p>
+  <div class="markdown level0 summary"><p>This class represents a SECS message that will be
+sent to some other entity or a SECS message that has been
+received from some other entity.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -93,14 +95,13 @@
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.#ctor*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__ctor_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">SECSMessage(SECSHeader, SECSItem)</h4>
   <div class="markdown level1 summary"><p>This constructor is typically used in the situation where the
-payload of a SECS message (a <code>SECSItem</code>) was created by
-<code>.NET</code> by a programmer and is ready to be sent to some
-entity.</p>
+payload of a SECS message was created by
+a programmer as a <code>SECSItem</code> and is ready to be sent to some other entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SECSMessage(SECSHeader Header, SECSItem body)</code></pre>
+    <pre><code class="lang-csharp hljs">public SECSMessage(SECSHeader header, SECSItem body)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -114,13 +115,16 @@ entity.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
-        <td><span class="parametername">Header</span></td>
-        <td></td>
+        <td><span class="parametername">header</span></td>
+        <td><p>The SECS message header (either a <code>HSMSHeader</code> or a <code>SECSIHeader</code>)
+to be used in this message.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="../SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
         <td><span class="parametername">body</span></td>
-        <td></td>
+        <td><p>The body / content / payload of the SECS message to be sent.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -129,15 +133,15 @@ entity.</p>
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.#ctor*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__ctor_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_System_Byte___" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader,System.Byte[])">SECSMessage(SECSHeader, Byte[])</h4>
   <div class="markdown level1 summary"><p>This constructor is typically used in the situation where a
-SECS message was receive from either a SECS-I connection or
+SECS message was received from either a SECS-I connection or
 an HSMS connection.  The body in this situation will be in
-the form of a <code>byte[]</code>.  In this form it is very
-tedious to deal with</p>
+the form of a <code>byte[]</code> of bytes received from some other
+entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SECSMessage(SECSHeader Header, byte[] body)</code></pre>
+    <pre><code class="lang-csharp hljs">public SECSMessage(SECSHeader header, byte[] body)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -151,13 +155,47 @@ tedious to deal with</p>
     <tbody>
       <tr>
         <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
-        <td><span class="parametername">Header</span></td>
-        <td></td>
+        <td><span class="parametername">header</span></td>
+        <td><p>The SECS message header (either a <code>HSMSHeader</code> or a <code>SECSIHeader</code>)
+to be used in this message.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Byte</span>[]</td>
         <td><span class="parametername">body</span></td>
-        <td></td>
+        <td><p>The body / content / payload of the SECS message to be sent.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.#ctor*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__ctor_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)">SECSMessage(SECSHeader)</h4>
+  <div class="markdown level1 summary"><p>This constructor is typically used in the situation where the
+message is to be header only.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SECSMessage(SECSHeader header)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
+        <td><span class="parametername">header</span></td>
+        <td><p>The SECS message header (either a <code>HSMSHeader</code> or a <code>SECSIHeader</code>)
+to be used in this message.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -165,14 +203,46 @@ tedious to deal with</p>
 </h3>
 
 
-  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_Header_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Header*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_Header" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Header">Header</h4>
-  <div class="markdown level1 summary"><p>This class is for containing a SECS message in a .NET environment.</p>
+  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_Body_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Body*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_Body" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Body">Body</h4>
+  <div class="markdown level1 summary"><p>The body / payload / contents of this <code>SECSMessage</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SECSHeader Header { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public byte[] Body { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The message body component of this <code>SECSMessage</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_Body_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Returns an empty <code>byte[]</code> in the event this is a header
+only (<code>IsHeaderOnly</code> is <code>true</code>) message.</p>
+</div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_Header_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Header*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_Header" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Header">Header</h4>
+  <div class="markdown level1 summary"><p>The SECS message header (either an <code>HSMSHeader</code> or a <code>SECSIHeader</code>)
+of this <code>SECSMessage</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SECSHeader Header { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -185,7 +255,37 @@ tedious to deal with</p>
     <tbody>
       <tr>
         <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader.html">SECSHeader</a></td>
-        <td></td>
+        <td><p>The message header component of this <code>SECSMessage</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_IsHeaderOnly_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.IsHeaderOnly*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_IsHeaderOnly" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.IsHeaderOnly">IsHeaderOnly</h4>
+  <div class="markdown level1 summary"><p>True if this <code>SECSMessage</code> is a header only message.  In other
+words, it is a message that only contains a message header portion
+and does not have a body to go with it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsHeaderOnly { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if this <code>SECSMessage</code> contains a <code>Header</code> without a <code>Body</code> component.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -195,7 +295,8 @@ tedious to deal with</p>
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_EncodeForTransport_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.EncodeForTransport*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_EncodeForTransport" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.EncodeForTransport">EncodeForTransport()</h4>
-  <div class="markdown level1 summary"><p>This class is for containing a SECS message in a .NET environment.</p>
+  <div class="markdown level1 summary"><p>This method encodes this <code>SECSMessage</code> into a form where it may
+written out as a <code>byte[]</code> to some entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -213,36 +314,8 @@ tedious to deal with</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Byte</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_GetBodyAsByteArray_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsByteArray*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_GetBodyAsByteArray" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsByteArray">GetBodyAsByteArray()</h4>
-  <div class="markdown level1 summary"><p>Creates and returns a <code>byte[]</code> that contains this <code>SECSMessages</code>'s body / payload.</p>
-<p>
-This <code>byte[]</code> is in the same format that would need to be used for transmission via <code>HSMS</code> or <code>SECS-I</code>.
-</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public byte[] GetBodyAsByteArray()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
-        <td><p>A<code>byte []</code> representation of this <code>SECSMessage</code>'s body / payload that is suitable for transmission.</p>
+        <td><p>A <code>byte[]</code> containing the information ready to be written out
+on a connection to some entity.</p>
 </td>
       </tr>
     </tbody>
@@ -251,7 +324,7 @@ This <code>byte[]</code> is in the same format that would need to be used for tr
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_GetBodyAsSECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsSECSItem*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_GetBodyAsSECSItem" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsSECSItem">GetBodyAsSECSItem()</h4>
-  <div class="markdown level1 summary"><p>Returns the body / payload of this <code>SECSMessage</code> as a <code>SECSItem</code>.</p>
+  <div class="markdown level1 summary"><p>Returns the body / payload / contents of this <code>SECSMessage</code> as a <code>SECSItem</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -274,6 +347,10 @@ This <code>byte[]</code> is in the same format that would need to be used for tr
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_GetBodyAsSECSItem_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method returns <code>null</code> in the case where this <code>SECSMessage</code> is a header
+only message.</p>
+</div>
 </article>
           </div>
 

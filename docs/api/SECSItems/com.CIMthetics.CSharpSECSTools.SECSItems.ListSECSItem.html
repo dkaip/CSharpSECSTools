@@ -73,8 +73,7 @@
   <h1 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem" class="text-break">Class ListSECSItem
 </h1>
   <div class="markdown level0 summary"><p>This class represents a <code>SECSItem</code> with the SECS data type of <code>L</code>,
-which is a list of <code>SECSItem</code>s. From the C# side this data
-type is handled as a C# <code>LinkedList&lt;SECSItem&gt;</code>.</p>
+which is a list of <code>SECSItem</code>s.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -95,9 +94,6 @@ type is handled as a C# <code>LinkedList&lt;SECSItem&gt;</code>.</p>
       <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_NumberOfLengthBytes">SECSItem.NumberOfLengthBytes</a>
     </div>
     <div>
-      <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_LengthInBytes">SECSItem.LengthInBytes</a>
-    </div>
-    <div>
       <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_OutputHeaderLength">SECSItem.OutputHeaderLength()</a>
     </div>
     <div>
@@ -108,7 +104,7 @@ type is handled as a C# <code>LinkedList&lt;SECSItem&gt;</code>.</p>
   <h6><strong>Assembly</strong>: SECSItems.dll</h6>
   <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ListSECSItem : SECSItem</code></pre>
+    <pre><code class="lang-csharp hljs">public class ListSECSItem : SECSItem, IList&lt;SECSItem&gt;, ICollection&lt;SECSItem&gt;, IEnumerable&lt;SECSItem&gt;, IEnumerable</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
@@ -126,17 +122,17 @@ type is handled as a C# <code>LinkedList&lt;SECSItem&gt;</code>.</p>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_System_Collections_Generic_LinkedList_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(System.Collections.Generic.LinkedList{com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem},com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)">ListSECSItem(LinkedList&lt;SECSItem&gt;, SECSItemNumLengthBytes)</h4>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)">ListSECSItem(ListSECSItem, SECSItemNumLengthBytes)</h4>
   <div class="markdown level1 summary"><p>This constructor creates an ListSECSItem that will have the value of
-the supplied <code>LinkedList&lt;SECSItem&gt;</code>.  In addition when converted to
+the supplied <code>ListSECSItem</code>.  In addition when converted to
 &quot;transmission&quot; form it will use the number of length bytes
 specified <strong>OR</strong> the minimum number necessary to actually contain
-the length of the content of the <code>LinkedList&lt;SECSItem&gt;</code>.</p>
+the length of the content of this <code>ListSECSItem</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ListSECSItem(LinkedList&lt;SECSItem&gt; value, SECSItemNumLengthBytes desiredNumberOfLengthBytes)</code></pre>
+    <pre><code class="lang-csharp hljs">public ListSECSItem(ListSECSItem value, SECSItemNumLengthBytes desiredNumberOfLengthBytes)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -149,7 +145,7 @@ the length of the content of the <code>LinkedList&lt;SECSItem&gt;</code>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.LinkedList</span>&lt;<a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>&gt;</td>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html">ListSECSItem</a></td>
         <td><span class="parametername">value</span></td>
         <td><p>The value to be assigned to this <code>SECSItem</code>.</p>
 </td>
@@ -163,20 +159,23 @@ The value for the number of length bytes must be <code>ONE</code>, <code>TWO</co
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_System_Collections_Generic_LinkedList_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes__remarks">Remarks</h5>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The array's length should not exceed <code>16777215</code> elements.</p>
+<p>
+This is a copy constructor.
+</p>
 </div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_System_Collections_Generic_LinkedList_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(System.Collections.Generic.LinkedList{com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem})">ListSECSItem(LinkedList&lt;SECSItem&gt;)</h4>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem)">ListSECSItem(ListSECSItem)</h4>
   <div class="markdown level1 summary"><p>This constructor creates a ListSECSItem that will have the value of
-the supplied <code>LinkedList&lt;SECSItem&gt;</code>.</p>
+the supplied <code>ListSECSItem</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ListSECSItem(LinkedList&lt;SECSItem&gt; value)</code></pre>
+    <pre><code class="lang-csharp hljs">public ListSECSItem(ListSECSItem value)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -189,28 +188,31 @@ the supplied <code>LinkedList&lt;SECSItem&gt;</code>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.LinkedList</span>&lt;<a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>&gt;</td>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html">ListSECSItem</a></td>
         <td><span class="parametername">value</span></td>
-        <td><p>A list of <code>LinkedList&lt;SECSItem&gt;</code> values to be assigned to this <code>SECSItem</code>.</p>
+        <td><p>A l<code>ListSECSItem</code>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_System_Collections_Generic_LinkedList_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem___remarks">Remarks</h5>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The array's length should not exceed <code>16777215</code> elements.</p>
+<p>
+This is a copy constructor.
+</p>
 </div>
   <h3 id="properties">Properties
 </h3>
 
 
-  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Value_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Value" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value">Value</h4>
-  <div class="markdown level1 summary"><p>The value of this <code>ListSECSItem</code>.</p>
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Count_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Count*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Count" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Count">Count</h4>
+  <div class="markdown level1 summary"><p>The number of <code>SECSItem</code> elements contained within this <code>ListSECSItem</code></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LinkedList&lt;SECSItem&gt; Value { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -222,13 +224,336 @@ the supplied <code>LinkedList&lt;SECSItem&gt;</code>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.LinkedList</span>&lt;<a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>&gt;</td>
+        <td><span class="xref">System.Int32</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Count_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This property only counts the elements in this list. It does not
+account for any elements within any <code>ListSECSItem</code>s that may be contained in this list.
+For example, if this <code>ListSECSItem</code> has 5 elements that are themselves
+<code>ListSECSItem</code>s each with 5 elements. It will still only return
+a value of 5.</p>
+<p>
+This returns the same value as the <code>LengthInBytes</code> property.
+</p>
+</div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_IsReadOnly_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IsReadOnly*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_IsReadOnly" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IsReadOnly">IsReadOnly</h4>
+  <div class="markdown level1 summary"><p>Indicates whether or not this Object is read only.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Item_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Item*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Item_System_Int32_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the <code>SECSItem</code> element at the provided index(zero-based) in this list.</p>
+<pre><code>SECSItem item = myFullListSECSItem[4];
+
+    or
+
+myFullListSECSItem[4] = theReplacementSECSItem;</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SECSItem this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The zero-based index of the <code>SECSItem</code> that will be retrieved or
+replaced in this list.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><p>A <code>SECSItem</code> at the specified position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown if <code>index</code> is <code>&lt; 0 </code> or greater than <code>Count</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_LengthInBytes_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.LengthInBytes*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_LengthInBytes" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.LengthInBytes">LengthInBytes</h4>
+  <div class="markdown level1 summary"><p>This property, as per the specification, returns the number of
+elements this <code>ListSECEItem</code> contains, NOT, the number of
+bytes it take up.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int LengthInBytes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_LengthInBytes">SECSItem.LengthInBytes</a></div>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_LengthInBytes_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This property only counts the elements in this list. It does not
+account for any elements within any <code>ListSECSItem</code>s that may be contained in this list.
+For example, if this <code>ListSECSItem</code> has 5 elements that are themselves
+<code>ListSECSItem</code>s each with 5 elements. It will still only return
+a value of 5.</p>
+</div>
   <h3 id="methods">Methods
 </h3>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Add_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Add*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Add_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Add(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">Add(SECSItem)</h4>
+  <div class="markdown level1 summary"><p>Add a <code>SECSItem</code> to the end of the list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(SECSItem item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The <code>SECSItem</code> to add to this list.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_AsDictionary_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.AsDictionary*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_AsDictionary" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.AsDictionary">AsDictionary()</h4>
+  <div class="markdown level1 summary"><p>This method returns the elements contained within this <code>ListSECSItem</code>
+as a <code>Dictionary</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, SECSItem&gt; AsDictionary()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>&gt;</td>
+        <td><p>A <code>Dictionary&lt;string, SECSItem&gt;</code> where the individual elements
+contained within are accessible via their &quot;address&quot;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_AsDictionary_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The keys of the dictionary are the &quot;addresses&quot;
+of the individual elements.  The format of the &quot;address&quot; keys is the
+same as that used by the <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetElementAt_System_String_">GetElementAt(String)</a> method.  Refer to
+it for more information.</p>
+<p>
+It you have a large message that you need to grab a bunch elements from this
+might be more efficient than calling <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetElementAt_System_String_">GetElementAt(String)</a> a
+bunch of times.
+</p>
+</div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Clear_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Clear*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Clear" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Clear">Clear()</h4>
+  <div class="markdown level1 summary"><p>Remove all of the <code>SECSItems</code> within this list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Contains_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Contains*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Contains_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Contains(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">Contains(SECSItem)</h4>
+  <div class="markdown level1 summary"><p>Determine whether the specified <code>SECSItem</code> is contained within this list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(SECSItem item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The <code>SECSItem</code> to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if this list contains the specified <code>SECSItem</code>,
+<code>false</code> if otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_CopyTo_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.CopyTo*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_CopyTo_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem___System_Int32_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.CopyTo(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem[],System.Int32)">CopyTo(SECSItem[], Int32)</h4>
+  <div class="markdown level1 summary"><p>Determine whether the specified <code>SECSItem</code> is contained within this list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(SECSItem[] array, int arrayIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>[]</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>A one dimensional array of <code>SECSItem</code>s that will be
+the destination for the copy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arrayIndex</span></td>
+        <td><p>The zero-based index where the copying begins.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown if <code>arrayIndex</code> is <code>&lt; 0 </code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Thrown if <code>array</code> is <code>null</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_EncodeForTransport_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.EncodeForTransport*"></a>
@@ -311,17 +636,18 @@ the supplied <code>LinkedList&lt;SECSItem&gt;</code>.</p>
   <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetElementAt_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetElementAt*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetElementAt_System_String_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetElementAt(System.String)">GetElementAt(String)</h4>
   <div class="markdown level1 summary"><p>This method returns a SECSItem contained in this list based on its
-&quot;address&quot; or null if the item does not exist.</p>
-<p>In the example below a specified address of &quot;3.2&quot; would return the
+&quot;address&quot;.</p>
+<p>In the example below, which represents the content of a list, a specified address of &quot;3.2&quot; would return the
 element with the value 'Answer'.</p>
 <ol>
 <li>A &apos;ABC&apos; </li>
 <li>A &apos;DEF&apos; </li>
-<li>L 3 </li>
+<li>L 4 </li>
 <ol>
 <li>I2 -32768</li>
 <li>A &apos;Answer&apos;</li>
 <li>U1 255</li>
+<li>A &apos;Not The Answer&apos;</li>
 </ol>
 <li>F4 3.141592</li>
 </ol>
@@ -344,7 +670,7 @@ element with the value 'Answer'.</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">address</span></td>
-        <td><p>The SECSItem at the provided address or null if not found.</p>
+        <td><p>The &quot;address&quot; of the desired item in the format described above.</p>
 </td>
       </tr>
     </tbody>
@@ -360,7 +686,35 @@ element with the value 'Answer'.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
-        <td><p>The <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>.</p>
+        <td><p>The <a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>
+The SECSItem at the provided address or <code>null</code> if not found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetEnumerator_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetEnumerator*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetEnumerator" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the items contained in this list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;SECSItem&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;<a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>&gt;</td>
+        <td><p>An enumerator that may be used to iterate through the items contained in this list.</p>
 </td>
       </tr>
     </tbody>
@@ -397,16 +751,33 @@ hash table.</p>
   <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_GetHashCode">SECSItem.GetHashCode()</a></div>
 
 
-  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetValue_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetValue*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetValue" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetValue">GetValue()</h4>
-  <div class="markdown level1 summary"><p>Gets the value of this <code>SECSItem</code>.</p>
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_IndexOf_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IndexOf*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_IndexOf_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IndexOf(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">IndexOf(SECSItem)</h4>
+  <div class="markdown level1 summary"><p>Return the zero-based index (position) of first occurrence of the specified <code>SECSItem</code> in the list.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This method has been deprecated, please use property Value instead.&quot;)]
-public LinkedList&lt;SECSItem&gt; GetValue()</code></pre>
+    <pre><code class="lang-csharp hljs">public int IndexOf(SECSItem item)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The <code>SECSItem</code> to search for within this <code>ListSECSItem</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -417,8 +788,151 @@ public LinkedList&lt;SECSItem&gt; GetValue()</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.LinkedList</span>&lt;<a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a>&gt;</td>
-        <td><p>the value of the <code>SECSItem</code>.</p>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The zero-based index (position) of first occurrence of the specified <code>SECSItem</code> in the list or
+-1 if the item was not found in this list.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Insert_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Insert*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Insert_System_Int32_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Insert(System.Int32,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">Insert(Int32, SECSItem)</h4>
+  <div class="markdown level1 summary"><p>Insert a <code>SECSItem</code> at the specified position in the list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Insert(int index, SECSItem item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The position where to add <code>item</code> to this list.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The <code>SECSItem</code> to add to insert into this list.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown if <code>index</code> is <code>&lt; 0 </code> or greater than <code>Count</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Remove_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Remove*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Remove_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Remove(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)">Remove(SECSItem)</h4>
+  <div class="markdown level1 summary"><p>Remove the first occurrence of the specified <code>SECSItem</code> from the list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(SECSItem item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html">SECSItem</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The <code>SECSItem</code> to be removed from this list.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the item was successfully removed,
+<code>false</code> if otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_RemoveAt_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.RemoveAt*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_RemoveAt_System_Int32_" data-uid="com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.RemoveAt(System.Int32)">RemoveAt(Int32)</h4>
+  <div class="markdown level1 summary"><p>Remove the <code>SECSItem</code> located at the specified position in the list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The zero-based index (position) of the <code>SECSItem</code> to removed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown if <code>index</code> is <code>&lt; 0 </code> or greater than <code>Count</code>.</p>
 </td>
       </tr>
     </tbody>

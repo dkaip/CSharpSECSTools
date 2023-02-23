@@ -90,14 +90,14 @@
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionFactory_CreateConnection_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionFactory_CreateConnection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_System_Collections_Concurrent_BlockingCollection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage})">CreateConnection(SECSConnectionConfigInfo, BlockingCollection&lt;SECSMessage&gt;)</h4>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionFactory_CreateConnection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)">CreateConnection(SECSConnectionConfigInfo)</h4>
   <div class="markdown level1 summary"><p>Create an appropriate <code>SECSConnection</code> based on the information
 contained in the <code>configuration</code> argument.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static SECSConnection CreateConnection(SECSConnectionConfigInfo configuration, BlockingCollection&lt;SECSMessage&gt; messagesReceivedQueue)</code></pre>
+    <pre><code class="lang-csharp hljs">public static SECSConnection CreateConnection(SECSConnectionConfigInfo configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -115,11 +115,6 @@ contained in the <code>configuration</code> argument.</p>
         <td><p>The <code>SECSConnectionConfigInfo</code> object the contains the information
 necessary to configure the created <code>SECSConnection</code>.</p>
 </td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Concurrent.BlockingCollection</span>&lt;<a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html">SECSMessage</a>&gt;</td>
-        <td><span class="parametername">messagesReceivedQueue</span></td>
-        <td></td>
       </tr>
     </tbody>
   </table>

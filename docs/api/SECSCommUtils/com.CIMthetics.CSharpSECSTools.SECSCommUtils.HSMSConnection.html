@@ -103,43 +103,6 @@ its transport layer.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class HSMSConnection : SECSConnection</code></pre>
   </div>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>SECS messages (<code>SECSMessage</code>s) are sent using the <code>SendMessage</code> method.  When this method returns
-it does not imply that the message has already been sent.  It just means the message
-has been queued to be sent.  In normal situations the message will be sent almost
-immediately.</p>
-<p>
-When messages are received by this connection they are placed at the end of the
-thread safe <code>MessagesReceivedQueue</code>.  The user is able to remove message
-from this queue and process them.
-</p>
-<p>
-A <code>SECSConnection</code> is used in the following manner.
-<ol>
-<li>Use <code>SECSConnectionFactory.CreateConnection</code> to create a <code>SECSConnection</code> object.</li>
-<li>
-Start the <code>SECSConnection</code> using the <code>Start</code> method.  This method basically
-&quot;wakes up&quot; the connection in that it will actively prepare itself for communicating
-with an end point.  Returning from the <code>Start</code> method does not mean that a connection
-has been successfully established with the end point.  It just means that this connection is
-ready and willing to communicate depending on the end point.
-</li>
-<li>
-Once a connection to the end point has been established.  (Which may not happen immediately after
-the completion of the <code>Start</code> method.)  The user may use the <code>SendMessage</code> method to
-send a message or they may add a message directly to the end of the <code>MessagesToSendQueue</code>.
-<p>
-Received messages will be on the <code>MessagesReceivedQueue</code>.  The user can either block on
-the queue awaiting the receipt or a message or poll the queue if blocking is not acceptable.
-In normal cases a separate thread will block on the queue awaiting messages to process.
-</p>
-</li>
-<li>
-When the connection is no longer needed use the <code>Stop</code> method to perform a more graceful shutdown.
-</li>
-</ol>
-
-</div>
   <h3 id="constructors">Constructors
 </h3>
 
@@ -177,14 +140,14 @@ information is contained in a <code>SECSConnectionConfigInfo</code> object.</p>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_System_String_System_Net_IPAddress_System_UInt16_com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnectionMode_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Net.IPAddress,System.UInt16,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)">HSMSConnection(String, IPAddress, UInt16, HSMSConnectionMode)</h4>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_System_String_System_Net_IPEndPoint_com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnectionMode_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Net.IPEndPoint,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)">HSMSConnection(String, IPEndPoint, HSMSConnectionMode)</h4>
   <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses HSMS for
 its transport layer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HSMSConnection(string connectionName, IPAddress ipAddress, ushort ipPortNumber, HSMSConnectionMode connectionMode)</code></pre>
+    <pre><code class="lang-csharp hljs">public HSMSConnection(string connectionName, IPEndPoint ipEndPoint, HSMSConnectionMode connectionMode)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -202,13 +165,8 @@ its transport layer.</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Net.IPAddress</span></td>
-        <td><span class="parametername">ipAddress</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.UInt16</span></td>
-        <td><span class="parametername">ipPortNumber</span></td>
+        <td><span class="xref">System.Net.IPEndPoint</span></td>
+        <td><span class="parametername">ipEndPoint</span></td>
         <td></td>
       </tr>
       <tr>
@@ -218,50 +176,13 @@ its transport layer.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_System_String_System_Net_IPAddress_System_UInt16_com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnectionMode__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>SECS messages (<code>SECSMessage</code>s) are sent using the <code>SendMessage</code> method.  When this method returns
-it does not imply that the message has already been sent.  It just means the message
-has been queued to be sent.  In normal situations the message will be sent almost
-immediately.</p>
-<p>
-When messages are received by this connection they are placed at the end of the
-thread safe <code>MessagesReceivedQueue</code>.  The user is able to remove message
-from this queue and process them.
-</p>
-<p>
-A <code>SECSConnection</code> is used in the following manner.
-<ol>
-<li>Use <code>SECSConnectionFactory.CreateConnection</code> to create a <code>SECSConnection</code> object.</li>
-<li>
-Start the <code>SECSConnection</code> using the <code>Start</code> method.  This method basically
-&quot;wakes up&quot; the connection in that it will actively prepare itself for communicating
-with an end point.  Returning from the <code>Start</code> method does not mean that a connection
-has been successfully established with the end point.  It just means that this connection is
-ready and willing to communicate depending on the end point.
-</li>
-<li>
-Once a connection to the end point has been established.  (Which may not happen immediately after
-the completion of the <code>Start</code> method.)  The user may use the <code>SendMessage</code> method to
-send a message or they may add a message directly to the end of the <code>MessagesToSendQueue</code>.
-<p>
-Received messages will be on the <code>MessagesReceivedQueue</code>.  The user can either block on
-the queue awaiting the receipt or a message or poll the queue if blocking is not acceptable.
-In normal cases a separate thread will block on the queue awaiting messages to process.
-</p>
-</li>
-<li>
-When the connection is no longer needed use the <code>Stop</code> method to perform a more graceful shutdown.
-</li>
-</ol>
-
-</div>
   <h3 id="properties">Properties
 </h3>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_AddressFamily_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.AddressFamily*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_AddressFamily" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.AddressFamily">AddressFamily</h4>
-  <div class="markdown level1 summary"><p>The network address family of this connection.</p>
+  <div class="markdown level1 summary"><p>The network address family of this HSMS connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -285,14 +206,19 @@ When the connection is no longer needed use the <code>Stop</code> method to perf
     </tbody>
   </table>
   <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_AddressFamily_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The value will be either &quot;IPV4&quot; or &quot;IPV6&quot;</p>
+  <div class="markdown level1 remarks"><p>The value should be either &quot;IPV4&quot; or &quot;IPV6&quot;</p>
+<p>
+It is possible that its value may be &quot;Not Set&quot;.  This will
+occur in the event the user uses the constructor where they supply
+their own <code>IPEndPoint</code>.
+</p>
 </div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_ConnectionMode_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionMode*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_ConnectionMode" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionMode">ConnectionMode</h4>
-  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses HSMS for
-its transport layer.</p>
+  <div class="markdown level1 summary"><p>This is the <code>HSMSConnectionMode</code> that this <code>SECSConnection</code>
+has been configured to operate in.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -314,54 +240,16 @@ its transport layer.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_ConnectionMode_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>SECS messages (<code>SECSMessage</code>s) are sent using the <code>SendMessage</code> method.  When this method returns
-it does not imply that the message has already been sent.  It just means the message
-has been queued to be sent.  In normal situations the message will be sent almost
-immediately.</p>
-<p>
-When messages are received by this connection they are placed at the end of the
-thread safe <code>MessagesReceivedQueue</code>.  The user is able to remove message
-from this queue and process them.
-</p>
-<p>
-A <code>SECSConnection</code> is used in the following manner.
-<ol>
-<li>Use <code>SECSConnectionFactory.CreateConnection</code> to create a <code>SECSConnection</code> object.</li>
-<li>
-Start the <code>SECSConnection</code> using the <code>Start</code> method.  This method basically
-&quot;wakes up&quot; the connection in that it will actively prepare itself for communicating
-with an end point.  Returning from the <code>Start</code> method does not mean that a connection
-has been successfully established with the end point.  It just means that this connection is
-ready and willing to communicate depending on the end point.
-</li>
-<li>
-Once a connection to the end point has been established.  (Which may not happen immediately after
-the completion of the <code>Start</code> method.)  The user may use the <code>SendMessage</code> method to
-send a message or they may add a message directly to the end of the <code>MessagesToSendQueue</code>.
-<p>
-Received messages will be on the <code>MessagesReceivedQueue</code>.  The user can either block on
-the queue awaiting the receipt or a message or poll the queue if blocking is not acceptable.
-In normal cases a separate thread will block on the queue awaiting messages to process.
-</p>
-</li>
-<li>
-When the connection is no longer needed use the <code>Stop</code> method to perform a more graceful shutdown.
-</li>
-</ol>
-
-</div>
 
 
-  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_ConnectionState_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionState*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_ConnectionState" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionState">ConnectionState</h4>
-  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses HSMS for
-its transport layer.</p>
+  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_HSMSConnectionSM_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnectionSM*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_HSMSConnectionSM" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnectionSM">HSMSConnectionSM</h4>
+  <div class="markdown level1 summary"><p>This is the connection state state machine associated with this port.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HSMSConnectionState ConnectionState { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public HSMSConnectionSM HSMSConnectionSM { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -373,59 +261,24 @@ its transport layer.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionState.html">HSMSConnectionState</a></td>
+        <td><span class="xref">com.CIMthetics.CSharpSECSTools.SECSStateMachines.HSMSConnectionSM.HSMSConnectionSM</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_ConnectionState_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>SECS messages (<code>SECSMessage</code>s) are sent using the <code>SendMessage</code> method.  When this method returns
-it does not imply that the message has already been sent.  It just means the message
-has been queued to be sent.  In normal situations the message will be sent almost
-immediately.</p>
-<p>
-When messages are received by this connection they are placed at the end of the
-thread safe <code>MessagesReceivedQueue</code>.  The user is able to remove message
-from this queue and process them.
-</p>
-<p>
-A <code>SECSConnection</code> is used in the following manner.
-<ol>
-<li>Use <code>SECSConnectionFactory.CreateConnection</code> to create a <code>SECSConnection</code> object.</li>
-<li>
-Start the <code>SECSConnection</code> using the <code>Start</code> method.  This method basically
-&quot;wakes up&quot; the connection in that it will actively prepare itself for communicating
-with an end point.  Returning from the <code>Start</code> method does not mean that a connection
-has been successfully established with the end point.  It just means that this connection is
-ready and willing to communicate depending on the end point.
-</li>
-<li>
-Once a connection to the end point has been established.  (Which may not happen immediately after
-the completion of the <code>Start</code> method.)  The user may use the <code>SendMessage</code> method to
-send a message or they may add a message directly to the end of the <code>MessagesToSendQueue</code>.
-<p>
-Received messages will be on the <code>MessagesReceivedQueue</code>.  The user can either block on
-the queue awaiting the receipt or a message or poll the queue if blocking is not acceptable.
-In normal cases a separate thread will block on the queue awaiting messages to process.
-</p>
-</li>
-<li>
-When the connection is no longer needed use the <code>Stop</code> method to perform a more graceful shutdown.
-</li>
-</ol>
-
-</div>
 
 
-  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_IPAddress_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPAddress*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_IPAddress" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPAddress">IPAddress</h4>
-  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses HSMS for
-its transport layer.</p>
+  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_IPEndPoint_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPEndPoint*"></a>
+  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_IPEndPoint" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPEndPoint">IPEndPoint</h4>
+  <div class="markdown level1 summary"><p>This is the <code>IPEndPoint</code> that this <code>HSMSConnection</code> is
+connected to or is attempting to connect to.  On its own, this
+property is not useful for much use aside from providing debugging
+information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string IPAddress { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IPEndPoint IPEndPoint { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -437,112 +290,11 @@ its transport layer.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Net.IPEndPoint</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_IPAddress_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>SECS messages (<code>SECSMessage</code>s) are sent using the <code>SendMessage</code> method.  When this method returns
-it does not imply that the message has already been sent.  It just means the message
-has been queued to be sent.  In normal situations the message will be sent almost
-immediately.</p>
-<p>
-When messages are received by this connection they are placed at the end of the
-thread safe <code>MessagesReceivedQueue</code>.  The user is able to remove message
-from this queue and process them.
-</p>
-<p>
-A <code>SECSConnection</code> is used in the following manner.
-<ol>
-<li>Use <code>SECSConnectionFactory.CreateConnection</code> to create a <code>SECSConnection</code> object.</li>
-<li>
-Start the <code>SECSConnection</code> using the <code>Start</code> method.  This method basically
-&quot;wakes up&quot; the connection in that it will actively prepare itself for communicating
-with an end point.  Returning from the <code>Start</code> method does not mean that a connection
-has been successfully established with the end point.  It just means that this connection is
-ready and willing to communicate depending on the end point.
-</li>
-<li>
-Once a connection to the end point has been established.  (Which may not happen immediately after
-the completion of the <code>Start</code> method.)  The user may use the <code>SendMessage</code> method to
-send a message or they may add a message directly to the end of the <code>MessagesToSendQueue</code>.
-<p>
-Received messages will be on the <code>MessagesReceivedQueue</code>.  The user can either block on
-the queue awaiting the receipt or a message or poll the queue if blocking is not acceptable.
-In normal cases a separate thread will block on the queue awaiting messages to process.
-</p>
-</li>
-<li>
-When the connection is no longer needed use the <code>Stop</code> method to perform a more graceful shutdown.
-</li>
-</ol>
-
-</div>
-
-
-  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_PortNumber_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.PortNumber*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_PortNumber" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.PortNumber">PortNumber</h4>
-  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses HSMS for
-its transport layer.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ushort PortNumber { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.UInt16</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_PortNumber_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>SECS messages (<code>SECSMessage</code>s) are sent using the <code>SendMessage</code> method.  When this method returns
-it does not imply that the message has already been sent.  It just means the message
-has been queued to be sent.  In normal situations the message will be sent almost
-immediately.</p>
-<p>
-When messages are received by this connection they are placed at the end of the
-thread safe <code>MessagesReceivedQueue</code>.  The user is able to remove message
-from this queue and process them.
-</p>
-<p>
-A <code>SECSConnection</code> is used in the following manner.
-<ol>
-<li>Use <code>SECSConnectionFactory.CreateConnection</code> to create a <code>SECSConnection</code> object.</li>
-<li>
-Start the <code>SECSConnection</code> using the <code>Start</code> method.  This method basically
-&quot;wakes up&quot; the connection in that it will actively prepare itself for communicating
-with an end point.  Returning from the <code>Start</code> method does not mean that a connection
-has been successfully established with the end point.  It just means that this connection is
-ready and willing to communicate depending on the end point.
-</li>
-<li>
-Once a connection to the end point has been established.  (Which may not happen immediately after
-the completion of the <code>Start</code> method.)  The user may use the <code>SendMessage</code> method to
-send a message or they may add a message directly to the end of the <code>MessagesToSendQueue</code>.
-<p>
-Received messages will be on the <code>MessagesReceivedQueue</code>.  The user can either block on
-the queue awaiting the receipt or a message or poll the queue if blocking is not acceptable.
-In normal cases a separate thread will block on the queue awaiting messages to process.
-</p>
-</li>
-<li>
-When the connection is no longer needed use the <code>Stop</code> method to perform a more graceful shutdown.
-</li>
-</ol>
-
-</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_T3_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.T3*"></a>
@@ -713,79 +465,14 @@ When the connection is no longer needed use the <code>Stop</code> method to perf
 <li>Resolution: 1 second</li>
 </ul>
 </div>
-
-
-  <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_TCPState_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.TCPState*"></a>
-  <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_TCPState" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.TCPState">TCPState</h4>
-  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses HSMS for
-its transport layer.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TCPState TCPState { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.html">TCPState</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_TCPState_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>SECS messages (<code>SECSMessage</code>s) are sent using the <code>SendMessage</code> method.  When this method returns
-it does not imply that the message has already been sent.  It just means the message
-has been queued to be sent.  In normal situations the message will be sent almost
-immediately.</p>
-<p>
-When messages are received by this connection they are placed at the end of the
-thread safe <code>MessagesReceivedQueue</code>.  The user is able to remove message
-from this queue and process them.
-</p>
-<p>
-A <code>SECSConnection</code> is used in the following manner.
-<ol>
-<li>Use <code>SECSConnectionFactory.CreateConnection</code> to create a <code>SECSConnection</code> object.</li>
-<li>
-Start the <code>SECSConnection</code> using the <code>Start</code> method.  This method basically
-&quot;wakes up&quot; the connection in that it will actively prepare itself for communicating
-with an end point.  Returning from the <code>Start</code> method does not mean that a connection
-has been successfully established with the end point.  It just means that this connection is
-ready and willing to communicate depending on the end point.
-</li>
-<li>
-Once a connection to the end point has been established.  (Which may not happen immediately after
-the completion of the <code>Start</code> method.)  The user may use the <code>SendMessage</code> method to
-send a message or they may add a message directly to the end of the <code>MessagesToSendQueue</code>.
-<p>
-Received messages will be on the <code>MessagesReceivedQueue</code>.  The user can either block on
-the queue awaiting the receipt or a message or poll the queue if blocking is not acceptable.
-In normal cases a separate thread will block on the queue awaiting messages to process.
-</p>
-</li>
-<li>
-When the connection is no longer needed use the <code>Stop</code> method to perform a more graceful shutdown.
-</li>
-</ol>
-
-</div>
   <h3 id="methods">Methods
 </h3>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_Start_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.Start*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_Start" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.Start">Start()</h4>
-  <div class="markdown level1 summary"><p>Calling this method effectively starts up this <code>SECSConnection</code>
-and gets it into a state whereby it will attempt to establish a
-connection to an end point using the configured information.</p>
+  <div class="markdown level1 summary"><p>This class implements a <code>SECSConnection</code> that uses HSMS for
+its transport layer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -794,11 +481,6 @@ connection to an end point using the configured information.</p>
   </div>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_Start">SECSConnection.Start()</a></div>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_Start_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>When this method returns a connection with the configured end point may or may
-be established.  This connection has been transitioned into a &quot;mode&quot;
-in which it will actively attempt to establish a connection.</p>
-</div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_Stop_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.Stop*"></a>
@@ -813,43 +495,6 @@ its transport layer.</p>
   </div>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_Stop">SECSConnection.Stop()</a></div>
-  <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_Stop_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>SECS messages (<code>SECSMessage</code>s) are sent using the <code>SendMessage</code> method.  When this method returns
-it does not imply that the message has already been sent.  It just means the message
-has been queued to be sent.  In normal situations the message will be sent almost
-immediately.</p>
-<p>
-When messages are received by this connection they are placed at the end of the
-thread safe <code>MessagesReceivedQueue</code>.  The user is able to remove message
-from this queue and process them.
-</p>
-<p>
-A <code>SECSConnection</code> is used in the following manner.
-<ol>
-<li>Use <code>SECSConnectionFactory.CreateConnection</code> to create a <code>SECSConnection</code> object.</li>
-<li>
-Start the <code>SECSConnection</code> using the <code>Start</code> method.  This method basically
-&quot;wakes up&quot; the connection in that it will actively prepare itself for communicating
-with an end point.  Returning from the <code>Start</code> method does not mean that a connection
-has been successfully established with the end point.  It just means that this connection is
-ready and willing to communicate depending on the end point.
-</li>
-<li>
-Once a connection to the end point has been established.  (Which may not happen immediately after
-the completion of the <code>Start</code> method.)  The user may use the <code>SendMessage</code> method to
-send a message or they may add a message directly to the end of the <code>MessagesToSendQueue</code>.
-<p>
-Received messages will be on the <code>MessagesReceivedQueue</code>.  The user can either block on
-the queue awaiting the receipt or a message or poll the queue if blocking is not acceptable.
-In normal cases a separate thread will block on the queue awaiting messages to process.
-</p>
-</li>
-<li>
-When the connection is no longer needed use the <code>Stop</code> method to perform a more graceful shutdown.
-</li>
-</ol>
-
-</div>
 </article>
           </div>
 

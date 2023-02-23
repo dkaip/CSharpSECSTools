@@ -200,8 +200,8 @@ When the connection is no longer needed use the <code>Stop</code> method to perf
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_ConnectionName_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.ConnectionName*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_ConnectionName" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.ConnectionName">ConnectionName</h4>
-  <div class="markdown level1 summary"><p>This is the <code>abstract</code> base class for classes supporting communication of SECS-II
-messages to an end point.</p>
+  <div class="markdown level1 summary"><p>This a human meaningful name assigned to this <code>SECSConnection</code>.
+It will appear in Log output in the event of issues.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -264,8 +264,8 @@ When the connection is no longer needed use the <code>Stop</code> method to perf
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_MessagesReceivedQueue_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.MessagesReceivedQueue*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_MessagesReceivedQueue" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.MessagesReceivedQueue">MessagesReceivedQueue</h4>
-  <div class="markdown level1 summary"><p>This is the <code>abstract</code> base class for classes supporting communication of SECS-II
-messages to an end point.</p>
+  <div class="markdown level1 summary"><p>This is a thread safe queue where <code>SECSMessage</code>s that that have been received
+will be placed asynchronously.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -328,8 +328,8 @@ When the connection is no longer needed use the <code>Stop</code> method to perf
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_MessagesToSendQueue_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.MessagesToSendQueue*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_MessagesToSendQueue" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.MessagesToSendQueue">MessagesToSendQueue</h4>
-  <div class="markdown level1 summary"><p>This is the <code>abstract</code> base class for classes supporting communication of SECS-II
-messages to an end point.</p>
+  <div class="markdown level1 summary"><p>This is a thread safe queue where <code>SECSMessage</code>s that need to be sent should
+be placed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -352,41 +352,9 @@ messages to an end point.</p>
     </tbody>
   </table>
   <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_MessagesToSendQueue_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>SECS messages (<code>SECSMessage</code>s) are sent using the <code>SendMessage</code> method.  When this method returns
-it does not imply that the message has already been sent.  It just means the message
-has been queued to be sent.  In normal situations the message will be sent almost
-immediately.</p>
-<p>
-When messages are received by this connection they are placed at the end of the
-thread safe <code>MessagesReceivedQueue</code>.  The user is able to remove message
-from this queue and process them.
-</p>
-<p>
-A <code>SECSConnection</code> is used in the following manner.
-<ol>
-<li>Use <code>SECSConnectionFactory.CreateConnection</code> to create a <code>SECSConnection</code> object.</li>
-<li>
-Start the <code>SECSConnection</code> using the <code>Start</code> method.  This method basically
-&quot;wakes up&quot; the connection in that it will actively prepare itself for communicating
-with an end point.  Returning from the <code>Start</code> method does not mean that a connection
-has been successfully established with the end point.  It just means that this connection is
-ready and willing to communicate depending on the end point.
-</li>
-<li>
-Once a connection to the end point has been established.  (Which may not happen immediately after
-the completion of the <code>Start</code> method.)  The user may use the <code>SendMessage</code> method to
-send a message or they may add a message directly to the end of the <code>MessagesToSendQueue</code>.
-<p>
-Received messages will be on the <code>MessagesReceivedQueue</code>.  The user can either block on
-the queue awaiting the receipt or a message or poll the queue if blocking is not acceptable.
-In normal cases a separate thread will block on the queue awaiting messages to process.
-</p>
-</li>
-<li>
-When the connection is no longer needed use the <code>Stop</code> method to perform a more graceful shutdown.
-</li>
-</ol>
-
+  <div class="markdown level1 remarks"><p>Normally you would send messages by using the <code>SendMessage</code> method, however, there
+are situations where being able add messages directly to the send queue is
+a better fit.</p>
 </div>
   <h3 id="methods">Methods
 </h3>
@@ -439,15 +407,16 @@ connection to an end point using the configured information.</p>
   </div>
   <h5 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_Start_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>When this method returns a connection with the configured end point may or may
-be established.  This connection has been transitioned into a &quot;mode&quot;
+not be established.  This connection has been transitioned into a &quot;mode&quot;
 in which it will actively attempt to establish a connection.</p>
 </div>
 
 
   <a id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_Stop_" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.Stop*"></a>
   <h4 id="com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnection_Stop" data-uid="com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnection.Stop">Stop()</h4>
-  <div class="markdown level1 summary"><p>This is the <code>abstract</code> base class for classes supporting communication of SECS-II
-messages to an end point.</p>
+  <div class="markdown level1 summary"><p>Calling this method results in the shutting down of this <code>SECSConnection</code>.
+The communication connection is closed and any worker <code>Threads</code> are
+terminated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>

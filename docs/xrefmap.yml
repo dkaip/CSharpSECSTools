@@ -109,12 +109,12 @@ references:
   commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
   nameWithType: HSMSConnection.HSMSConnection(SECSConnectionConfigInfo)
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Net.IPAddress,System.UInt16,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
-  name: HSMSConnection(String, IPAddress, UInt16, HSMSConnectionMode)
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_System_String_System_Net_IPAddress_System_UInt16_com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnectionMode_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Net.IPAddress,System.UInt16,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnection(System.String, System.Net.IPAddress, System.UInt16, com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
-  nameWithType: HSMSConnection.HSMSConnection(String, IPAddress, UInt16, HSMSConnectionMode)
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Net.IPEndPoint,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
+  name: HSMSConnection(String, IPEndPoint, HSMSConnectionMode)
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_System_String_System_Net_IPEndPoint_com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnectionMode_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor(System.String,System.Net.IPEndPoint,com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnection(System.String, System.Net.IPEndPoint, com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode)
+  nameWithType: HSMSConnection.HSMSConnection(String, IPEndPoint, HSMSConnectionMode)
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.#ctor*
   name: HSMSConnection
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection__ctor_
@@ -148,45 +148,32 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionMode
   nameWithType: HSMSConnection.ConnectionMode
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionState
-  name: ConnectionState
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_ConnectionState
-  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionState
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionState
-  nameWithType: HSMSConnection.ConnectionState
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionState*
-  name: ConnectionState
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_ConnectionState_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionState
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnectionSM
+  name: HSMSConnectionSM
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_HSMSConnectionSM
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnectionSM
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnectionSM
+  nameWithType: HSMSConnection.HSMSConnectionSM
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnectionSM*
+  name: HSMSConnectionSM
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_HSMSConnectionSM_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnectionSM
   isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.ConnectionState
-  nameWithType: HSMSConnection.ConnectionState
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPAddress
-  name: IPAddress
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_IPAddress
-  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPAddress
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPAddress
-  nameWithType: HSMSConnection.IPAddress
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPAddress*
-  name: IPAddress
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_IPAddress_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPAddress
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.HSMSConnectionSM
+  nameWithType: HSMSConnection.HSMSConnectionSM
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPEndPoint
+  name: IPEndPoint
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_IPEndPoint
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPEndPoint
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPEndPoint
+  nameWithType: HSMSConnection.IPEndPoint
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPEndPoint*
+  name: IPEndPoint
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_IPEndPoint_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPEndPoint
   isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPAddress
-  nameWithType: HSMSConnection.IPAddress
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.PortNumber
-  name: PortNumber
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_PortNumber
-  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.PortNumber
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.PortNumber
-  nameWithType: HSMSConnection.PortNumber
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.PortNumber*
-  name: PortNumber
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_PortNumber_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.PortNumber
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.PortNumber
-  nameWithType: HSMSConnection.PortNumber
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.IPEndPoint
+  nameWithType: HSMSConnection.IPEndPoint
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.Start
   name: Start()
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_Start
@@ -278,19 +265,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.T8
   nameWithType: HSMSConnection.T8
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.TCPState
-  name: TCPState
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_TCPState
-  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.TCPState
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.TCPState
-  nameWithType: HSMSConnection.TCPState
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.TCPState*
-  name: TCPState
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_HSMSConnection_TCPState_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.TCPState
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnection.TCPState
-  nameWithType: HSMSConnection.TCPState
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode
   name: HSMSConnectionMode
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.HSMSConnectionMode.html
@@ -2423,15 +2397,12 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory
   nameWithType: SECSConnectionFactory
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage})
-  name: CreateConnection(SECSConnectionConfigInfo, BlockingCollection<SECSMessage>)
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionFactory_CreateConnection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_System_Collections_Concurrent_BlockingCollection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage})
-  name.vb: CreateConnection(SECSConnectionConfigInfo, BlockingCollection(Of SECSMessage))
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo, System.Collections.Concurrent.BlockingCollection<com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage>)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo, System.Collections.Concurrent.BlockingCollection(Of com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage))
-  nameWithType: SECSConnectionFactory.CreateConnection(SECSConnectionConfigInfo, BlockingCollection<SECSMessage>)
-  nameWithType.vb: SECSConnectionFactory.CreateConnection(SECSConnectionConfigInfo, BlockingCollection(Of SECSMessage))
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
+  name: CreateConnection(SECSConnectionConfigInfo)
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionFactory_CreateConnection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
+  nameWithType: SECSConnectionFactory.CreateConnection(SECSConnectionConfigInfo)
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.CreateConnection*
   name: CreateConnection
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionFactory.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionFactory_CreateConnection_
@@ -2495,15 +2466,18 @@ references:
   commentId: T:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection
   nameWithType: SECSIConnection
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.#ctor(System.String,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage},System.String,System.Boolean)
-  name: SECSIConnection(String, BlockingCollection<SECSMessage>, String, Boolean)
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection__ctor_System_String_System_Collections_Concurrent_BlockingCollection_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__System_String_System_Boolean_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.#ctor(System.String,System.Collections.Concurrent.BlockingCollection{com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage},System.String,System.Boolean)
-  name.vb: SECSIConnection(String, BlockingCollection(Of SECSMessage), String, Boolean)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SECSIConnection(System.String, System.Collections.Concurrent.BlockingCollection<com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage>, System.String, System.Boolean)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SECSIConnection(System.String, System.Collections.Concurrent.BlockingCollection(Of com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage), System.String, System.Boolean)
-  nameWithType: SECSIConnection.SECSIConnection(String, BlockingCollection<SECSMessage>, String, Boolean)
-  nameWithType.vb: SECSIConnection.SECSIConnection(String, BlockingCollection(Of SECSMessage), String, Boolean)
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
+  name: SECSIConnection(SECSConnectionConfigInfo)
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection__ctor_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSConnectionConfigInfo_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SECSIConnection(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSConnectionConfigInfo)
+  nameWithType: SECSIConnection.SECSIConnection(SECSConnectionConfigInfo)
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.#ctor(System.String,System.String,System.Boolean)
+  name: SECSIConnection(String, String, Boolean)
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection__ctor_System_String_System_String_System_Boolean_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.#ctor(System.String,System.String,System.Boolean)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.SECSIConnection(System.String, System.String, System.Boolean)
+  nameWithType: SECSIConnection.SECSIConnection(String, String, Boolean)
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.#ctor*
   name: SECSIConnection
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSIConnection.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSIConnection__ctor_
@@ -2793,6 +2767,12 @@ references:
   fullName.vb: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.SECSMessage(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader, System.Byte())
   nameWithType: SECSMessage.SECSMessage(SECSHeader, Byte[])
   nameWithType.vb: SECSMessage.SECSMessage(SECSHeader, Byte())
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)
+  name: SECSMessage(SECSHeader)
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__ctor_com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSHeader_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.#ctor(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.SECSMessage(com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSHeader)
+  nameWithType: SECSMessage.SECSMessage(SECSHeader)
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.#ctor*
   name: SECSMessage
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage__ctor_
@@ -2800,6 +2780,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.SECSMessage
   nameWithType: SECSMessage.SECSMessage
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Body
+  name: Body
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_Body
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Body
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Body
+  nameWithType: SECSMessage.Body
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Body*
+  name: Body
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_Body_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Body
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Body
+  nameWithType: SECSMessage.Body
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.EncodeForTransport
   name: EncodeForTransport()
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_EncodeForTransport
@@ -2813,19 +2806,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.EncodeForTransport
   nameWithType: SECSMessage.EncodeForTransport
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsByteArray
-  name: GetBodyAsByteArray()
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_GetBodyAsByteArray
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsByteArray
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsByteArray()
-  nameWithType: SECSMessage.GetBodyAsByteArray()
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsByteArray*
-  name: GetBodyAsByteArray
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_GetBodyAsByteArray_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsByteArray
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsByteArray
-  nameWithType: SECSMessage.GetBodyAsByteArray
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.GetBodyAsSECSItem
   name: GetBodyAsSECSItem()
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_GetBodyAsSECSItem
@@ -2852,6 +2832,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.Header
   nameWithType: SECSMessage.Header
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.IsHeaderOnly
+  name: IsHeaderOnly
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_IsHeaderOnly
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.IsHeaderOnly
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.IsHeaderOnly
+  nameWithType: SECSMessage.IsHeaderOnly
+- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.IsHeaderOnly*
+  name: IsHeaderOnly
+  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_SECSMessage_IsHeaderOnly_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.IsHeaderOnly
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.SECSMessage.IsHeaderOnly
+  nameWithType: SECSMessage.IsHeaderOnly
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.STypeValues
   name: STypeValues
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.STypeValues.html
@@ -4394,24 +4387,6 @@ references:
   commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.STypeValues.SeparateReq
   fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.STypeValues.SeparateReq
   nameWithType: STypeValues.SeparateReq
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState
-  name: TCPState
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.html
-  commentId: T:com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState
-  nameWithType: TCPState
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.Active
-  name: Active
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_TCPState_Active
-  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.Active
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.Active
-  nameWithType: TCPState.Active
-- uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.Inactive
-  name: Inactive
-  href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.html#com_CIMthetics_CSharpSECSTools_SECSCommUtils_TCPState_Inactive
-  commentId: F:com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.Inactive
-  fullName: com.CIMthetics.CSharpSECSTools.SECSCommUtils.TCPState.Inactive
-  nameWithType: TCPState.Inactive
 - uid: com.CIMthetics.CSharpSECSTools.SECSCommUtils.TransientMessageStatus
   name: TransientMessageStatus
   href: api/SECSCommUtils/com.CIMthetics.CSharpSECSTools.SECSCommUtils.TransientMessageStatus.html
@@ -6207,24 +6182,18 @@ references:
   commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem()
   nameWithType: ListSECSItem.ListSECSItem()
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(System.Collections.Generic.LinkedList{com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem},com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
-  name: ListSECSItem(LinkedList<SECSItem>, SECSItemNumLengthBytes)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_System_Collections_Generic_LinkedList_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(System.Collections.Generic.LinkedList{com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem},com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
-  name.vb: ListSECSItem(LinkedList(Of SECSItem), SECSItemNumLengthBytes)
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem(System.Collections.Generic.LinkedList<com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem>, com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem(System.Collections.Generic.LinkedList(Of com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem), com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
-  nameWithType: ListSECSItem.ListSECSItem(LinkedList<SECSItem>, SECSItemNumLengthBytes)
-  nameWithType.vb: ListSECSItem.ListSECSItem(LinkedList(Of SECSItem), SECSItemNumLengthBytes)
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(System.Collections.Generic.LinkedList{com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem})
-  name: ListSECSItem(LinkedList<SECSItem>)
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_System_Collections_Generic_LinkedList_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem__
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(System.Collections.Generic.LinkedList{com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem})
-  name.vb: ListSECSItem(LinkedList(Of SECSItem))
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem(System.Collections.Generic.LinkedList<com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem>)
-  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem(System.Collections.Generic.LinkedList(Of com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem))
-  nameWithType: ListSECSItem.ListSECSItem(LinkedList<SECSItem>)
-  nameWithType.vb: ListSECSItem.ListSECSItem(LinkedList(Of SECSItem))
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
+  name: ListSECSItem(ListSECSItem, SECSItemNumLengthBytes)
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItemNumLengthBytes_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem(com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem, com.CIMthetics.CSharpSECSTools.SECSItems.SECSItemNumLengthBytes)
+  nameWithType: ListSECSItem.ListSECSItem(ListSECSItem, SECSItemNumLengthBytes)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem)
+  name: ListSECSItem(ListSECSItem)
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor(com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem(com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem)
+  nameWithType: ListSECSItem.ListSECSItem(ListSECSItem)
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.#ctor*
   name: ListSECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem__ctor_
@@ -6232,6 +6201,87 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ListSECSItem
   nameWithType: ListSECSItem.ListSECSItem
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Add(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  name: Add(SECSItem)
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Add_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Add(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Add(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  nameWithType: ListSECSItem.Add(SECSItem)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Add*
+  name: Add
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Add_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Add
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Add
+  nameWithType: ListSECSItem.Add
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.AsDictionary
+  name: AsDictionary()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_AsDictionary
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.AsDictionary
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.AsDictionary()
+  nameWithType: ListSECSItem.AsDictionary()
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.AsDictionary*
+  name: AsDictionary
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_AsDictionary_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.AsDictionary
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.AsDictionary
+  nameWithType: ListSECSItem.AsDictionary
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Clear
+  name: Clear()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Clear
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Clear
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Clear()
+  nameWithType: ListSECSItem.Clear()
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Clear*
+  name: Clear
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Clear_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Clear
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Clear
+  nameWithType: ListSECSItem.Clear
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Contains(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  name: Contains(SECSItem)
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Contains_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Contains(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Contains(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  nameWithType: ListSECSItem.Contains(SECSItem)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Contains*
+  name: Contains
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Contains_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Contains
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Contains
+  nameWithType: ListSECSItem.Contains
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.CopyTo(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem[],System.Int32)
+  name: CopyTo(SECSItem[], Int32)
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_CopyTo_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem___System_Int32_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.CopyTo(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem[],System.Int32)
+  name.vb: CopyTo(SECSItem(), Int32)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.CopyTo(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem[], System.Int32)
+  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.CopyTo(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem(), System.Int32)
+  nameWithType: ListSECSItem.CopyTo(SECSItem[], Int32)
+  nameWithType.vb: ListSECSItem.CopyTo(SECSItem(), Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.CopyTo*
+  name: CopyTo
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_CopyTo_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.CopyTo
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.CopyTo
+  nameWithType: ListSECSItem.CopyTo
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Count
+  name: Count
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Count
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Count
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Count
+  nameWithType: ListSECSItem.Count
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Count*
+  name: Count
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Count_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Count
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Count
+  nameWithType: ListSECSItem.Count
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.EncodeForTransport
   name: EncodeForTransport()
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_EncodeForTransport
@@ -6271,6 +6321,19 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetElementAt
   nameWithType: ListSECSItem.GetElementAt
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetEnumerator
+  name: GetEnumerator()
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetEnumerator
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetEnumerator
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetEnumerator()
+  nameWithType: ListSECSItem.GetEnumerator()
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetEnumerator*
+  name: GetEnumerator
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetEnumerator_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetEnumerator
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetEnumerator
+  nameWithType: ListSECSItem.GetEnumerator
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetHashCode
   name: GetHashCode()
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetHashCode
@@ -6284,19 +6347,100 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetHashCode
   nameWithType: ListSECSItem.GetHashCode
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetValue
-  name: GetValue()
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetValue
-  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetValue
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetValue()
-  nameWithType: ListSECSItem.GetValue()
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetValue*
-  name: GetValue
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_GetValue_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetValue
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IndexOf(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  name: IndexOf(SECSItem)
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_IndexOf_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IndexOf(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IndexOf(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  nameWithType: ListSECSItem.IndexOf(SECSItem)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IndexOf*
+  name: IndexOf
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_IndexOf_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IndexOf
   isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.GetValue
-  nameWithType: ListSECSItem.GetValue
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IndexOf
+  nameWithType: ListSECSItem.IndexOf
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Insert(System.Int32,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  name: Insert(Int32, SECSItem)
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Insert_System_Int32_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Insert(System.Int32,com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Insert(System.Int32, com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  nameWithType: ListSECSItem.Insert(Int32, SECSItem)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Insert*
+  name: Insert
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Insert_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Insert
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Insert
+  nameWithType: ListSECSItem.Insert
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IsReadOnly
+  name: IsReadOnly
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_IsReadOnly
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IsReadOnly
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IsReadOnly
+  nameWithType: ListSECSItem.IsReadOnly
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IsReadOnly*
+  name: IsReadOnly
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_IsReadOnly_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IsReadOnly
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.IsReadOnly
+  nameWithType: ListSECSItem.IsReadOnly
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Item(System.Int32)
+  name: Item[Int32]
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Item_System_Int32_
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Item(System.Int32)
+  name.vb: Item(Int32)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Item[System.Int32]
+  fullName.vb: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Item(System.Int32)
+  nameWithType: ListSECSItem.Item[Int32]
+  nameWithType.vb: ListSECSItem.Item(Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Item*
+  name: Item
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Item_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Item
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Item
+  nameWithType: ListSECSItem.Item
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.LengthInBytes
+  name: LengthInBytes
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_LengthInBytes
+  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.LengthInBytes
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.LengthInBytes
+  nameWithType: ListSECSItem.LengthInBytes
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.LengthInBytes*
+  name: LengthInBytes
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_LengthInBytes_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.LengthInBytes
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.LengthInBytes
+  nameWithType: ListSECSItem.LengthInBytes
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Remove(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  name: Remove(SECSItem)
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Remove_com_CIMthetics_CSharpSECSTools_SECSItems_SECSItem_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Remove(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Remove(com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem)
+  nameWithType: ListSECSItem.Remove(SECSItem)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Remove*
+  name: Remove
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Remove_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Remove
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Remove
+  nameWithType: ListSECSItem.Remove
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.RemoveAt(System.Int32)
+  name: RemoveAt(Int32)
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_RemoveAt_System_Int32_
+  commentId: M:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.RemoveAt(System.Int32)
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.RemoveAt(System.Int32)
+  nameWithType: ListSECSItem.RemoveAt(Int32)
+- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.RemoveAt*
+  name: RemoveAt
+  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_RemoveAt_
+  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.RemoveAt
+  isSpec: "True"
+  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.RemoveAt
+  nameWithType: ListSECSItem.RemoveAt
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ToString
   name: ToString()
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_ToString
@@ -6310,19 +6454,6 @@ references:
   isSpec: "True"
   fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.ToString
   nameWithType: ListSECSItem.ToString
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
-  name: Value
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Value
-  commentId: P:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
-  nameWithType: ListSECSItem.Value
-- uid: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value*
-  name: Value
-  href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.html#com_CIMthetics_CSharpSECSTools_SECSItems_ListSECSItem_Value_
-  commentId: Overload:com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
-  isSpec: "True"
-  fullName: com.CIMthetics.CSharpSECSTools.SECSItems.ListSECSItem.Value
-  nameWithType: ListSECSItem.Value
 - uid: com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem
   name: SECSItem
   href: api/SECSItems/com.CIMthetics.CSharpSECSTools.SECSItems.SECSItem.html
