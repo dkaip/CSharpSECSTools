@@ -71,17 +71,27 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 		internal UInt32 T6 { get; set; } = ConnectionDefaults.T6;
 		internal UInt32 T7 { get; set; } = ConnectionDefaults.T7;
 		internal UInt32 T8 { get; set; } = ConnectionDefaults.T8;
+
+		/// <summary>
+		/// This a human meaningful name assigned to this <c>SECSConnection</c>.
+		/// It will appear in Log output in the event of issues.
+		/// </summary>
 		public string ConnectionName { get; private set; }
 
 		/// <summary>
 		/// This is a thread safe queue where <c>SECSMessage</c>s that need to be sent should
 		/// be placed.
 		/// </summary>
+		/// <remarks>
+		/// Normally you would send messages by using the <c>SendMessage</c> method, however, there
+		/// are situations where being able add messages directly to the send queue is 
+		/// a better fit.
+		/// </remarks>
 	    public BlockingCollection<SECSMessage> MessagesToSendQueue { get; private set; } = new BlockingCollection<SECSMessage>();
 
 		/// <summary>
 		/// This is a thread safe queue where <c>SECSMessage</c>s that that have been received
-		/// will be placed.
+		/// will be placed asynchronously.
 		/// </summary>
         public BlockingCollection<SECSMessage> MessagesReceivedQueue { get; private set; } = new BlockingCollection<SECSMessage>();
 
@@ -106,11 +116,6 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			this.ConnectionName = ConnectionName;
 		}
 
-		// internal Thread GetThread()
-		// {
-		// 	return SupervisorThread;
-		// }
-		
 		/// <summary>
 		/// Calling this method effectively starts up this <c>SECSConnection</c>
 		/// and gets it into a state whereby it will attempt to establish a
