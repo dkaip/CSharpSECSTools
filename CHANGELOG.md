@@ -6,6 +6,16 @@ All notable changes to this project will be documented in this file.
 
 ## Changed
 
+I modified `ListSECSItem` so that it now implements the `IList` interface.  This
+will make working with it and its element much more natural in `C#`.
+
+As part of getting `SECSSpy` operational. I performed a number of changes to the
+`SECSCommUtils` API.  It is not finished, but, it should be in good enough shape
+to experiment with...at least for communication using HSMS connections.
+
+I modified the `SMLFormatter` so that header logging options now include adding
+DisplayDeviceId, DisplaySystemBytes, and / or DisplayControlMessages.
+
 ## Added
 
 Added an `AsDictionary` method to `ListSECSItem`.  This will return the list's
@@ -13,9 +23,10 @@ contents as a `Dictionary`.  The `SECSItem`s within the `Dictionary` that may
 be accessed via their &quot;address&quot;  Refer to the documentation for more
 information.
 
-## Added
-
 More documentation.
+
+The utility `SECSSpy` now works.  It is not finished, but, it should be good enough
+to experiment with (and hopefully provide some feedback on).
 
 ## Fixed
 
