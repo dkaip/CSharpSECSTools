@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+22-Feb-2023
+
+## Changed
+
+## Added
+
+Added an `AsDictionary` method to `ListSECSItem`.  This will return the list's
+contents as a `Dictionary`.  The `SECSItem`s within the `Dictionary` that may
+be accessed via their &quot;address&quot;  Refer to the documentation for more
+information.
+
+## Added
+
+More documentation.
+
+## Fixed
+
+Some bugs.
+
 8-Feb-2023
 
 For the most part just added documentation.  The few minor changes I
