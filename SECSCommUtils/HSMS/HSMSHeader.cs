@@ -20,8 +20,8 @@ using System.Text;
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
 	/// <summary>
-	/// This class represents a SECS message header when a 
-    /// SECS-II message is sent via an HSMS transport layer.
+	/// This class represents a SECS message header for user when a 
+    /// message is sent via an HSMS transport layer.
     /// Refer to the SEMI Standards covering E037 for more
 	/// information.
 	/// </summary>
@@ -34,8 +34,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 
 		/// <summary>
 		/// This is the third byte (<c>[2]</c>) in an HSMS message header.
-		/// In most situations this attribute should not be used.  Instead,
-		/// use the <c>Wbit</c> and the <c>Stream</c> attributes. Situations
+		/// In most situations this property should not be used.  Instead,
+		/// use the <c>Wbit</c> and the <c>Stream</c> properties. Situations
 		/// where this might be used are in the cases where subsidiary standards
 		/// are used as opposed to a "normal" SECS-II encoding. This will 
 		/// probably be the case in the situation where <c>PType</c> is not
@@ -81,8 +81,8 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 
 		/// <summary>
 		/// This is the fourth byte (<c>[3]</c>) in an HSMS message header.
-		/// In most situations this attribute should not be used.  Instead,
-		/// use the <c>Wbit</c> and the <c>Stream</c> attributes. Situations
+		/// In most situations this property should not be used.  Instead,
+		/// use the <c>Function</c> property. Situations
 		/// where this might be used are in the cases where subsidiary standards
 		/// are used as opposed to a "normal" SECS-II encoding.
 		/// </summary>
@@ -110,8 +110,14 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 		}
 
 		/// <summary>
-		/// This is a copy constructor.
+		/// Create an <c>HSMSHeader</c> using the <c>HSMSHeader</c> provided.
 		/// </summary>
+		/// <param name="header">
+		/// This is an <c>HSMSHeader</c> that this one is to be constructed from.
+		/// </param>
+		/// <remarks>
+		/// This is a copy constructor.
+		/// </remarks>
 		public HSMSHeader(HSMSHeader header)
 		{
 			if (header == null)
@@ -179,6 +185,7 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			SystemBytes = (UInt32)((header[6] << 24) + (header[7] << 16) + (header[8] << 8) + (header[9]));
 		}
 
+		/// <inheritdoc/>
 		override public byte[] EncodeForTransport()
 		{
 			byte[] temp = new byte[10];
@@ -226,11 +233,15 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 				{
 					// It is a control message
 					var sTypeValue = (STypeValues)SType;
-					sb.Append("Control Message: "); sb.Append(sTypeValue.ToString());
+					sb.Append("Control Message: "); sb.Append(sTypeValue.ToString()); sb.Append("("); sb.Append((int)sTypeValue); sb.Append(")");
 					sb.Append(", ");
 					sb.Append("Byte 2: "); sb.Append(HeaderByte2);
 					sb.Append(", ");
 					sb.Append("Byte 3: "); sb.Append(HeaderByte3);
+					sb.Append(", ");
+					sb.Append("PType: "); sb.Append(PType.ToString()); sb.Append("("); sb.Append((int)PType); sb.Append(")");
+					sb.Append(", ");
+					sb.Append("SType: "); sb.Append(SType.ToString()); sb.Append("("); sb.Append((int)SType); sb.Append(")");
 				}
 
 				sb.Append(", ");
