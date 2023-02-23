@@ -264,6 +264,53 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
 			return result;
 		}
 
+		/// <summary>
+		/// This method returns the elements contained within this <c>ListSECSItem</c>
+		/// as a <c>Dictionary</c>.
+		/// </summary>
+		/// <returns>
+		/// A <c>Dictionary&lt;string, SECSItem&gt;</c> where the individual elements 
+		/// contained within are accessible via their &quot;address&quot;.
+		/// </returns>
+		/// <remarks>
+		/// The keys of the dictionary are the &quot;addresses&quot;
+		/// of the individual elements.  The format of the &quot;address&quot; keys is the
+		/// same as that used by the <see cref="GetElementAt(string)"/> method.  Refer to
+		/// it for more information.
+		/// <para>
+		/// It you have a large message that you need to grab a bunch elements from this
+		/// might be more efficient than calling <see cref="GetElementAt(string)"/> a
+		/// bunch of times.
+		/// </para>
+		/// </remarks>
+		public Dictionary<string, SECSItem>AsDictionary()
+		{
+			Dictionary<string, SECSItem> result = new Dictionary<string, SECSItem>();
+
+			AddItemsToDictionary(result, "", this);
+
+			return result;
+		}
+
+		private void AddItemsToDictionary(Dictionary<string, SECSItem> dictionary, string prefixString, ListSECSItem secsItem)
+		{
+			string address = "";
+
+			for(int i = 0; i < secsItem.Count; i++)
+			{
+				if (string.IsNullOrEmpty(prefixString) == true)
+					address = (i + 1).ToString();
+				else
+					address = prefixString + "." + (i + 1).ToString();
+
+				dictionary.Add(address, secsItem[i]);
+				if (secsItem[i].GetType() == typeof(ListSECSItem))
+				{
+					AddItemsToDictionary(dictionary, address, (ListSECSItem)secsItem[i]);
+				}
+			}
+		}
+
         /// <summary>
         /// Creates and returns a <c>byte[]</c> that represents this <c>SECSItem</c> in &quot;wire/transmission format&quot;.
         /// </summary>

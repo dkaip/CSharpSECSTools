@@ -2396,261 +2396,126 @@ byte [] temp = secsItem.ToRawSECSItem();
 
             Assert.IsFalse(secsItem.Equals(expectedResult));
         }
-                                          /*
-        [Test()]
-        public void test01()
-        {
-            byte[] input = { 
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x01), 25,
-
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.A) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.B) << 2) | 0x01), 0x05, 128, 255, 0, 1, 127,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.BO) << 2) | 0x01), 0x08, 1, 0, 2, 0, 255, 0, 1, 1,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.BO) << 2) | 0x01), 0x01, 5,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F4) << 2) | 0x01), 20, 
-                127, 127, 255, 255,
-                255, 127, 255, 255,
-                255, 128, 0, 0,
-                127, 128, 0, 0,
-                0, 0, 0, 0,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 127, 127, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F8) << 2) | 0x01), 40, 
-                127, 0xEF, 255, 255, 255, 255, 255, 255,
-                255, 0XEF, 255, 255, 255, 255, 255, 255,
-                255, 0xF0, 0, 0, 0, 0, 0, 0,
-                127, 0XF0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F8) << 2) | 0x01), 0x08, 127, 0xEF, 255, 255, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I1) << 2) | 0x01), 0x04, 255, 128, 0, 127,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I1) << 2) | 0x01), 0x01, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I2) << 2) | 0x01), 10,
-                255, 255,
-                128, 0,
-                0, 0,
-                0, 1,
-                127, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I2) << 2) | 0x01), 0x02, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I4) << 2) | 0x01), 20,
-                255, 255, 255, 255,
-                128, 0, 0, 0,
-                0, 0, 0, 0,
-                0, 0, 0, 1,
-                127, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I4) << 2) | 0x01), 0x04, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I8) << 2) | 0x01), 40,
-                255, 255, 255, 255, 255, 255, 255, 255,
-                128, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 1,
-                127, 255, 255, 255, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I8) << 2) | 0x01), 0x08, 255, 255, 255, 255, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U1) << 2) | 0x01), 0x04, 255, 128, 0, 127,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U1) << 2) | 0x01), 0x01, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U2) << 2) | 0x01), 10,
-                255, 255,
-                128, 0,
-                0, 0,
-                0, 1,
-                127, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U2) << 2) | 0x01), 0x02, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U4) << 2) | 0x01), 20,
-                255, 255, 255, 255,
-                128, 0, 0, 0,
-                0, 0, 0, 0,
-                0, 0, 0, 1,
-                127, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U4) << 2) | 0x01), 0x04, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U8) << 2) | 0x01), 40,
-                255, 255, 255, 255, 255, 255, 255, 255,
-                128, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 1,
-                127, 255, 255, 255, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U8) << 2) | 0x01), 0x08, 255, 255, 255, 255, 255, 255, 255, 255,
-
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.L) << 2) | 0x01), 24,
-
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.A) << 2) | 0x01), 0x03, 0x41, 0x42, 0x43,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.B) << 2) | 0x01), 0x05, 128, 255, 0, 1, 127,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.BO) << 2) | 0x01), 0x08, 1, 0, 2, 0, 255, 0, 1, 1,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.BO) << 2) | 0x01), 0x01, 5,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F4) << 2) | 0x01), 20, 
-                127, 127, 255, 255,
-                255, 127, 255, 255,
-                255, 128, 0, 0,
-                127, 128, 0, 0,
-                0, 0, 0, 0,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F4) << 2) | 0x01), 0x04, 127, 127, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F8) << 2) | 0x01), 40, 
-                127, 0xEF, 255, 255, 255, 255, 255, 255,
-                255, 0XEF, 255, 255, 255, 255, 255, 255,
-                255, 0XF0, 0, 0, 0, 0, 0, 0,
-                127, 0XF0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.F8) << 2) | 0x01), 0x08, 127, 0xEF, 255, 255, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I1) << 2) | 0x01), 0x04, 255, 128, 0, 127,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I1) << 2) | 0x01), 0x01, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I2) << 2) | 0x01), 10,
-                255, 255,
-                128, 0,
-                0, 0,
-                0, 1,
-                127, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I2) << 2) | 0x01), 0x02, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I4) << 2) | 0x01), 20,
-                255, 255, 255, 255,
-                128, 0, 0, 0,
-                0, 0, 0, 0,
-                0, 0, 0, 1,
-                127, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I4) << 2) | 0x01), 0x04, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I8) << 2) | 0x01), 40,
-                255, 255, 255, 255, 255, 255, 255, 255,
-                128, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 1,
-                127, 255, 255, 255, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.I8) << 2) | 0x01), 0x08, 255, 255, 255, 255, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U1) << 2) | 0x01), 0x04, 255, 128, 0, 127,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U1) << 2) | 0x01), 0x01, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U2) << 2) | 0x01), 10,
-                255, 255,
-                128, 0,
-                0, 0,
-                0, 1,
-                127, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U2) << 2) | 0x01), 0x02, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U4) << 2) | 0x01), 20,
-                255, 255, 255, 255,
-                128, 0, 0, 0,
-                0, 0, 0, 0,
-                0, 0, 0, 1,
-                127, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U4) << 2) | 0x01), 0x04, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U8) << 2) | 0x01), 40,
-                255, 255, 255, 255, 255, 255, 255, 255,
-                128, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 1,
-                127, 255, 255, 255, 255, 255, 255, 255,
-                (byte)((SECSItemFormatCodeFunctions.GetNumberFromSECSItemFormatCode(SECSItemFormatCode.U8) << 2) | 0x01), 0x08, 255, 255, 255, 255, 255, 255, 255, 255
-
-            };
-            ListSECSItem secsItem = new ListSECSItem(input, 0);
-
-            SECSItem testElement = null;
-            LinkedList<SECSItem> expectedData1 = new LinkedList<SECSItem>();
-            LinkedList<SECSItem> expectedData2 = new LinkedList<SECSItem>();
-            testElement = new ASCIISECSItem("ABC");
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new BinarySECSItem(new byte[]{128, 255, 0, 1, 127});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new BooleanArraySECSItem(new bool[]{true, false, true, false, true, false, true, true});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new BooleanSECSItem(true);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new F4ArraySECSItem(new float[]{Single.MaxValue, Single.MinValue, Single.NegativeInfinity, Single.PositiveInfinity, 0.0F});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new F4SECSItem(Single.MaxValue);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new F8ArraySECSItem(new double[]{Double.MaxValue, Double.MinValue, Double.NegativeInfinity, Double.PositiveInfinity, 0.0D});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new F8SECSItem(Double.MaxValue);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new I1ArraySECSItem(new sbyte[]{255, 128, 0, 127});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new I1SECSItem((sbyte)-1);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new I2ArraySECSItem(new Int16[]{255, -32768, 0, 1, 32767});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new I2SECSItem(-1);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new I4ArraySECSItem(new Int32[]{255, -2147483648, 0, 1, 2147483647});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new I4SECSItem(-1);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new I8ArraySECSItem(new Int64[]{255, -9223372036854775808L, 0, 1, 9223372036854775807L});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new I8SECSItem(-1);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new U1ArraySECSItem(new byte[]{255, 128, 0, 127});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new U1SECSItem((byte)255);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new U2ArraySECSItem(new UInt16[]{65535, 32768, 0, 1, 32767});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new U2SECSItem(65535);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new U4ArraySECSItem(new UInt32[]{0xFFFFFFFF, 2147483648, 0, 1, 2147483647});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new U4SECSItem((UInt32)0xFFFFFFFF);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new U8ArraySECSItem(new UInt64[]{0xFFFFFFFFFFFFFFFF, 0x8000000000000000, 0x0000000000000000, 0x0000000000000001, 0x7FFFFFFFFFFFFFFF});
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-            testElement = new U8SECSItem((UInt64)0xFFFFFFFFFFFFFFFF);
-            expectedData1.Add(testElement);
-            expectedData2.Add(testElement);
-
-            ListSECSItem innerList = new ListSECSItem(expectedData2);
-            expectedData1.Add(innerList);
-
-            ListSECSItem expectedResult = new ListSECSItem(expectedData1);
-
-            Console.WriteLine(secsItem.ToString());
-            Console.WriteLine("\n/////////////////////////////////////////////////////////////////////////////////////////////////////\n");
-            Console.WriteLine(expectedResult.ToString());
-
-            Assert.IsTrue(secsItem.Equals(expectedResult));
-        }
 
         [Test()]
-        public void test02()
+        public void test24()
         {
+            ListSECSItem eventReportData = new ListSECSItem();
+			eventReportData.Add(new ASCIISECSItem("DATAID"));
+			eventReportData.Add(new ASCIISECSItem("CEID"));
+
+            ListSECSItem reports = new ListSECSItem();
+
+			/////////////////////////////////////////////////////////////////////////////
+            ListSECSItem report = new ListSECSItem();
+			report.Add(new ASCIISECSItem("RPTID1"));
+
+            ListSECSItem vidList = new ListSECSItem();
+
+			vidList.Add(new U2SECSItem(1));
+			vidList.Add(new U2ArraySECSItem(new UInt16[]{ 2, 3, 4, 5}));
+			vidList.Add(new BooleanSECSItem(true));
+			report.Add(vidList);
+
+			reports.Add(report);
+
+			/////////////////////////////////////////////////////////////////////////////
+            report = new ListSECSItem();
+			report.Add(new ASCIISECSItem("RPTID2"));
+
+            vidList = new ListSECSItem();
+
+			vidList.Add(new ASCIISECSItem());
+			vidList.Add(new BinarySECSItem(new byte[]{ 0, 1, 127, 255, 0, 100}));
+			vidList.Add(new F8SECSItem(3.141593D));
+			vidList.Add(new BooleanArraySECSItem(new bool[]{ true, false, true, true, false}));
+			vidList.Add(new I4SECSItem(0x7FFFFFFF));
+			report.Add(vidList);
+
+			reports.Add(report);
+
+			/////////////////////////////////////////////////////////////////////////////
+            report = new ListSECSItem();
+			report.Add(new ASCIISECSItem("RPTID3"));
+
+            vidList = new ListSECSItem();
+
+			vidList.Add(new ListSECSItem());
+			vidList.Add(new ASCIISECSItem());
+			vidList.Add(new BinarySECSItem());
+			vidList.Add(new BooleanArraySECSItem());
+			vidList.Add(new I8ArraySECSItem());
+			vidList.Add(new I1ArraySECSItem());
+			vidList.Add(new I2ArraySECSItem());
+			vidList.Add(new I4ArraySECSItem());
+			vidList.Add(new F8ArraySECSItem());
+			vidList.Add(new F4ArraySECSItem());
+			vidList.Add(new U8ArraySECSItem());
+			vidList.Add(new U1ArraySECSItem());
+			vidList.Add(new U2ArraySECSItem());
+			vidList.Add(new U4ArraySECSItem());
+			report.Add(vidList);
+
+			reports.Add(report);
+
+			eventReportData.Add(reports);
+
+            Dictionary<string, SECSItem> testDictionary = eventReportData.AsDictionary();
+
+            bool result = false;
+            SECSItem secsItem = null;
+
+            result = testDictionary.TryGetValue("1", out secsItem);
+            Assert.IsTrue(result == true);
+            Assert.IsTrue(secsItem.GetType() == typeof(ASCIISECSItem));
+            Assert.IsTrue(string.Equals(((ASCIISECSItem)secsItem).Value, "DATAID"));
+
+            result = testDictionary.TryGetValue("3", out secsItem);
+            Assert.IsTrue(result == true);
+            Assert.IsTrue(secsItem.GetType() == typeof(ListSECSItem));
+            Assert.IsTrue(((ListSECSItem)secsItem).LengthInBytes == 3);
+
+            result = testDictionary.TryGetValue("3.2.1", out secsItem);
+            Assert.IsTrue(result == true);
+            Assert.IsTrue(secsItem.GetType() == typeof(ASCIISECSItem));
+            Assert.IsTrue(string.Equals(((ASCIISECSItem)secsItem).Value, "RPTID2"));
+
+            result = testDictionary.TryGetValue("3.3.1", out secsItem);
+            Assert.IsTrue(result == true);
+            Assert.IsTrue(secsItem.GetType() == typeof(ASCIISECSItem));
+            Assert.IsTrue(string.Equals(((ASCIISECSItem)secsItem).Value, "RPTID3"));
+
+            result = testDictionary.TryGetValue("3.3.2", out secsItem);
+            Assert.IsTrue(result == true);
+            Assert.IsTrue(secsItem.GetType() == typeof(ListSECSItem));
+            Assert.IsTrue(((ListSECSItem)secsItem).LengthInBytes == 14);
+
+            result = testDictionary.TryGetValue("3.3.2.1", out secsItem);
+            Assert.IsTrue(result == true);
+            Assert.IsTrue(secsItem.GetType() == typeof(ListSECSItem));
+            Assert.IsTrue(((ListSECSItem)secsItem).LengthInBytes == 0);
+
+            result = testDictionary.TryGetValue("3.3.2.9", out secsItem);
+            Assert.IsTrue(result == true);
+            Assert.IsTrue(secsItem.GetType() == typeof(F8ArraySECSItem));
+            Assert.IsTrue(((F8ArraySECSItem)secsItem).LengthInBytes == 0);
+
+            result = testDictionary.TryGetValue("3.2.2.2", out secsItem);
+            Assert.IsTrue(result == true);
+            Assert.IsTrue(secsItem.GetType() == typeof(BinarySECSItem));
+            Assert.IsTrue(((BinarySECSItem)secsItem).LengthInBytes == 6);
+
+            result = testDictionary.TryGetValue("3.1.2.2", out secsItem);
+            Assert.IsTrue(result == true);
+            Assert.IsTrue(secsItem.GetType() == typeof(U2ArraySECSItem));
+            Assert.IsTrue(((U2ArraySECSItem)secsItem).LengthInBytes == 8);
+            Assert.IsTrue(((U2ArraySECSItem)secsItem).Value[0] == 2);
+            Assert.IsTrue(((U2ArraySECSItem)secsItem).Value[1] == 3);
+            Assert.IsTrue(((U2ArraySECSItem)secsItem).Value[2] == 4);
+            Assert.IsTrue(((U2ArraySECSItem)secsItem).Value[3] == 5);
+
         }
 
-        [Test()]
-        public void test03()
-        {
-        }
-
-        [Test()]
-        public void test04()
-        {
-        }
-
-        [Test()]
-        public void test05()
-        {
-        }
-
-        [Test()]
-        public void test06()
-        {
-        }
-        */
     }
 }
 
