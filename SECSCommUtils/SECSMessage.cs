@@ -13,112 +13,165 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 using com.CIMthetics.CSharpSECSTools.SECSItems;
+
+#nullable enable
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
 	/// <summary>
-	/// This class is for containing a SECS message in a .NET environment.
+	/// This class represents a SECS message that will be
+	/// sent to some other entity or a SECS message that has been
+	/// received from some other entity.
 	/// </summary>
 	public class SECSMessage
 	{
-		private	byte[]		_binaryBody = null;
-		private SECSItem	_secsItemBody = null;
+		private	byte[]?		_body   = null;
 
-		public SECSHeader Header { get; set; }
+        /// <summary>
+        /// True if this <c>SECSMessage</c> is a header only message.  In other
+		/// words, it is a message that only contains a message header portion
+		/// and does not have a body to go with it.
+        /// </summary>
+		/// <returns>
+		/// <c>true</c> if this <c>SECSMessage</c> contains a <c>Header</c> without a <c>Body</c> component.
+		/// </returns>
+		public bool IsHeaderOnly
+		{
+			get
+			{
+				if (_body == null || _body.Length == 0)
+					return true;
+				else
+					return false;
+			}
+		}
+
+        /// <summary>
+        /// The body / payload / contents of this <c>SECSMessage</c>.
+        /// </summary>
+		/// <returns>
+		/// The message body component of this <c>SECSMessage</c>.
+		/// </returns>
+		/// <remarks>
+		/// Returns an empty <c>byte[]</c> in the event this is a header
+		/// only (<c>IsHeaderOnly</c> is <c>true</c>) message.
+		/// </remarks>
+		public byte[] Body
+		{
+			get
+			{
+				if (_body == null)
+				return new byte[0];
+				else
+				    return _body;
+			}
+		}
+
+		/// <summary>
+		/// The SECS message header (either an <c>HSMSHeader</c> or a <c>SECSIHeader</c>)
+		/// of this <c>SECSMessage</c>
+		/// </summary>
+		/// <returns>
+		/// The message header component of this <c>SECSMessage</c>.
+		/// </returns>
+		public SECSHeader Header { get; private set; }
 
 		/// <summary>
 		/// This constructor is typically used in the situation where the
-		/// payload of a SECS message (a <c>SECSItem</c>) was created by
-		/// <c>.NET</c> by a programmer and is ready to be sent to some
-		/// entity.
+		/// message is to be header only.
 		/// </summary>
-		public SECSMessage(SECSHeader Header, SECSItem body)
+		/// <param name="header">
+		/// The SECS message header (either a <c>HSMSHeader</c> or a <c>SECSIHeader</c>)
+		/// to be used in this message.
+		/// </param>
+		public SECSMessage(SECSHeader header)
 		{
-			this.Header = Header;
-			this._secsItemBody = body;
-			this._binaryBody = null;
+			this.Header = header;
+			this._body = new byte[0];
+		}
+
+		/// <summary>
+		/// This constructor is typically used in the situation where the
+		/// payload of a SECS message was created by
+		/// a programmer as a <c>SECSItem</c> and is ready to be sent to some other entity.
+		/// </summary>
+		/// <param name="header">
+		/// The SECS message header (either a <c>HSMSHeader</c> or a <c>SECSIHeader</c>)
+		/// to be used in this message.
+		/// </param>
+		/// <param name="body">
+		/// The body / content / payload of the SECS message to be sent.
+		/// </param>
+		public SECSMessage(SECSHeader header, SECSItem body)
+		{
+			this.Header = header;
+			this._body = body.EncodeForTransport();
 		}
 
 		/// <summary>
 		/// This constructor is typically used in the situation where a
-		/// SECS message was receive from either a SECS-I connection or
+		/// SECS message was received from either a SECS-I connection or
 		/// an HSMS connection.  The body in this situation will be in
-		/// the form of a <c>byte[]</c>.  In this form it is very
-		/// tedious to deal with
+		/// the form of a <c>byte[]</c> of bytes received from some other
+		/// entity.
 		/// </summary>
-		public SECSMessage(SECSHeader Header, byte[] body)
+		/// <param name="header">
+		/// The SECS message header (either a <c>HSMSHeader</c> or a <c>SECSIHeader</c>)
+		/// to be used in this message.
+		/// </param>
+		/// <param name="body">
+		/// The body / content / payload of the SECS message to be sent.
+		/// </param>
+		public SECSMessage(SECSHeader header, byte[] body)
 		{
-			this.Header = Header;
-			this._binaryBody = body;
-			this._secsItemBody = null;
+			this.Header = header;
+			this._body = body;
 		}
 
+		/// <summary>
+		/// This method encodes this <c>SECSMessage</c> into a form where it may
+		/// written out as a <c>byte[]</c> to some entity.
+		/// </summary>
+		/// <returns>
+		/// A <c>byte[]</c> containing the information ready to be written out
+		/// on a connection to some entity.
+		/// </returns>
 		public byte[] EncodeForTransport()
 		{
-			byte[] temp = null;
-
-			if (_binaryBody == null && _secsItemBody == null)
+			if (_body == null)
 			{
 				// This is a header only message.
-				temp = Header.EncodeForTransport();
-			}
-			else if (_binaryBody != null)
-			{
-				// The body of the message is already in its binary form
-				temp = new byte[10 + _binaryBody.Length];
-				Header.EncodeForTransport().CopyTo(temp, 0);
-				_binaryBody.CopyTo(temp, 10);
-			}
-			else
-			{
-				// The body of the message needs to be converted to its binary form
-				byte[] temp2 = _secsItemBody.EncodeForTransport();
-				_binaryBody = temp2;
-				_secsItemBody = null;
-				temp = new byte[10 + _binaryBody.Length];
-				Header.EncodeForTransport().CopyTo(temp, 0);
-				_binaryBody.CopyTo(temp, 10);
+				return Header.EncodeForTransport();
 			}
 
+			// The body of the message is already in its binary form
+			byte[] temp = new byte[10 + _body.Length];
+			Header.EncodeForTransport().CopyTo(temp, 0);
+			_body.CopyTo(temp, 10);
+			
 			return temp;
 		}
 
         /// <summary>
-        /// Returns the body / payload of this <c>SECSMessage</c> as a <c>SECSItem</c>.
+        /// Returns the body / payload / contents of this <c>SECSMessage</c> as a <c>SECSItem</c>.
         /// </summary>
         /// <returns>A <c>SECSItem</c> representation of this <c>SECSMessage</c>'s body / payload.</returns>
-		public SECSItem GetBodyAsSECSItem()
+		/// <remarks>
+		/// This method returns <c>null</c> in the case where this <c>SECSMessage</c> is a header
+		/// only message.
+		/// </remarks>
+		public SECSItem? GetBodyAsSECSItem()
 		{
-			if (_secsItemBody == null)
+			SECSItem? result = null;
+
+			if (_body != null)
 			{
-				_secsItemBody = SECSItemFactory.GenerateSECSItem(_binaryBody);
-				_binaryBody = null;
+				result = SECSItemFactory.GenerateSECSItem(_body);
 			}
 
-			return _secsItemBody;
-		}
-
-        /// <summary>
-        /// Creates and returns a <c>byte[]</c> that contains this <c>SECSMessages</c>'s body / payload.
-        /// <para>
-        /// This <c>byte[]</c> is in the same format that would need to be used for transmission via <c>HSMS</c> or <c>SECS-I</c>.
-        /// </para>
-        /// </summary>
-        /// <returns>A<c>byte []</c> representation of this <c>SECSMessage</c>'s body / payload that is suitable for transmission.</returns>
-		public byte[] GetBodyAsByteArray()
-		{
-			if (_binaryBody == null)
-			{
-				_binaryBody = _secsItemBody.EncodeForTransport();
-				_secsItemBody = null;
-			}
-
-			return _binaryBody;
+			return result;
 		}
 	} // End class SECSMessage
 

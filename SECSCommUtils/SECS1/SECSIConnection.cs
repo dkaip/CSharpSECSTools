@@ -13,27 +13,163 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- using Serilog;
-using System;
-using System.Collections.Generic;
+
+using Serilog;
+
 using System.Collections.Concurrent;
-using System.Linq;
-using System.Text;
-using System.Threading;
 
 namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 {
+	/// <summary>
+	/// This class implements a <c>SECSConnection</c> that uses SECS-I for
+	/// its transport layer.
+	/// </summary>
 	public class SECSIConnection : SECSConnection
 	{
-		public UInt32 T1 { get; set; } // in ms
-		public UInt32 T2 { get; set; }
-		public UInt32 T4 { get; set; }
+		/// <summary>
+		/// Inter-Character Timeout
+		/// </summary>
+		/// <value>
+		/// The Inter-Character timeout in milliseconds.
+		/// </value>
+		/// <remarks>
+		/// <ul>
+		/// <li>Default: 0.5 seconds (500 milliseconds)</li>
+		/// <li>Range: 0.1 - 10.0 seconds</li>
+		/// <li>Resolution: 0.1 second (100 milliseconds)</li>
+		/// </ul>
+		/// </remarks>
+		public new UInt32 T1
+		{
+			get
+			{
+				return base.T1;
+			}
+			set
+			{
+				if (value < 100)
+					base.T1 = 100;
+				else if (value > 10000)
+					base.T1 = 10000;
+				else
+				{
+					// Strip off anything less that 0.1 seconds
+					UInt32 temp = value/100;
+					temp *= 100;
+					base.T1 = temp;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Protocol Timeout
+		/// </summary>
+		/// <value>
+		/// The Protocol timeout in milliseconds.
+		/// </value>
+		/// <remarks>
+		/// <ul>
+		/// <li>Default: 10 seconds (10000 milliseconds)</li>
+		/// <li>Range: 0.2 - 25.0 seconds</li>
+		/// <li>Resolution: 0.1 second (100 milliseconds)</li>
+		/// </ul>
+		/// </remarks>
+		public new UInt32 T2
+		{
+			get
+			{
+				return base.T2;
+			}
+			set
+			{
+				if (value < 100)
+					base.T2 = 100;
+				else if (value > 25000)
+					base.T2 = 25000;
+				else
+				{
+					// Strip off anything less that 0.1 seconds
+					UInt32 temp = value/100;
+					temp *= 100;
+					base.T2 = temp;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Transaction Reply Timeout
+		/// </summary>
+		/// <value>
+		/// The transaction reply timeout in seconds.
+		/// </value>
+		/// <remarks>
+		/// <ul>
+		/// <li>Default: 45 seconds</li>
+		/// <li>Range: 1 - 120 seconds</li>
+		/// <li>Resolution: 1 second</li>
+		/// </ul>
+		/// </remarks>
+		public new UInt32 T3
+		{
+			get
+			{
+				return base.T3;
+			}
+			set
+			{
+				if (value < 1)
+					base.T3 = 1;
+				else if (value > 120)
+					base.T3 = 120;
+				else
+					base.T3 = value;
+			}
+		}
+
+		/// <summary>
+		/// Inter-Block Timeout
+		/// </summary>
+		/// <value>
+		/// The Inter-Block timeout in seconds.
+		/// </value>
+		/// <remarks>
+		/// <ul>
+		/// <li>Default: 45 seconds</li>
+		/// <li>Range: 1 - 120 seconds</li>
+		/// <li>Resolution: 1 second</li>
+		/// </ul>
+		/// </remarks>
+		public new UInt32 T4
+		{
+			get
+			{
+				return base.T4;
+			}
+			set
+			{
+				if (value < 1)
+					base.T4 = 1;
+				else if (value > 120)
+					base.T4 = 120;
+				else
+					base.T4 = value;
+			}
+		}
+
 		public uint RetryCount { get; set; }
 		public bool Master { get; set; }
 		public string TTYPort { get; set; }
 
-		public SECSIConnection(string ConnectionName, BlockingCollection<SECSMessage> MessagesReceivedQueue, string TTYPort, bool Master)
-			: base(ConnectionName, MessagesReceivedQueue)
+		/// <summary>
+		/// Create an connection object that will use SECS-I as its transport layer.
+		/// </summary>
+		/// <remarks>
+		/// Use this form of the constructor in the event that the required configuration 
+		/// information is contained in a <c>SECSConnectionConfigInfo</c> object.
+		/// </remarks>
+		public SECSIConnection(SECSConnectionConfigInfo configuration) : base(configuration.Name) { }
+
+		public SECSIConnection(string ConnectionName, string TTYPort, bool Master) : base(ConnectionName)
 		{
 			T1 = ConnectionDefaults.T1;
 			T2 = ConnectionDefaults.T2;
@@ -45,11 +181,6 @@ namespace com.CIMthetics.CSharpSECSTools.SECSCommUtils
 			this.Master = Master;
 
 		}
-
-		override public void SendMessage(SECSMessage message)
-		{
-			MessagesToSendQueue.Add(message);
-		} // End override public void sendMessage(TransientMessage Message)
 
 		override public void Start()
 		{
