@@ -110,11 +110,28 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// <param name="value">A l<c>ListSECSItem</c>.</param>
         /// <remarks>
         /// The array's length should not exceed <c>16777215</c> elements.
+		/// <para>
+		/// This is a copy constructor.
+		/// </para>
         /// </remarks>
         public ListSECSItem(ListSECSItem? value) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count)
 		{
 			if (value != null)
-				this._value = value._value;
+			{
+				/*
+				    This is my quick hack for a copy constructor.  Given the
+					expected usage patterns of this constructor this is probably
+					not a horrible solution.
+				*/
+				byte[] temp = value.EncodeForTransport();
+
+				SECSItem? newItem = SECSItemFactory.GenerateSECSItem(temp);
+
+				if (newItem != null)
+				{
+					this._value = ((ListSECSItem)newItem)._value;
+				}
+			}
 		}
 
         /// <summary>
@@ -129,11 +146,28 @@ namespace com.CIMthetics.CSharpSECSTools.SECSItems
         /// The value for the number of length bytes must be <c>ONE</c>, <c>TWO</c>, or <c>THREE</c>.</param>
         /// <remarks>
         /// The array's length should not exceed <c>16777215</c> elements.
+		/// <para>
+		/// This is a copy constructor.
+		/// </para>
         /// </remarks>
         public ListSECSItem(ListSECSItem? value, SECSItemNumLengthBytes desiredNumberOfLengthBytes) : base(SECSItemFormatCode.L, value == null ? 0 : value.Count, desiredNumberOfLengthBytes)
 		{
 			if (value != null)
-				this._value = value._value;
+			{
+				/*
+				    This is my quick hack for a copy constructor.  Given the
+					expected usage patterns of this constructor this is probably
+					not a horrible solution.
+				*/
+				byte[] temp = value.EncodeForTransport();
+
+				SECSItem? newItem = SECSItemFactory.GenerateSECSItem(temp);
+
+				if (newItem != null)
+				{
+					this._value = ((ListSECSItem)newItem)._value;
+				}
+			}
 		}
 
         /// <summary>
