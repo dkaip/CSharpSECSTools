@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+23-Feb-2023
+
+## Added
+
+More documentation. Primarily for `SECSSpy`.
+
 22-Feb-2023
 
 ## Changed

@@ -68,12 +68,13 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="secsspy">SECSSpy</h1>
 
-<p>This utility program is used to log the SECS message traffic between two endpoints of a &quot;SECS connection&quot; to a terminal  or a file.</p>
-<p>The output format of the resulting log file may be configured to be either <a href="https://www.peergroup.com/resources/secs-message-language/">SECS Message Language(SML)</a> or <a href="https://www.w3.org/standards/xml/core">XML(Extensible Markup Language)</a>.  When the output format is selected there are a number of customization options that may be applied depending on the output format selected.  Refer to the <a href="#smloutput">SML Output</a> or <a href="#xmloutput">XML Output</a> sections of this document for more information on these options.</p>
+<p>This utility program is used to log the SECS message traffic between two endpoints of a &quot;SECS connection&quot;.  Since this utility
+uses <code>Serilog</code> the log output may be configured to end up on a terminal, in a file, some other data sink, or some combination thereof.</p>
+<p>The output format of the resulting log file may be configured to be either <a href="https://www.peergroup.com/resources/secs-message-language/">SECS Message Language(SML)</a> or <a href="https://www.w3.org/standards/xml/core">XML(Extensible Markup Language)</a>.  When the output format is selected there are a number of customization options that may be applied depending on the output format selected.  Refer to the <a href="#smloutputconfig"><code>SMLOutputConfig</code></a> or <a href="#xmloutputconfig"><code>XMLOutputConfig</code></a> sections of this document for more information on these options.</p>
 <p>Why are there two output formats available?  SML has been around for many years now and is quite familiar to those who have been working in this part of this industry for a long time.  When looking at the log files with your own eyes it is very adequate.  However, it can be a real pain to write a parser for, hence the ability to write out log files in XML.  Why would you ever need to parse a log file?</p>
-<p>There are a number of reasons why being able to easily parse a log file is a good and useful thing.</p>
+<p>There are a number of reasons why being able to easily parse a log file is a good and useful thing. Here are two of them:</p>
 <ul>
-<li>Equipment Interface(EI) Development/Enhancment/Debugging - It can be a great aide in the development and or debugging cycle to be able to generate an equipment simulator.  With this simulator you are able to run your EI against a simulator that is simulating a genuine equipment operation cycle complete with all of the data events and their respective reports, perhaps megabytes worth of data.  I will mention here that parsing the log file and producing code segments for <a href="https://github.com/dkaip/sc_open">sc_open</a> can be invaluable in EI development, maintenance, debugging, etc.</li>
+<li>Equipment Interface(EI) Development/Enhancement/Debugging - It can be a great aide in the development and or debugging cycle to be able to generate an equipment simulator.  With this simulator you are able to run your EI against a simulator that is simulating a genuine equipment operation cycle complete with all of the data events and their respective reports, perhaps megabytes worth of data.  I will mention here that parsing the log file and producing code segments for <a href="https://github.com/dkaip/sc_open">sc_open</a> can be invaluable in EI development, maintenance, debugging, etc.</li>
 <li>Audit Trail - depending on your software integration / automation stack it may be much easier to generate audit trail information from log files generated from the communication between the MES software and the equipment than it is to generate the information from other sources.</li>
 </ul>
 <p>There are plenty of additional uses for a log files that may be parsed easily by a program.</p>
@@ -82,36 +83,211 @@
 <li>At this time this program is only able to log SECS messages between two endpoints of an HSMS connection.</li>
 <li>The IP Address Family of the HSMS connection may be either IPV4 or IPV6.</li>
 </ul>
-<h2 id="configuration-file">Configuration File</h2>
-<p>The configuration file, unless specified on the command line, is <code>appsettings.json</code>.  This file contains several elements that are needed to configure <code>SECSSpy</code> for operation.  Following is documentation pertaining to various elements.</p>
+<h2 id="configuring-secsspy">Configuring SECSSpy</h2>
+<p><code>SECSSpy</code> is a command line application that requires a configuration file.
+The configuration file, unless specified on the command line, will be <code>appsettings.json</code>.  This file contains a number of <code>json</code> elements that are needed to configure <code>SECSSpy</code> for operation.  Following is documentation pertaining to the various elements or sections of the required configuration file.</p>
+<h3 id="serilog">&quot;Serilog&quot;</h3>
+<p><code>SECSSpy</code> uses the <code>Serilog</code> logging library API.  This section is used to provide configuration information
+for <code>Serilog</code>.  For more information, please refer to the widely available documentation for using and configuring <code>Serilog</code>.</p>
+<p>One item of note though, the configuration item <code>MinimumLevel</code> should normally be set to a value of &quot;Information&quot;.  In this case the logging output should
+pretty much just contain the log output of the SECS-II messages passed between the endpoints of a connection.  If <code>MinimumLevel</code> is set to &quot;Debug&quot; or
+&quot;Verbose&quot; the log output will be polluted with a lot of lower level debug information that will just clutter up the output.</p>
 <h3 id="configurationpairs">&quot;ConfigurationPairs&quot;</h3>
-<p>This section contains an array of <code>ConfigurationPair</code> sections.  A configuration pair represents a &quot;SECS connection&quot; or link between two &quot;entities&quot; that are communicating to each other using the SECS protocol either using HSMS or SECS-I as the transport layer.</p>
-<p>In the normal case only one <code>ConfigurationPair</code> section is configured.  This will allow the logging of the SECS-II traffic (and potentially HSMS control messages) between one &quot;entities&quot; and different &quot;entities&quot;.  This is not done via magic however, you will need &quot;point&quot; the two entities to <code>SECSSpy</code> and configure <code>SECSSpy</code> to point to the two entities.</p>
-<p>An example may help, consider an HSMS connect/link betweem an EI and a piece of equipment.  You might configure the piece of equipment with a connection mode of <code>Passive</code> and listening on <code>Port</code> 50000.  In this case the EI would be configured to be <code>Active</code> and given port 50000 as the port it should attempt to connect to.  (Yes, the network address needs to be specified as well.)  In order to use <code>SECSSpy</code> to log the traffic between them you would configure your EI to use <code>Port</code> 50001 instead of <code>Port</code> 50000.  You would then configure one of the elements in the <code>ConfigurationPair</code> section <code>SECSSpy</code>'s configuration file to be <code>Passive</code> and listen on <code>Port</code> 50001 and the other element in the pair to be <code>Active</code> on port 50000.  This will effectively put <code>SECSSpy</code> in the middle and allow it to log all SECS-II traffic.</p>
-<p>It is possible to have multiple <code>ConfigurationPair</code> sections within the <code>ConfigurationPairs</code> section in order to allow for the logging of the traffic on multiple connections/links to the same log file.  This is not how <code>SECSSpy</code> would typically be used.   However, it might prove valuable in the case of a Litho cluster.  In this situation the messages are NOT logged in the order they are received, although it will probably be close enough.  Each message is received in its own thread.  Once it is passed on to its destination it will be dumped onto the FIFO queue that feeds the log output &quot;engine&quot; and from there it will be in FIFO order.</p>
+<p>This section contains an array of <code>ConfigurationPair</code> sections.  A configuration pair represents a &quot;SECS connection&quot; or link between two &quot;entities&quot; that are communicating to each other using the SECS protocol either using HSMS as the transport layer.</p>
+<p>In the normal case only one <code>ConfigurationPair</code> section is configured.  This will allow the logging of the SECS-II traffic (and optionally HSMS control messages) between on endpoint of a connection and the other endpoint.  This is not accomplished magically however, you will need &quot;point&quot; the two endpoint to <code>SECSSpy</code> and configure <code>SECSSpy</code> to point to the two endpoints.</p>
+<p>An example may help, consider an HSMS connect/link between an EI and a piece of equipment.  You might configure the piece of equipment with a connection mode of <code>Passive</code> and listening on <code>Port</code> 50000.  In this case the EI would be configured to be <code>Active</code> and given port 50000 as the port it should attempt to connect to.  (Yes, the network address needs to be specified as well.)  In order to use <code>SECSSpy</code> to log the traffic between them you would configure your EI to use <code>Port</code> 50001 instead of <code>Port</code> 50000.  You would then configure one of the endpoints in the <code>ConfigurationPair</code> section of <code>SECSSpy</code>'s configuration file to be <code>Passive</code> and listen on <code>Port</code> 50001 and the other endpoint in the pair to be <code>Active</code> on port 50000.  This will effectively put <code>SECSSpy</code> in the middle and allow it to log all SECS-II traffic between the two endpoints.</p>
+<p>It is possible to have multiple <code>ConfigurationPair</code> sections within the <code>ConfigurationPairs</code> section in order to allow for the logging of the traffic on multiple connections to the same log file.  This is not how <code>SECSSpy</code> would typically be used.   However, it might prove valuable in the case of something like a Litho cluster.  In this situation the messages are NOT logged in the order they are received, although it will probably be close enough.  Each message is received in its own thread.  Once it is passed on to its destination it will be dumped onto the FIFO queue that feeds the log output &quot;engine&quot; and from there it will be in FIFO order.</p>
 <h3 id="configurationpair">&quot;ConfigurationPair&quot;</h3>
-<p>This section is a <code>json</code> array that contains one entry for each end of a SECS connection.  There may only be two entries in this array.</p>
-<h3 id="loggingoutputformat">&quot;LoggingOutputFormat&quot;</h3>
-<p>This instructs <code>SECSSpy</code> to product logging output in either SML or XML.  Valid values for this element are &amp;quotSML&quot; or
-&quot;XML&quot;.</p>
-<h2 id="smloutput">&quot;SMLOutput&quot;</h2>
-<h3 id="sml-header-output-format-options">SML Header Output Format Options</h3>
-<h3 id="sml-body-output-format-options">SML Body Output Format Options</h3>
-<h2 id="xmloutput">&quot;XMLOutput&quot;</h2>
-<p>When outputting the log information in the XML format be warned that an XML document is <strong>NOT</strong> produced.  Only well-formed XML is output.  If you want to be able to parse the XML with any of the standard XML parser APIs available you will need to create an XML document.  Doing this is an easy task.  You must add an XML declaration to your file in addition to a root element of your choice.  Don't forget to close the root element.</p>
-<pre><code class="lang-C#">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;MyLogFileRootElement&gt;
-</code></pre>
-<p>Paste the contents of the log file you are interested in parsing here.</p>
-<pre><code class="lang-C#">&lt;/MyLogFileRootElement&gt;
-</code></pre>
-<p>Make sure when you are doing your copying and pasting that you &quot;grab&quot; complete XML element(s).</p>
-<p>When XML output is chosen there are some customization that may be applied.</p>
-<h3 id="xml-header-output-format-options">XML Header Output Format Options</h3>
+<p>This section is a <code>json</code> array that contains one entry for each end of a SECS connection.  There may only be two <code>SECSConnectionConfigInfo</code> entries in this array.</p>
+<h3 id="secsconnectionconfiginfo">&quot;SECSConnectionConfigInfo&quot;</h3>
+<p>This section contains the configuration information required for each endpoint in the HSMS connection.</p>
 <table>
 <thead>
 <tr>
-<th>Header Config Element</th>
+<th>Item Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>This is the &quot;name&quot; of the connection endpoint.  This name will appear in the output logging to aid in documenting the message direction.</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>This is the type of connection to be used.  The value should be &quot;HSMS&quot; since &quot;SECSI&quot; is not supported at this time.</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>This is the IP Address or host name to be used for the connection.</td>
+</tr>
+<tr>
+<td>AddressFamily</td>
+<td>For an HSMS connection this value must be either &quot;IPV4&quot; or &quot;IPV6&quot;.</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>This is the IP Port to use for the connection.</td>
+</tr>
+<tr>
+<td>ConnectionMode</td>
+<td>This is the connection mode to be used for the connection.  There are only two valid values, they are &quot;active&quot; and &quot;passive&quot;.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="textformatterconfig">&quot;TextFormatterConfig&quot;</h3>
+<p>This section contains the information for configuring the formatted output of the SECS-II messages
+that are to be logged.</p>
+<table>
+<thead>
+<tr>
+<th>Item Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AddTimestamp</td>
+<td>Controls whether or not a timestamp is included in the logging output. Valid values are <code>true</code> or <code>false</code>.</td>
+</tr>
+<tr>
+<td>TimestampFormat</td>
+<td>This is a format string that controls the format of the timestamp that is output, if one is desired.  Refer to documentation on <code>C#</code> time and date format strings for more information.</td>
+</tr>
+<tr>
+<td>AddDirection</td>
+<td>Controls whether or not &quot;from/to&quot; information for the messages are displayed.</td>
+</tr>
+<tr>
+<td>IndentAmount</td>
+<td>This is the number of spaces to indent items when indention is necessary.</td>
+</tr>
+<tr>
+<td>MaxIndentionSpaces</td>
+<td>This is the maximum number of spaces available for indentation.  With an <code>IndentAmount</code> of 2 this allows for 25 levels of indentation which should be way more than enough. In general 10 levels of indentation should be more than enough.</td>
+</tr>
+<tr>
+<td>LoggingOutputFormat</td>
+<td>Controls the format of the logging output.  Its value should be &quot;SML&quot; or &quot;XML&quot;.</td>
+</tr>
+<tr>
+<td><a href="#smloutputconfig">SMLOutputConfig</a></td>
+<td>If <code>LoggingOutputFormat</code> has a value of &quot;<a href="#smloutputconfig">SML</a>&quot; this section's configuration information will apply to the output produced.</td>
+</tr>
+<tr>
+<td><a href="#xmloutputconfig">XMLOutputConfig</a></td>
+<td>If <code>LoggingOutputFormat</code> has a value of &quot;<a href="#xmloutputconfig">XML</a>&quot; this section's configuration information will apply to the output produced.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="smloutputconfig">&quot;SMLOutputConfig&quot;</h3>
+<p>This section of the configuration file contains information that will be used to determine what the resulting
+output will look like when the SECS-II messages are display in an SML format.</p>
+<h4 id="sml-headeroutputconfig">SML &quot;HeaderOutputConfig&quot;</h4>
+<p>This section of the configuration file contains items that have an effect on how the <code>HSMSHeader</code> is formatted for output.</p>
+<table>
+<thead>
+<tr>
+<th>Item Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DisplayDeviceId</td>
+<td><code>true</code> if you want the device Id displayed, <code>false</code> if otherwise</td>
+</tr>
+<tr>
+<td>DisplaySystemBytes</td>
+<td><code>true</code> if you want the System Bytes displayed, <code>false</code> if otherwise</td>
+</tr>
+<tr>
+<td>DisplayWBit</td>
+<td><code>true</code> if you want the W-bit displayed, <code>false</code> if otherwise</td>
+</tr>
+<tr>
+<td>DisplayControlMessages</td>
+<td><code>true</code> if you want control messages displayed, <code>false</code> if otherwise</td>
+</tr>
+</tbody>
+</table>
+<p>If <code>DisplayControlMessages</code> is <code>true</code> HSMS Control Messages will be displayed.   If <code>DisplayControlMessages</code>
+is <code>false</code> HSMS Control Messages will not appear in the output.  The following is
+an example where <code>DisplayControlMessages</code> is <code>true</code>:</p>
+<pre><code class="lang-C#">#Timestamp:2023-02-23T19:00:11.108
+#Direction Src:TheHost Dest:TheEquipment
+#HSMS Control Message: SelectReq SessionId:65535 System Bytes:1
+#Timestamp:2023-02-23T19:00:11.108
+#Direction Src:TheEquipment Dest:TheHost
+#HSMS Control Message: SelectRsp SessionId:65535 Select Status:0 System Bytes:1
+</code></pre>
+<p>If <code>AddTimestamp</code> was <code>false</code> you would not have seen the <code>#Timestamp:...</code> lines.</p>
+<p>If <code>AddDirection</code> was <code>false</code> you would not have seen the <code>#Direction ...</code> lines.</p>
+<p>Here is an example where <code>DisplayDeviceId</code>, <code>DisplaySystemBytes</code>, and <code>DisplayWBit</code> are set to <code>true</code>.</p>
+<pre><code class="lang-C#">S1F1 W DevId:0 SysBytes:2.
+</code></pre>
+<p>If only <code>DisplayWBit</code> is set to <code>true</code> the output would resemble:</p>
+<pre><code class="lang-C#">S1F1 W.
+</code></pre>
+<h4 id="sml-bodyoutputconfig">SML &quot;BodyOutputConfig&quot;</h4>
+<p>This section of the configuration file contains items that have an effect on how the body (if present)
+of the <code>SECSMessage</code> is formatted for output.</p>
+<table>
+<thead>
+<tr>
+<th>Item Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DisplayCount</td>
+<td>Controls whether or not an item's count value is displayed.  Valid values are <code>true</code> or <code>false</code>.</td>
+</tr>
+<tr>
+<td>MaxOutputLineLength</td>
+<td>Set the maximum output line length of the generated log output.</td>
+</tr>
+</tbody>
+</table>
+<p>If <code>DisplayCount</code> is <code>false</code> the output will resemble:</p>
+<pre><code class="lang-C#">#Timestamp:2023-02-23T18:37:56.021
+#Direction Src:TheEquipment Dest:TheHost
+S1F2
+&lt;L
+  &lt;A &quot;EqModel&quot;&gt;
+  &lt;A &quot;1.2.14&quot;&gt;
+&gt;.
+</code></pre>
+<p>If <code>DisplayCount</code> is <code>true</code> the output will resemble:</p>
+<pre><code class="lang-C#">#Timestamp:2023-02-23T19:00:14.838
+#Direction Src:TheEquipment Dest:TheHost
+S1F2
+&lt;L [2]
+  &lt;A [7] &quot;EqModel&quot;&gt;
+  &lt;A [6] &quot;1.2.14&quot;&gt;
+&gt;.
+</code></pre>
+<h3 id="xmloutputconfig">&quot;XMLOutputConfig&quot;</h3>
+<p>This section of the configuration file contains information that will be used to determine what the resulting
+output will look like when the SECS-II messages are display in an XML format.</p>
+<p><strong>Note:</strong></p>
+<p>When outputting the log information in the XML format be warned that an XML document is <strong>NOT</strong> produced.  Only well-formed XML is output.  If you want to be able to parse the XML with any of the standard XML parser APIs available you will need to create an XML document.  Doing this is an easy task.  You must add an XML declaration to your file in addition to a root element of your choice.  Don't forget to close the root element.</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;MyLogFileRootElement&gt;
+</code></pre>
+<p>Paste the contents of the log file you are interested in parsing here.</p>
+<pre><code class="lang-xml">&lt;/MyLogFileRootElement&gt;
+</code></pre>
+<p>Make sure when you are doing your copying and pasting that you &quot;grab&quot; complete XML element(s).</p>
+<p>Following are the customization options that may be used when <code>LoggingOutputFormat</code>
+is set to XML.</p>
+<h4 id="xml-headeroutputconfig">XML &quot;HeaderOutputConfig&quot;</h4>
+<p>This section of the configuration file contains items that have an effect on how the <code>HSMSHeader</code> is formatted for output.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -143,7 +319,7 @@
 </tbody>
 </table>
 <p>Example output with <code>DisplayAsElementsOrAttributes</code> set to <code>Elements</code></p>
-<pre><code class="lang-C#">&lt;SECSMessage&gt;
+<pre><code class="lang-xml">&lt;SECSMessage&gt;
   &lt;Direction&gt;
     &lt;Source&gt;MES&lt;/Source&gt;
     &lt;Destination&gt;Equipment&lt;/Destination&gt;
@@ -166,7 +342,7 @@
 &lt;/SECSMessage&gt;
 </code></pre>
 <p>Example output with <code>DisplayAsElementsOrAttributes</code> set to <code>Attributes</code></p>
-<pre><code class="lang-C#">&lt;SECSMessage&gt;
+<pre><code class="lang-xml">&lt;SECSMessage&gt;
   &lt;Direction src=&quot;MES&quot; Dest=&quot;Equipment&quot;/&gt;
 
   &lt;Header DeviceId=&quot;0&quot; Stream=&quot;1&quot; Function=&quot;1&quot; WBit=&quot;1&quot; SystemBytes=&quot;40127&quot;/&gt;
@@ -176,9 +352,37 @@
   &lt;/Body&gt;
 &lt;/SECSMessage&gt;
 </code></pre>
-<h3 id="xml-body-output-format-options">XML Body Output Format Options</h3>
+<h4 id="xml-bodyoutputconfig">XML &quot;BodyOutputConfig&quot;</h4>
+<p>This section of the configuration file contains items that have an effect on how the body (if present)
+of the <code>SECSMessage</code> is formatted for output.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DisplayAsElementsOrAttributes</td>
+<td><code>Elements</code> or <code>Attributes</code> Display the individual header parts using XML elements or as XML Attributes in a single XML element</td>
+</tr>
+<tr>
+<td>DisplayNumberOfLengthBytes</td>
+<td>Controls whether or not the <code>SECSItem</code>'s number of length bytes is displayed.  Valid values are <code>true</code> or <code>false</code>.</td>
+</tr>
+<tr>
+<td>DisplayLengthByteValue</td>
+<td>Controls whether or not the <code>SECSItem</code>''s length in bytes is displayed. Valid values are <code>true</code> or <code>false</code>. Remember, for a <strong>L</strong>ist item its length in bytes is actually the number of elements it contains.</td>
+</tr>
+<tr>
+<td>MaxOutputLineLength</td>
+<td>Set the maximum output line length of the generated log output.</td>
+</tr>
+</tbody>
+</table>
 <p>Example body</p>
-<pre><code class="lang-C#">&lt;SECSItem&gt;
+<pre><code class="lang-xml">&lt;SECSItem&gt;
   &lt;Type&gt;U4&lt;/Type&gt;
   &lt;NumberOfLengthBytes&gt;1&lt;NumberOfLengthBytes&gt;
   &lt;LengthByteValue&gt;4&lt;/LengthByteValue&gt;
@@ -186,7 +390,7 @@
 &lt;/SECSItem&gt;
 </code></pre>
 <p>example 2</p>
-<pre><code class="lang-XML">&lt;SECSItem&gt;
+<pre><code class="lang-xml">&lt;SECSItem&gt;
   &lt;Type&gt;L&lt;/Type&gt;
   &lt;NumberOfLengthBytes&gt;1&lt;NumberOfLengthBytes&gt;
   &lt;LengthByteValue&gt;3&lt;/LengthByteValue&gt;
@@ -212,6 +416,20 @@
   &lt;/SECSItems&gt;
 &lt;/SECSItem&gt;
 </code></pre>
+<h2 id="running-secsspy">Running SECSSpy</h2>
+<p><code>SECSSpy</code> is a command line application.  There are two ways to start it.</p>
+<ol>
+<li><code>SECSSpy</code> If started using this method the application will start and
+attempt to open an <code>appsettings.json</code> file in order to read its configuration
+information.</li>
+<li><code>SECSSpy myConfigFile.json</code> If started using this method the application will
+start and attempt to open the <code>myConfigFile.json</code> file and read its configuration
+information from there.</li>
+</ol>
+<h2 id="terminating-secsspy">Terminating SECSSpy</h2>
+<p>When run from the command line in a terminal <code>SECSSpy</code> may be terminated by pressing ^C (ctrl-c).  This
+will cause <code>SECSSpy</code> to perform a graceful shutdown. On Linux <code>SECSSpy</code> may also be terminated by using the
+<code>kill -SIGINT</code> or <code>kill -2</code> commands from another terminal window or script.</p>
 </article>
           </div>
 
